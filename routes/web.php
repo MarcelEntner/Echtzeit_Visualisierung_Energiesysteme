@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EnergiesystemeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('test', function(){
-    return 'Hello Entner!';
-});
+
+Route::resource('/home', EnergiesystemeController::class);
