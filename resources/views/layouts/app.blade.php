@@ -1,36 +1,43 @@
-<html lang="en">
+<html lang="de">
 <head>
-
-   
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-
-
-    <title>MicroGridLab - @yield('title')</title>
-    <!-- yield Platzhalter -->      
+    <!-- CSS only  Bootstrape-->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <title>@yield('title')</title> <!-- Platzhalter für den Title , Title steht in der Variable title-->
 </head>
-
 <body>
+    @section('header')
+
+        <div class="w-100" style="background-color:red">
+            <h1>Header</h1>
+        </div>
+    
+    @show
     
 
-    <!-- section Bereich -->      
-    @section('sidebar')
-        This is the master sidebar.
+    
+    @section('content')
+    <div class="w-100" style="background-color:green">
+        <h1>Content</h1>
+   </div>
+
     @show
-    <!-- anzeigen auch wenn es von einer anderen Seite überschrieben wird -->      
 
 
-    <div class="container">
-        @yield('content')
-        <!-- ganzer Content Platzhalter -->      
+
+   @section('footer')
+
+    <div class="w-100" style="background-color:blue">
+         <h1>Footer</h1>
     </div>
 
-</body>
+   @show
 
+
+    
+    <!-- JavaScript Bundle with Popper Bootstrap -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+</body>
 </html>
