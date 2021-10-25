@@ -12,31 +12,36 @@
 
         <div class="w-100" style="background-color:red">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+              
+              <img src="{{URL::asset('images/logo.png')}}" alt="Logo" >
+
+              
+
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="/home">Navbar</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
+                  <a class="navbar-brand" href="homepage">MicroGridLab</a>
+                
+
                   <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="homepage">Home</a>
                       </li>
-              
-                        
+
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link active" aria-current="page" href="energiesysteme">Energiesysteme</a>
                       </li>
+
+                      <li class="nav-item active mr-auto">
+                        <a class="nav-link" aria-current="page" href="login">Login</a>
+                      </li>
+                        
+                  
                   
 
 
                    
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                      </li>
+                   
                     </ul>
                   </div>
                 </div>
@@ -62,8 +67,9 @@
 
    @section('footer')
 
-    <div class="w-100" style="background-color:blue">
-         <h1>Footer</h1>
+    <div class="w-100 fixed-bottom" style="background-color:blue">
+      <button type="button" class="btn btn-light">Light</button>
+
     </div>
 
    @show

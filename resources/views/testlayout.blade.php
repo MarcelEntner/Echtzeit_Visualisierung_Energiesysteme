@@ -1,5 +1,0 @@
-@extends('layouts.app1')
-@section('title','test')
-@section('head')
-@section('content')
-@section('foooter')
