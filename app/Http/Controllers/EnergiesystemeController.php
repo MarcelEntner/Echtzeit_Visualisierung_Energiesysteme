@@ -14,7 +14,7 @@ class EnergiesystemeController extends Controller
      */
     public function index()
     {
-        return view('homepage');
+        return view('home');
     }
 
     /**

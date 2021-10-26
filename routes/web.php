@@ -23,10 +23,10 @@ Route::get ('/test',function(){
 });
 
 
-Route::resource('/homepage', EnergiesystemeController::class);
+Route::resource('/home', EnergiesystemeController::class);
 
 Auth::routes();
 
-Route::get('/login', [App\Http\Controllers\HomeController::class, 'index'])->name('login');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
