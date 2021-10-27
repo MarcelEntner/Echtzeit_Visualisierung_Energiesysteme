@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\FrontEndController:: class, 'index'])->name('lp');
+Route::get('/', [\App\Http\Controllers\FrontEndController:: class, 'index'])->name('hp');
 Route::get('/galerie', [\App\Http\Controllers\FrontEndController:: class, 'galerie'])->name('gal');
-Route::get('/kartendienst', [\App\Http\Controllers\FrontEndController:: class, 'kartendienst'])->name('kd');
+Route::get('/energiesysteme', [\App\Http\Controllers\FrontEndController:: class, 'energiesysteme'])->name('es');
 Route::get('/impressum', [\App\Http\Controllers\FrontEndController:: class, 'impressum'])->name('impressum');
 Route::get('/dsgvo', [\App\Http\Controllers\FrontEndController:: class, 'dsgvo'])->name('dsgvo');
+
+
     
 
 Auth::routes();

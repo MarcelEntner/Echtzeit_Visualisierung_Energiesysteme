@@ -8,7 +8,7 @@ class FrontEndController extends Controller
 {
     public function index()
     {
-        return view('LandingPage');
+        return view('Homepage');
     }
 
     public function galerie()
@@ -16,9 +16,9 @@ class FrontEndController extends Controller
         return view('Galerie');
     }
 
-    public function kartendienst()
+    public function energiesysteme()
     {
-        return view('Kartendienst');
+        return view('Energiesysteme');
     }
     public function impressum()
     {
@@ -28,4 +28,6 @@ class FrontEndController extends Controller
     {
         return view('Dsgvo');
     }
+
+
 }

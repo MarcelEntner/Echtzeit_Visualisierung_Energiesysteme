@@ -4,9 +4,9 @@
 @endsection
 @section('content')
 
-<h1>This is the Galerie</h1>
+<h1>This is the Energiesysteme</h1>
 
       
- 
-@endsection
+  
+  @endsection
 @section('foooter')
