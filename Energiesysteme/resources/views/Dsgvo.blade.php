@@ -8,7 +8,7 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
-            .nav-item
+          .nav-item
             {
               font-size: 25px;
               padding-left: 20px;
@@ -18,11 +18,26 @@
             .navbar-brand
             {
                 font-size: 30px;
+                color:#21A500;
             }
-            
+
+            .navbar-brand:hover
+            {
+              color:green;
+            }
+
             #gallog
             {
-                padding-left: 200px;
+                padding-left: 900px;
+            }
+
+            .nav-link
+            {
+                color:#21A500;
+            }
+            .nav-link:hover
+            {
+                color:green;
             }
 
             </style>
@@ -31,7 +46,7 @@
     <body>
 
         <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Toggle button -->
@@ -50,7 +65,7 @@
       <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <a class="navbar-brand mt-2 mt-lg-0" href="{{ route('lp') }}">
             <img
               src="{{ URL::to('/images/logo.jpg') }}"
               height="40"
@@ -59,17 +74,17 @@
             />
           </a>
 
-        <a class="navbar-brand" href="#">MicroGridLab</a>
+        <a class="navbar-brand" href="{{ route('lp') }}">MicroGridLab</a>
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="{{ route('lp') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('gal') }}">Galerie</a>
+            <a class="nav-link" href="{{ route('kd') }}">Energiesysteme</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('kd') }}">Kartendienst</a>
+            <a class="nav-link" href="{{ route('gal') }}">Galerie</a>
           </li>
           @guest
                             @if (Route::has('login'))

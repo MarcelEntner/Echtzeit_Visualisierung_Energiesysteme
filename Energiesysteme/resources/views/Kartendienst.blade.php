@@ -9,7 +9,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <style>
-            .nav-item
+           .nav-item
             {
               font-size: 25px;
               padding-left: 20px;
@@ -19,17 +19,44 @@
             .navbar-brand
             {
                 font-size: 30px;
+                color:#21A500;
             }
+
+            .navbar-brand:hover
+            {
+              color:green;
+            }
+
             #gallog
             {
-                padding-left: 200px;
+                padding-left: 900px;
+            }
+
+            .footercontext
+            {
+              color:#21A500;
+              padding-right: 10%;
+            }
+
+            .footercontext:hover
+            {
+              color:green;
+            }
+
+            .nav-link
+            {
+                color:#21A500;
+            }
+            .nav-link:hover
+            {
+                color:green;
             }
             </style>
     </head>
     <body>
 
         <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg">
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Toggle button -->
@@ -48,7 +75,7 @@
       <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <a class="navbar-brand mt-2 mt-lg-0" href="{{ route('lp') }}">
             <img
               src="{{ URL::to('/images/logo.jpg') }}"
               height="40"
@@ -57,17 +84,17 @@
             />
           </a>
 
-        <a class="navbar-brand" href="#">MicroGridLab</a>
+        <a class="navbar-brand" href="{{ route('lp') }}">MicroGridLab</a>
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="{{ route('lp') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('gal') }}">Galerie</a>
+            <a class="nav-link" href="{{ route('kd') }}"><b><u> Energiesysteme</b></u></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('kd') }}">Kartendienst</a>
+            <a class="nav-link" href="{{ route('gal') }}">Galerie</a>
           </li>
           @guest
                             @if (Route::has('login'))
@@ -93,19 +120,31 @@
     <!-- Container wrapper -->
   </nav>
   <!-- Navbar -->
-<h1>This is the kartendienst</h1>
 
 
-<footer class="bg-light text-center text-lg-start">
+
+<h1>This is the Energiesysteme</h1>
+
+
+
+
+
+
+
+
+<!--Footer-->
+<footer class="bg-light text-right text-lg-start pull-right">
    
-    <!-- Copyright -->
-    <div class="text-center p-3">
-      
+  <!-- Copyright -->
+  <div class="p-3 text-right border border-success fixed-bottom">
+    
+ 
+    <a class="footercontext" href="{{ route('impressum') }}">Impressum</a>
+    <a class="footercontext" href="{{ route('dsgvo') }}">DSGVO</a>
 
-      <a href="{{ route('impressum') }}">Impressum</a>
-      <a href="{{ route('dsgvo') }}">DSGVO</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
+  
+</div>
+  <!-- Copyright -->
+</footer>
     </body>
 </html>
