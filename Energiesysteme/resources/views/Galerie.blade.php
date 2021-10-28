@@ -4,7 +4,17 @@
 @endsection
 @section('content')
 
-<h1>This is the Galerie</h1>
+
+
+
+<div class="dropdown">
+    <button class="dropbtn">Wählen Sie ein Energiesystem aus</button>
+    <div class="dropdown-content">
+      <a href="#">MicroGridLab</a>
+      <a href="#">Feuerwehr</a>
+    </div>
+  </div>
+
 
       
  

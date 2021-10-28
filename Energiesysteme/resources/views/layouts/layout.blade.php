@@ -16,7 +16,7 @@
 
         .navbar-brand
         {
-            font-size: 30px;
+            font-size: 45px;
             color:#21A500;
             
         }
@@ -28,13 +28,17 @@
 
         #gallog
         {
-            padding-left: 900px;
+            padding-left: 650px;
         }
 
         .nav-link
         {
             color:#21A500;
+            
         }
+
+       
+
         .nav-link:hover
         {
             color:green;
@@ -58,14 +62,24 @@
           border: 1px solid #21A500;
           border-radius: 15px;
           padding: 20px;
-          margin: 70px;
-          height:200px;
+          margin-top: 30px;
+          margin-left: 80px;
+          margin-right: 80px;
+          height:35%;
+        }
+
+        .text
+        {
+          text-align:center;
+          padding-top:20px;
+          padding-left:100px;
+          padding-right:100px;
         }
 
         .picture
         {
           height: 300px;
-          width: 1860px;
+          width: 100%;
           border-radius: 15px;
         }
 
@@ -108,6 +122,7 @@
             width: 50%;
             margin:auto;
             text-align: center;
+            padding-top:3%;
         }
 
         .ImpressumUberschrieft
@@ -116,7 +131,143 @@
             color:#21A500;
             
         }
+
+        .logo
+        {
+          padding-top:5%;
+        }
+
+
+        .Karte
+        {
+          /*border: 1px solid green;*/
+          height: 100%;
+          width: 60%;
+          margin-left:1%;
+          border-radius: 50px; 
+        }
+
+        .GoogleMaps
+        {
+          border-radius: 50px;
+        }
+
+        
+        .Liste
+        {
+          border: 1px solid green;
+          margin-right:2%;
+          margin-top: -40.4%;
+          height: 50%;
+          width: 35%;
+          border-radius: 50px; 
+          float: right;
+        }
+
+        .Energiesysteme
+        {
+          height:80%;
+          width: 100%;
+        }
+
+        #suche
+        {
+          border: 2px solid #999;
+          border-radius: 0.5em;;
+          font-size: 1.3em;
+          width: 10em;
+          transition: width 0.5s ease-in-out;
+          margin-top: -11.5%;
+          margin-right: 5%;
+          float: right;
+        }
+ 
+        #suche:focus
+        {
+          width: 50%;
+        }
+
+        .GrafanaBtn
+        {
+         height: 50px;
+         width: 50px; 
+         background: url(/images/statistik.png) no-repeat;
+         border: none;
+        }
+
+        .EditBtn
+        {
+         height: 50px;
+         width: 50px; 
+         background: url(/images/delete.png) no-repeat;
+         border: none;
+        }
+
+        .DeleteBtn
+        {
+         height: 50px;
+         width: 50px; 
+         background: url(/images/stift.png) no-repeat;
+         border: none;
+        }
+
+        .ListeHeader
+        {
+          font-size: 20px;
+        }
       
+
+        .dropbtn 
+        {
+          background-color: #04AA6D;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          width: 100%;
+        }
+
+        .dropdown
+        {
+          position: relative;
+          display: inline-block;
+          width: 1000px;
+          margin-left: 30%;
+          width: 40%;
+        }
+
+        .dropdown-content
+        {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+          width: 100%;
+        }
+
+        .dropdown-content a
+        {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          width: 100%;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+        
+
+      /*
+
+
+      **/
 
         </style>
 </head>
@@ -143,17 +294,17 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Navbar brand -->
             <!-- <a class="navbar-brand mt-2 mt-lg-0" href=""> -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="{{ route('hp') }}">
-              <img
-                src="{{ URL::to('/images/logo.jpg') }}"
-                height="100%"
-                width="100%"
-                alt=""
+                <a class="navbar-brand mt-2 mt-lg-0">
+              <img class="logo"
+                src="{{ URL::to('/images/logo2.png') }}"
+                height="100px"
+                width="300px"
+                alt="Best GmbHLogo"
                 loading="lazy"
               />
             </a>
     
-            <a class="navbar-brand" href="{{ route('hp') }}">MicroGridLab</a>
+            <a class="navbar-brand">MicroGridLab</a>
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
