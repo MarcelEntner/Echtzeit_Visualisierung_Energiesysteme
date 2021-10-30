@@ -10,7 +10,7 @@
         .nav-item
         {
           font-size: 25px;
-          padding-left: 20px;
+          padding-left: 10px;
           padding-right: 20px;
         }
 
@@ -61,10 +61,10 @@
           
           border: 1px solid #21A500;
           border-radius: 15px;
-          padding: 20px;
+          padding: 1%;
           margin-top: 30px;
-          margin-left: 80px;
-          margin-right: 80px;
+          margin-left: 5%;
+          margin-right:5%;
           height:35%;
         }
 
@@ -131,6 +131,22 @@
             color:#21A500;
             
         }
+        .Dsgvo{
+            font-size: 15px;
+            border: 1px solid #21A500;
+            border-radius: 15px; 
+            height:70%;
+            width: 50%;
+            margin:auto;
+            text-align: center;
+            padding-top:3%;
+
+        }
+        .DsgvoUberschrieft
+        {
+            text-align: center;
+            color:#21A500;
+        }
 
         .logo
         {
@@ -157,18 +173,25 @@
         {
           border: 1px solid green;
           margin-right:2%;
-          margin-top: -40.4%;
+          margin-top: 1%;
           height: 50%;
           width: 35%;
           border-radius: 50px; 
-          float: right;
+        
+    
         }
 
         .Energiesysteme
         {
           height:80%;
           width: 100%;
+     
+
+
         }
+      
+
+     
 
         #suche
         {
@@ -273,7 +296,7 @@
 </head>
 <body>
     @section('header')
-
+<header>
     <nav class="navbar navbar-expand-lg">
         <!-- Container wrapper -->
         <div class="container-fluid">
@@ -329,6 +352,7 @@
           </div>
         </div>
       </nav>
+    </header>
 
 
 

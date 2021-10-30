@@ -19,7 +19,9 @@ Route::get('/energiesysteme', [\App\Http\Controllers\FrontEndController:: class,
 Route::get('/impressum', [\App\Http\Controllers\FrontEndController:: class, 'impressum'])->name('impressum');
 Route::get('/dsgvo', [\App\Http\Controllers\FrontEndController:: class, 'dsgvo'])->name('dsgvo');
 
-
+Route::get('/test', function () {
+    return view('responsivtest');
+});
     
 
 Auth::routes();
