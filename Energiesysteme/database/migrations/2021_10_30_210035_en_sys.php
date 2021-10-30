@@ -13,7 +13,22 @@ class EnSys extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('EnSys', function (Blueprint $table) {
+            $table->id();
+            $table->string('Bezeichnung');
+            $table->string('Katastralgemeinden');
+            $table->double('Postleitzahl');
+            $table->double('AzErgeugungstechnologien');
+            $table->double('AzVerbraucher');
+            $table->double('AzSpeicher');
+            $table->double('GesNennleistung');
+            $table->double('GesEnergie');
+            $table->double('GesVerbraucherLeistung');
+            $table->double('GesVerbraucherEnergie');
+            $table->double('GesSpeicherKap');
+            $table->double('AktuellerNetzbezug');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +38,6 @@ class EnSys extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('EnSys');
     }
 }

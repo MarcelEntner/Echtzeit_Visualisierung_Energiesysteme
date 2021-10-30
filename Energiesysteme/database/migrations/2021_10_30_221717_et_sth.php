@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EnTech extends Migration
+class EtSth extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class EnTech extends Migration
      */
     public function up()
     {
-        Schema::create('EnTech', function (Blueprint $table) {
+        Schema::create('EtSth', function (Blueprint $table) {
             $table->id();
-            $table->string('Typ');
-            $table->string('Bezeichnung');
-            $table->string('Ort');
-            $table->double('Laengengrad');
-            $table->double('Breitengrad');
+            $table->double('Leistung');
+            $table->double('Energie');
+            $table->double('Vorlauftemp');
+            $table->double('Ruecklauftemp');
             $table->timestamps();
         });
     }
@@ -31,8 +30,6 @@ class EnTech extends Migration
      */
     public function down()
     {
-        
-        Schema::dropIfExists('EnTech');
-        
+        Schema::dropIfExists('EtSth');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EtPv extends Migration
+class EtBsZ extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class EtPv extends Migration
      */
     public function up()
     {
-        Schema::create('EtPv', function (Blueprint $table) {
+        Schema::create('EtBsZ', function (Blueprint $table) {
             $table->id();
             $table->double('Leistung');
             $table->double('Energie');
@@ -49,6 +49,6 @@ class EtPv extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('EtPv');
+        Schema::dropIfExists('EtBsZ');
     }
 }
