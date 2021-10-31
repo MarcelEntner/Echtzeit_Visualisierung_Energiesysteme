@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class EtWs extends Model
 {
     use HasFactory;
+
+    protected $table = 'EtWs';
 }

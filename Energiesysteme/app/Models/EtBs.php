@@ -9,4 +9,5 @@ class EtBs extends Model
 {
     use HasFactory;
     protected $table = 'EtBs';
+    
 }
