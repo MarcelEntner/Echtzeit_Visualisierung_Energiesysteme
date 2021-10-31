@@ -35,7 +35,13 @@ class EnSysController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $enSys = new EnSys();
+        $enSys->Leistung=$request->Leistung;
+        $enSys->Energie=$request->Energie;
+        $enSys->Speicherkap=$request->Speicherkap;
+        $enSys->save();
+        $data = DB::table('EtBs')->get();
+        return view('Galerie', compact('data'));
     }
 
     /**
