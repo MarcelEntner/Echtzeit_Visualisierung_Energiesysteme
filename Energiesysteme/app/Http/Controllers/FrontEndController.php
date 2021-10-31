@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class FrontEndController extends Controller
 {
@@ -13,7 +14,10 @@ class FrontEndController extends Controller
 
     public function galerie()
     {
-        return view('Galerie');
+        $data = DB::table('EtBs')->get();
+
+
+        return view('Galerie' , compact('data'));
     }
 
     public function energiesysteme()

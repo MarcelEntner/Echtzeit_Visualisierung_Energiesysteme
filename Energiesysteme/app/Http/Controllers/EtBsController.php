@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EtBs;
 use Illuminate\Http\Request;
+use DB;
 
 class EtBsController extends Controller
 {
@@ -35,7 +36,14 @@ class EtBsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $EtBs = new EtBs();
+        $EtBs->Leistung=$request->Leistung;
+        $EtBs->Energie=$request->Energie;
+        $EtBs->Speicherkap=$request->Speicherkap;
+        $EtBs->save();
+        $data = DB::table('EtBs')->get();
+        return view('Galerie', compact('data'));
+
     }
 
     /**
