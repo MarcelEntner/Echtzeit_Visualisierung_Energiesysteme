@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title','Energiesysteme')
+@section('title','DSGVO')
 @section('head')
 @endsection
 @section('content')

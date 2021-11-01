@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class FrontEndController extends Controller
 {
@@ -31,6 +31,10 @@ class FrontEndController extends Controller
     public function dsgvo()
     {
         return view('Dsgvo');
+    }
+    public function addes()
+    {
+        return view('AddEs');
     }
 
 

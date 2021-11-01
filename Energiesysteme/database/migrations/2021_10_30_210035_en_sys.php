@@ -18,15 +18,15 @@ class EnSys extends Migration
             $table->string('Bezeichnung');
             $table->string('Katastralgemeinden');
             $table->double('Postleitzahl');
-            $table->double('AzErgeugungstechnologien');
-            $table->double('AzVerbraucher');
-            $table->double('AzSpeicher');
-            $table->double('GesNennleistung');
-            $table->double('GesEnergie');
-            $table->double('GesVerbraucherLeistung');
-            $table->double('GesVerbraucherEnergie');
-            $table->double('GesSpeicherKap');
-            $table->double('AktuellerNetzbezug');
+            $table->double('AzErgeugungstechnologien')->nullable();;
+            $table->double('AzVerbraucher')->nullable();;
+            $table->double('AzSpeicher')->nullable();;
+            $table->double('GesNennleistung')->nullable();;
+            $table->double('GesEnergie')->nullable();;
+            $table->double('GesVerbraucherLeistung')->nullable();;
+            $table->double('GesVerbraucherEnergie')->nullable();;
+            $table->double('GesSpeicherKap')->nullable();;
+            $table->double('AktuellerNetzbezug')->nullable();;
             $table->timestamps();
         });
     }

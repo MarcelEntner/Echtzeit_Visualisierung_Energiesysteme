@@ -173,11 +173,12 @@
         {
           border: 1px solid green;
           margin-right:2%;
-          margin-top: 1%;
+       
           height: 50%;
           width: 35%;
           border-radius: 50px; 
-        
+          float:right;
+          margin-top: -40%;
     
         }
 

@@ -28,29 +28,57 @@
             <td> Bezeichnung </td>
             <td> Katastralgemeinde </td>
             <td> Postleitzahl </td>
-            <td>  Erzeugungstechnologien </td>
+            
           </tr>
 
                 <!-- SQL Abfrage wieviele ES es gibt -> Schleife dementsprechend oft durchlaufen lassen-->
               <!-- for ()... -->
-              
-          <tr> 
-            <td> MicroGridLab </td>
-            <td> Wieselburg </td>
-            <td> 3250 </td>
-            <td> 2 <button class="GrafanaBtn" >  <button class="EditBtn" > <button class="DeleteBtn" ></td>
-            
-          </tr>
-   
+
+             
 
         
       </table>
+      
+      <button type="button" id="button">Add ES!</button>
+
+    
+
+
+
+
+
     </div>
 
-
+  
 
 </div>
 
+
+<script>
+  // HTML-Button über JavaScript eine Funktion zuweisen
+  
+  // Funktion beim laden der Seite aufrufen
+  window.addEventListener("load", function() {
+  
+   // Überprüfen ob die ID (Button) auf der Seite vorhanden ist (Optional).
+   if (document.getElementById("button") != null) {
+  
+    // Der ID den Event-Handler 'click' hinzufügen,
+    // als Event die Funktion 'test' aufrufen.
+    document.getElementById("button").addEventListener("click", test);
+   }
+  });
+  
+
+
+  function test() {
+ 
+  var MeinFenster = window.open("addes", "ES hinzufügen", "width=1000,height=400,left=100,top=300"); 
+  
+  MeinFenster.focus();
+  }
+  </script>
+  
 
 
 

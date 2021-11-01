@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EnSys;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EnSysController extends Controller
 {
@@ -14,7 +15,7 @@ class EnSysController extends Controller
      */
     public function index()
     {
-        //
+       //
     }
 
     /**
@@ -36,12 +37,12 @@ class EnSysController extends Controller
     public function store(Request $request)
     {
         $enSys = new EnSys();
-        $enSys->Leistung=$request->Leistung;
-        $enSys->Energie=$request->Energie;
-        $enSys->Speicherkap=$request->Speicherkap;
+        $enSys->Bezeichnung=$request->Bezeichnung;
+        $enSys->Katastralgemeinden=$request->Katastralgemeinden;
+        $enSys->Postleitzahl=$request->Postleitzahl;
         $enSys->save();
-        $data = DB::table('EtBs')->get();
-        return view('Galerie', compact('data'));
+        $data = DB::table('EnSys')->get();
+        return view('Energiesysteme', compact('data'));
     }
 
     /**

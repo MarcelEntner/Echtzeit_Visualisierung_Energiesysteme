@@ -40,6 +40,7 @@ Route::get('/galerie', [\App\Http\Controllers\FrontEndController:: class, 'galer
 Route::get('/energiesysteme', [\App\Http\Controllers\FrontEndController:: class, 'energiesysteme'])->name('es');
 Route::get('/impressum', [\App\Http\Controllers\FrontEndController:: class, 'impressum'])->name('impressum');
 Route::get('/dsgvo', [\App\Http\Controllers\FrontEndController:: class, 'dsgvo'])->name('dsgvo');
+Route::get('/addes', [\App\Http\Controllers\FrontEndController:: class, 'addes'])->name('addes');
 
 Route::get('/test', function () {
     return view('responsivtest');
