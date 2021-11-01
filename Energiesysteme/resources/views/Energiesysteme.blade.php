@@ -34,7 +34,15 @@
                 <!-- SQL Abfrage wieviele ES es gibt -> Schleife dementsprechend oft durchlaufen lassen-->
               <!-- for ()... -->
 
-             
+              @foreach ($data as $d)
+              <tr>
+                  <td>{{ $d -> id }}</td>
+                  <td>{{ $d -> Bezeichnung }}</td>
+                  <td>{{ $d -> Katastralgemeinden }}</td>
+                  <td>{{ $d -> Postleitzahl }}</td>
+              </tr>
+                  
+              @endforeach
 
         
       </table>

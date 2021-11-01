@@ -22,7 +22,9 @@ class FrontEndController extends Controller
 
     public function energiesysteme()
     {
-        return view('Energiesysteme');
+        $data = DB::table('EnSys')->get();
+
+        return view('Energiesysteme' , compact('data'));
     }
     public function impressum()
     {
@@ -34,7 +36,10 @@ class FrontEndController extends Controller
     }
     public function addes()
     {
-        return view('AddEs');
+        $data = DB::table('EnSys')->get();
+
+
+        return view('addes' , compact('data'));
     }
 
 
