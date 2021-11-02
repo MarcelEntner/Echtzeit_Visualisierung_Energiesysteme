@@ -10,45 +10,29 @@
 <div class="dropdown">
     <button class="dropbtn">Wählen Sie ein Energiesystem aus</button>
     <div class="dropdown-content">
-      <a href="#">MicroGridLab</a>
-      <a href="#">Feuerwehr</a>
+        @foreach ($data as $d)
+           <a href="{{route('EnSys.show', $d->id)}}">{{ $d -> Bezeichnung }}</a>  
+        @endforeach
+
+     <!-- <a href="#">MicroGridLab</a>
+      <a href="#">Feuerwehr</a>-->
     </div>
   </div>
 
 
-  <form action="{{ route('EtBs.store') }}" method="POST">
-    @csrf
-    <label for="Leistung">Leistung</label>
-    <input name="Leistung">
-    <br>
-    <label for="Energie">Energie</label>
-    <input name="Energie">
-    <br>
-    <label for="Speicherkap">Speicherkapazität</label>
-    <input name="Speicherkap">
 
-<input type="submit" value="ET Erstellen">
 
-    </form>
+  <div class="GalerieAnzeige">
+  
+    <h3 style="padding:10px"> <b>Bitte wählen Sie ein Energiesystem aus </b></h3>
+  
+  
+  
+  </div>
 
-    
-    <table>
-      <tr>
-          <td>ID</td>
-          <td>Leistung</td>
-          <td>Energie</td>
-          <td>Speichkap</td>
-      </tr>
-      @foreach ($data as $d)
-      <tr>
-          <td>{{ $d -> id }}</td>
-          <td>{{ $d -> Leistung }}</td>
-          <td>{{ $d -> Energie }}</td>
-          <td>{{ $d -> Speicherkap }}</td>
-      </tr>
-          
-      @endforeach
-  </table>
+
+ 
+  
 
 
 @endsection

@@ -22,6 +22,7 @@ use App\Http\Controllers\EtWkAController;
 use App\Http\Controllers\EtWnBController;
 use App\Http\Controllers\EtWpController;
 use App\Http\Controllers\EtWsController;
+use App\Http\Controllers\FrontEndController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,10 +38,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\FrontEndController:: class, 'index'])->name('hp');
 Route::get('/galerie', [\App\Http\Controllers\FrontEndController:: class, 'galerie'])->name('gal');
+Route::get('/galeriees', [\App\Http\Controllers\FrontEndController:: class, 'galeriees'])->name('gales');
 Route::get('/energiesysteme', [\App\Http\Controllers\FrontEndController:: class, 'energiesysteme'])->name('es');
 Route::get('/impressum', [\App\Http\Controllers\FrontEndController:: class, 'impressum'])->name('impressum');
 Route::get('/dsgvo', [\App\Http\Controllers\FrontEndController:: class, 'dsgvo'])->name('dsgvo');
 Route::get('/addes', [\App\Http\Controllers\FrontEndController:: class, 'addes'])->name('addes');
+
+//Route::get('/galerieES/{id}',[\App\Http\Controllers\FrontEndController:: class, 'show']);
+
 
 Route::get('/test', function () {
     return view('responsivtest');
@@ -51,7 +56,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+Route::resource('EnSys', FrontEndController::class); // Route zu Frontend Controller
 Route::resource('EnSys', EnSysController::class); // Route zu Energiesystem Controller
 Route::resource('EnTech', EnTechController::class); // Route zu Energietechnologie gemeinsamkeiten Controller
 

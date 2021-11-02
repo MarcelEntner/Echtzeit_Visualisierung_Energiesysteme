@@ -10,7 +10,7 @@
     <div class="carousel-inner">
   
       <div class="carousel-item active">
-        <img class="picture" src="/images/windrad.jpg" alt="First slide">
+        <img class="picture" src="/images/windrad2.jpg" alt="First slide">
       </div>
   
       <div class="carousel-item">
@@ -41,7 +41,7 @@
   
   <div class="Beitrag">
   
-    <h3 style="padding:10px"> <b> Über uns </b></h3>
+    <h3 style="padding:10px"> <b> Über uns</b></h3>
   
     <p class="text"> 
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore 

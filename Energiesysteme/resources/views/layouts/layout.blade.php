@@ -288,6 +288,17 @@
 
         
 
+        .GalerieAnzeige
+        {
+          border: 3px solid #21A500;
+          border-radius: 15px;
+          padding: 1%;
+          margin-top: 30px;
+          margin-left: 5%;
+          margin-right:5%;
+          height:65%;
+        }
+
       /*
 
 

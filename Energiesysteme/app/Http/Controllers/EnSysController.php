@@ -51,9 +51,18 @@ class EnSysController extends Controller
      * @param  \App\Models\EnSys  $enSys
      * @return \Illuminate\Http\Response
      */
-    public function show(EnSys $enSys)
+    public function show($id)
     {
-        //
+       $EnSys = EnSys::find($id);
+
+        return view('GalerieES',[
+            'EnSys' =>$EnSys,
+
+        ]);
+       
+       //$data = DB::table('EnSys')->get();
+       // return view('GalerieES', compact('data'));
+
     }
 
     /**

@@ -25,9 +25,10 @@
 
       <table>
           <tr class="ListeHeader"> 
-            <td> Bezeichnung </td>
-            <td> Katastralgemeinde </td>
-            <td> Postleitzahl </td>
+            <td><b> ID </b></td>
+            <td><b> Bezeichnung </b></td>
+            <td><b> Katastralgemeinde </b></td>
+            <td><b> Postleitzahl </b></td>
             
           </tr>
 
@@ -83,7 +84,7 @@
  
   var MeinFenster = window.open("addes", "ES hinzufügen", "width=1000,height=400,left=100,top=300"); 
   
-  MeinFenster.focus();
+  
   }
   </script>
   

@@ -4,11 +4,11 @@
 @endsection
 @section('content')
 
-<h1 class="DsgvoUberschrieft">Dsgvo</h1><br>
+<h1 class="DsgvoUberschrieft">DSGVO</h1><br>
 <div class="Dsgvo">
 
 <p>
-hier wird die dsgvo stehen
+Hier wird die DSGVO stehen
 </p>
 </div>
 

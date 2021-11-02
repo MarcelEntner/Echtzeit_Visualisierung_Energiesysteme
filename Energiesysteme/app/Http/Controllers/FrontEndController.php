@@ -14,7 +14,7 @@ class FrontEndController extends Controller
 
     public function galerie()
     {
-        $data = DB::table('EtBs')->get();
+        $data = DB::table('EnSys')->get();
 
 
         return view('Galerie' , compact('data'));
@@ -41,6 +41,8 @@ class FrontEndController extends Controller
 
         return view('addes' , compact('data'));
     }
+
+    
 
 
 }
