@@ -7,7 +7,17 @@
 
 
 
+<div class="dropdown">
+  <button class="dropbtn">Wählen Sie ein Energiesystem aus</button>
+  <div class="dropdown-content">
+      @foreach ($data as $d)
+         <a href="{{route('EnSys.show', $d->id)}}">{{ $d -> Bezeichnung }}</a>  
+      @endforeach
 
+   <!-- <a href="#">MicroGridLab</a>
+    <a href="#">Feuerwehr</a>-->
+  </div>
+</div>
 
 
 
