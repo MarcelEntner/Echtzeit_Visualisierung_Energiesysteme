@@ -36,8 +36,7 @@
             color:#21A500;
             
         }
-
-       
+            
 
         .nav-link:hover
         {
@@ -182,6 +181,12 @@
     
         }
 
+        table
+        {
+          margin-left:5%;
+        }
+
+
         .Energiesysteme
         {
           height:80%;
@@ -238,6 +243,7 @@
         .ListeHeader
         {
           font-size: 20px;
+         
         }
       
 
@@ -297,7 +303,21 @@
           margin-left: 5%;
           margin-right:5%;
           height:65%;
+          
         }
+
+        .card
+        {
+            text-align:center;        
+            float:left;
+            margin-top:2%;
+            margin-left: 7%;
+            border: 1px solid #21A500;
+            border-radius: 5px;
+        }
+
+        
+      
 
       /*
 
