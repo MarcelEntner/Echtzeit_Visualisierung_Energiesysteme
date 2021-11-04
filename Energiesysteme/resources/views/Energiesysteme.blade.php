@@ -32,8 +32,6 @@
             
           </tr>
 
-                <!-- SQL Abfrage wieviele ES es gibt -> Schleife dementsprechend oft durchlaufen lassen-->
-              <!-- for ()... -->
 
               @foreach ($data as $d)
               <tr>
