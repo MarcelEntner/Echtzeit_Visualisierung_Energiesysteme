@@ -1,9 +1,10 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- CSS only  Bootstrape-->
+    <!-- CSS only  Bootstrap-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>@yield('title')</title> <!-- Platzhalter für den Title , Title steht in der Variable title-->
     <style>
@@ -359,7 +360,7 @@
               />
             </a>
     
-            <a class="navbar-brand">MicroGridLab</a>
+            <a class="navbar-brand">MicroGridLab</a> <!-- Könnte umgeändert werden -> laut Meeting 03.11.2021 -->
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -375,12 +376,22 @@
               @guest
                                 @if (Route::has('login'))
                                     <li class="nav-item">
-                                        <a id="gallog"class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                      <a id="gallog"class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                     </li>
                                 @endif
                                 @endguest
             </ul>
             
+            
+
+ 
+
+
+
+
+            
+
+
           </div>
         </div>
       </nav>
