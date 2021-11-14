@@ -22,7 +22,7 @@
 
 
 
-  <div class="GalerieAnzeige">
+  <div class="GalerieAnzeige shadow-lg rounded">
   
     <h3 style="padding:10px"> <b>Bitte wählen Sie ein Energiesystem aus </b></h3>
   
