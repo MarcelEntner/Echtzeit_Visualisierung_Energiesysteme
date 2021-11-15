@@ -22,6 +22,7 @@
             overflow: hidden;
             /* background-color:black;  Nav-Liste + Login */
         }
+       
 
         .navbar-brand {
             font-size: 45px;
@@ -170,6 +171,14 @@
         }
 
 
+        .esbutton{
+            height: 30px;
+            width: 40px;
+            background-color: white; 
+            border:none;
+            background-repeat: no-repeat;
+
+        }
         .Liste {
             /*border: 1px solid green;
           margin-right:2%;
@@ -184,6 +193,13 @@
 
         table {
             margin-left: 5%;
+
+            
+        }
+        .table:hover .esbutton {
+            
+            background-color: rgba(33, 165, 0, 0.0001);  
+            
         }
 
 

@@ -25,27 +25,36 @@
                 <h3 style="padding:5%"> <b>Energiesysteme</b></h3>
                 <input type="search" id="suche" placeholder="Suche...">
 
-                <table>
-                    <tr class="ListeHeader">
-                        <td><b> ID </b></td>
-                        <td><b> Bezeichnung </b></td>
-                        <td><b> Katastralgemeinde </b></td>
-                        <td><b> Postleitzahl </b></td>
-                    </tr>
+             
 
-
+                <table class="table table-borderless table-hover ">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Bezeichnung</th>
+                        <th scope="col">Katastralgemeinde</th>
+                        <th scope="col">Postleitzahl</th>
+                       
+                        
+                      </tr>
+                    </thead>
+                    
                     @foreach ($data as $d)
-                        <tr>
-                            <td>{{ $d->id }}</td>
-                            <td>{{ $d->Bezeichnung }}</td>
-                            <td>{{ $d->Katastralgemeinden }}</td>
-                            <td>{{ $d->Postleitzahl }}</td>
-                        </tr>
-
-                    @endforeach
-
-
-                </table>
+                    <tbody>
+                      <tr>
+                        
+                        <td >{{ $d->id }}</td>
+                        <td >{{ $d->Bezeichnung }}</td>
+                        <td>{{ $d->Katastralgemeinden }}</td>
+                        <td>{{ $d->Postleitzahl }}</td>
+                        <td> <button  style="background-image: url('/images/delete.png')" class="esbutton"></button></td>
+                        <td > <button style="background-image: url('/images/statistik.png')" class="esbutton"></button></td>
+                        <td > <button style="background-image: url('/images/stift.png')" class="esbutton"></button></td>
+                      </tr>
+                    
+                    </tbody>
+                    @endforeach    
+                  </table>
 
 
 
