@@ -50,6 +50,7 @@ Route::get('/addes', [\App\Http\Controllers\FrontEndController:: class, 'addes']
 
 /* Test Seite */
 
+
 /*Route::get('/test', [\App\Http\Controllers\FrontEndController:: class, 'test'])->name('es'); */
 
     
@@ -86,3 +87,6 @@ Route::resource('EtKkM',EtKkMController::class);
 Route::resource('EtAdAb',EtAdAbKmController::class);
 Route::resource('EtKs',EtKsController::class);
 Route::resource('EtGKbZ',EtGKbZController::class);
+
+
+Route::get('/delete/{id}',[EnSysController::class, 'destroy']);

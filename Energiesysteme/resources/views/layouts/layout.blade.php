@@ -196,7 +196,7 @@
 
             
         }
-        .table:hover .esbutton {
+        .table:hover a{
             
             background-color: rgba(33, 165, 0, 0.0001);  
             
@@ -208,7 +208,27 @@
           width: 100%;
      */
 
+        }
 
+        .Searchbutton{
+            display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
 
@@ -439,49 +459,130 @@
 
 /* Flip Chart */
 
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 200px;
-  border: 1px solid #f1f1f1;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+/* Überschreibung des Bootstrap CSS */
+.btn2 {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    /* Selbst eingefügt */    
+    height: 30px;
+    width: 40px;
+    background-color: white; 
+    border:none;
+    background-repeat: no-repeat;
 }
 
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+.btn3 {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    /* Selbst eingefügt */    
+    height: 40px;
+    width: 190px;
+    background-color: #21A500; 
+    border:none;
+    background-repeat: no-repeat;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+.form-control2{
+    display: block;
+    width: 27%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #21A500;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #21A500;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    margin-left:250px;
 }
 
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
+
+
+.modal2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1055;
+    display: none;
+    width: 60%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+    margin-left: 350px;
+}
+.modal2-dialog {
+    position: relative;
+    width: auto;
+    margin: auto;
+    pointer-events: none;
+
 }
 
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
+.modal2-title{
+    margin-bottom: 0;
+    line-height: 1.5;
+    margin-left: 170px;
+
 }
 
-/* Style the back side */
-.flip-card-back {
-  background-color: dodgerblue;
-  color: white;
-  transform: rotateY(180deg);
+.form-control3{
+    display: block;
+    width: 250px;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #21A500;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #21A500;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    
+
 }
 
 

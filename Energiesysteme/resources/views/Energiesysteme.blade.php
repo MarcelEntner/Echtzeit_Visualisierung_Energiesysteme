@@ -22,17 +22,24 @@
 
             <div class="Liste col-12 col-lg-5">
                 <div class="shadow-lg rounded p-5">
-                <h3 style="padding:5%"> <b>Energiesysteme</b></h3>
-                <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                    <form class="d-flex" style="margin-left:300px;">
+                        <input class="form-control form-control2 me-2" type="search" placeholder="Suchen" aria-label="Search">
+                       
+                        </form>
+                  
+
+                <h3 style="margin-left:200px;"> <b>Energiesysteme</b></h3>
+                <br>
                 
-                <label class="switch ">
-                <input class="switch-input" type="checkbox" />
-                <span class="switch-label" data-on="Energiesysteme" data-off="Energietechnologien"></span> 
-                <span class="switch-handle"></span> 
-                </label>
+                    <label class="switch" >
+                        <input class="switch-input " type="checkbox" />
+                        <span class="switch-label" data-on="Energiesysteme" data-off="Energietechnologien"></span> 
+                        <span class="switch-handle"></span> 
+                        </label>
+                    <br>
+
+                
+              
              
 
                 <table class="table table-borderless table-hover ">
@@ -55,11 +62,14 @@
                         <td >{{ $d->Bezeichnung }}</td>
                         <td>{{ $d->Katastralgemeinden }}</td>
                         <td>{{ $d->Postleitzahl }}</td>
-                        <td> <button  style="background-image: url('/images/delete.png')" class="esbutton"></button></td>
-                        <td > <button style="background-image: url('/images/statistik.png')" class="esbutton"></button></td>
-                        <td > <button style="background-image: url('/images/stift.png')" class="esbutton"></button></td>
+                        <td > <a href="/delete/{{ $d->id}}"  class="btn btn2" style="background-image: url('/images/delete.png')"></a></td>
+                        <td > <a href="/"  class="btn btn2" style="background-image: url('/images/statistik.png')"></a></td>
+                        <td > <a href="/"  class="btn btn2" style="background-image: url('/images/stift.png')"></a></td>
+                        
                       </tr>
                     
+
+                      
                     </tbody>
                     @endforeach    
                   </table>
@@ -74,50 +84,62 @@
 
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                    style="margin-top: 15%; margin-left:35%; background-color:#3e8e41; border:1px solid #3e8e41">
+                    style="margin-top: 6%; margin-left:35%; background-color:#3e8e41"; border:1px solid #3e8e41">
                     Energiesystem hinzufügen
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                <div class="modal modal2 fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Energiesystem</h5>
+                                <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
+                              
 
-
-
-                                <h2> ADD ES </h2>
-
-
-                                <form action="{{ route('EnSys.store') }}" method="POST">
+                                 <form action="{{ route('EnSys.store') }}" method="POST">
                                     @csrf
-                                    <label for="Bezeichnung">Bezeichnung</label>
-                                    <input name="Bezeichnung">
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput1">Bezeichnung</label>
+                                      <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Bezeichnung" placeholder="EnergiesystemXY">
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="exampleFormControlInput1">Katastalgemeinde</label>
+                                        <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Katastralgemeinden" placeholder="KatastralgemeindeXY">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="exampleFormControlInput1">Postleitzahl</label>
+                                        <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Postleitzahl" placeholder="3370">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="exampleFormControlInput1">Längengrad</label>
+                                        <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Längengrad" placeholder="91.22222" readonly>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="exampleFormControlInput1">Breitengrad</label>
+                                        <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Breitengrad" placeholder="10.11212" readonly>
+                                      </div>
+
+
+                                  
                                     <br>
-                                    <label for="Katastralgemeinden">Katastralgemeinden</label>
-                                    <input name="Katastralgemeinden">
-                                    <br>
-                                    <label for="Postleitzahl">Postleitzahl</label>
-                                    <input name="Postleitzahl">
+                                    <button type="button" class="btn btn3" data-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn3" value="Energiesystem erstellen">                                        
+                                  </form>
 
 
+                             
 
 
-
-
+                               
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <input type="submit" class="btn btn-primary" value="ES erstellen">
+                          
 
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -133,7 +155,7 @@
 
         </div>
 
-    </div>
+    
 
     
     
@@ -141,6 +163,7 @@
 
 
     <script>
+        
         function LoadMap() {
 
             let mapOptions = {

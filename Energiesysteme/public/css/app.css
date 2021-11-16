@@ -1848,15 +1848,15 @@ progress {
 }
 .form-control {
     display: block;
-    width: 30%;
+    width: 70%;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #21A500;
+    color: white;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #21A500;
+    border: 1px solid black;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -2668,15 +2668,22 @@ textarea.form-control.is-invalid {
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
         border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    /* Selbst eingefügt */    
+ 
+
+
 }
 @media (prefers-reduced-motion: reduce) {
     .btn {
         transition: none;
     }
 }
-.btn:hover {
-    color: #212529;
-}
+/*.btn:hover {
+    /*background-color: rgba(33, 165, 0, 0.1); */
+/*} */
+
+
 .btn-check:focus + .btn,
 .btn:focus {
     outline: 0;

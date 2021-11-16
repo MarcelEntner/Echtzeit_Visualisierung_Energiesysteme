@@ -96,9 +96,20 @@ class EnSysController extends Controller
      * @param  \App\Models\EnSys  $enSys
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EnSys $enSys)
+    public function destroy($id)
     {
-        //
+
+        $EnSys = EnSys::find($id);
+        
+        if ($EnSys == null){
+            dd("Konnte nicht gelöscht werden");
+        }
+
+        else {
+          $EnSys->delete();
+         return redirect ('/energiesysteme');
+         }
+        
     }
 }
 
