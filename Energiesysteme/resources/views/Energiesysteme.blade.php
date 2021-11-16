@@ -23,8 +23,16 @@
             <div class="Liste col-12 col-lg-5">
                 <div class="shadow-lg rounded p-5">
                 <h3 style="padding:5%"> <b>Energiesysteme</b></h3>
-                <input type="search" id="suche" placeholder="Suche...">
-
+                <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                
+                <label class="switch ">
+                <input class="switch-input" type="checkbox" />
+                <span class="switch-label" data-on="Energiesysteme" data-off="Energietechnologien"></span> 
+                <span class="switch-handle"></span> 
+                </label>
              
 
                 <table class="table table-borderless table-hover ">
@@ -124,7 +132,11 @@
 
 
         </div>
+
     </div>
+
+    
+    
     </main>
 
 

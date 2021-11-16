@@ -42,6 +42,12 @@ class FrontEndController extends Controller
         return view('addes' , compact('data'));
     }
 
+    public function test(){
+        $data = DB::table('EnSys')->get();
+
+        return view('test' , compact('data'));
+
+    }
     
 
 

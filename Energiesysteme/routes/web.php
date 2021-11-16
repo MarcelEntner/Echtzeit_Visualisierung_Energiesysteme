@@ -47,9 +47,11 @@ Route::get('/addes', [\App\Http\Controllers\FrontEndController:: class, 'addes']
 //Route::get('/galerieES/{id}',[\App\Http\Controllers\FrontEndController:: class, 'show']);
 
 
-Route::get('/test', function () {
-    return view('responsivtest');
-});
+
+/* Test Seite */
+
+/*Route::get('/test', [\App\Http\Controllers\FrontEndController:: class, 'test'])->name('es'); */
+
     
 
 Auth::routes();

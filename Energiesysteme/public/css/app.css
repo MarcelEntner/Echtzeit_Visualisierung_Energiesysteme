@@ -1848,15 +1848,15 @@ progress {
 }
 .form-control {
     display: block;
-    width: 100%;
+    width: 30%;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
+    color: #21A500;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid #21A500;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
