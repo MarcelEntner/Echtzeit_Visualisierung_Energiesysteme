@@ -179,17 +179,7 @@
             background-repeat: no-repeat;
 
         }
-        .Liste {
-            /*border: 1px solid green;
-          margin-right:2%;
        
-          height: 50%;
-          width: 35%;
-          border-radius: 50px; 
-          float:right;
-          margin-top: -40%;*/
-
-        }
 
         table {
             margin-left: 5%;
@@ -532,8 +522,10 @@
     appearance: none;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    margin-left:250px;
+    margin-left:240px;
 }
+
+
 
 
 
@@ -584,6 +576,7 @@
     
 
 }
+
 
 
     </style>

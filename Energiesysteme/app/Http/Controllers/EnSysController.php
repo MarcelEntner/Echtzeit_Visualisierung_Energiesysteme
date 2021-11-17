@@ -42,7 +42,11 @@ class EnSysController extends Controller
         $enSys->Postleitzahl=$request->Postleitzahl;
         $enSys->save();
         $data = DB::table('EnSys')->get();
+
+
+        
         return view('Energiesysteme', compact('data'));
+       
     }
 
     /**

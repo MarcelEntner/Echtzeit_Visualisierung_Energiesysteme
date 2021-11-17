@@ -20,9 +20,9 @@
 
             <!--test upload git -->
 
-            <div class="Liste col-12 col-lg-5">
-                <div class="shadow-lg rounded p-5">
-                    <form class="d-flex" style="margin-left:300px;">
+            <div class="Liste col-12 col-lg-5" style="height:615px;">
+                <div class="shadow-lg rounded p-5" style="height:615px;">
+                    <form class="d-flex" style="margin-left:300px;" >
                         <input class="form-control form-control2 me-2" type="search" placeholder="Suchen" aria-label="Search">
                        
                         </form>
@@ -250,7 +250,8 @@
 
                 center: new google.maps.LatLng('48.13333', '15.13333'),
                 zoom: 15,
-
+                mapTypeId: "roadmap",
+                
 
             }
 
