@@ -251,6 +251,7 @@
                 center: new google.maps.LatLng('48.13333', '15.13333'),
                 zoom: 15,
                 mapTypeId: "roadmap",
+                streetViewControl: false,
                 
 
             }
