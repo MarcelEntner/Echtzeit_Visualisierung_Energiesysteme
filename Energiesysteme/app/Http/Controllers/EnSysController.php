@@ -73,9 +73,22 @@ class EnSysController extends Controller
      * @param  \App\Models\EnSys  $enSys
      * @return \Illuminate\Http\Response
      */
-    public function edit(EnSys $enSys)
+    public function edit(Request $request,$id)
     {
-        //
+    
+        $EnSys = EnSys::find($id);
+
+        $EnSys = EnSys::where('id',$id)->
+        update([
+                'Bezeichnung' => $request->input('Bezeichnung'),
+                'Katastralgemeinden' => $request->input('Katastralgemeinden'),
+                'Postleitzahl' => $request->input('Postleitzahl'),
+        ]);
+      
+
+        return redirect ('/energiesysteme');
+
+        
     }
 
     /**
@@ -85,9 +98,9 @@ class EnSysController extends Controller
      * @param  \App\Models\EnSys  $enSys
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EnSys $enSys)
+    public function update(Request $request, $id)
     {
-        //
+    
     }
 
     /**

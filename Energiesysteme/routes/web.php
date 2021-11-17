@@ -90,3 +90,4 @@ Route::resource('EtGKbZ',EtGKbZController::class);
 
 
 Route::get('/delete/{id}',[EnSysController::class, 'destroy']);
+Route::get('/edit/{id}',[EnSysController::class, 'edit']);
