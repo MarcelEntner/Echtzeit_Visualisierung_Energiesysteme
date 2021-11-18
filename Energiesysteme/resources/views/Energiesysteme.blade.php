@@ -65,7 +65,6 @@
                         <td > <a href="/delete/{{ $d->id}}"  class="btn btn2" style="background-image: url('/images/delete.png')"></a></td>
                         <td > <a href="javascript:Grafanafunction()"   class="btn btn2" style="background-image: url('/images/statistik.png')"></a></td>
                         <td > <a href="javascript:editfunction({{ $d->id}})"  class="btn btn2" style="background-image: url('/images/stift.png')"></a></td>
-                        
                       </tr>
                     
 
@@ -129,7 +128,7 @@
                                   
                                     <br>
                                   <!--  <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
-                                    <input type="submit" class="btn btn3" value="Energiesystem erstellen">                                        
+                                    <input type="submit" class="btn btn3" id="ESerstellen" onclick="AddMarker()" value="Energiesystem erstellen">                                        
                                   </form>
                             </div>
                             </div>
@@ -153,7 +152,7 @@
                                    </div>
                                    <div class="modal-body">
                                      
-       
+  
                                     <form action="/edit/{{ $d->id }}" method="">
                                            @csrf
                                            <div class="form-group">
@@ -181,7 +180,7 @@
                                          
                                            <br>
                                           <!-- <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
-                                           <input type="submit" class="btn btn3" value="Energiesystem aktualisieren">                                        
+                                           <input type="submit" class="btn btn3" style="background-color:#3e8e41" value="Energiesystem aktualisieren">                                      
                                          </form>
        
        
@@ -198,7 +197,7 @@
                        </div>
 
                       
-
+                      -->
 
 
 
@@ -253,6 +252,7 @@
                 mapTypeId: "roadmap", //Typ der Map auf Road MAp setzen
                 streetViewControl: false, // STreet View Männdchen ausblenden
                // mapTypeControl: false,  // Button um zwischen Satiliet und Roadmap umschalten
+               //mapId:'' MapID von der selbst erstellen Map
 
                 
 
@@ -260,23 +260,27 @@
 
             let map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-            map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
-              placeMarkerAndPanTo(e.latLng, map); //Aufruf Function Place Marker   e.LatLng = Koordinaten
 
 
+            map.addListener("click", (e) => {            //Ausgefürht wenn Map-Klick
+              placeMarkerAndPanTo(e.latLng, map);         //Aufruf Function Place Marker   e.LatLng = Koordinaten
               breit = e.latLng.toString().substring(1,18);
               lang = e.latLng.toString().substring(20,37);
- 
-
-             document.getElementById("Laengengrad").setAttribute('value', breit); //Koordinaten den Input Feldern hinzufügen
+             document.getElementById("Laengengrad").setAttribute('value', breit);     //Koordinaten den Input Feldern hinzufügen
              document.getElementById("Breitengrad").setAttribute('value', lang);
+               $('#exampleModalCenter').modal('show');        //Pop Up ES erstellen Aufruf
 
 
-               $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
+
+                //Icon Auswahl
+             
+                ESmarker.addListener("click", toggleBounce);
+
+
+        //
             });
 
-
-
+            
 
         }
 
@@ -287,14 +291,32 @@
 
         
         function placeMarkerAndPanTo(latLng, map) {
-            new google.maps.Marker({
+           ESmarker =  new google.maps.Marker({
                 position: latLng,
                 map: map,
+                animation: google.maps.Animation.DROP,   //verschiedene Moduse: DROP, BOUNCE
+                label:"Energiesystem",   //text der dabei steht
+                Title:"Hover",   //Hover effekt
+                 icon: '/images/es.png',
+                 optimized: true,      // ka
+                 draggable:true  //herum ziehen möglich
+                
             });
             map.panTo(latLng);
 
 
         }
+
+
+        function toggleBounce() {
+              if (ESmarker.getAnimation() !== null) {
+                ESmarker.setAnimation(null);
+              } else {
+                ESmarker.setAnimation(google.maps.Animation.BOUNCE);
+               }
+          }
+
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs&callback=LoadMap">
     </script>
@@ -320,6 +342,14 @@
 
       }
       
+
+      
+      function AddMarker() //Funktiniert, marker erst platzieren wenn ES wirklich erstellt worden ist, Probeln dawei danach Seite relaod und Marker werden nicht gespeichert
+      {
+        //alert("Marker");
+        //placeMarkerAndPanTo(e.latLng, map); 
+
+      }
     </script>
 
 

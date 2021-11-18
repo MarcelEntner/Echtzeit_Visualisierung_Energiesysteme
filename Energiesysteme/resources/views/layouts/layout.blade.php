@@ -499,9 +499,9 @@
         border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
     /* Selbst eingefügt */  
-    margin-left:30%;  
+    margin-left:27%;  
     height: 40px;
-    width: 190px;
+    width: 220px;
     background-color: #21A500; 
     border:none;
     background-repeat: no-repeat;
@@ -582,6 +582,7 @@
 
 
 
+
     </style>
 </head>
 
@@ -606,13 +607,13 @@
                             <li><a href="{{ route('hp') }}" class="nav-link px-2 text-primary fs-4">Home</a></li>
                         @endif
 
-                        @if (\Request::is('energiesysteme'))
+                        @if (\Request::is('energiesysteme') or \Request::is('EnSys') )
                             <li><b><a href="{{ route('es') }}" class="nav-link px-2 text-primary fs-4">Energiesysteme</a></b></li>
                         @else
                             <li><a href="{{ route('es') }}" class="nav-link px-2 text-primary fs-4">Energiesysteme</a></li>
                         @endif
 
-                        @if (\Request::is('galerie') or \Request::is('EnSys*') )
+                        @if (\Request::is('galerie') or \Request::is('EnSys/*') )
                             <li><b><a href="{{ route('gal') }}" class="nav-link px-2 text-primary fs-4">Galerie</a></b></li>
                         @else
                             <li><a href="{{ route('gal') }}" class="nav-link px-2 text-primary fs-4">Galerie</a></li>
