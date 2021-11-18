@@ -38,6 +38,8 @@ class EnSysController extends Controller
     {
         $enSys = new EnSys();
         $enSys->Bezeichnung=$request->Bezeichnung;
+        $enSys->Laengengrad=$request->Laengengrad;
+        $enSys->Breitengrad=$request->Breitengrad;
         $enSys->Katastralgemeinden=$request->Katastralgemeinden;
         $enSys->Postleitzahl=$request->Postleitzahl;
         $enSys->save();
@@ -84,6 +86,8 @@ class EnSysController extends Controller
 
         $EnSys = EnSys::where('id',$id)->
         update([
+                'Laengengrad' => $request->input('Laengengrad'),
+                'Breitengrad' => $request->input('Breitengrad'),
                 'Bezeichnung' => $request->input('Bezeichnung'),
                 'Katastralgemeinden' => $request->input('Katastralgemeinden'),
                 'Postleitzahl' => $request->input('Postleitzahl'),

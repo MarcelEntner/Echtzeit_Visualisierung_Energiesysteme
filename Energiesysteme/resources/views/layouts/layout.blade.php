@@ -498,7 +498,8 @@
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
         border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
-    /* Selbst eingefügt */    
+    /* Selbst eingefügt */  
+    margin-left:30%;  
     height: 40px;
     width: 190px;
     background-color: #21A500; 
@@ -561,13 +562,15 @@
     display: block;
     width: 250px;
     padding: 0.375rem 0.75rem;
+    text-align: center;
+    margin:auto;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #21A500;
+    color: black;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #21A500;
+    border: 1px solid black;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

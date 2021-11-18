@@ -88,7 +88,7 @@
                     Energiesystem hinzufügen
                 </button>-->
 
-                <!-- Modal -->
+                <!-- Modal ES hinzufügen -->
                 <div class="modal modal2 fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
@@ -105,30 +105,30 @@
                                  <form action="{{ route('EnSys.store') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
-                                      <label for="exampleFormControlInput1">Bezeichnung</label>
+                                      <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
                                       <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Bezeichnung" placeholder="MicroGridLab">
                                     </div>
                                     <div class="form-group ">
-                                        <label for="exampleFormControlInput1">Katastalgemeinde</label>
+                                        <label for="exampleFormControlInput1" style="margin-left:40%">Katastalgemeinde</label>
                                         <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Katastralgemeinden" placeholder="Wieselburg">
                                       </div>
                                       <div class="form-group">
-                                        <label for="exampleFormControlInput1">Postleitzahl</label>
+                                        <label for="exampleFormControlInput1" style="margin-left:40%">Postleitzahl</label>
                                         <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Postleitzahl" placeholder="3250">
                                       </div>
                                       <div class="form-group">
-                                        <label for="exampleFormControlInput1">Längengrad</label>
-                                        <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Längengrad" placeholder="91.22222" readonly>
+                                        <label for="exampleFormControlInput1" style="margin-left:40%" >Längengrad</label>
+                                        <input type="text" class="form-control form-control3" id="Laengengrad"  name="Laengengrad" readonly>
                                       </div>
                                       <div class="form-group">
-                                        <label for="exampleFormControlInput1">Breitengrad</label>
-                                        <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Breitengrad" placeholder="10.11212" readonly>
+                                        <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
+                                        <input type="text" class="form-control form-control3" id="Breitengrad"  name="Breitengrad" readonly>
                                       </div>
 
 
                                   
                                     <br>
-                                    <button type="button" class="btn btn3" data-dismiss="modal">Close</button>
+                                  <!--  <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
                                     <input type="submit" class="btn btn3" value="Energiesystem erstellen">                                        
                                   </form>
                             </div>
@@ -138,11 +138,10 @@
                 </div>
 
 
-
-
+                  
 
                            <!-- ModalEdit -->
-                     <div class="modal modal2 fade" id="exampleModalCenterEdit" tabindex="-1" role="dialog"
+                           <div class="modal modal2 fade" id="exampleModalCenterEdit" tabindex="-1" role="dialog"
                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                            <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                                <div class="modal-content">
@@ -158,30 +157,30 @@
                                     <form action="/edit/{{ $d->id }}" method="">
                                            @csrf
                                            <div class="form-group">
-                                             <label for="exampleFormControlInput1">Bezeichnung</label>
+                                             <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
                                              <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Bezeichnung" value="{{ $d->Bezeichnung }}">
                                            </div>
                                            <div class="form-group ">
-                                               <label for="exampleFormControlInput1">Katastalgemeinde</label>
+                                               <label for="exampleFormControlInput1" style="margin-left:40%">Katastalgemeinde</label>
                                                <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Katastralgemeinden" value="{{ $d->Katastralgemeinden }}">
                                              </div>
                                              <div class="form-group">
-                                               <label for="exampleFormControlInput1">Postleitzahl</label>
+                                               <label for="exampleFormControlInput1" style="margin-left:40%">Postleitzahl</label>
                                                <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Postleitzahl" value="{{ $d->Postleitzahl }}">
                                              </div>
                                              <div class="form-group">
-                                               <label for="exampleFormControlInput1">Längengrad</label>
-                                               <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Längengrad" placeholder="91.22222" readonly>
+                                               <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
+                                               <input type="text" class="form-control form-control3" id="Laengengrad"  name="Längengrad" value="{{ $d->Laengengrad }}" readonly>
                                              </div>
                                              <div class="form-group">
-                                               <label for="exampleFormControlInput1">Breitengrad</label>
-                                               <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Breitengrad" placeholder="10.11212" readonly>
+                                               <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
+                                               <input type="text" class="form-control form-control3" id="Breitengrad"  name="Breitengrad" value="{{ $d->Breitengrad }}" readonly>
                                              </div>
        
        
                                          
                                            <br>
-                                           <button type="button" class="btn btn3" data-dismiss="modal">Close</button>
+                                          <!-- <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
                                            <input type="submit" class="btn btn3" value="Energiesystem aktualisieren">                                        
                                          </form>
        
@@ -198,6 +197,7 @@
                            </div>
                        </div>
 
+                      
 
 
 
@@ -249,7 +249,7 @@
             let mapOptions = {
 
                 center: new google.maps.LatLng('48.13333', '15.13333'),
-                zoom: 15,         
+                zoom: 14,         
                 mapTypeId: "roadmap", //Typ der Map auf Road MAp setzen
                 streetViewControl: false, // STreet View Männdchen ausblenden
                // mapTypeControl: false,  // Button um zwischen Satiliet und Roadmap umschalten
@@ -261,12 +261,26 @@
             let map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
             map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
-                placeMarkerAndPanTo(e.latLng, map); //Aufruf Function Place Marker
-                $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
+              placeMarkerAndPanTo(e.latLng, map); //Aufruf Function Place Marker   e.LatLng = Koordinaten
 
 
+              breit = e.latLng.toString().substring(1,18);
+              lang = e.latLng.toString().substring(20,37);
+ 
+
+             document.getElementById("Laengengrad").setAttribute('value', breit); //Koordinaten den Input Feldern hinzufügen
+             document.getElementById("Breitengrad").setAttribute('value', lang);
+
+
+               $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
             });
+
+
+
+
         }
+
+        
 
         
 

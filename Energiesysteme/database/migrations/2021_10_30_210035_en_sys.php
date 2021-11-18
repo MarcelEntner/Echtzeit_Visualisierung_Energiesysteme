@@ -16,6 +16,8 @@ class EnSys extends Migration
         Schema::create('EnSys', function (Blueprint $table) {
             $table->id();
             $table->string('Bezeichnung');
+            $table->string('Laengengrad')->nullable();;
+            $table->string('Breitengrad')->nullable();;
             $table->string('Katastralgemeinden');
             $table->double('Postleitzahl');
             $table->double('AzErgeugungstechnologien')->nullable();;
