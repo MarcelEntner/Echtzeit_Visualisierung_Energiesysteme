@@ -46,8 +46,8 @@ class EnSysController extends Controller
         $data = DB::table('EnSys')->get();
 
 
-        
-        return view('Energiesysteme', compact('data'));
+        return redirect("/energiesysteme")->with(['data' => $data]);
+        /*return view('Energiesysteme', compact('data'));*/
        
     }
 

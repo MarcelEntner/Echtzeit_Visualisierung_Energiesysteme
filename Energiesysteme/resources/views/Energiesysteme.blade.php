@@ -355,6 +355,7 @@
 
           $sql = "SELECT id, Bezeichnung, Laengengrad, Breitengrad FROM EnSys";
           $result = $conn->query($sql);
+          $locations = [];
           
           if ($result->num_rows > 0) {
             // output data of each row
@@ -363,6 +364,10 @@
                 
              // echo "id: " . $row["id"]. " " . $row["Bezeichnung"]." ". $row["Laengengrad"]. " ". $row["Breitengrad"]. "<br>";            }
               
+              $location = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['id']}]";
+              array_push($locations, $location);
+
+
               $beaches = [
                     $i=> $row["id"],
                     $i+1=> $row["Bezeichnung"],
@@ -371,7 +376,8 @@
                 ];
 
               //Array hier ist in Ordnung jetzt muss es nach Javascript übertragen werden
-               var_dump($beaches);
+               //var_dump($beaches);
+                
 
                 $i= $i+4;
 
@@ -381,6 +387,16 @@
           $conn->close();
           
         }
+
+        echo "<script>var locations = [";
+
+        foreach ($locations as $loc) {
+          echo $loc . ",";
+        }
+
+
+        echo "]</script>";
+
       }
         ?>
 
@@ -413,39 +429,19 @@
 
       }
 
-
-
-    /*  const beaches = [
-          ["Bondi Beach", 48.14337866524121, 15.12637771423338, 4],
-          ["Coogee Beach",  48.14337866524121, 15.16637771423639, 5],
-     
-        ];*/
-
-
-
         function setMarkers(map) 
         {
           // Adds markers to the map.
         
-
-        //0 ist ID
-          $t = 1; //Bezeichnung
-          $l =2;
-          $b =3;
           
-          for (let i = 0; i < beaches.length; i++) {
-            const beach = beaches[i];
+          for (let i = 0; i < locations.length; i++) {
+            const beach = locations[i];
 
             new google.maps.Marker({
-              position: { lat: beach[$l], lng: beach[$b] },
-              map,
+              position: { lat: beach[1], lng: beach[2] },map,
               icon: '/images/es.png',
-              title: beach[$t],
+              title: beach[0],
             });
-
-            $l = $l +4;
-            $b = $b + 4;
-            $t = $t + 4;
           }
           
         }
