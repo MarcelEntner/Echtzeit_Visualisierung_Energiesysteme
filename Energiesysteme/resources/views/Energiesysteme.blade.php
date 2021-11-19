@@ -197,7 +197,6 @@
                        </div>
 
                       
-                      -->
 
 
 
@@ -254,31 +253,45 @@
                // mapTypeControl: false,  // Button um zwischen Satiliet und Roadmap umschalten
                //mapId:'' MapID von der selbst erstellen Map
 
-                
-
+              
             }
+            
+            
 
             let map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            
+          
+             
 
 
 
             map.addListener("click", (e) => {            //Ausgefürht wenn Map-Klick
-              placeMarkerAndPanTo(e.latLng, map);         //Aufruf Function Place Marker   e.LatLng = Koordinaten
+              //placeMarkerAndPanTo(e.latLng, map);         //Aufruf Function Place Marker   e.LatLng = Koordinaten
               breit = e.latLng.toString().substring(1,18);
               lang = e.latLng.toString().substring(20,37);
              document.getElementById("Laengengrad").setAttribute('value', breit);     //Koordinaten den Input Feldern hinzufügen
              document.getElementById("Breitengrad").setAttribute('value', lang);
                $('#exampleModalCenter').modal('show');        //Pop Up ES erstellen Aufruf
 
-
+ 
 
                 //Icon Auswahl
              
-                ESmarker.addListener("click", toggleBounce);
+                //ESmarker.addListener("click", toggleBounce);
 
 
         //
             });
+
+            google.maps.event.addListenerOnce(map, 'idle', function(){   //ausgeführt wenn map geladen
+              // do something only the first time the map is loaded
+              //DB auslesen und einfügen
+              setMarkers(map);
+    
+            });
+
+
+          //  google.maps.event.addListenerOnce(map, 'tilesloaded', function(){alert('map is ready');});
 
             
 
@@ -299,7 +312,7 @@
                 Title:"Hover",   //Hover effekt
                  icon: '/images/es.png',
                  optimized: true,      // ka
-                 draggable:true  //herum ziehen möglich
+                // draggable:true  //herum ziehen möglich
                 
             });
             map.panTo(latLng);
@@ -323,6 +336,54 @@
 
 
 
+        <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "laravel";
+
+
+        $beaches = [];
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+        }
+        else {
+
+          $sql = "SELECT id, Bezeichnung, Laengengrad, Breitengrad FROM EnSys";
+          $result = $conn->query($sql);
+          
+          if ($result->num_rows > 0) {
+            // output data of each row
+             $i = 0;
+            while($row = $result->fetch_assoc()) {
+                
+             // echo "id: " . $row["id"]. " " . $row["Bezeichnung"]." ". $row["Laengengrad"]. " ". $row["Breitengrad"]. "<br>";            }
+              
+              $beaches = [
+                    $i=> $row["id"],
+                    $i+1=> $row["Bezeichnung"],
+                    $i+2=> $row["Laengengrad"],
+                    $i+3=> $row["Breitengrad"],
+                ];
+
+              //Array hier ist in Ordnung jetzt muss es nach Javascript übertragen werden
+               var_dump($beaches);
+
+                $i= $i+4;
+
+
+            } 
+            
+          $conn->close();
+          
+        }
+      }
+        ?>
+
 
 
     <script>
@@ -341,6 +402,7 @@
         $('#exampleModalCenterGrafana').modal('show');
 
       }
+
       
 
       
@@ -350,6 +412,49 @@
         //placeMarkerAndPanTo(e.latLng, map); 
 
       }
+
+
+
+    /*  const beaches = [
+          ["Bondi Beach", 48.14337866524121, 15.12637771423338, 4],
+          ["Coogee Beach",  48.14337866524121, 15.16637771423639, 5],
+     
+        ];*/
+
+
+
+        function setMarkers(map) 
+        {
+          // Adds markers to the map.
+        
+
+        //0 ist ID
+          $t = 1; //Bezeichnung
+          $l =2;
+          $b =3;
+          
+          for (let i = 0; i < beaches.length; i++) {
+            const beach = beaches[i];
+
+            new google.maps.Marker({
+              position: { lat: beach[$l], lng: beach[$b] },
+              map,
+              icon: '/images/es.png',
+              title: beach[$t],
+            });
+
+            $l = $l +4;
+            $b = $b + 4;
+            $t = $t + 4;
+          }
+          
+        }
+
+      
+
+
+
+
     </script>
 
 
