@@ -4,27 +4,23 @@
 @endsection
 @section('content')
 
+     <!-- Zeile 415 API Key eingebunden -->
+     <!-- Zeile 335 Map Key eingebunden -->
+
     <main>
 
         <div class="Energiesysteme container-fluid p-5">
             <div class="row w-100">
 
-                <!--    <div class="Karte" >       
-                                              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d21297.206605903528!2d15.1610548!3d48.145897399999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sde!2sat!4v1635412680266!5m2!1sde!2sat" 
-                                              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="GoogleMaps"></iframe>
-                                            </div>
-                                          -->
 
                 <div class="col-12 col-lg-7 shadow-lg rounded" id="map">
                 </div>
-
-                <!--test upload git -->
 
                 <div class="Liste col-12 col-lg-5">
                     <div class="shadow-lg rounded p-5">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
-                                <h3> <b>Energiesysteme</b></h3>
+                                <h3> <b>Energiesysteme</b> <img src="/images/es.png"></h3>
                                 <input class="form-control form-control2" placeholder="Suchen" aria-label="Search">
                             </div>
 
@@ -164,7 +160,7 @@
                     <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologien</h5>
+                                <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -329,6 +325,7 @@
 
 
     <script>
+
         function LoadMap() {
 
             let mapOptions = {
@@ -338,15 +335,17 @@
                 mapTypeId: "roadmap", //Typ der Map auf Road MAp setzen
                 streetViewControl: false, // STreet View Männdchen ausblenden
                 // mapTypeControl: false,  // Button um zwischen Satiliet und Roadmap umschalten
-                //mapId:'' MapID von der selbst erstellen Map
+                mapId:'23802346582caa31', // MapID von der selbst erstellen Map     
 
-
+                    //Enter Map: 23802346582caa31
+                    //Kronstana Map: 396ac7c2d5bcd46
+                
             }
 
-
+            
+  
 
             let map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
 
 
 
@@ -379,8 +378,7 @@
             });
 
 
-            //  google.maps.event.addListenerOnce(map, 'tilesloaded', function(){alert('map is ready');});
-
+           
 
 
         }
@@ -417,7 +415,14 @@
             }
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs&callback=LoadMap">
+
+
+     <!-- Hier gehört der API Key eingebunden   -->
+
+     <!-- Kronstana API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
+     <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&callback=LoadMap">
     </script>
 
 
@@ -520,8 +525,8 @@
                     },
                     map, // 0 Bezeichnung, 1 Längengrad, 2 Breitengrad, 3 Id
                     icon: '/images/es.png',
-                    title: beach[0],
-                    label: beach[0],
+                    title: beach[0], //Hover 
+                    label: beach[0], // Was im Icon steht
                     animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
                 });
 
@@ -547,8 +552,10 @@
 
                 marker.addListener("rightclick", () => {
 
+                    const beach = locations[i];
+
                     var infowindow2 = new google.maps.InfoWindow({
-                        content: "sdd"
+                        content: beach[0]
                     });
 
                     infowindow2.open(map, marker);
@@ -561,6 +568,8 @@
 
 
             }
+
+           
 
 
 
