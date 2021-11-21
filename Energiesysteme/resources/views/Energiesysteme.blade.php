@@ -25,16 +25,16 @@
                             </div>
 
                             <label class="switch">
-                                <input class="switch-input " type="checkbox" />
-                                <span class="switch-label" data-on="Energietechnologien" data-off="Energiesysteme"></span>
-                                <span class="switch-handle"></span>
+                                <input class="switch-input " type="checkbox" onclick="toggleSwitch()" id="ToggleButton" >
+                                <span class="switch-label" data-on="Energietechnologien" data-off="Energiesysteme" ></span>
+                                <span class="switch-handle" ></span>
                             </label>
                         </div>
 
 
 
 
-
+                            <!-- Liste -->
                         <div class="table-responsive" style="max-height: 41vh;">
                             <table class="table table-borderless table-hover">
                                 <thead>
@@ -71,6 +71,7 @@
                                 @endforeach
                             </table>
                         </div>
+
                     </div>
 
 
@@ -201,8 +202,7 @@
 
                                     <br>
                                     <!--  <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
-                                    <input type="submit" class="btn btn3" id="ESerstellen" onclick="AddMarker()"
-                                        value="Energietechnologie erstellen">
+                                    <input type="submit" class="btn btn3" id="ESerstellen" value="Energietechnologie erstellen">
                                 </form>
                             </div>
                         </div>
@@ -323,8 +323,9 @@
 
     </main>
 
+  
 
-    <script>
+    <script >
 
         function LoadMap() {
 
@@ -339,7 +340,7 @@
 
                     //Enter Map: 23802346582caa31
                     //Kronstana Map: 396ac7c2d5bcd46
-                
+
             }
 
             
@@ -355,8 +356,7 @@
                 //placeMarkerAndPanTo(e.latLng, map);         //Aufruf Function Place Marker   e.LatLng = Koordinaten
                 breit = e.latLng.toString().substring(1, 18);
                 lang = e.latLng.toString().substring(20, 37);
-                document.getElementById("Laengengrad").setAttribute('value',
-                    breit); //Koordinaten den Input Feldern hinzufügen
+                document.getElementById("Laengengrad").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
                 document.getElementById("Breitengrad").setAttribute('value', lang);
                 $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
 
@@ -384,37 +384,9 @@
         }
 
 
-
-
-
-
-        //wird nicht verwendet
-        /* function placeMarkerAndPanTo(latLng, map) {
-            ESmarker =  new google.maps.Marker({
-                 position: latLng,
-                 map: map,
-                 animation: google.maps.Animation.DROP,   //verschiedene Moduse: DROP, BOUNCE
-                 label:"Energiesystem",   //text der dabei steht
-                 Title:"Hover",   //Hover effekt
-                  icon: '/images/es.png',
-                  optimized: true,      // ka
-                 // draggable:true  //herum ziehen möglich
-                 
-             });
-             map.panTo(latLng);
-
-
-         }*/
-
-
-        function toggleBounce() {
-            if (ESmarker.getAnimation() !== null) {
-                ESmarker.setAnimation(null);
-            } else {
-                ESmarker.setAnimation(google.maps.Animation.BOUNCE);
-            }
-        }
     </script>
+
+
 
 
      <!-- Hier gehört der API Key eingebunden   -->
@@ -504,13 +476,6 @@
 
 
 
-        function AddMarker() //Funktiniert, marker erst platzieren wenn ES wirklich erstellt worden ist, Probeln dawei danach Seite relaod und Marker werden nicht gespeichert
-        {
-            //alert("Marker");
-            //placeMarkerAndPanTo(e.latLng, map); 
-
-        }
-
         function setMarkers(map) {
             // Adds markers to the map.
 
@@ -526,7 +491,14 @@
                     map, // 0 Bezeichnung, 1 Längengrad, 2 Breitengrad, 3 Id
                     icon: '/images/es.png',
                     title: beach[0], //Hover 
-                    label: beach[0], // Was im Icon steht
+                    //label: beach[0], // Was im Icon steht
+                    label: {
+                            text: beach[0],
+                            color: 'green',
+                            fontSize: '15px',
+                            x: '30',
+                            y: '30',
+                        },
                     animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
                 });
 
@@ -569,11 +541,27 @@
 
             }
 
-           
-
-
 
         }
+
+
+        function toggleSwitch()
+            {
+                //alert("Toggle Button Switch");
+
+                if (document.getElementById("ToggleButton").checked == false) 
+                    {
+                        alert("Geht zu Energiesysteme"); //Hier hüpft er zu ES
+                    }
+                else   if (document.getElementById("ToggleButton").checked == true) 
+                    {
+                        alert("Geht zu Energietechnologien"); //Hier hüpft er zu ET
+                    }
+
+
+            }
+
+
     </script>
 
 
