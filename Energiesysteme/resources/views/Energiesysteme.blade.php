@@ -153,7 +153,7 @@
                                    <div class="modal-body">
                                      
   
-                                    <form action="/edit/{{ $d->id }}" method="">
+                                    <form action="/edit/{{ $d->id }}" method="POST">
                                            @csrf
                                            <div class="form-group">
                                              <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
