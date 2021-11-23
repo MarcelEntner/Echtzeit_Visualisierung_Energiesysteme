@@ -215,62 +215,7 @@
 <<<<<<< HEAD
                   
 
-                           <!-- ModalEdit -->
-                           <div class="modal modal2 fade" id="exampleModalCenterEdit" tabindex="-1" role="dialog"
-                           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                           <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-                               <div class="modal-content">
-                                   <div class="modal-header">
-                                       <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
-                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                           <span aria-hidden="true">&times;</span>
-                                       </button>
-                                   </div>
-                                   <div class="modal-body">
-                                     
-  
-                                    <form action="/edit/{{ $d->id }}" method="POST">
-                                           @csrf
-                                           <div class="form-group">
-                                             <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
-                                             <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Bezeichnung" value="{{ $d->Bezeichnung }}">
-                                           </div>
-                                           <div class="form-group ">
-                                               <label for="exampleFormControlInput1" style="margin-left:40%">Katastalgemeinde</label>
-                                               <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Katastralgemeinden" value="{{ $d->Katastralgemeinden }}">
-                                             </div>
-                                             <div class="form-group">
-                                               <label for="exampleFormControlInput1" style="margin-left:40%">Postleitzahl</label>
-                                               <input type="text" class="form-control form-control3" id="exampleFormControlInput1"  name="Postleitzahl" value="{{ $d->Postleitzahl }}">
-                                             </div>
-                                             <div class="form-group">
-                                               <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
-                                               <input type="text" class="form-control form-control3" id="Laengengrad"  name="Längengrad" value="{{ $d->Laengengrad }}" readonly>
-                                             </div>
-                                             <div class="form-group">
-                                               <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
-                                               <input type="text" class="form-control form-control3" id="Breitengrad"  name="Breitengrad" value="{{ $d->Breitengrad }}" readonly>
-                                             </div>
-       
-       
-                                         
-                                           <br>
-                                          <!-- <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
-                                           <input type="submit" class="btn btn3" style="background-color:#3e8e41" value="Energiesystem aktualisieren">                                      
-                                         </form>
-       
-       
-                                    
-       
-       
-                                      
-                                   </div>
-                                 
-       
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
+                       
 
                       
 
@@ -485,9 +430,9 @@
 
     <?php
     $servername = 'localhost';
-    $username = 'root';
-    $password = '';
-    $dbname = 'laravel';
+    $username = 'dev';
+    $password = 'Oi24Spc5';
+    $dbname = 'EnsysAlpha';
     
     $beaches = [];
     

@@ -15,20 +15,20 @@
             min-height: 100vh;
         }
 
-        .nav-item {
+        /*.nav-item {
             font-size: 25px;
             padding-left: 10px;
             padding-right: 20px;
             overflow: hidden;
             /* background-color:black;  Nav-Liste + Login */
-        }
-       
+        /*}
+
 
         .navbar-brand {
             font-size: 45px;
             color: #21A500;
             /* background-color:black; Logo + MicroGridLab*/
-
+        /*
         }
 
         .navbar-brand:hover {
@@ -48,7 +48,7 @@
         .nav-link:hover {
             color: green;
             text-decoration: underline;
-        }
+        }*/
 
         .footercontext {
             color: #21A500;
@@ -171,19 +171,19 @@
         }
 
 
-        .esbutton{
+        .esbutton {
             height: 30px;
             width: 40px;
-            background-color: white; 
-            border:none;
+            background-color: white;
+            border: none;
             background-repeat: no-repeat;
 
         }
-       
-        .table:hover a{
-            
-            background-color: rgba(33, 165, 0, 0.0001);  
-            
+
+        .table:hover a {
+
+            background-color: rgba(33, 165, 0, 0.0001);
+
         }
 
 
@@ -194,25 +194,25 @@
 
         }
 
-        .Searchbutton{
+        .Searchbutton {
             display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+                border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
 
@@ -244,7 +244,7 @@
         }
 
 
-        .dropbtn {
+        .dropbtngalerie {
             background-color: #04AA6D;
             color: white;
             padding: 16px;
@@ -253,7 +253,9 @@
             width: 100%;
         }
 
-        .dropdown {
+
+
+        .dropdowngalerie {
             position: relative;
             display: inline-block;
             width: 1000px;
@@ -261,7 +263,7 @@
             width: 40%;
         }
 
-        .dropdown-content {
+        .dropdowngalerie-content {
             display: none;
             position: absolute;
             background-color: #f1f1f1;
@@ -271,7 +273,7 @@
             width: 100%;
         }
 
-        .dropdown-content a {
+        .dropdowngalerie-content a {
             color: black;
             padding: 12px 16px;
             text-decoration: none;
@@ -279,19 +281,18 @@
             width: 100%;
         }
 
-        .dropdown-content a:hover {
+        .dropdowngalerie-content a:hover {
             background-color: #ddd;
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropdowngalerie:hover .dropdowngalerie-content {
             display: block;
         }
 
-        .dropdown:hover .dropbtn {
+        .dropdowngalerie:hover .dropbtngalerie
+         {
             background-color: #3e8e41;
         }
-
-
 
         .GalerieAnzeige {
             /*border: 3px solid #21A500;
@@ -319,7 +320,7 @@
             margin: 0px;
         }
 
-        .logoStretch {
+        /*.logoStretch {
             width: 100vw;
         }
 
@@ -328,251 +329,263 @@
                 width: 160px !important;
                 height: 60px !important;
             }
-        }
+        }*/
 
 
         /* Switch Button */
 
         .switch {
-	position: relative;
-	display: block;
-	vertical-align: top;
-	width: 160px;
-	height: 30px;
-	padding: 3px;
-	background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
-	background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
-	border-radius: 18px;
-	box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
-	cursor: pointer;
-	box-sizing:content-box;
-}
-.switch-input {
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	box-sizing:content-box;
-}
-.switch-label {
-	position: relative;
-	display: block;
-	height: inherit;
-	font-size: 10px;
-	text-transform: uppercase;
-	border-radius: inherit;
-	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
-	box-sizing:content-box;
-}
-.switch-label:before, .switch-label:after {
-	position: absolute;
-	top: 50%;
-	margin-top: -.5em;
-	line-height: 1;
-	-webkit-transition: inherit;
-	-moz-transition: inherit;
-	-o-transition: inherit;
-	transition: inherit;
-	box-sizing:content-box;
-}
-.switch-label:before {
-	content: attr(data-off);
-	right: 11px;
-	color: #21A500;;
-	text-shadow: 0 1px rgba(255, 255, 255, 0.5);
-}
-.switch-label:after {
-	content: attr(data-on);
-	left: 11px;
-	color: #21A500;;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.2);
-	opacity: 0;
-}
-.switch-input:checked ~ .switch-label {
-	
-	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
-}
-.switch-input:checked ~ .switch-label:before {
-	opacity: 0;
-}
-.switch-input:checked ~ .switch-label:after {
-	opacity: 1;
-}
-.switch-handle {
-	position: absolute;
-	top: 4px;
-	left: 4px;
-	width: 28px;
-	height: 28px;
-	background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
-	background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
-	border-radius: 100%;
-	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-    
-    
-}
-.switch-handle:before {
-	content: "";
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin: -6px 0 0 -6px;
-	width: 12px;
-	height: 12px;
-	background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
-	background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
-	border-radius: 6px;
-	box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
-}
+            position: relative;
+            display: block;
+            vertical-align: top;
+            width: 160px;
+            height: 30px;
+            padding: 3px;
+            background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
+            background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
+            border-radius: 18px;
+            box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            box-sizing: content-box;
+        }
 
-.switch-input:checked ~ .switch-handle {
-	left: 135px;
-	box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
-}
- 
-/* Transition
+        .switch-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            box-sizing: content-box;
+        }
+
+        .switch-label {
+            position: relative;
+            display: block;
+            height: inherit;
+            font-size: 10px;
+            text-transform: uppercase;
+            border-radius: inherit;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+            box-sizing: content-box;
+        }
+
+        .switch-label:before,
+        .switch-label:after {
+            position: absolute;
+            top: 50%;
+            margin-top: -.5em;
+            line-height: 1;
+            -webkit-transition: inherit;
+            -moz-transition: inherit;
+            -o-transition: inherit;
+            transition: inherit;
+            box-sizing: content-box;
+        }
+
+        .switch-label:before {
+            content: attr(data-off);
+            right: 11px;
+            color: #21A500;
+            ;
+            text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        .switch-label:after {
+            content: attr(data-on);
+            left: 11px;
+            color: #21A500;
+            ;
+            text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+        }
+
+        .switch-input:checked~.switch-label {
+
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .switch-input:checked~.switch-label:before {
+            opacity: 0;
+        }
+
+        .switch-input:checked~.switch-label:after {
+            opacity: 1;
+        }
+
+        .switch-handle {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+            background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+            border-radius: 100%;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+
+
+        }
+
+        .switch-handle:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -6px 0 0 -6px;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+            background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
+            border-radius: 6px;
+            box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+        }
+
+        .switch-input:checked~.switch-handle {
+            left: 135px;
+            box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Transition
 ========================== */
-.switch-label, .switch-handle {
-	transition: All 0.3s ease;
-	-webkit-transition: All 0.3s ease;
-	-moz-transition: All 0.3s ease;
-	-o-transition: All 0.3s ease;
-}
+        .switch-label,
+        .switch-handle {
+            transition: All 0.3s ease;
+            -webkit-transition: All 0.3s ease;
+            -moz-transition: All 0.3s ease;
+            -o-transition: All 0.3s ease;
+        }
 
 
-/* Flip Chart */
+        /* Flip Chart */
 
-/* Überschreibung des Bootstrap CSS */
-.btn2 {
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        /* Überschreibung des Bootstrap CSS */
+        .btn2 {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+                border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
-    /* Selbst eingefügt */    
-    height: 30px;
-    width: 40px;
-    background-color: white; 
-    border:none;
-    background-repeat: no-repeat;
-}
+            /* Selbst eingefügt */
+            height: 30px;
+            width: 40px;
+            background-color: white;
+            border: none;
+            background-repeat: no-repeat;
+        }
 
-.btn3 {
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        .btn3 {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+                border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
-    /* Selbst eingefügt */  
-    margin-left:27%;  
-    height: 40px;
-    width: 220px;
-    background-color: #21A500; 
-    border:none;
-    background-repeat: no-repeat;
-}
+            /* Selbst eingefügt */
+            margin-left: 27%;
+            height: 40px;
+            width: 220px;
+            background-color: #21A500;
+            border: none;
+            background-repeat: no-repeat;
+        }
 
-.form-control2{
-    width: 27%;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #21A500;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #21A500;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-
-
-
-
-.modal2 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1055;
-    display: none;
-    width: 60%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    outline: 0;
-    margin-left: 350px;
-}
-.modal2-dialog {
-    position: relative;
-    width: auto;
-    margin: auto;
-    pointer-events: none;
-
-}
-
-.modal2-title{
-    margin-bottom: 0;
-    line-height: 1.5;
-    margin-left: 170px;
-
-}
-
-.form-control3{
-    display: block;
-    width: 250px;
-    padding: 0.375rem 0.75rem;
-    text-align: center;
-    margin:auto;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: black;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid black;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    
-
-}
+        .form-control2 {
+            width: 27%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #21A500;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #21A500;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
 
 
 
+
+
+        .modal2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1055;
+            display: none;
+            width: 60%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            outline: 0;
+            margin-left: 350px;
+        }
+
+        .modal2-dialog {
+            position: relative;
+            width: auto;
+            margin: auto;
+            pointer-events: none;
+
+        }
+
+        .modal2-title {
+            margin-bottom: 0;
+            line-height: 1.5;
+            margin-left: 170px;
+
+        }
+
+        .form-control3 {
+            display: block;
+            width: 250px;
+            padding: 0.375rem 0.75rem;
+            text-align: center;
+            margin: auto;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: black;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid black;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+
+        }
 
     </style>
 </head>
@@ -598,38 +611,41 @@
                             <li><a href="{{ route('hp') }}" class="nav-link px-2 text-primary fs-4">Home</a></li>
                         @endif
 
-                        @if (\Request::is('energiesysteme') or \Request::is('EnSys') )
-                            <li><b><a href="{{ route('es') }}" class="nav-link px-2 text-primary fs-4">Energiesysteme</a></b></li>
+                        @if (\Request::is('energiesysteme') or \Request::is('EnSys'))
+                            <li><b><a href="{{ route('es') }}"
+                                        class="nav-link px-2 text-primary fs-4">Energiesysteme</a></b></li>
                         @else
-                            <li><a href="{{ route('es') }}" class="nav-link px-2 text-primary fs-4">Energiesysteme</a></li>
+                            <li><a href="{{ route('es') }}" class="nav-link px-2 text-primary fs-4">Energiesysteme</a>
+                            </li>
                         @endif
 
-                        @if (\Request::is('galerie') or \Request::is('EnSys/*') )
-                            <li><b><a href="{{ route('gal') }}" class="nav-link px-2 text-primary fs-4">Galerie</a></b></li>
+                        @if (\Request::is('galerie') or \Request::is('EnSys/*'))
+                            <li><b><a href="{{ route('gal') }}" class="nav-link px-2 text-primary fs-4">Galerie</a></b>
+                            </li>
                         @else
                             <li><a href="{{ route('gal') }}" class="nav-link px-2 text-primary fs-4">Galerie</a></li>
                         @endif
 
-                        
-                        
+
                     </ul>
 
-                    <div class="text-end">
+
+                    <div class="nav-link px-2 text-primary fs-4">
                         @guest
                             @if (Route::has('login'))
                                 <button type="button" class="btn text-primary fs-4" data-toggle="modal"
                                     data-target="#loginModal">{{ __('Login') }}</button>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <div class="nav-item dropdown text-primary">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-primary" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                               document.getElementById('logout-form').submit();">
+                                                                       document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -638,11 +654,16 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                            </div>
                         @endguest
                     </div>
                 </div>
-            </div>
+
+
+
+
+
+
         </header>
 
 

@@ -7,9 +7,9 @@
 
 
 
-    <div class="dropdown">
-        <button class="dropbtn">Wählen Sie ein Energiesystem aus</button>
-        <div class="dropdown-content">
+    <div class="dropdowngalerie">
+        <button class="dropbtngalerie">Wählen Sie ein Energiesystem aus</button>
+        <div class="dropdowngalerie-content">
             @foreach ($data as $d)
                 <a href="{{ route('EnSys.show', $d->id) }}">{{ $d->Bezeichnung }}</a>
             @endforeach
