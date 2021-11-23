@@ -4,8 +4,8 @@
 @endsection
 @section('content')
 
-     <!-- Zeile 415 API Key eingebunden -->
-     <!-- Zeile 335 Map Key eingebunden -->
+    <!-- Zeile 415 API Key eingebunden -->
+    <!-- Zeile 335 Map Key eingebunden -->
 
     <main>
 
@@ -25,16 +25,16 @@
                             </div>
 
                             <label class="switch">
-                                <input class="switch-input " type="checkbox" onclick="toggleSwitch()" id="ToggleButton" >
-                                <span class="switch-label" data-on="Energietechnologien" data-off="Energiesysteme" ></span>
-                                <span class="switch-handle" ></span>
+                                <input class="switch-input " type="checkbox" onclick="toggleSwitch()" id="ToggleButton">
+                                <span class="switch-label" data-on="Energietechnologien" data-off="Energiesysteme"></span>
+                                <span class="switch-handle"></span>
                             </label>
                         </div>
 
 
 
 
-                            <!-- Liste -->
+                        <!-- Liste -->
                         <div class="table-responsive" style="max-height: 41vh;">
                             <table class="table table-borderless table-hover">
                                 <thead>
@@ -56,13 +56,26 @@
                                             <td>{{ $d->Bezeichnung }}</td>
                                             <td>{{ $d->Katastralgemeinden }}</td>
                                             <td>{{ $d->Postleitzahl }}</td>
-                                            <td> <a href="/delete/{{ $d->id }}" class="btn btn2"
-                                                    style="background-image: url('/images/delete.png')"></a></td>
+
+                                            @auth
+                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
+                                                <td> <a href="/delete/{{ $d->id }}" class="btn btn2"
+                                                        style="background-image: url('/images/delete.png')"></a></td>
+                                                <td> <a href="javascript:Grafanafunction()" class="btn btn2"
+                                                        style="background-image: url('/images/statistik.png')"></a></td>
+                                                <td> <a href="javascript:editfunction({{ $d->id }})"
+                                                        class="btn btn2"
+                                                        style="background-image: url('/images/stift.png')"></a></td>
+                                            @endauth
+
+                                            @guest
                                             <td> <a href="javascript:Grafanafunction()" class="btn btn2"
-                                                    style="background-image: url('/images/statistik.png')"></a></td>
-                                            <td> <a href="javascript:editfunction({{ $d->id }})"
-                                                    class="btn btn2"
-                                                    style="background-image: url('/images/stift.png')"></a></td>
+                                                style="background-image: url('/images/statistik.png')"></a></td>
+                                            <td> <a href="javascript:augefunction({{ $d->id }})"
+                                                class="btn btn2"
+                                                style="background-image: url('/images/auge.png')"></a></td>
+                                            @endguest
+
                                         </tr>
 
 
@@ -84,9 +97,9 @@
 
                     <!-- Button trigger modal -->
                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                                                    style="margin-top: 6%; margin-left:35%; background-color:#3e8e41"; border:1px solid #3e8e41">
-                                                    Energiesystem hinzufügen
-                                                </button>-->
+                                                        style="margin-top: 6%; margin-left:35%; background-color:#3e8e41"; border:1px solid #3e8e41">
+                                                        Energiesystem hinzufügen
+                                                    </button>-->
 
                     <!-- Modal ES hinzufügen -->
                     <div class="modal modal2 fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -202,7 +215,8 @@
 
                                     <br>
                                     <!--  <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
-                                    <input type="submit" class="btn btn3" id="ESerstellen" value="Energietechnologie erstellen">
+                                    <input type="submit" class="btn btn3" id="ESerstellen"
+                                        value="Energietechnologie erstellen">
                                 </form>
                             </div>
                         </div>
@@ -210,38 +224,6 @@
                 </div>
             </div>
             <!-- Modal aus -->
-
-
-<<<<<<< HEAD
-                  
-
-                       
-
-                      
-
-
-
-     <!-- ModalGrafana -->
-     <div class="modal modal2 fade" id="exampleModalCenterGrafana" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-     <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
-             </div>
-
-             <div class="modal-body">
-                <h1> Grafana </h1>
-
-                
-             </div>
-           
-=======
->>>>>>> 3828d7bdf53911cb32200029735394e6d9dde1c4
-
 
 
 
@@ -308,54 +290,103 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Modal aus-->
 
 
 
-        <!-- ModalGrafana -->
-        <div class="modal modal2 fade" id="exampleModalCenterGrafana" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+
+            <!-- ModalGrafana -->
+            <div class="modal modal2 fade" id="exampleModalCenterGrafana" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <h1> Grafana </h1>
+
+
+                        </div>
+
+
                     </div>
-
-                    <div class="modal-body">
-                        <h1> Grafana </h1>
-
-
-                    </div>
-
-
                 </div>
             </div>
+
+
+
+
+              <!-- ModalAuge -->
+              <div class="modal modal2 fade" id="exampleModalCenterAuge" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+
+                      <div class="modal-body">
+                          <h3 style="text-align: center;"> Weitere Details </h3>
+                          <form id="augeForm" method="GET">
+                            <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
+                            @csrf
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
+                                <input type="text" class="form-control form-control3" id="bezeichnunga"
+                                    name="Bezeichnung" value="" readonly>
+                            </div>
+                            <div class="form-group ">
+                                <label for="exampleFormControlInput1" style="margin-left:40%">Katastralgemeinde</label>
+                                <input type="text" class="form-control form-control3" id="katastralgemeindea"
+                                    name="Katastralgemeinden" value="" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" style="margin-left:40%">Postleitzahl</label>
+                                <input type="text" class="form-control form-control3" id="postleitzahla"
+                                    name="Postleitzahl" value="" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
+                                <input type="text" class="form-control form-control3" id="LaengengradEdita"
+                                    name="Laengengrad" value="" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
+                                <input type="text" class="form-control form-control3" id="BreitengradEdita"
+                                    name="Breitengrad" value="" readonly>
+                            </div>
+                        </form>
+
+
+                      </div>
+
+
+                  </div>
+              </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
         </div>
-
-
-
-
-        </div>
-        </div>
-
-
-        </div>
-
-
-
-
-
     </main>
 
-  
 
-    <script >
 
+    <script>
         function LoadMap() {
 
             let mapOptions = {
@@ -365,39 +396,40 @@
                 mapTypeId: "roadmap", //Typ der Map auf Road MAp setzen
                 streetViewControl: false, // STreet View Männdchen ausblenden
                 // mapTypeControl: false,  // Button um zwischen Satiliet und Roadmap umschalten
-                mapId:'23802346582caa31', // MapID von der selbst erstellen Map     
+                mapId: '23802346582caa31', // MapID von der selbst erstellen Map     
 
-                    //Enter Map: 23802346582caa31
-                    //Kronstana Map: 396ac7c2d5bcd46
+                //Enter Map: 23802346582caa31
+                //Kronstana Map: 396ac7c2d5bcd46
 
             }
 
-            
-  
+
+
 
             let map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 
 
 
-
-            map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
-                //placeMarkerAndPanTo(e.latLng, map);         //Aufruf Function Place Marker   e.LatLng = Koordinaten
+            @auth //Gast darf keine ES erstellen
+                map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
+                //placeMarkerAndPanTo(e.latLng, map); //Aufruf Function Place Marker e.LatLng = Koordinaten
                 breit = e.latLng.toString().substring(1, 18);
                 lang = e.latLng.toString().substring(20, 37);
                 document.getElementById("Laengengrad").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
                 document.getElementById("Breitengrad").setAttribute('value', lang);
                 $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
-
-
-
+            
+            
+            
                 //Icon Auswahl
-
+            
                 //ESmarker.addListener("click", toggleBounce);
-
-
+            
+            
                 //
-            });
+                });
+            @endauth
 
             google.maps.event.addListenerOnce(map, 'idle', function() { //ausgeführt wenn map geladen
                 // do something only the first time the map is loaded
@@ -407,21 +439,19 @@
             });
 
 
-           
+
 
 
         }
-
-
     </script>
 
 
 
 
-     <!-- Hier gehört der API Key eingebunden   -->
+    <!-- Hier gehört der API Key eingebunden   -->
 
-     <!-- Kronstana API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
-     <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
+    <!-- Kronstana API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
+    <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&callback=LoadMap">
     </script>
@@ -430,9 +460,9 @@
 
     <?php
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     $beaches = [];
     
@@ -456,11 +486,11 @@
                 array_push($locations, $location);
     
                 /*$beaches = [
-                                                    $i=> $row["id"],
-                                                    $i+1=> $row["Bezeichnung"],
-                                                    $i+2=> $row["Laengengrad"],
-                                                    $i+3=> $row["Breitengrad"],
-                                                ];*/
+                                                        $i=> $row["id"],
+                                                        $i+1=> $row["Bezeichnung"],
+                                                        $i+2=> $row["Laengengrad"],
+                                                        $i+3=> $row["Breitengrad"],
+                                                    ];*/
                 // $i= $i+4;
             }
     
@@ -503,6 +533,25 @@
         }
 
 
+        function augefunction(id) {
+            $('#exampleModalCenterAuge').modal('show');
+            locations.forEach(loc => {
+                if (loc[3] == id) {
+                    $("#bezeichnunga").val(loc[0]);
+                    $("#katastralgemeindea").val(loc[5]);
+                    $("#postleitzahla").val(loc[4]);
+                    $("#LaengengradEdita").val(loc[1]);
+                    $("#BreitengradEdita").val(loc[2]);
+                    $("#augeForm")
+                }
+            })
+
+        }
+
+
+
+
+
 
 
         function setMarkers(map) {
@@ -522,12 +571,12 @@
                     title: beach[0], //Hover 
                     //label: beach[0], // Was im Icon steht
                     label: {
-                            text: beach[0],
-                            color: 'green',
-                            fontSize: '15px',
-                            x: '30',
-                            y: '30',
-                        },
+                        text: beach[0],
+                        color: 'green',
+                        fontSize: '15px',
+                        x: '30',
+                        y: '30',
+                    },
                     animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
                 });
 
@@ -550,19 +599,20 @@
 
                 });
 
-
-                marker.addListener("rightclick", () => {
-
+                @auth //Gast darf keine ES erstellen
+                    marker.addListener("rightclick", () => {
+                
                     const beach = locations[i];
-
+                
                     var infowindow2 = new google.maps.InfoWindow({
-                        content: beach[0]
+                    content: beach[0]
                     });
-
+                
                     infowindow2.open(map, marker);
-
+                
                     $('#exampleModalCenterET').modal('show'); //Pop Up ET erstellen Aufruf
-                });
+                    });
+                @endauth
 
 
 
@@ -574,23 +624,17 @@
         }
 
 
-        function toggleSwitch()
-            {
-                //alert("Toggle Button Switch");
+        function toggleSwitch() {
+            //alert("Toggle Button Switch");
 
-                if (document.getElementById("ToggleButton").checked == false) 
-                    {
-                        alert("Geht zu Energiesysteme"); //Hier hüpft er zu ES
-                    }
-                else   if (document.getElementById("ToggleButton").checked == true) 
-                    {
-                        alert("Geht zu Energietechnologien"); //Hier hüpft er zu ET
-                    }
-
-
+            if (document.getElementById("ToggleButton").checked == false) {
+                alert("Geht zu Energiesysteme"); //Hier hüpft er zu ES
+            } else if (document.getElementById("ToggleButton").checked == true) {
+                alert("Geht zu Energietechnologien"); //Hier hüpft er zu ET
             }
 
 
+        }
     </script>
 
 

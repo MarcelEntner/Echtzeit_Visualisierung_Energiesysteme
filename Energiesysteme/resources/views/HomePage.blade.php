@@ -42,7 +42,7 @@
     <!-- Beitrag/Text -->
 
 
-@auth
+
     
 
     <div class="Beitrag shadow-lg rounded-3">
@@ -73,8 +73,8 @@
         </p>
 
     </div>
+    
 
-@endauth
 
 
 @endsection
