@@ -180,12 +180,6 @@
 
         }
        
-
-        table {
-            margin-left: 5%;
-
-            
-        }
         .table:hover a{
             
             background-color: rgba(33, 165, 0, 0.0001);  
@@ -346,7 +340,6 @@
 	width: 160px;
 	height: 30px;
 	padding: 3px;
-	margin-right:35px;
 	background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
 	background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
 	border-radius: 18px;
@@ -508,7 +501,6 @@
 }
 
 .form-control2{
-    display: block;
     width: 27%;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
@@ -523,7 +515,6 @@
     appearance: none;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    margin-left:240px;
 }
 
 
