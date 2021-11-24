@@ -59,11 +59,11 @@
 
                                             @auth
                                                 <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
-                                                <td> <a href="/delete/{{ $d->id }}" class="btn btn2"
+                                                <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2"
                                                         style="background-image: url('/images/delete.png')"></a></td>
-                                                <td> <a href="javascript:Grafanafunction()" class="btn btn2"
+                                                <td id="hov"> <a href="javascript:Grafanafunction()" class="btn btn2"
                                                         style="background-image: url('/images/statistik.png')"></a></td>
-                                                <td> <a href="javascript:editfunction({{ $d->id }})"
+                                                <td id="hov"> <a href="javascript:editfunction({{ $d->id }})"
                                                         class="btn btn2"
                                                         style="background-image: url('/images/stift.png')"></a></td>
                                             @endauth
@@ -294,21 +294,24 @@
 
 
 
-            <!-- ModalGrafana -->
+            <!-- ModalEdit -->
             <div class="modal modal2 fade" id="exampleModalCenterGrafana" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
+                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Grafana-Statistiken</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-
                         <div class="modal-body">
-                            <h1> Grafana </h1>
-
+                            <iframe
+                                src="https://snapshot.raintank.io/dashboard-solo/snapshot/y7zwi2bZ7FcoTlB93WN7yWO4aMiz3pZb?from=1493369923321&to=1493377123321&panelId=4"
+                                width="460"
+                                height="300"
+                                frameborder="0"
+                             ></iframe>
 
                         </div>
 
@@ -572,10 +575,9 @@
                     //label: beach[0], // Was im Icon steht
                     label: {
                         text: beach[0],
-                        color: 'green',
+                        color: 'black',
                         fontSize: '15px',
-                        x: '30',
-                        y: '30',
+                        className: 'marker-position',
                     },
                     animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
                 });
@@ -635,53 +637,53 @@
             if (document.getElementById("ToggleButton").checked == false) {
 
                 var EnsysListe="";
-EnsysListe += "<table class=\"table table-borderless table-hover\" id=\"table\">";
-EnsysListe += "                                <thead>";
-EnsysListe += "                                    <tr>";
-EnsysListe += "                                        <th scope=\"col\">ID<\/th>";
-EnsysListe += "                                        <th scope=\"col\">Bezeichnung<\/th>";
-EnsysListe += "                                        <th scope=\"col\">Katastralgemeinde<\/th>";
-EnsysListe += "                                        <th scope=\"col\">Postleitzahl<\/th>";
-EnsysListe += "";
-EnsysListe += "";
-EnsysListe += "                                    <\/tr>";
-EnsysListe += "                                <\/thead>";
-EnsysListe += "";
-EnsysListe += "                                @foreach ($data as $d)";
-EnsysListe += "                                    <tbody>";
-EnsysListe += "                                        <tr>";
-EnsysListe += "";
-EnsysListe += "                                            <td>{{ $d->id }}<\/td>";
-EnsysListe += "                                            <td>{{ $d->Bezeichnung }}<\/td>";
-EnsysListe += "                                            <td>{{ $d->Katastralgemeinden }}<\/td>";
-EnsysListe += "                                            <td>{{ $d->Postleitzahl }}<\/td>";
-EnsysListe += "";
-EnsysListe += "                                            @auth";
-EnsysListe += "                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->";
-EnsysListe += "                                                <td> <a href=\"\/delete\/{{ $d->id }}\" class=\"btn btn2\"";
-EnsysListe += "                                                        style=\"background-image: url('\/images\/delete.png')\"><\/a><\/td>";
-EnsysListe += "                                                <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
-EnsysListe += "                                                        style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
-EnsysListe += "                                                <td> <a href=\"javascript:editfunction({{ $d->id }})\"";
-EnsysListe += "                                                        class=\"btn btn2\"";
-EnsysListe += "                                                        style=\"background-image: url('\/images\/stift.png')\"><\/a><\/td>";
-EnsysListe += "                                            @endauth";
-EnsysListe += "";
-EnsysListe += "                                            @guest";
-EnsysListe += "                                            <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
-EnsysListe += "                                                style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
-EnsysListe += "                                            <td> <a href=\"javascript:augefunction({{ $d->id }})\"";
-EnsysListe += "                                                class=\"btn btn2\"";
-EnsysListe += "                                                style=\"background-image: url('\/images\/auge.png')\"><\/a><\/td>";
-EnsysListe += "                                            @endguest";
-EnsysListe += "";
-EnsysListe += "                                        <\/tr>";
-EnsysListe += "";
-EnsysListe += "";
-EnsysListe += "";
-EnsysListe += "                                    <\/tbody>";
-EnsysListe += "                                @endforeach";
-EnsysListe += "                            <\/table>";
+                        EnsysListe += "<table class=\"table table-borderless table-hover\" id=\"table\">";
+                        EnsysListe += "                                <thead>";
+                        EnsysListe += "                                    <tr>";
+                        EnsysListe += "                                        <th scope=\"col\">ID<\/th>";
+                        EnsysListe += "                                        <th scope=\"col\">Bezeichnung<\/th>";
+                        EnsysListe += "                                        <th scope=\"col\">Katastralgemeinde<\/th>";
+                        EnsysListe += "                                        <th scope=\"col\">Postleitzahl<\/th>";
+                        EnsysListe += "";
+                        EnsysListe += "";
+                        EnsysListe += "                                    <\/tr>";
+                        EnsysListe += "                                <\/thead>";
+                        EnsysListe += "";
+                        EnsysListe += "                                @foreach ($data as $d)";
+                        EnsysListe += "                                    <tbody>";
+                        EnsysListe += "                                        <tr>";
+                        EnsysListe += "";
+                        EnsysListe += "                                            <td>{{ $d->id }}<\/td>";
+                        EnsysListe += "                                            <td>{{ $d->Bezeichnung }}<\/td>";
+                        EnsysListe += "                                            <td>{{ $d->Katastralgemeinden }}<\/td>";
+                        EnsysListe += "                                            <td>{{ $d->Postleitzahl }}<\/td>";
+                        EnsysListe += "";
+                        EnsysListe += "                                            @auth";
+                        EnsysListe += "                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->";
+                        EnsysListe += "                                                <td> <a href=\"\/delete\/{{ $d->id }}\" class=\"btn btn2\"";
+                        EnsysListe += "                                                        style=\"background-image: url('\/images\/delete.png')\"><\/a><\/td>";
+                        EnsysListe += "                                                <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
+                        EnsysListe += "                                                        style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
+                        EnsysListe += "                                                <td> <a href=\"javascript:editfunction({{ $d->id }})\"";
+                        EnsysListe += "                                                        class=\"btn btn2\"";
+                        EnsysListe += "                                                        style=\"background-image: url('\/images\/stift.png')\"><\/a><\/td>";
+                        EnsysListe += "                                            @endauth";
+                        EnsysListe += "";
+                        EnsysListe += "                                            @guest";
+                        EnsysListe += "                                            <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
+                        EnsysListe += "                                                style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
+                        EnsysListe += "                                            <td> <a href=\"javascript:augefunction({{ $d->id }})\"";
+                        EnsysListe += "                                                class=\"btn btn2\"";
+                        EnsysListe += "                                                style=\"background-image: url('\/images\/auge.png')\"><\/a><\/td>";
+                        EnsysListe += "                                            @endguest";
+                        EnsysListe += "";
+                        EnsysListe += "                                        <\/tr>";
+                        EnsysListe += "";
+                        EnsysListe += "";
+                        EnsysListe += "";
+                        EnsysListe += "                                    <\/tbody>";
+                        EnsysListe += "                                @endforeach";
+                        EnsysListe += "                            <\/table>";
 
 
 
@@ -702,16 +704,41 @@ EnsysListe += "                            <\/table>";
 
         function print_List_Energietechnologie(EnsysListe){
 
-            document.getElementById("table").innerHTML = "<table> <tr> <td>test</td> </tr></table>";
-                document.getElementById("Listuberschrieft").innerHTML = "Energietechnologie";
+            var ETListe="";
+            ETListe += "<table class=\"table table-borderless table-hover\" id=\"table\">";
+            ETListe += "                                <thead>";
+            ETListe += "                                    <tr>";
+            ETListe += "                                        <th scope=\"col\">ID<\/th>";
+            ETListe += "                                        <th scope=\"col\">Bezeichnung<\/th>";
+            ETListe += "                                        <th scope=\"col\">Katastralgemeinde<\/th>";
+            ETListe += "                                        <th scope=\"col\">Postleitzahl<\/th>";
+            ETListe += "";
+            ETListe += "";
+            ETListe += "                                    <\/tr>";
+            ETListe += "                                <\/thead>";
+            ETListe += "                            <\/table>";
+
+
+
+
+
+            document.getElementById("table").innerHTML = ETListe;
+
+                document.getElementById("Listuberschrieft").innerHTML = "Energietechnologien";
                 document.getElementById("Listimage").src = "/images/etgrün.png";
         }
+
+
         function print_List_Energiesysteme(EnsysListe){
 
             document.getElementById("table").innerHTML = EnsysListe;
             document.getElementById("Listuberschrieft").innerHTML = "Energiesysteme";
             document.getElementById("Listimage").src = "/images/es.png";
         }
+
+
+
+     
 
 
     </script>

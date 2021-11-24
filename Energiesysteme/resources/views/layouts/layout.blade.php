@@ -15,41 +15,7 @@
             min-height: 100vh;
         }
 
-        /*.nav-item {
-            font-size: 25px;
-            padding-left: 10px;
-            padding-right: 20px;
-            overflow: hidden;
-            /* background-color:black;  Nav-Liste + Login */
-        /*}
-
-
-        .navbar-brand {
-            font-size: 45px;
-            color: #21A500;
-            /* background-color:black; Logo + MicroGridLab*/
-        /*
-        }
-
-        .navbar-brand:hover {
-            color: green;
-        }
-
-        #gallog {
-            padding-left: 650px;
-        }
-
-        .nav-link {
-            color: #21A500;
-
-        }
-
-
-        .nav-link:hover {
-            color: green;
-            text-decoration: underline;
-        }*/
-
+       
         .footercontext {
             color: #21A500;
             padding-right: 10%;
@@ -181,18 +147,11 @@
         }
 
         .table:hover a {
-
             background-color: rgba(33, 165, 0, 0.0001);
-
         }
 
 
-        .Energiesysteme {
-            /*height:80%;
-          width: 100%;
-     */
 
-        }
 
         .Searchbutton {
             display: inline-block;
@@ -320,16 +279,7 @@
             margin: 0px;
         }
 
-        /*.logoStretch {
-            width: 100vw;
-        }
-
-        @media screen and (min-width: 990px) {
-            .logoStretch {
-                width: 160px !important;
-                height: 60px !important;
-            }
-        }*/
+     
 
 
         /* Switch Button */
@@ -565,6 +515,7 @@
 
         }
 
+
         .form-control3 {
             display: block;
             width: 250px;
@@ -583,9 +534,19 @@
             appearance: none;
             border-radius: 0.25rem;
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
-
         }
+
+        .marker-position {
+            bottom: -30px;
+            left: 0;
+            position: relative;
+        }
+
+
+        [id*="hov-"]:hover {
+onmouseover ="hover()"; 
+background-color: green;
+}
 
     </style>
 </head>
