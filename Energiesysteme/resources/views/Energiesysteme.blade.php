@@ -20,7 +20,7 @@
                     <div class="shadow-lg rounded p-5">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
-                                <h3> <b>Energiesysteme</b> <img src="/images/es.png"></h3>
+                                <h3> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/es.png" id="Listimage"></h3>
                                 <input class="form-control form-control2" placeholder="Suchen" aria-label="Search">
                             </div>
 
@@ -35,8 +35,8 @@
 
 
                         <!-- Liste -->
-                        <div class="table-responsive" style="max-height: 41vh;">
-                            <table class="table table-borderless table-hover">
+                        <div class="table-responsive" style="max-height: 41vh;" id="table">
+                        <table class="table table-borderless table-hover" id="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
@@ -587,6 +587,8 @@
                     map.setCenter(marker.getPosition());
                     marker.setIcon("/images/esgrün.png");
                     marker.setAnimation(google.maps.Animation.BOUNCE);
+                    document.getElementById("ToggleButton").checked = true;
+                    toggleSwitch();
                 });
 
 
@@ -596,6 +598,9 @@
                     map.setCenter(marker.getPosition());
                     marker.setIcon("/images/es.png");
                     marker.setAnimation(google.maps.Animation.DROP);
+                    document.getElementById("ToggleButton").checked = false;
+                    toggleSwitch();
+
 
                 });
 
@@ -628,13 +633,87 @@
             //alert("Toggle Button Switch");
 
             if (document.getElementById("ToggleButton").checked == false) {
-                alert("Geht zu Energiesysteme"); //Hier hüpft er zu ES
+
+                var EnsysListe="";
+EnsysListe += "<table class=\"table table-borderless table-hover\" id=\"table\">";
+EnsysListe += "                                <thead>";
+EnsysListe += "                                    <tr>";
+EnsysListe += "                                        <th scope=\"col\">ID<\/th>";
+EnsysListe += "                                        <th scope=\"col\">Bezeichnung<\/th>";
+EnsysListe += "                                        <th scope=\"col\">Katastralgemeinde<\/th>";
+EnsysListe += "                                        <th scope=\"col\">Postleitzahl<\/th>";
+EnsysListe += "";
+EnsysListe += "";
+EnsysListe += "                                    <\/tr>";
+EnsysListe += "                                <\/thead>";
+EnsysListe += "";
+EnsysListe += "                                @foreach ($data as $d)";
+EnsysListe += "                                    <tbody>";
+EnsysListe += "                                        <tr>";
+EnsysListe += "";
+EnsysListe += "                                            <td>{{ $d->id }}<\/td>";
+EnsysListe += "                                            <td>{{ $d->Bezeichnung }}<\/td>";
+EnsysListe += "                                            <td>{{ $d->Katastralgemeinden }}<\/td>";
+EnsysListe += "                                            <td>{{ $d->Postleitzahl }}<\/td>";
+EnsysListe += "";
+EnsysListe += "                                            @auth";
+EnsysListe += "                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->";
+EnsysListe += "                                                <td> <a href=\"\/delete\/{{ $d->id }}\" class=\"btn btn2\"";
+EnsysListe += "                                                        style=\"background-image: url('\/images\/delete.png')\"><\/a><\/td>";
+EnsysListe += "                                                <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
+EnsysListe += "                                                        style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
+EnsysListe += "                                                <td> <a href=\"javascript:editfunction({{ $d->id }})\"";
+EnsysListe += "                                                        class=\"btn btn2\"";
+EnsysListe += "                                                        style=\"background-image: url('\/images\/stift.png')\"><\/a><\/td>";
+EnsysListe += "                                            @endauth";
+EnsysListe += "";
+EnsysListe += "                                            @guest";
+EnsysListe += "                                            <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
+EnsysListe += "                                                style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
+EnsysListe += "                                            <td> <a href=\"javascript:augefunction({{ $d->id }})\"";
+EnsysListe += "                                                class=\"btn btn2\"";
+EnsysListe += "                                                style=\"background-image: url('\/images\/auge.png')\"><\/a><\/td>";
+EnsysListe += "                                            @endguest";
+EnsysListe += "";
+EnsysListe += "                                        <\/tr>";
+EnsysListe += "";
+EnsysListe += "";
+EnsysListe += "";
+EnsysListe += "                                    <\/tbody>";
+EnsysListe += "                                @endforeach";
+EnsysListe += "                            <\/table>";
+
+
+
+
+
+              print_List_Energiesysteme(EnsysListe)
             } else if (document.getElementById("ToggleButton").checked == true) {
-                alert("Geht zu Energietechnologien"); //Hier hüpft er zu ET
+              print_List_Energietechnologie(EnsysListe)
             }
 
 
+        
+
+
         }
+        
+
+
+        function print_List_Energietechnologie(EnsysListe){
+
+            document.getElementById("table").innerHTML = "<table> <tr> <td>test</td> </tr></table>";
+                document.getElementById("Listuberschrieft").innerHTML = "Energietechnologie";
+                document.getElementById("Listimage").src = "/images/etgrün.png";
+        }
+        function print_List_Energiesysteme(EnsysListe){
+
+            document.getElementById("table").innerHTML = EnsysListe;
+            document.getElementById("Listuberschrieft").innerHTML = "Energiesysteme";
+            document.getElementById("Listimage").src = "/images/es.png";
+        }
+
+
     </script>
 
 
