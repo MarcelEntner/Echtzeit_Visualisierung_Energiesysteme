@@ -9,4 +9,11 @@ class EnSys extends Model
 {
     use HasFactory;
     protected $table = 'EnSys';
+
+
+
+    public function Energiesysteme()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
