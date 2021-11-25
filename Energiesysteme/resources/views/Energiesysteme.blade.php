@@ -24,12 +24,15 @@
                                 <input class="form-control form-control2" placeholder="Suchen" aria-label="Search">
                             </div>
 
-                            <label class="switch">
+                         <!--   <label class="switch">
                                 <input class="switch-input " type="checkbox" onclick="toggleSwitch()" id="ToggleButton">
                                 <span class="switch-label" data-on="Energietechnologien" data-off="Energiesysteme"></span>
                                 <span class="switch-handle"></span>
-                            </label>
+                            </label> 
+
+                          -->
                         </div>
+                        <br>
 
 
 
@@ -589,8 +592,7 @@
                     map.setCenter(marker.getPosition());
                     marker.setIcon("/images/esgrün.png");
                     marker.setAnimation(google.maps.Animation.BOUNCE);
-                    document.getElementById("ToggleButton").checked = true;
-                    toggleSwitch();
+                    print_List_Energietechnologie();
                 });
 
 
@@ -600,8 +602,7 @@
                     map.setCenter(marker.getPosition());
                     marker.setIcon("/images/es.png");
                     marker.setAnimation(google.maps.Animation.DROP);
-                    document.getElementById("ToggleButton").checked = false;
-                    toggleSwitch();
+                    print_List_Energiesysteme();
 
 
                 });
@@ -631,12 +632,46 @@
         }
 
 
-        function toggleSwitch() {
+      //  function toggleSwitch() {
             //alert("Toggle Button Switch");
+       // }
 
-            if (document.getElementById("ToggleButton").checked == false) {
+        
 
-                var EnsysListe="";
+
+        function print_List_Energietechnologie(){
+
+            var ETListe="";
+            ETListe += "<table class=\"table table-borderless table-hover\" id=\"table\">";
+            ETListe += "                                <thead>";
+            ETListe += "                                    <tr>";
+            ETListe += "                                        <th scope=\"col\">ID<\/th>";
+            ETListe += "                                        <th scope=\"col\">Bezeichnung<\/th>";
+            ETListe += "                                        <th scope=\"col\">Katastralgemeinde<\/th>";
+            ETListe += "                                        <th scope=\"col\">Postleitzahl<\/th>";
+            ETListe += "";
+            ETListe += "";
+            ETListe += "                                    <\/tr>";
+            ETListe += "                                <\/thead>";
+            ETListe += "                            <\/table>";
+
+
+
+
+
+            document.getElementById("table").innerHTML = ETListe;
+
+                document.getElementById("Listuberschrieft").innerHTML = "Energietechnologien";
+                document.getElementById("Listimage").src = "/images/etgrün.png";
+        }
+
+
+
+
+        function print_List_Energiesysteme(){
+
+
+            var EnsysListe="";
                         EnsysListe += "<table class=\"table table-borderless table-hover\" id=\"table\">";
                         EnsysListe += "                                <thead>";
                         EnsysListe += "                                    <tr>";
@@ -687,49 +722,6 @@
 
 
 
-
-
-              print_List_Energiesysteme(EnsysListe)
-            } else if (document.getElementById("ToggleButton").checked == true) {
-              print_List_Energietechnologie(EnsysListe)
-            }
-
-
-        
-
-
-        }
-        
-
-
-        function print_List_Energietechnologie(EnsysListe){
-
-            var ETListe="";
-            ETListe += "<table class=\"table table-borderless table-hover\" id=\"table\">";
-            ETListe += "                                <thead>";
-            ETListe += "                                    <tr>";
-            ETListe += "                                        <th scope=\"col\">ID<\/th>";
-            ETListe += "                                        <th scope=\"col\">Bezeichnung<\/th>";
-            ETListe += "                                        <th scope=\"col\">Katastralgemeinde<\/th>";
-            ETListe += "                                        <th scope=\"col\">Postleitzahl<\/th>";
-            ETListe += "";
-            ETListe += "";
-            ETListe += "                                    <\/tr>";
-            ETListe += "                                <\/thead>";
-            ETListe += "                            <\/table>";
-
-
-
-
-
-            document.getElementById("table").innerHTML = ETListe;
-
-                document.getElementById("Listuberschrieft").innerHTML = "Energietechnologien";
-                document.getElementById("Listimage").src = "/images/etgrün.png";
-        }
-
-
-        function print_List_Energiesysteme(EnsysListe){
 
             document.getElementById("table").innerHTML = EnsysListe;
             document.getElementById("Listuberschrieft").innerHTML = "Energiesysteme";
