@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\EnTech;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class EnTechController extends Controller
 {
@@ -35,7 +37,18 @@ class EnTechController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $enTech = new EnTech();
+        
+        $enTech->Bezeichnung=$request->Bezeichnung;
+        $enTech->Laengengrad=$request->Laengengrad;
+        $enTech->Breitengrad=$request->Breitengrad;
+        $enTech->Typ=$request->Typ;
+        $enTech->Ort=$request->Ort;
+        $enTech->save();
+        $data = DB::table('EnTech')->get();
+
+
+        return redirect("/energiesysteme")->with(['data' => $data]);
     }
 
     /**
@@ -44,9 +57,16 @@ class EnTechController extends Controller
      * @param  \App\Models\EnTech  $enTech
      * @return \Illuminate\Http\Response
      */
-    public function show(EnTech $enTech)
+    public function show($id)
     {
-        //
+        $EnTech = EnTech::find($id);
+        $data = DB::table('EnTech')->get();
+ 
+ 
+         return view('energiesysteme',[
+             'EnTech' =>$EnTech, 'data' =>$data
+ 
+         ]);
     }
 
     /**

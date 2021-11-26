@@ -25,13 +25,7 @@
                                 <input class="form-control form-control2" placeholder="Suchen" aria-label="Search">
                             </div>
 
-                         <!--   <label class="switch">
-                                <input class="switch-input " type="checkbox" onclick="toggleSwitch()" id="ToggleButton">
-                                <span class="switch-label" data-on="Energietechnologien" data-off="Energiesysteme"></span>
-                                <span class="switch-handle"></span>
-                            </label> 
-
-                          -->
+                            
                         </div>
                         <br>
 
@@ -101,9 +95,10 @@
 
                     <!-- Button trigger modal -->
                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                                                        style="margin-top: 6%; margin-left:35%; background-color:#3e8e41"; border:1px solid #3e8e41">
-                                                        Energiesystem hinzufügen
-                                                    </button>-->
+                    style="margin-top: 6%; margin-left:35%; background-color:#3e8e41"; border:1px solid #3e8e41">
+                    Energiesystem hinzufügen
+                    </button>-->
+
 
                     <!-- Modal ES hinzufügen -->
                     <div class="modal modal2 fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -156,8 +151,7 @@
 
                                         <br>
                                         <!--  <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
-                                        <input type="submit" class="btn btn3" id="ESerstellen" onclick="AddMarker()"
-                                            value="Energiesystem erstellen">
+                                        <input type="submit" class="btn btn3" id="ESerstellen" value="Energiesystem erstellen">
                                     </form>
                                 </div>
                             </div>
@@ -186,8 +180,13 @@
                             <div class="modal-body">
 
 
-                                <form action="{{ route('EnSys.store') }}" method="POST">
+                                <form action="{{ route('EnTech.store') }}" id="ETerstellen" method="POST">
                                     @csrf
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1" style="margin-left:40%">ID von ES</label>
+                                        <input type="text" class="form-control form-control3" id="IDES"
+                                            name="IDES" readonly>
+                                    </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
                                         <input type="text" class="form-control form-control3" id="BezeichnungET"
@@ -207,7 +206,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" style="margin-left:45%">Ort</label>
                                         <input type="text" class="form-control form-control3" id="OrtET"
-                                            name="Postleitzahl" placeholder="Wieselburg">
+                                            name="Ort" placeholder="Wieselburg">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
@@ -223,8 +222,7 @@
 
 
                                     <br>
-                                    <!--  <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
-                                    <input type="submit" class="btn btn3" id="ESerstellen"
+                                    <input type="submit" class="btn btn3" id="ETerstellen"
                                         value="Energietechnologie erstellen">
                                 </form>
                             </div>
@@ -303,7 +301,7 @@
 
 
 
-            <!-- ModalEdit -->
+            <!-- Grafana -->
             <div class="modal modal2 fade" id="exampleModalCenterGrafana" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
@@ -407,12 +405,14 @@
             let mapOptions = {
 
                 center: new google.maps.LatLng('48.14078077082782', '15.14955200012205'), //Ausgangspostion der Map
-                zoom: 14,
+                zoom: 12,
                 mapTypeId: "roadmap", //Typ der Map auf Road MAp setzen
                 streetViewControl: false, // STreet View Männdchen ausblenden
                 // mapTypeControl: false,  // Button um zwischen Satiliet und Roadmap umschalten
                 mapId: '23802346582caa31', // MapID von der selbst erstellen Map 
                 draggableCursor: 'crosshair',    
+                scrollwheel: true, //dass Mausscrollen ohne Probleme funktioniert
+
 
                 //Enter Map: 23802346582caa31
                 //Kronstana Map: 396ac7c2d5bcd46
@@ -425,15 +425,15 @@
             let map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
             
-
+           
 
             @auth //Gast darf keine ES erstellen
                 map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
-                breit = e.latLng.toString().substring(1, 18);
-                lang = e.latLng.toString().substring(20, 37);
+                breit = e.latLng.toString().substring(1, 16);
+                lang = e.latLng.toString().substring(20, 35);
                 document.getElementById("Laengengrad").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
                 document.getElementById("Breitengrad").setAttribute('value', lang);
-               
+
                 $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
                
                 
@@ -557,6 +557,19 @@
 
         }
 
+        function ETerstellen(id){
+            $('#exampleModalCenterET').modal('show');
+            locations.forEach(loc => {
+                if (loc[3] == id) {
+                    $("#IDES").val(loc[3]);     
+                    $("#LaengengradEdit").val(loc[1]);
+                    $("#BreitengradEdit").val(loc[2]);
+                    $("#ETerstellen").attr("action", "/store/" + id)
+
+                }
+            })
+        }
+
 
 
 
@@ -590,28 +603,29 @@
 
 
                 //Doppelklick um ES auszuwählen
-                marker.addListener("dblclick", () => {
-                    MapListenerEShinzufügen = false;
+                marker.addListener("dblclick", (e) => 
+                {
+                    
                     map.setZoom(17);
                     map.setCenter(marker.getPosition());
                     marker.setIcon("/images/esgrün.png");
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                     print_List_Energietechnologie();
-
-                  //  document.getElementsByTagName("body")[0].style.cursor = "url('/images/etgrün.png'), auto";
                     map.setOptions({ draggableCursor: 'url(/images/etgrün.png), move' });
 
+
                     map.addListener("rightclick", (e) => { //Ausgefürht wenn Map-Klick
-                    breit = e.latLng.toString().substring(1, 18);
-                    lang = e.latLng.toString().substring(20, 37);
+                   // es = e.es.id.toString();
+
+                    breit = e.latLng.toString().substring(1, 16);
+                    lang = e.latLng.toString().substring(20, 35);
                     document.getElementById("LaengengradET").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
                     document.getElementById("BreitengradET").setAttribute('value', lang);
+                    document.getElementById("IDES").setAttribute('value', 'ID'); //ID von ES einfügen
                     $('#exampleModalCenterET').modal('show'); //Pop Up ET erstellen Aufruf
                         
-                    
 
-                });
-
+                     });
 
                 });
 
@@ -629,33 +643,6 @@
 
 
                 });
-
-                /*
-                @auth //Gast darf keine ES erstellen
-                    marker.addListener("rightclick", () => {
-
-                   // document.getElementsByTagName("body")[0].style.cursor = "url('/images/etgrün.png'), auto";
-                
-                    const beach = locations[i];
-                        
-                    map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
-                    breit = e.latLng.toString().substring(1, 18);
-                    lang = e.latLng.toString().substring(20, 37);
-                    document.getElementById("LaengengradET").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
-                    document.getElementById("BreitengradET").setAttribute('value', lang);
-                    $('#exampleModalCenter').modal('hide');
-                    $('#exampleModalCenterET').modal('show'); //Pop Up ET erstellen Aufruf
-            
-
-
-                });
-                    
-                
-
-                    });
-                @endauth
-                */
-
 
 
 
@@ -676,14 +663,50 @@
             ETListe += "<table class=\"table table-borderless table-hover\" id=\"table\">";
             ETListe += "                                <thead>";
             ETListe += "                                    <tr>";
-            ETListe += "                                        <th scope=\"col\">ID<\/th>";
+            ETListe += "                                        <th scope=\"col\">ID-ES<\/th>";
             ETListe += "                                        <th scope=\"col\">Bezeichnung<\/th>";
-            ETListe += "                                        <th scope=\"col\">Katastralgemeinde<\/th>";
-            ETListe += "                                        <th scope=\"col\">Postleitzahl<\/th>";
+            ETListe += "                                        <th scope=\"col\">Typ<\/th>";
+            ETListe += "                                        <th scope=\"col\">Ort<\/th>";
             ETListe += "";
             ETListe += "";
             ETListe += "                                    <\/tr>";
             ETListe += "                                <\/thead>";
+
+            ETListe += "";
+            ETListe += "                                @foreach ($data as $d)";
+            ETListe += "                                    <tbody>";
+            ETListe += "                                        <tr>";
+            ETListe += "";
+            ETListe += "                                            <td>{{ $d->id }}<\/td>";
+            ETListe += "                                            <td>{{ $d->Bezeichnung }}<\/td>";
+            ETListe += "                                            <td>{{ $d->Katastralgemeinden }}<\/td>";
+            ETListe += "                                            <td>{{ $d->Postleitzahl }}<\/td>";
+            ETListe += "";
+            ETListe += "                                            @auth";
+            ETListe += "                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->";
+            ETListe += "                                                <td> <a href=\"\/delete\/{{ $d->id }}\" class=\"btn btn2\"";
+            ETListe += "                                                        style=\"background-image: url('\/images\/delete.png')\"><\/a><\/td>";
+            ETListe += "                                                <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
+            ETListe += "                                                        style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
+            ETListe += "                                                <td> <a href=\"javascript:editfunction({{ $d->id }})\"";
+            ETListe += "                                                        class=\"btn btn2\"";
+            ETListe += "                                                        style=\"background-image: url('\/images\/stift.png')\"><\/a><\/td>";
+            ETListe += "                                            @endauth";
+            ETListe += "";
+            ETListe += "                                            @guest";
+            ETListe += "                                            <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
+            ETListe += "                                                style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
+            ETListe += "                                            <td> <a href=\"javascript:augefunction({{ $d->id }})\"";
+            ETListe += "                                                class=\"btn btn2\"";
+            ETListe += "                                                style=\"background-image: url('\/images\/auge.png')\"><\/a><\/td>";
+            ETListe += "                                            @endguest";
+            ETListe += "";
+            ETListe += "                                        <\/tr>";
+            ETListe += "                                    <\/tbody>";
+            ETListe += "                                @endforeach";
+
+            
+          
             ETListe += "                            <\/table>";
 
 
@@ -761,7 +784,6 @@
 
 
 
-     
 
 
     </script>

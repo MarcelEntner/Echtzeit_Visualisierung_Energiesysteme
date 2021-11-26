@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EnSysController;
+use App\Http\Controllers\EnTechController;
 use App\Http\Controllers\EtAdAbKmController;
 use App\Http\Controllers\EtBhKwController;
 use App\Http\Controllers\EtBmHkController;
@@ -93,3 +94,4 @@ Route::resource('EtGKbZ',EtGKbZController::class);
 
 Route::get('/delete/{id}',[EnSysController::class, 'destroy']);
 Route::get('/edit/{id}',[EnSysController::class, 'edit']);
+
