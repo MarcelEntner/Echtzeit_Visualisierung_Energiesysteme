@@ -7,7 +7,8 @@
     <!-- Zeile 415 API Key eingebunden -->
     <!-- Zeile 335 Map Key eingebunden -->
 
-    <main>
+    <body oncontextmenu="return false">
+        
 
         <div class="Energiesysteme container-fluid p-5">
             <div class="row w-100">
@@ -189,28 +190,33 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
-                                        <input type="text" class="form-control form-control3" id="exampleFormControlInput1"
-                                            name="Bezeichnung" placeholder="">
+                                        <input type="text" class="form-control form-control3" id="BezeichnungET"
+                                            name="Bezeichnung" placeholder="Bezeichung">
                                     </div>
                                     <div class="form-group ">
                                         <label for="exampleFormControlInput1"
-                                            style="margin-left:40%">Katastalgemeinde</label>
-                                        <input type="text" class="form-control form-control3" id="exampleFormControlInput1"
-                                            name="Katastralgemeinden" placeholder="">
+                                            style="margin-left:45%">Typ</label>
+                                            <br>
+                                            <select name="Typ" id="Typ" style="margin-left:40%">
+                                                <option value="pvanlange">PV-Anlage</option>
+                                                <option value="x">x</option>
+                                                <option value="x">x</option>
+                                                <option value="x">x</option>
+                                              </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleFormControlInput1" style="margin-left:40%">Postleitzahl</label>
-                                        <input type="text" class="form-control form-control3" id="exampleFormControlInput1"
-                                            name="Postleitzahl" placeholder="">
+                                        <label for="exampleFormControlInput1" style="margin-left:45%">Ort</label>
+                                        <input type="text" class="form-control form-control3" id="OrtET"
+                                            name="Postleitzahl" placeholder="Wieselburg">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
-                                        <input type="text" class="form-control form-control3" id="Laengengrad"
+                                        <input type="text" class="form-control form-control3" id="LaengengradET"
                                             name="Laengengrad" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
-                                        <input type="text" class="form-control form-control3" id="Breitengrad"
+                                        <input type="text" class="form-control form-control3" id="BreitengradET"
                                             name="Breitengrad" readonly>
                                     </div>
 
@@ -388,11 +394,14 @@
 
 
         </div>
-    </main>
+
+    </body>
 
 
 
     <script>
+
+
         function LoadMap() {
 
             let mapOptions = {
@@ -402,7 +411,8 @@
                 mapTypeId: "roadmap", //Typ der Map auf Road MAp setzen
                 streetViewControl: false, // STreet View Männdchen ausblenden
                 // mapTypeControl: false,  // Button um zwischen Satiliet und Roadmap umschalten
-                mapId: '23802346582caa31', // MapID von der selbst erstellen Map     
+                mapId: '23802346582caa31', // MapID von der selbst erstellen Map 
+                draggableCursor: 'crosshair',    
 
                 //Enter Map: 23802346582caa31
                 //Kronstana Map: 396ac7c2d5bcd46
@@ -414,26 +424,19 @@
 
             let map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-
+            
 
 
             @auth //Gast darf keine ES erstellen
                 map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
-                //placeMarkerAndPanTo(e.latLng, map); //Aufruf Function Place Marker e.LatLng = Koordinaten
                 breit = e.latLng.toString().substring(1, 18);
                 lang = e.latLng.toString().substring(20, 37);
                 document.getElementById("Laengengrad").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
                 document.getElementById("Breitengrad").setAttribute('value', lang);
+               
                 $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
-            
-            
-            
-                //Icon Auswahl
-            
-                //ESmarker.addListener("click", toggleBounce);
-            
-            
-                //
+               
+                
                 });
             @endauth
 
@@ -466,9 +469,9 @@
 
     <?php
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     $beaches = [];
     
@@ -588,11 +591,28 @@
 
                 //Doppelklick um ES auszuwählen
                 marker.addListener("dblclick", () => {
+                    MapListenerEShinzufügen = false;
                     map.setZoom(17);
                     map.setCenter(marker.getPosition());
                     marker.setIcon("/images/esgrün.png");
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                     print_List_Energietechnologie();
+
+                  //  document.getElementsByTagName("body")[0].style.cursor = "url('/images/etgrün.png'), auto";
+                    map.setOptions({ draggableCursor: 'url(/images/etgrün.png), move' });
+
+                    map.addListener("rightclick", (e) => { //Ausgefürht wenn Map-Klick
+                    breit = e.latLng.toString().substring(1, 18);
+                    lang = e.latLng.toString().substring(20, 37);
+                    document.getElementById("LaengengradET").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
+                    document.getElementById("BreitengradET").setAttribute('value', lang);
+                    $('#exampleModalCenterET').modal('show'); //Pop Up ET erstellen Aufruf
+                        
+                    
+
+                });
+
+
                 });
 
 
@@ -603,25 +623,38 @@
                     marker.setIcon("/images/es.png");
                     marker.setAnimation(google.maps.Animation.DROP);
                     print_List_Energiesysteme();
+                    map.setOptions({ draggableCursor: 'crosshair' });
+                    $('#exampleModalCenterET').modal('hide'); //Pop Up ET erstellen Aufruf
+
 
 
                 });
 
+                /*
                 @auth //Gast darf keine ES erstellen
                     marker.addListener("rightclick", () => {
+
+                   // document.getElementsByTagName("body")[0].style.cursor = "url('/images/etgrün.png'), auto";
                 
                     const beach = locations[i];
-                
-                    var infowindow2 = new google.maps.InfoWindow({
-                    content: beach[0]
-                    });
-                
-                    infowindow2.open(map, marker);
-                
+                        
+                    map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
+                    breit = e.latLng.toString().substring(1, 18);
+                    lang = e.latLng.toString().substring(20, 37);
+                    document.getElementById("LaengengradET").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
+                    document.getElementById("BreitengradET").setAttribute('value', lang);
+                    $('#exampleModalCenter').modal('hide');
                     $('#exampleModalCenterET').modal('show'); //Pop Up ET erstellen Aufruf
+            
+
+
+                });
+                    
+                
+
                     });
                 @endauth
-
+                */
 
 
 
@@ -632,9 +665,7 @@
         }
 
 
-      //  function toggleSwitch() {
-            //alert("Toggle Button Switch");
-       // }
+
 
         
 
