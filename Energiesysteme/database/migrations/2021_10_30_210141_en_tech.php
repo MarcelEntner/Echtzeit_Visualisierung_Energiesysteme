@@ -15,6 +15,7 @@ class EnTech extends Migration
     {
         Schema::create('EnTech', function (Blueprint $table) {
             $table->id();
+            $table->integer('idES');
             $table->string('Typ');
             $table->string('Bezeichnung');
             $table->string('Ort');

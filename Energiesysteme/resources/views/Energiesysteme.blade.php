@@ -59,7 +59,7 @@
                                                 <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
                                                 <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2"
                                                         style="background-image: url('/images/delete.png')"></a></td>
-                                                <td id="hov"> <a href="javascript:Grafanafunction()" class="btn btn2"
+                                                <td id="hov"> <a href="javascript:GrafanafunctionES()" class="btn btn2"
                                                         style="background-image: url('/images/statistik.png')"></a></td>
                                                 <td id="hov"> <a href="javascript:editfunction({{ $d->id }})"
                                                         class="btn btn2"
@@ -67,7 +67,7 @@
                                             @endauth
 
                                             @guest
-                                            <td> <a href="javascript:Grafanafunction()" class="btn btn2"
+                                            <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
                                                 style="background-image: url('/images/statistik.png')"></a></td>
                                             <td> <a href="javascript:augefunction({{ $d->id }})"
                                                 class="btn btn2"
@@ -198,9 +198,9 @@
                                             <br>
                                             <select name="Typ" id="Typ" style="margin-left:40%">
                                                 <option value="pvanlange">PV-Anlage</option>
-                                                <option value="x">x</option>
-                                                <option value="x">x</option>
-                                                <option value="x">x</option>
+                                                <option value="x">x1</option>
+                                                <option value="x">x2</option>
+                                                <option value="x">x3</option>
                                               </select>
                                     </div>
                                     <div class="form-group">
@@ -235,7 +235,7 @@
 
 
 
-            <!-- ModalEdit -->
+            <!-- ModalEditES -->
             <div class="modal modal2 fade" id="exampleModalCenterEdit" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
@@ -301,13 +301,13 @@
 
 
 
-            <!-- Grafana -->
-            <div class="modal modal2 fade" id="exampleModalCenterGrafana" tabindex="-1" role="dialog"
+            <!-- Grafana ES -->
+            <div class="modal modal2 fade" id="exampleModalCenterGrafanaES" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Grafana-Statistiken</h5>
+                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Grafana-Statistiken Energiesysteme</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -326,6 +326,33 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+            
+            <!-- Grafana ET -->
+            <div class="modal modal2 fade" id="exampleModalCenterGrafanaET" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Grafana-Statistiken Energietechnologie</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                           
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
 
 
 
@@ -387,6 +414,88 @@
 
 
 
+              <!-- ModalEdit ET -->
+          <div class="modal modal2 fade" id="exampleModalCenterEditET" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <form id="editFormET" method="GET">
+                                <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
+                                @csrf
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1" style="margin-left:40%">ID Energiesystem</label>
+                                    <input type="text" class="form-control form-control3" id="idEditES"
+                                        name="idEditES" value="" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1" style="margin-left:40%">ID Energietechnologie</label>
+                                    <input type="text" class="form-control form-control3" id="idEditET"
+                                        name="idEditET" value="" readonly>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
+                                    <input type="text" class="form-control form-control3" id="BezeichnungEditET"
+                                        name="BezeichnungEditET" value="">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="exampleFormControlInput1"
+                                        style="margin-left:45%">Typ</label>
+                                        <br>
+                                        <select name="TypEditET" id="TypEditET" style="margin-left:40%">
+                                            <option value="pvanlange">PV-Anlage</option>
+                                            <option value="x">x1</option>
+                                            <option value="x">x2</option>
+                                            <option value="x">x3</option>
+                                          </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1" style="margin-left:45%">Ort</label>
+                                    <input type="text" class="form-control form-control3" id="OrtEditET"
+                                        name="OrtEditET" value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
+                                    <input type="text" class="form-control form-control3" id="LaengengradEditET"
+                                        name="LaengengradEditET" value="" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
+                                    <input type="text" class="form-control form-control3" id="BreitengradEditET"
+                                        name="BreitengradEditET" value="" readonly>
+                                </div>
+
+
+
+                                <br>
+                                <!-- <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
+                                <input type="submit" class="btn btn3" style="background-color:#3e8e41"
+                                    value="Energietechnologie aktualisieren">
+                            </form>
+
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+               <!-- ModalEdit ET  aus-->
+
+
+
 
 
 
@@ -398,6 +507,11 @@
 
 
     <script>
+
+
+
+
+        let activeMarker = false;
 
 
         function LoadMap() {
@@ -429,12 +543,14 @@
 
             @auth //Gast darf keine ES erstellen
                 map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
+                if(!activeMarker){
                 breit = e.latLng.toString().substring(1, 16);
                 lang = e.latLng.toString().substring(20, 35);
                 document.getElementById("Laengengrad").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
                 document.getElementById("Breitengrad").setAttribute('value', lang);
 
                 $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
+                }
                
                 
                 });
@@ -473,7 +589,7 @@
     $password = '';
     $dbname = 'laravel';
     
-    $beaches = [];
+
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -481,31 +597,47 @@
     if ($conn->connect_error) {
         die('Connection failed: ' . $conn->connect_error);
     } else {
-        $sql = 'SELECT id, Bezeichnung, Laengengrad, Breitengrad, Postleitzahl, Katastralgemeinden FROM EnSys';
+        $sql = 'SELECT id, Bezeichnung, Laengengrad, Breitengrad, Postleitzahl, Katastralgemeinden FROM EnSys';  // ES
+        $sql2 = 'SELECT id, idES, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad  FROM EnTech';  // ET
+
         $result = $conn->query($sql);
+        $result2 = $conn->query($sql2);
         $locations = [];
+        $locationsET = [];
+
     
+
         if ($result->num_rows > 0) {
             // output data of each row
-            $i = 0;
             while ($row = $result->fetch_assoc()) {
-                // echo "id: " . $row["id"]. " " . $row["Bezeichnung"]." ". $row["Laengengrad"]. " ". $row["Breitengrad"]. "<br>";            }
+                // echo "id: " . $row["id"]. " " . $row["Bezeichnung"]." ". $row["Laengengrad"]. " ". $row["Breitengrad"]. "<br>";            
     
                 $location = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['id']}, {$row['Postleitzahl']}, '{$row['Katastralgemeinden']}']";
                 array_push($locations, $location);
-    
-                /*$beaches = [
-                                                        $i=> $row["id"],
-                                                        $i+1=> $row["Bezeichnung"],
-                                                        $i+2=> $row["Laengengrad"],
-                                                        $i+3=> $row["Breitengrad"],
-                                                    ];*/
-                // $i= $i+4;
+
             }
-    
-            $conn->close();
         }
+
+        if ($result2->num_rows > 0) {
+            // output data of each row
+            while ($row = $result2->fetch_assoc()) {         
+
+                $locationET = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['idES']}, '{$row['Typ']}', '{$row['Ort']}', '{$row['id']}']";
+
+                array_push($locationsET, $locationET);
     
+              
+            }
+            $conn->close();
+
+
+        }
+
+
+      
+
+    
+        //ES
         echo '<script>var locations = [';
     
         foreach ($locations as $loc) {
@@ -513,6 +645,19 @@
         }
     
         echo ']</script>';
+
+        //ET
+        echo '<script>var locationsET = [';
+            
+            foreach ($locationsET as $locET) {
+                echo $locET . ',';
+            }
+
+            echo ']</script>';
+
+
+
+
     }
     ?>
 
@@ -536,8 +681,8 @@
 
 
 
-        function Grafanafunction() {
-            $('#exampleModalCenterGrafana').modal('show');
+        function GrafanafunctionES() {
+            $('#exampleModalCenterGrafanaES').modal('show');
 
         }
 
@@ -571,15 +716,83 @@
         }
 
 
+        function editfunctionET(id) {
+         $('#exampleModalCenterEditET').modal('show');
+            locationsET.forEach(locEt => {
+                if (locEt[6] == id) {
+                    $("#idEditES").val(locEt[3]);
+                    $("#idEditET").val(locEt[6]);
+                    $("#BezeichnungEditET").val(locEt[0]);
+                    $("#OrtEditET").val(locEt[5]);
+                    $("#TypEditET").val(locEt[4]);
+                    $("#LaengengradEditET").val(locEt[1]);
+                    $("#BreitengradEditET").val(locEt[2]);
+                    $("#editFormET").attr("action", "/editET/" + id)
+                }
+            })
+          
+
+        }
 
 
+        function GrafanafunctionET() {
+            $('#exampleModalCenterGrafanaET').modal('show');
+
+        }
+
+
+
+
+        function setETMarker(map)
+        {
+            for (let i = 0; i < locationsET.length; i++) {
+                const beach2 = locationsET[i];
+
+                const markerET = new google.maps.Marker({
+                    position: {
+                        lat: beach2[1],
+                        lng: beach2[2]
+                    },
+                    map, // 0 Bezeichnung, 1 Längengrad, 2 Breitengrad, 3 Id
+                    icon: '/images/etgrün.png',
+                    title: beach2[0], //Hover 
+                    //label: beach[0], // Was im Icon steht
+                    label: {
+                        text: beach2[0],
+                        color: 'black',
+                        fontSize: '15px',
+                        className: 'marker-position',
+                    },
+                    animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
+                });
+
+
+                markerET.addListener("click", () => {
+                    alert("ET pressed");
+                   
+
+                });
+            }
+
+            
+        }
+
+
+
+
+
+        
+
+
+    
+        
 
 
 
         function setMarkers(map) {
-            // Adds markers to the map.
+            // Adds markers to the map + alle Map-Funktionen
 
-
+            // ES Marker
             for (let i = 0; i < locations.length; i++) {
                 const beach = locations[i];
 
@@ -602,28 +815,43 @@
                 });
 
 
+
                 //Doppelklick um ES auszuwählen
                 marker.addListener("dblclick", (e) => 
                 {
-                    
+                 
+                    let latLng = e.latLng.toString();
+                    breit = parseFloat(latLng.substring(1, latLng.indexOf(","))).toFixed(9);
+                    lang = parseFloat(latLng.substring(latLng.indexOf(",")+1, latLng.length)).toFixed(9);
+                    let id;
+                    locations.forEach((loc) => {
+                        if(loc[1].toFixed(9) == breit && loc[2].toFixed(9) == lang){
+                          id = loc[3];  
+                        }
+                    });
+
                     map.setZoom(17);
                     map.setCenter(marker.getPosition());
                     marker.setIcon("/images/esgrün.png");
                     marker.setAnimation(google.maps.Animation.BOUNCE);
-                    print_List_Energietechnologie();
+                    print_List_Energietechnologie(id);
                     map.setOptions({ draggableCursor: 'url(/images/etgrün.png), move' });
+                    setETMarker(map);
 
+                    activeMarker = true;
 
-                    map.addListener("rightclick", (e) => { //Ausgefürht wenn Map-Klick
-                   // es = e.es.id.toString();
-
-                    breit = e.latLng.toString().substring(1, 16);
-                    lang = e.latLng.toString().substring(20, 35);
+                    
+                    map.addListener("click", (e1) => { //Ausgefürht wenn Map-Klick
+                     
+                    if(activeMarker){
+                    let latLng = e.latLng.toString();
+                    breit = parseFloat(latLng.substring(1, latLng.indexOf(","))).toFixed(9);
+                    lang = parseFloat(latLng.substring(latLng.indexOf(",")+1, latLng.length)).toFixed(9);
                     document.getElementById("LaengengradET").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
                     document.getElementById("BreitengradET").setAttribute('value', lang);
-                    document.getElementById("IDES").setAttribute('value', 'ID'); //ID von ES einfügen
+                    document.getElementById("IDES").setAttribute('value', id); //ID von ES einfügen
                     $('#exampleModalCenterET').modal('show'); //Pop Up ET erstellen Aufruf
-                        
+                    }
 
                      });
 
@@ -638,9 +866,8 @@
                     marker.setAnimation(google.maps.Animation.DROP);
                     print_List_Energiesysteme();
                     map.setOptions({ draggableCursor: 'crosshair' });
-                    $('#exampleModalCenterET').modal('hide'); //Pop Up ET erstellen Aufruf
-
-
+                    $('#exampleModalCenterET').modal('hide'); //Pop Up ET erstellen Aufruf                  
+                    activeMarker = false;
 
                 });
 
@@ -657,13 +884,14 @@
         
 
 
-        function print_List_Energietechnologie(){
+        function print_List_Energietechnologie(id){
 
             var ETListe="";
             ETListe += "<table class=\"table table-borderless table-hover\" id=\"table\">";
             ETListe += "                                <thead>";
             ETListe += "                                    <tr>";
             ETListe += "                                        <th scope=\"col\">ID-ES<\/th>";
+                ETListe += "                                    <th scope=\"col\">ID-ET<\/th>";
             ETListe += "                                        <th scope=\"col\">Bezeichnung<\/th>";
             ETListe += "                                        <th scope=\"col\">Typ<\/th>";
             ETListe += "                                        <th scope=\"col\">Ort<\/th>";
@@ -672,29 +900,29 @@
             ETListe += "                                    <\/tr>";
             ETListe += "                                <\/thead>";
 
-            ETListe += "";
-            ETListe += "                                @foreach ($data as $d)";
+            ETListe += "                                @foreach ($dataEnTech as $d)";
             ETListe += "                                    <tbody>";
-            ETListe += "                                        <tr>";
+            ETListe += "                                        <tr class='enTechTR-{{$d->idES}}' style='display:none;'>";
             ETListe += "";
-            ETListe += "                                            <td>{{ $d->id }}<\/td>";
-            ETListe += "                                            <td>{{ $d->Bezeichnung }}<\/td>";
-            ETListe += "                                            <td>{{ $d->Katastralgemeinden }}<\/td>";
-            ETListe += "                                            <td>{{ $d->Postleitzahl }}<\/td>";
+            ETListe += "                                            <td>{{ $d->idES }}</td>"; //IDES
+            ETListe += "                                            <td>{{ $d->id }}</td>"; //IDET
+            ETListe += "                                            <td>{{ $d->Bezeichnung }}</td>"; //Bezeichnung
+            ETListe += "                                            <td>{{ $d->Typ }}</td>"; //Typ 
+            ETListe += "                                            <td>{{ $d->Ort }}</td>"; //Ort
             ETListe += "";
             ETListe += "                                            @auth";
             ETListe += "                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->";
-            ETListe += "                                                <td> <a href=\"\/delete\/{{ $d->id }}\" class=\"btn btn2\"";
+            ETListe += "                                                <td> <a href=\"\/deleteET\/{{ $d->id }}\" class=\"btn btn2\"";
             ETListe += "                                                        style=\"background-image: url('\/images\/delete.png')\"><\/a><\/td>";
-            ETListe += "                                                <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
+            ETListe += "                                                <td> <a href=\"javascript:GrafanafunctionET()\" class=\"btn btn2\"";
             ETListe += "                                                        style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
-            ETListe += "                                                <td> <a href=\"javascript:editfunction({{ $d->id }})\"";
+            ETListe += "                                                <td> <a href=\"javascript:editfunctionET({{ $d->id }})\"";
             ETListe += "                                                        class=\"btn btn2\"";
             ETListe += "                                                        style=\"background-image: url('\/images\/stift.png')\"><\/a><\/td>";
             ETListe += "                                            @endauth";
             ETListe += "";
             ETListe += "                                            @guest";
-            ETListe += "                                            <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
+            ETListe += "                                            <td> <a href=\"javascript:GrafanafunctionET()\" class=\"btn btn2\"";
             ETListe += "                                                style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
             ETListe += "                                            <td> <a href=\"javascript:augefunction({{ $d->id }})\"";
             ETListe += "                                                class=\"btn btn2\"";
@@ -709,11 +937,9 @@
           
             ETListe += "                            <\/table>";
 
-
-
-
-
             document.getElementById("table").innerHTML = ETListe;
+
+            $(".enTechTR-" + id).css("display", "table-row");
 
                 document.getElementById("Listuberschrieft").innerHTML = "Energietechnologien";
                 document.getElementById("Listimage").src = "/images/etgrün.png";
@@ -751,7 +977,7 @@
                         EnsysListe += "                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->";
                         EnsysListe += "                                                <td> <a href=\"\/delete\/{{ $d->id }}\" class=\"btn btn2\"";
                         EnsysListe += "                                                        style=\"background-image: url('\/images\/delete.png')\"><\/a><\/td>";
-                        EnsysListe += "                                                <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
+                        EnsysListe += "                                                <td> <a href=\"javascript:GrafanafunctionES()\" class=\"btn btn2\"";
                         EnsysListe += "                                                        style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
                         EnsysListe += "                                                <td> <a href=\"javascript:editfunction({{ $d->id }})\"";
                         EnsysListe += "                                                        class=\"btn btn2\"";
@@ -759,7 +985,7 @@
                         EnsysListe += "                                            @endauth";
                         EnsysListe += "";
                         EnsysListe += "                                            @guest";
-                        EnsysListe += "                                            <td> <a href=\"javascript:Grafanafunction()\" class=\"btn btn2\"";
+                        EnsysListe += "                                            <td> <a href=\"javascript:GrafanafunctionES()\" class=\"btn btn2\"";
                         EnsysListe += "                                                style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
                         EnsysListe += "                                            <td> <a href=\"javascript:augefunction({{ $d->id }})\"";
                         EnsysListe += "                                                class=\"btn btn2\"";

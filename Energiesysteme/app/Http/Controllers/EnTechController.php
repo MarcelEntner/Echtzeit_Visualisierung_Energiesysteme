@@ -39,6 +39,7 @@ class EnTechController extends Controller
     {
         $enTech = new EnTech();
         
+        $enTech->idES=$request->IDES;
         $enTech->Bezeichnung=$request->Bezeichnung;
         $enTech->Laengengrad=$request->Laengengrad;
         $enTech->Breitengrad=$request->Breitengrad;
@@ -75,9 +76,24 @@ class EnTechController extends Controller
      * @param  \App\Models\EnTech  $enTech
      * @return \Illuminate\Http\Response
      */
-    public function edit(EnTech $enTech)
+    public function edit(Request $request,$id)
     {
-        //
+    
+        $EnTech = EnTech::find($id);
+
+        $EnTech = EnTech::where('id',$id)->
+        update([
+                'Laengengrad' => $request->input('LaengengradEditET'),
+                'Breitengrad' => $request->input('BreitengradEditET'),
+                'Bezeichnung' => $request->input('BezeichnungEditET'),
+                'Typ' => $request->input('TypEditET'),
+                'Ort' => $request->input('OrtEditET'),
+        ]);
+      
+
+        return redirect ('/energiesysteme');
+
+        
     }
 
     /**
@@ -98,8 +114,18 @@ class EnTechController extends Controller
      * @param  \App\Models\EnTech  $enTech
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EnTech $enTech)
+    public function destroy($id)
     {
-        //
+        $EnTech = EnTech::find($id);
+
+        
+        if ($EnTech == null){
+            dd("Konnte nicht gelöscht werden");
+        }
+
+        else {
+          $EnTech->delete();
+         return redirect ('/energiesysteme');
+         }
     }
 }

@@ -23,8 +23,9 @@ class FrontEndController extends Controller
     public function energiesysteme()
     {
         $data = DB::table('EnSys')->get();
+        $dataEnTech = DB::table("EnTech")->get();
 
-        return view('Energiesysteme' , compact('data'));
+        return view('Energiesysteme' , compact('data', 'dataEnTech'));
     }
     public function impressum()
     {

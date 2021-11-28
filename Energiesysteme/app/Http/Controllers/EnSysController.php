@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EnSys;
+use App\Models\EnTech;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -121,6 +122,7 @@ class EnSysController extends Controller
     {
 
         $EnSys = EnSys::find($id);
+
         
         if ($EnSys == null){
             dd("Konnte nicht gelöscht werden");
@@ -128,8 +130,14 @@ class EnSysController extends Controller
 
         else {
           $EnSys->delete();
+          $EnTech = EnTech::where('idES', $id)->delete();
          return redirect ('/energiesysteme');
          }
+
+    
+           
+    
+         
         
     }
 }
