@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use EnTech;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class EnSys extends Model
 {
@@ -14,6 +16,12 @@ class EnSys extends Model
 
     public function Energiesysteme()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
+    }
+
+
+    public function EnergietechnologienGesammt()
+    {
+        return $this->BelongsTo(EnTech::class);
     }
 }

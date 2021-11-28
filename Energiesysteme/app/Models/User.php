@@ -44,7 +44,7 @@ class User extends Authenticatable
 
 public function Energiesysteme()
 {
-    return $this->hasMany(EnSys::class);
+    return $this->belongsTo(EnSys::class);
 }
 
 
