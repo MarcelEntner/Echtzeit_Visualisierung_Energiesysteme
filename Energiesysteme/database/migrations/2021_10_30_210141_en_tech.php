@@ -15,7 +15,8 @@ class EnTech extends Migration
     {
         Schema::create('EnTech', function (Blueprint $table) {
             $table->id();
-            $table->integer('idES');
+            $table->bigInteger('ensys_id')->unsigned();
+            $table->foreign('ensys_id')->references('id')->on('EnSys')->onDelete('cascade');
             $table->string('Typ');
             $table->string('Bezeichnung');
             $table->string('Ort');

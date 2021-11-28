@@ -10,4 +10,8 @@ class EtEl extends Model
     use HasFactory;
 
     protected $table = 'EtEl';
+    public function EnTechGem()
+    {
+        return $this->hasOne(EnTech::class);
+    }
 }

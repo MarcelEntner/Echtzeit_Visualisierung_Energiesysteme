@@ -9,5 +9,8 @@ class EtBs extends Model
 {
     use HasFactory;
     protected $table = 'EtBs';
-    
+    public function EnTechGem()
+    {
+        return $this->hasOne(EnTech::class);
+    }
 }

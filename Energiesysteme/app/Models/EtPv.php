@@ -13,4 +13,8 @@ class EtPv extends Model
     protected $table = 'EtPv';
     
 
+    public function EntechGem()
+    {
+        return $this->hasOne(EnTech::class);
+    }
 }

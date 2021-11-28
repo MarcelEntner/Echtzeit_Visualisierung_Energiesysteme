@@ -15,6 +15,8 @@ class EtGWbZ extends Migration
     {
         Schema::create('EtGWbZ', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('EnTech_id')->unsigned();
+            $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
             $table->double('Zaelerstand');
             $table->timestamps();
         });

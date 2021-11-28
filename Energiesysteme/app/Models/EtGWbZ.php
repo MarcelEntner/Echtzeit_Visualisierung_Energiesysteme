@@ -10,4 +10,8 @@ class EtGWbZ extends Model
     use HasFactory;
 
     protected $table = 'EtGWbZ';
+    public function EnTechGem()
+    {
+        return $this->hasOne(EnTech::class);
+    }
 }

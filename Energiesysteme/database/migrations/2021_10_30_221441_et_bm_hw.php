@@ -15,6 +15,8 @@ class EtBmHw extends Migration
     {
         Schema::create('EtBmHw', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('EnTech_id')->unsigned();
+            $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
             $table->double('Leistung');
             $table->double('Energie');
             $table->double('Vorlauftemp');
