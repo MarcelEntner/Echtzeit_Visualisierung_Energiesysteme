@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\EnSys;
 use App\Models\EnTech;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class EnSysController extends Controller
@@ -37,14 +38,24 @@ class EnSysController extends Controller
      */
     public function store(Request $request)
     {
+
+        $user = Auth::user();
+       
         $enSys = new EnSys();
         $enSys->Bezeichnung=$request->Bezeichnung;
         $enSys->Laengengrad=$request->Laengengrad;
         $enSys->Breitengrad=$request->Breitengrad;
         $enSys->Katastralgemeinden=$request->Katastralgemeinden;
         $enSys->Postleitzahl=$request->Postleitzahl;
+        $enSys->user_id=$user->id;
         $enSys->save();
         $data = DB::table('EnSys')->get();
+
+
+
+        
+
+        
 
 
         return redirect("/energiesysteme")->with(['data' => $data]);

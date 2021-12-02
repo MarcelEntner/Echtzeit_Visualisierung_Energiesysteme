@@ -621,9 +621,9 @@
 
     <?php
     $servername = 'localhost';
-    $username = 'root';
-    $password = '';
-    $dbname = 'laravel';
+    $username = 'dev';
+    $password = 'Oi24Spc5';
+    $dbname = 'EnsysAlpha';
     
 
     
@@ -634,7 +634,12 @@
         die('Connection failed: ' . $conn->connect_error);
     } else {
         $sql = 'SELECT id, Bezeichnung, Laengengrad, Breitengrad, Postleitzahl, Katastralgemeinden FROM EnSys';  // ES
-        $sql2 = 'SELECT id, idES, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad  FROM EnTech';  // ET
+        $es_select =  DB::select('select id, Bezeichnung, Laengengrad,Breitengrad, Postleitzahl, Katastralgemeinden from EnSys'); // ES Select mit Laravel
+
+
+        $sql2 = 'SELECT id, ensys_id, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad  FROM EnTech';  // ET
+        $et_select = DB::select('select id, ensys_id, Typ, Bezeichnung, Ort, Laengengrad, Breitengrad from EnTech'); // ET Select mit Laravel
+    
 
         $result = $conn->query($sql);
         $result2 = $conn->query($sql2);
