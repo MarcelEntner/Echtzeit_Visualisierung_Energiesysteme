@@ -196,11 +196,28 @@
                                         <label for="exampleFormControlInput1"
                                             style="margin-left:45%">Typ</label>
                                             <br>
-                                            <select name="Typ" id="Typ" style="margin-left:40%">
+                                            <select name="Typ" id="Typ" style="margin-left:20%; text-align:center">
                                                 <option value="pvanlange">PV-Anlage</option>
-                                                <option value="x">x1</option>
-                                                <option value="x">x2</option>
-                                                <option value="x">x3</option>
+                                                <option value="Stromnetzbezug">Stromnetzbezug</option>
+                                                <option value="Batteriespeicher">Batteriespeicher</option>
+                                                <option value="Wasserstoff Elektrolyse">Wasserstoff Elektrolyse</option>
+                                                <option value="Wasserstoff Brennstoffzelle"> Wasserstoff Brennstoffzelle</option>
+                                                <option value="Wasserstoff Speicher"> Wasserstoff Speicher</option>
+                                                <option value="Windkraftanlage"> Windkraftanlage</option>
+                                                <option value="E-Ladestation"> E-Ladestation</option>
+                                                <option value="Hausanschlusszähler"> Hausanschlusszähler</option>
+                                                <option value="Wärmenetzbezug"> Wärmenetzbezug</option>
+                                                <option value="Biomasseheizkraftwerk"> Biomasseheizkraftwerk (BHKW)</option>
+                                                <option value="Biomasseheizwerk"> Biomasseheizwerk </option>
+                                                <option value="Biomasseheizkessel"> Biomasseheizkessel</option>
+                                                <option value="Wärmespeicher"> Wärmespeicher</option>
+                                                <option value="Solarthermieanlage"> Solarthermieanlage</option>
+                                                <option value="Wärmepumpe"> Wärmepumpe</option>
+                                                <option value="Gebäude Wärmebedarfszähler"> Gebäude Wärmebedarfszähler</option>
+                                                <option value="Kompressionskältemaschiene"> Kompressionskältemaschiene</option>
+                                                <option value="Ab oder Adsorbtionskältemaschiene"> Ab oder Adsorbtionskältemaschiene</option>
+                                                <option value="Kältespeicher">Kältespeicher</option>
+                                                <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
                                               </select>
                                     </div>
                                     <div class="form-group">
@@ -450,11 +467,29 @@
                                     <label for="exampleFormControlInput1"
                                         style="margin-left:45%">Typ</label>
                                         <br>
-                                        <select name="TypEditET" id="TypEditET" style="margin-left:40%">
+                                        <select name="TypEditET" id="TypEditET" style="margin-left:20%; text-align:center">
                                             <option value="pvanlange">PV-Anlage</option>
-                                            <option value="x">x1</option>
-                                            <option value="x">x2</option>
-                                            <option value="x">x3</option>
+                                            <option value="pvanlange">PV-Anlage</option>
+                                            <option value="Stromnetzbezug">Stromnetzbezug</option>
+                                            <option value="Batteriespeicher">Batteriespeicher</option>
+                                            <option value="Wasserstoff Elektrolyse">Wasserstoff Elektrolyse</option>
+                                            <option value="Wasserstoff Brennstoffzelle"> Wasserstoff Brennstoffzelle</option>
+                                            <option value="Wasserstoff Speicher"> Wasserstoff Speicher</option>
+                                            <option value="Windkraftanlage"> Windkraftanlage</option>
+                                            <option value="E-Ladestation"> E-Ladestation</option>
+                                            <option value="Hausanschlusszähler"> Hausanschlusszähler</option>
+                                            <option value="Wärmenetzbezug"> Wärmenetzbezug</option>
+                                            <option value="Biomasseheizkraftwerk"> Biomasseheizkraftwerk (BHKW)</option>
+                                            <option value="Biomasseheizwerk"> Biomasseheizwerk </option>
+                                            <option value="Biomasseheizkessel"> Biomasseheizkessel</option>
+                                            <option value="Wärmespeicher"> Wärmespeicher</option>
+                                            <option value="Solarthermieanlage"> Solarthermieanlage</option>
+                                            <option value="Wärmepumpe"> Wärmepumpe</option>
+                                            <option value="Gebäude Wärmebedarfszähler"> Gebäude Wärmebedarfszähler</option>
+                                            <option value="Kompressionskältemaschiene"> Kompressionskältemaschiene</option>
+                                            <option value="Ab oder Adsorbtionskältemaschiene"> Ab oder Adsorbtionskältemaschiene</option>
+                                            <option value="Kältespeicher">Kältespeicher</option>
+                                            <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
                                           </select>
                                 </div>
                                 <div class="form-group">
@@ -512,6 +547,7 @@
 
 
         let activeMarker = false;
+
 
 
         function LoadMap() {
@@ -585,9 +621,9 @@
 
     <?php
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
 
     
@@ -745,35 +781,37 @@
 
         function setETMarker(map)
         {
-            for (let i = 0; i < locationsET.length; i++) {
-                const beach2 = locationsET[i];
+        
+                for (let i = 0; i < locationsET.length; i++) {
+                    const beach2 = locationsET[i];
 
-                const markerET = new google.maps.Marker({
-                    position: {
-                        lat: beach2[1],
-                        lng: beach2[2]
-                    },
-                    map, // 0 Bezeichnung, 1 Längengrad, 2 Breitengrad, 3 Id
-                    icon: '/images/etgrün.png',
-                    title: beach2[0], //Hover 
-                    //label: beach[0], // Was im Icon steht
-                    label: {
-                        text: beach2[0],
-                        color: 'black',
-                        fontSize: '15px',
-                        className: 'marker-position',
-                    },
-                    animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
-                });
+                    const markerET = new google.maps.Marker({
+                        position: {
+                            lat: beach2[1],
+                            lng: beach2[2]
+                        },
+                        map, // 0 Bezeichnung, 1 Längengrad, 2 Breitengrad, 3 Id
+                        icon: '/images/etgrün.png',
+                        title: beach2[0], //Hover 
+                        //label: beach[0], // Was im Icon steht
+                        label: {
+                            text: beach2[0],
+                            color: 'black',
+                            fontSize: '15px',
+                            className: 'marker-position',
+                        },
+                        animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
+                    });
 
 
-                markerET.addListener("click", () => {
-                    alert("ET pressed");
-                   
-
-                });
-            }
-
+                    markerET.addListener("click", () => {
+                        alert("ET pressed");
+                       // markerET.setVisible(false);
+                    });
+                    
+                }
+          
+                
             
         }
 
@@ -836,27 +874,28 @@
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                     print_List_Energietechnologie(id);
                     map.setOptions({ draggableCursor: 'url(/images/etgrün.png), move' });
+                    
+                    activeMarker = true;
                     setETMarker(map);
 
-                    activeMarker = true;
 
                     
                     map.addListener("click", (e1) => { //Ausgefürht wenn Map-Klick
-                     
                     if(activeMarker){
-                    let latLng = e.latLng.toString();
-                    breit = parseFloat(latLng.substring(1, latLng.indexOf(","))).toFixed(9);
-                    lang = parseFloat(latLng.substring(latLng.indexOf(",")+1, latLng.length)).toFixed(9);
-                    document.getElementById("LaengengradET").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
-                    document.getElementById("BreitengradET").setAttribute('value', lang);
+                    let latLng = e1.latLng.toString();
+                    breitET = parseFloat(latLng.substring(1, latLng.indexOf(","))).toFixed(9);
+                    langET = parseFloat(latLng.substring(latLng.indexOf(",")+1, latLng.length)).toFixed(9);
+                    document.getElementById("LaengengradET").setAttribute('value',breitET); //Koordinaten den Input Feldern hinzufügen
+                    document.getElementById("BreitengradET").setAttribute('value', langET);
                     document.getElementById("IDES").setAttribute('value', id); //ID von ES einfügen
                     $('#exampleModalCenterET').modal('show'); //Pop Up ET erstellen Aufruf
+
                     }
 
                      });
 
-                });
 
+                });
 
                 //Einfacher Klick um ES abzuwählen
                 marker.addListener("click", () => {
@@ -868,6 +907,7 @@
                     map.setOptions({ draggableCursor: 'crosshair' });
                     $('#exampleModalCenterET').modal('hide'); //Pop Up ET erstellen Aufruf                  
                     activeMarker = false;
+    
 
                 });
 
@@ -891,7 +931,7 @@
             ETListe += "                                <thead>";
             ETListe += "                                    <tr>";
             ETListe += "                                        <th scope=\"col\">ID-ES<\/th>";
-                ETListe += "                                    <th scope=\"col\">ID-ET<\/th>";
+            ETListe += "                                    <th scope=\"col\">ID-ET<\/th>";
             ETListe += "                                        <th scope=\"col\">Bezeichnung<\/th>";
             ETListe += "                                        <th scope=\"col\">Typ<\/th>";
             ETListe += "                                        <th scope=\"col\">Ort<\/th>";
