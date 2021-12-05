@@ -374,7 +374,7 @@
 
 
 
-              <!-- ModalAuge -->
+              <!-- ModalAuge ES -->
               <div class="modal modal2 fade" id="exampleModalCenterAuge" tabindex="-1" role="dialog"
               aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
@@ -425,6 +425,79 @@
                   </div>
               </div>
           </div>
+
+
+
+
+
+
+                <!-- ModalAuge ET -->
+                <div class="modal modal2 fade" id="exampleModalCenterAugeET" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+  
+                        <div class="modal-body">
+                            <h3 style="text-align: center;"> Weitere Details </h3>
+                            <form id="augeFormET" method="GET">
+                              <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
+                              @csrf
+                              <div class="form-group">
+                                  <label for="exampleFormControlInput1" style="margin-left:45%">ID-ES</label>
+                                  <input type="text" class="form-control form-control3" id="IDESAugeET"
+                                      name="Bezeichnung" value="" readonly>
+                              </div>
+                              <div class="form-group ">
+                                  <label for="exampleFormControlInput1" style="margin-left:45%">ID-ET</label>
+                                  <input type="text" class="form-control form-control3" id="IDETAugeET"
+                                      name="Katastralgemeinden" value="" readonly>
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
+                                  <input type="text" class="form-control form-control3" id="BezeichnungAugeET"
+                                      name="Postleitzahl" value="" readonly>
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleFormControlInput1" style="margin-left:45%">Typ</label>
+                                  <input type="text" class="form-control form-control3" id="TypAugeET"
+                                      name="Laengengrad" value="" readonly>
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleFormControlInput1" style="margin-left:45%">Ort</label>
+                                  <input type="text" class="form-control form-control3" id="OrtAugeET"
+                                      name="Breitengrad" value="" readonly>
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
+                                <input type="text" class="form-control form-control3" id="LaengengradAugeET"
+                                    name="Breitengrad" value="" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
+                                <input type="text" class="form-control form-control3" id="BreitengradAugeET"
+                                    name="Breitengrad" value="" readonly>
+                            </div>
+                          </form>
+  
+  
+                        </div>
+  
+  
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
 
 
 
@@ -621,9 +694,9 @@
 
     <?php
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
 
     
@@ -663,7 +736,7 @@
             // output data of each row
             while ($row = $result2->fetch_assoc()) {         
 
-                $locationET = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['idES']}, '{$row['Typ']}', '{$row['Ort']}', '{$row['id']}']";
+                $locationET = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['ensys_id']}, '{$row['Typ']}', '{$row['Ort']}', '{$row['id']}']";
 
                 array_push($locationsET, $locationET);
     
@@ -743,9 +816,28 @@
 
         }
 
+
+        function augefunctionET(id){
+            $('#exampleModalCenterAugeET').modal('show');
+            locationsET.forEach(loc => {
+                if (loc[6] == id) {
+                    $("#IDESAugeET").val(loc[3]);
+                    $("#IDETAugeET").val(loc[6]);
+                    $("#BezeichnungAugeET").val(loc[0]);
+                    $("#TypAugeET").val(loc[4]);
+                    $("#OrtAugeET").val(loc[5]);
+                    $("#LaengengradAugeET").val(loc[1]);
+                    $("#BreitengradAugeET").val(loc[2]);
+                    $("#augeFormET")
+                }
+            })
+        }
+
+
+
         function ETerstellen(id){
             $('#exampleModalCenterET').modal('show');
-            locations.forEach(loc => {
+            locationsET.forEach(loc => {
                 if (loc[3] == id) {
                     $("#IDES").val(loc[3]);     
                     $("#LaengengradEdit").val(loc[1]);
@@ -947,9 +1039,9 @@
 
             ETListe += "                                @foreach ($dataEnTech as $d)";
             ETListe += "                                    <tbody>";
-            ETListe += "                                        <tr class='enTechTR-{{$d->idES}}' style='display:none;'>";
+            ETListe += "                                        <tr class='enTechTR-{{$d->ensys_id}}' style='display:none;'>";
             ETListe += "";
-            ETListe += "                                            <td>{{ $d->idES }}</td>"; //IDES
+            ETListe += "                                            <td>{{ $d->ensys_id }}</td>"; //IDES
             ETListe += "                                            <td>{{ $d->id }}</td>"; //IDET
             ETListe += "                                            <td>{{ $d->Bezeichnung }}</td>"; //Bezeichnung
             ETListe += "                                            <td>{{ $d->Typ }}</td>"; //Typ 
@@ -969,7 +1061,7 @@
             ETListe += "                                            @guest";
             ETListe += "                                            <td> <a href=\"javascript:GrafanafunctionET()\" class=\"btn btn2\"";
             ETListe += "                                                style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
-            ETListe += "                                            <td> <a href=\"javascript:augefunction({{ $d->id }})\"";
+            ETListe += "                                            <td> <a href=\"javascript:augefunctionET({{ $d->id }})\"";
             ETListe += "                                                class=\"btn btn2\"";
             ETListe += "                                                style=\"background-image: url('\/images\/auge.png')\"><\/a><\/td>";
             ETListe += "                                            @endguest";

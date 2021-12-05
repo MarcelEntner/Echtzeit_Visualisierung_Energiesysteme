@@ -39,7 +39,7 @@ class EnTechController extends Controller
     {
         $enTech = new EnTech();
         
-        $enTech->idES=$request->IDES;
+        $enTech->ensys_id=$request->IDES;
         $enTech->Bezeichnung=$request->Bezeichnung;
         $enTech->Laengengrad=$request->Laengengrad;
         $enTech->Breitengrad=$request->Breitengrad;
