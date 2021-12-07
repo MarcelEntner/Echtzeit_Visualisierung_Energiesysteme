@@ -116,7 +116,7 @@
 
                                     <form action="{{ route('EnSys.store') }}" method="POST">
                                         @csrf
-                                        <div class="form-group">
+                                     <!--   <div class="form-group">
                                             <label for="exampleFormControlInput1"
                                                 style="margin-left:40%">Bezeichnung</label>
                                             <input type="text" class="form-control form-control3"
@@ -146,7 +146,28 @@
                                             <input type="text" class="form-control form-control3" id="Breitengrad"
                                                 name="Breitengrad" readonly>
                                         </div>
+                                            -->
 
+                                            <div class="input-group mb-3" style="margin-top:2%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:10%">Bezeichnung</span>
+                                            <input type="text" class="form-control3" id="BezeichnungES" name="BezeichnungES"  aria-label="Bezeichnung" aria-describedby="basic-addon1" placeholder="MicroGridLab">
+                                        </div>
+                                        <div class="input-group mb-3" style="margin-top:5%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:10%">Katastralgemeinde</span>
+                                            <input  type="text" class="form-control3" id="KatastralgemeindenES" name="KatastralgemeindenES" aria-label="Katastralgemeinden" aria-describedby="basic-addon1" placeholder="Wieselburg">
+                                        </div>
+                                        <div class="input-group mb-3" style="margin-top:5%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:10%">Postleitzahl</span>
+                                            <input  type="text" class="form-control3" id="PostleitzahlES" name="PostleitzahlES" aria-label="Postleitzahl" aria-describedby="basic-addon1" placeholder="3250">
+                                        </div>
+                                        <div class="input-group mb-3" style="margin-top:5%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:10%">Längengrad</span>
+                                            <input  type="text" class="form-control3" id="LaengengradES" name="LaengengradES" aria-label="LaengengradES" aria-describedby="basic-addon1" readonly>
+                                        </div>
+                                        <div class="input-group mb-3" style="margin-top:5%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:10%">Breitengrad</span>
+                                            <input  type="text" class="form-control3" id="BreitengradES" name="BreitengradES" aria-label="BreitengradES" aria-describedby="basic-addon1" readonly>
+                                        </div>
 
 
                                         <br>
@@ -620,7 +641,8 @@
 
 
         let activeMarker = false;
-
+        let activeClick = false;
+        let markersArray= [];
 
 
         function LoadMap() {
@@ -655,8 +677,8 @@
                 if(!activeMarker){
                 breit = e.latLng.toString().substring(1, 16);
                 lang = e.latLng.toString().substring(20, 35);
-                document.getElementById("Laengengrad").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
-                document.getElementById("Breitengrad").setAttribute('value', lang);
+                document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
+                document.getElementById("BreitengradES").setAttribute('value', lang);
 
                 $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
                 }
@@ -898,13 +920,18 @@
                             className: 'marker-position',
                         },
                         animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
+
+                         
                     });
+
 
 
                     markerET.addListener("click", () => {
                         alert("ET pressed");
                        // markerET.setVisible(false);
                     });
+
+                    markersArray.push(markerET);
                     
                 }
           
@@ -914,7 +941,7 @@
 
 
 
-
+       
 
         
 
@@ -949,6 +976,19 @@
                     animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
                 });
 
+                function unsetMarker(map){
+                    
+            
+                    for (var i = 0; i < markersArray.length; i++ ) {
+                          markersArray[i].setMap(null);
+                    }
+                        markersArray.length = 0;
+                 
+
+                          
+
+                }
+
 
 
                 //Doppelklick um ES auszuwählen
@@ -973,7 +1013,15 @@
                     map.setOptions({ draggableCursor: 'url(/images/etgrün.png), move' });
                     
                     activeMarker = true;
+                    activeClick=true;
+
+                   
+
+            
                     setETMarker(map);
+                 
+                    
+                
 
 
                     
@@ -985,7 +1033,12 @@
                     document.getElementById("LaengengradET").setAttribute('value',breitET); //Koordinaten den Input Feldern hinzufügen
                     document.getElementById("BreitengradET").setAttribute('value', langET);
                     document.getElementById("IDES").setAttribute('value', id); //ID von ES einfügen
+                    
                     $('#exampleModalCenterET').modal('show'); //Pop Up ET erstellen Aufruf
+
+                    
+                    
+                   
 
                     }
 
@@ -1004,6 +1057,11 @@
                     map.setOptions({ draggableCursor: 'crosshair' });
                     $('#exampleModalCenterET').modal('hide'); //Pop Up ET erstellen Aufruf                  
                     activeMarker = false;
+                    if (activeClick == true){
+                     unsetMarker(map);
+                    }
+                    
+               
     
 
                 });
@@ -1015,7 +1073,8 @@
 
         }
 
-
+       
+      
 
 
         
@@ -1145,6 +1204,10 @@
             document.getElementById("Listimage").src = "/images/es.png";
         }
 
+
+
+      
+      
 
 
 

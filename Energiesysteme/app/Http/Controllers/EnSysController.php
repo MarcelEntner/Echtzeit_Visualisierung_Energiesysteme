@@ -42,11 +42,11 @@ class EnSysController extends Controller
         $user = Auth::user();
        
         $enSys = new EnSys();
-        $enSys->Bezeichnung=$request->Bezeichnung;
-        $enSys->Laengengrad=$request->Laengengrad;
-        $enSys->Breitengrad=$request->Breitengrad;
-        $enSys->Katastralgemeinden=$request->Katastralgemeinden;
-        $enSys->Postleitzahl=$request->Postleitzahl;
+        $enSys->Bezeichnung=$request->BezeichnungES;
+        $enSys->Laengengrad=$request->LaengengradES;
+        $enSys->Breitengrad=$request->BreitengradES;
+        $enSys->Katastralgemeinden=$request->KatastralgemeindenES;
+        $enSys->Postleitzahl=$request->PostleitzahlES;
         $enSys->user_id=$user->id;
         $enSys->save();
         $data = DB::table('EnSys')->get();
