@@ -910,7 +910,7 @@
                             lng: beach2[2]
                         },
                         map, // 0 Bezeichnung, 1 Längengrad, 2 Breitengrad, 3 Id
-                        icon: '/images/etgrün.png',
+                      
                         title: beach2[0], //Hover 
                         //label: beach[0], // Was im Icon steht
                         label: {
@@ -921,14 +921,24 @@
                         },
                         animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
 
+
+
+
+                        //Icon Auswahl
+                        icon: '/images/stromnetz_icon.png',
                          
                     });
+
+                    var icon = '/images/stromnetz_icon.png';
+                    //console.log(beach2[4]);
 
 
 
                     markerET.addListener("click", () => {
-                        alert("ET pressed");
-                       // markerET.setVisible(false);
+                        //alert("ET pressed");
+                        map.setZoom(20);
+                        map.setCenter(markerET.getPosition());
+
                     });
 
                     markersArray.push(markerET);

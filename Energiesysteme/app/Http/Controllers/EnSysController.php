@@ -141,7 +141,7 @@ class EnSysController extends Controller
 
         else {
           $EnSys->delete();
-          $EnTech = EnTech::where('idES', $id)->delete();
+          $EnTech = EnTech::where('ensys_id', $id)->delete();
          return redirect ('/energiesysteme');
          }
 
