@@ -2418,6 +2418,7 @@ textarea.form-control-lg {
     background-color: #e9ecef;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+    width: 180px;
 }
 .input-group-lg > .btn,
 .input-group-lg > .form-control,

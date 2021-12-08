@@ -21,7 +21,7 @@
                     <div class="shadow-lg rounded p-5">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
-                                <h3> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/es.png" id="Listimage"></h3>
+                                <h3> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/es.png" id="Listimage"></h3>
                                 <input class="form-control form-control2" placeholder="Suchen" aria-label="Search">
                             </div>
 
@@ -58,20 +58,20 @@
                                             @auth
                                                 <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
                                                 <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2"
-                                                        style="background-image: url('/images/delete.png')"></a></td>
+                                                        style="background-image: url('/images/buttons/delete.png')"></a></td>
                                                 <td id="hov"> <a href="javascript:GrafanafunctionES()" class="btn btn2"
-                                                        style="background-image: url('/images/statistik.png')"></a></td>
+                                                        style="background-image: url('/images/buttons/statistik.png')"></a></td>
                                                 <td id="hov"> <a href="javascript:editfunction({{ $d->id }})"
                                                         class="btn btn2"
-                                                        style="background-image: url('/images/stift.png')"></a></td>
+                                                        style="background-image: url('/images/buttons/stift.png')"></a></td>
                                             @endauth
 
                                             @guest
                                             <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
-                                                style="background-image: url('/images/statistik.png')"></a></td>
+                                                style="background-image: url('/images/buttons/statistik.png')"></a></td>
                                             <td> <a href="javascript:augefunction({{ $d->id }})"
                                                 class="btn btn2"
-                                                style="background-image: url('/images/auge.png')"></a></td>
+                                                style="background-image: url('/images/buttons/auge.png')"></a></td>
                                             @endguest
 
                                         </tr>
@@ -116,56 +116,35 @@
 
                                     <form action="{{ route('EnSys.store') }}" method="POST">
                                         @csrf
-                                     <!--   <div class="form-group">
-                                            <label for="exampleFormControlInput1"
-                                                style="margin-left:40%">Bezeichnung</label>
-                                            <input type="text" class="form-control form-control3"
-                                                id="exampleFormControlInput1" name="Bezeichnung" placeholder="MicroGridLab">
-                                        </div>
-                                        <div class="form-group ">
-                                            <label for="exampleFormControlInput1"
-                                                style="margin-left:40%">Katastalgemeinde</label>
-                                            <input type="text" class="form-control form-control3"
-                                                id="exampleFormControlInput1" name="Katastralgemeinden"
-                                                placeholder="Wieselburg">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlInput1"
-                                                style="margin-left:40%">Postleitzahl</label>
-                                            <input type="text" class="form-control form-control3"
-                                                id="exampleFormControlInput1" name="Postleitzahl" placeholder="3250">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
-                                            <input type="text" class="form-control form-control3" id="Laengengrad"
-                                                name="Laengengrad" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlInput1"
-                                                style="margin-left:40%">Breitengrad</label>
-                                            <input type="text" class="form-control form-control3" id="Breitengrad"
-                                                name="Breitengrad" readonly>
-                                        </div>
-                                            -->
 
-                                            <div class="input-group mb-3" style="margin-top:2%">
-                                            <span class="input-group-text" id="basic-addon1" style="margin-left:10%">Bezeichnung</span>
-                                            <input type="text" class="form-control3" id="BezeichnungES" name="BezeichnungES"  aria-label="Bezeichnung" aria-describedby="basic-addon1" placeholder="MicroGridLab">
+                                        <div class="input-group mb-3" style="margin-top:2%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                            Bezeichnung</span>
+                                        <input type="text" class="form-control3" id="BezeichnungES" name="BezeichnungES"  aria-label="Bezeichnung" aria-describedby="basic-addon1" placeholder="MicroGridLab">
                                         </div>
                                         <div class="input-group mb-3" style="margin-top:5%">
-                                            <span class="input-group-text" id="basic-addon1" style="margin-left:10%">Katastralgemeinde</span>
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
+                                                Katastralgemeinde</span>
                                             <input  type="text" class="form-control3" id="KatastralgemeindenES" name="KatastralgemeindenES" aria-label="Katastralgemeinden" aria-describedby="basic-addon1" placeholder="Wieselburg">
                                         </div>
                                         <div class="input-group mb-3" style="margin-top:5%">
-                                            <span class="input-group-text" id="basic-addon1" style="margin-left:10%">Postleitzahl</span>
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
+                                                Postleitzahl</span>
                                             <input  type="text" class="form-control3" id="PostleitzahlES" name="PostleitzahlES" aria-label="Postleitzahl" aria-describedby="basic-addon1" placeholder="3250">
                                         </div>
                                         <div class="input-group mb-3" style="margin-top:5%">
-                                            <span class="input-group-text" id="basic-addon1" style="margin-left:10%">Längengrad</span>
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                                Längengrad</span>
                                             <input  type="text" class="form-control3" id="LaengengradES" name="LaengengradES" aria-label="LaengengradES" aria-describedby="basic-addon1" readonly>
                                         </div>
                                         <div class="input-group mb-3" style="margin-top:5%">
-                                            <span class="input-group-text" id="basic-addon1" style="margin-left:10%">Breitengrad</span>
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                                Breitengrad</span>
                                             <input  type="text" class="form-control3" id="BreitengradES" name="BreitengradES" aria-label="BreitengradES" aria-describedby="basic-addon1" readonly>
                                         </div>
 
@@ -200,25 +179,30 @@
                             </div>
                             <div class="modal-body">
 
-
                                 <form action="{{ route('EnTech.store') }}" id="ETerstellen" method="POST">
                                     @csrf
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1" style="margin-left:40%">ID von ES</label>
-                                        <input type="text" class="form-control form-control3" id="IDES"
-                                            name="IDES" readonly>
+                                    <div class="input-group mb-3" style="margin-top:2%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/id.png" style="margin-right:10px;">
+                                            ID-ES</span>
+                                        <input type="text" class="form-control3" id="IDES"  name="IDES" readonly aria-label="ID-ES" aria-describedby="basic-addon1">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
-                                        <input type="text" class="form-control form-control3" id="BezeichnungET"
-                                            name="Bezeichnung" placeholder="Bezeichung">
+
+                                    <div class="input-group mb-3" style="margin-top:2%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                            Bezeichnung</span>
+                                        <input type="text" class="form-control3" id="BezeichnungET"
+                                            name="Bezeichnung" placeholder="Bezeichung" aria-label="BezeichnungET" aria-describedby="basic-addon1">
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="exampleFormControlInput1"
-                                            style="margin-left:45%">Typ</label>
+
+                                    <div class="input-group mb-3" style="margin-top:2%; width:445px;">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/typ.png" style="margin-right:10px;">
+                                            Typ</span>
                                             <br>
-                                            <select name="Typ" id="Typ" style="margin-left:20%; text-align:center">
-                                                <option value="pvanlange">PV-Anlage</option>
+                                            <select class="form-select" name="Typ" id="Typ" style="text-align:center">
+                                                <option value="PV-Anlage">PV-Anlage</option>
                                                 <option value="Stromnetzbezug">Stromnetzbezug</option>
                                                 <option value="Batteriespeicher">Batteriespeicher</option>
                                                 <option value="Wasserstoff Elektrolyse">Wasserstoff Elektrolyse</option>
@@ -241,20 +225,27 @@
                                                 <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
                                               </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1" style="margin-left:45%">Ort</label>
-                                        <input type="text" class="form-control form-control3" id="OrtET"
-                                            name="Ort" placeholder="Wieselburg">
+
+                                    <div class="input-group mb-3" style="margin-top:2%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/ort.png" style="margin-right:10px;">
+                                            Ort</span>
+                                        <input type="text" class="form-control3" id="OrtET"
+                                            name="Ort" placeholder="Wieselburg" aria-label="OrtET" aria-describedby="basic-addon1">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
-                                        <input type="text" class="form-control form-control3" id="LaengengradET"
-                                            name="Laengengrad" readonly>
+                                    <div class="input-group mb-3" style="margin-top:2%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                            Längengrad</span>
+                                        <input type="text" class="form-control3" id="LaengengradET"
+                                            name="Laengengrad"  aria-label="LängengradET" aria-describedby="basic-addon1" readonly>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
-                                        <input type="text" class="form-control form-control3" id="BreitengradET"
-                                            name="Breitengrad" readonly>
+                                    <div class="input-group mb-3" style="margin-top:2%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                            Breitengrad</span>
+                                        <input type="text" class="form-control3" id="BreitengradET"
+                                            name="Breitengrad" aria-label="BreitengradET" aria-describedby="basic-addon1" readonly>
                                     </div>
 
 
@@ -562,8 +553,7 @@
                                         style="margin-left:45%">Typ</label>
                                         <br>
                                         <select name="TypEditET" id="TypEditET" style="margin-left:20%; text-align:center">
-                                            <option value="pvanlange">PV-Anlage</option>
-                                            <option value="pvanlange">PV-Anlage</option>
+                                            <option value="PV-Anlage">PV-Anlage</option>
                                             <option value="Stromnetzbezug">Stromnetzbezug</option>
                                             <option value="Batteriespeicher">Batteriespeicher</option>
                                             <option value="Wasserstoff Elektrolyse">Wasserstoff Elektrolyse</option>
@@ -898,40 +888,127 @@
 
 
 
-        function setETMarker(map)
+        function setETMarker(map, id)
         {
         
                 for (let i = 0; i < locationsET.length; i++) {
-                    const beach2 = locationsET[i];
+                    const energietechnologie = locationsET[i];
 
-                    const markerET = new google.maps.Marker({
+                    let sysID = energietechnologie[3];
+                    if(sysID != id){
+                        continue;
+                    }
+
+                    let options = {
                         position: {
-                            lat: beach2[1],
-                            lng: beach2[2]
+                            lat: energietechnologie[1],
+                            lng: energietechnologie[2]
                         },
                         map, // 0 Bezeichnung, 1 Längengrad, 2 Breitengrad, 3 Id
                       
-                        title: beach2[0], //Hover 
+                        title: energietechnologie[0], //Hover 
                         //label: beach[0], // Was im Icon steht
                         label: {
-                            text: beach2[0],
+                            text: energietechnologie[0],
                             color: 'black',
                             fontSize: '15px',
                             className: 'marker-position',
                         },
-                        animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
-
-
-
-
-                        //Icon Auswahl
-                        icon: '/images/stromnetz_icon.png',
+                        animation: google.maps.Animation.DROP //verschiedene Moduse: DROP, BOUNCE                        
                          
-                    });
+                    }
 
-                    var icon = '/images/stromnetz_icon.png';
-                    //console.log(beach2[4]);
+                    switch (energietechnologie[4]) {
+                        case "PV-Anlage":
+                        options.icon = "/images/icons/PV_icon.png"
+                        break;
 
+                        case "Stromnetzbezug":
+                        options.icon = "/images/icons/stromnetz_icon.png"
+                        break;
+
+                        case "Batteriespeicher":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+                        
+                        case "Wasserstoff Elektrolyse":
+                        options.icon = "/images/icons/wasserspeicher_icon.png"
+                        break;
+                        
+                        case "Wasserstoff Brennstoffzelle":
+                        options.icon = "/images/icons/wasserspeicher_icon.png"
+                        break;
+                        
+                        case "Wasserstoff Speicher":
+                        options.icon = "/images/icons/Speicher_icon.png"
+                        break;
+                        
+                        case "Windkraftanlage":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+                        
+                        case "E-Ladestation":
+                        options.icon = "/images/icons/eauto_icon.png"
+                        break;
+                        
+                        case "Hausanschlusszähler":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+                        
+                        case "Wärmenetzbezug":
+                        options.icon = "/images/icons/stromnetz_icon.png"
+                        break;
+                        
+                        case "Biomasseheizkraftwerk":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+                        
+                        case "Biomasseheizwerk":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+                        
+                        case "Biomasseheizkessel":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+                        
+                        case "Wärmespeicher":
+                        options.icon = "/images/icons/Speicher_icon.png"
+                        break;
+                        
+                        case "Solarthermieanlage":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+                        
+                        case "Wärmepumpe":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+                        
+                        case "Gebäude Wärmebedarfszähler":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+                        
+                        case "Kompressionskältemaschiene":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+
+                        case "Ab oder Adsorbtionskältemaschiene":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+
+                        case "Kältespeicher":
+                        options.icon = "/images/icons/Speicher_icon.png"
+                        break;
+
+                        case "Gebäude Kältebedarfszähler":
+                        options.icon = "/images/icons/batterie_icon.png"
+                        break;
+                    
+                        default:
+                            options.icon = "/images/icons/etgrün.png"
+                            break;
+                    }
+
+                    const markerET = new google.maps.Marker(options);
 
 
                     markerET.addListener("click", () => {
@@ -974,7 +1051,7 @@
                         lng: beach[2]
                     },
                     map, // 0 Bezeichnung, 1 Längengrad, 2 Breitengrad, 3 Id
-                    icon: '/images/es.png',
+                    icon: '/images/icons/es.png',
                     title: beach[0], //Hover 
                     //label: beach[0], // Was im Icon steht
                     label: {
@@ -1017,10 +1094,10 @@
 
                     map.setZoom(17);
                     map.setCenter(marker.getPosition());
-                    marker.setIcon("/images/esgrün.png");
+                    marker.setIcon("/images/icons/esgrün.png");
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                     print_List_Energietechnologie(id);
-                    map.setOptions({ draggableCursor: 'url(/images/etgrün.png), move' });
+                    map.setOptions({ draggableCursor: 'url(/images/icons/etgrün.png), move' });
                     
                     activeMarker = true;
                     activeClick=true;
@@ -1028,7 +1105,7 @@
                    
 
             
-                    setETMarker(map);
+                    setETMarker(map, id);
                  
                     
                 
@@ -1061,7 +1138,7 @@
                 marker.addListener("click", () => {
                     map.setZoom(15);
                     map.setCenter(marker.getPosition());
-                    marker.setIcon("/images/es.png");
+                    marker.setIcon("/images/icons/es.png");
                     marker.setAnimation(google.maps.Animation.DROP);
                     print_List_Energiesysteme();
                     map.setOptions({ draggableCursor: 'crosshair' });
@@ -1119,20 +1196,20 @@
             ETListe += "                                            @auth";
             ETListe += "                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->";
             ETListe += "                                                <td> <a href=\"\/deleteET\/{{ $d->id }}\" class=\"btn btn2\"";
-            ETListe += "                                                        style=\"background-image: url('\/images\/delete.png')\"><\/a><\/td>";
+            ETListe += "                                                        style=\"background-image: url('/images/buttons/delete.png')\"><\/a><\/td>";
             ETListe += "                                                <td> <a href=\"javascript:GrafanafunctionET()\" class=\"btn btn2\"";
-            ETListe += "                                                        style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
+            ETListe += "                                                        style=\"background-image: url('/images/buttons/statistik.png')\"><\/a><\/td>";
             ETListe += "                                                <td> <a href=\"javascript:editfunctionET({{ $d->id }})\"";
             ETListe += "                                                        class=\"btn btn2\"";
-            ETListe += "                                                        style=\"background-image: url('\/images\/stift.png')\"><\/a><\/td>";
+            ETListe += "                                                        style=\"background-image: url('/images/buttons/stift.png')\"><\/a><\/td>";
             ETListe += "                                            @endauth";
             ETListe += "";
             ETListe += "                                            @guest";
             ETListe += "                                            <td> <a href=\"javascript:GrafanafunctionET()\" class=\"btn btn2\"";
-            ETListe += "                                                style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
+            ETListe += "                                                style=\"background-image: url('/images/buttons/statistik.png')\"><\/a><\/td>";
             ETListe += "                                            <td> <a href=\"javascript:augefunctionET({{ $d->id }})\"";
             ETListe += "                                                class=\"btn btn2\"";
-            ETListe += "                                                style=\"background-image: url('\/images\/auge.png')\"><\/a><\/td>";
+            ETListe += "                                                style=\"background-image: url('/images/buttons/auge.png')\"><\/a><\/td>";
             ETListe += "                                            @endguest";
             ETListe += "";
             ETListe += "                                        <\/tr>";
@@ -1148,7 +1225,7 @@
             $(".enTechTR-" + id).css("display", "table-row");
 
                 document.getElementById("Listuberschrieft").innerHTML = "Energietechnologien";
-                document.getElementById("Listimage").src = "/images/etgrün.png";
+                document.getElementById("Listimage").src = "/images/icons/etgrün.png";
         }
 
 
@@ -1182,20 +1259,20 @@
                         EnsysListe += "                                            @auth";
                         EnsysListe += "                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->";
                         EnsysListe += "                                                <td> <a href=\"\/delete\/{{ $d->id }}\" class=\"btn btn2\"";
-                        EnsysListe += "                                                        style=\"background-image: url('\/images\/delete.png')\"><\/a><\/td>";
+                        EnsysListe += "                                                        style=\"background-image: url('/images/buttons/delete.png')\"><\/a><\/td>";
                         EnsysListe += "                                                <td> <a href=\"javascript:GrafanafunctionES()\" class=\"btn btn2\"";
-                        EnsysListe += "                                                        style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
+                        EnsysListe += "                                                        style=\"background-image: url('/images/buttons/statistik.png')\"><\/a><\/td>";
                         EnsysListe += "                                                <td> <a href=\"javascript:editfunction({{ $d->id }})\"";
                         EnsysListe += "                                                        class=\"btn btn2\"";
-                        EnsysListe += "                                                        style=\"background-image: url('\/images\/stift.png')\"><\/a><\/td>";
+                        EnsysListe += "                                                        style=\"background-image: url('/images/buttons/stift.png')\"><\/a><\/td>";
                         EnsysListe += "                                            @endauth";
                         EnsysListe += "";
                         EnsysListe += "                                            @guest";
                         EnsysListe += "                                            <td> <a href=\"javascript:GrafanafunctionES()\" class=\"btn btn2\"";
-                        EnsysListe += "                                                style=\"background-image: url('\/images\/statistik.png')\"><\/a><\/td>";
+                        EnsysListe += "                                                style=\"background-image: url('/images/buttons/statistik.png')\"><\/a><\/td>";
                         EnsysListe += "                                            <td> <a href=\"javascript:augefunction({{ $d->id }})\"";
                         EnsysListe += "                                                class=\"btn btn2\"";
-                        EnsysListe += "                                                style=\"background-image: url('\/images\/auge.png')\"><\/a><\/td>";
+                        EnsysListe += "                                                style=\"background-image: url('/images/buttons/auge.png')\"><\/a><\/td>";
                         EnsysListe += "                                            @endguest";
                         EnsysListe += "";
                         EnsysListe += "                                        <\/tr>";
@@ -1211,7 +1288,7 @@
 
             document.getElementById("table").innerHTML = EnsysListe;
             document.getElementById("Listuberschrieft").innerHTML = "Energiesysteme";
-            document.getElementById("Listimage").src = "/images/es.png";
+            document.getElementById("Listimage").src = "/images/icons/es.png";
         }
 
 
