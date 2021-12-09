@@ -10,15 +10,27 @@
         <div class="carousel-inner">
 
             <div class="carousel-item active">
-                <img class="picture" src="/images/windrad2.jpg" alt="First slide">
+                <img class="picture" src="/images/homepage/HomePage1 - Kopie.jpg" alt="First slide">
             </div>
 
             <div class="carousel-item">
-                <img class="picture" src="/images/pv.jpg" alt="Second slide">
+                <img class="picture" src="/images/homepage/HomePage2 - Kopie.jpg" alt="Second slide">
             </div>
 
             <div class="carousel-item">
-                <img class="picture" src="/images/logo.jpg" alt="Third slide">
+                <img class="picture" src="/images/homepage/HomePage3 - Kopie.jpg" alt="Third slide">
+            </div>
+
+            <div class="carousel-item">
+                <img class="picture" src="/images/homepage/HomePage4 - Kopie.jpg" alt="Fourth slide">
+            </div>
+
+            <div class="carousel-item">
+                <img class="picture" src="/images/homepage/HomePage5 - Kopie.jpg" alt="Fifth slide">
+            </div>
+
+            <div class="carousel-item">
+                <img class="picture" src="/images/homepage/HomePage6 - Kopie.jpg" alt="Sixth slide">
             </div>
 
         </div>

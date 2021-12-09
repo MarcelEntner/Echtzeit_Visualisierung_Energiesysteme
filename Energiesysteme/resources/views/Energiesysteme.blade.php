@@ -46,6 +46,21 @@
                                     </tr>
                                 </thead>
 
+
+
+                                @auth
+                                <?php 
+
+                                $userID = Auth::user();
+                                if($userID->id != null){
+                                    echo ("User-ID: " . $userID->id);
+                                }
+                                else
+                                echo ("Nicht angemeldet");
+                                ?>
+                                @endauth
+                                
+
                                 @foreach ($data as $d)
                                     <tbody>
                                         <tr>
@@ -57,14 +72,26 @@
 
                                             @auth
                                                 <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
+                                                <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten + Admin (ID 1) darf alle -->
+                                               
+                                             
+                                              
+
+                                        
                                                 <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2"
                                                         style="background-image: url('/images/buttons/delete.png')"></a></td>
+
                                                 <td id="hov"> <a href="javascript:GrafanafunctionES()" class="btn btn2"
                                                         style="background-image: url('/images/buttons/statistik.png')"></a></td>
-                                                <td id="hov"> <a href="javascript:editfunction({{ $d->id }})"
-                                                        class="btn btn2"
-                                                        style="background-image: url('/images/buttons/stift.png')"></a></td>
+
+                                                <td id="hov"> <a href="javascript:editfunction({{ $d->id }})" class="btn btn2" 
+                                                    style="background-image: url('/images/buttons/stift.png')"></a></td>
+                                               
+                                            
+                                               
                                             @endauth
+                                                
+
 
                                             @guest
                                             <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
@@ -73,7 +100,7 @@
                                                 class="btn btn2"
                                                 style="background-image: url('/images/buttons/auge.png')"></a></td>
                                             @endguest
-
+                                                       
                                         </tr>
 
 
@@ -106,7 +133,7 @@
                         <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
+                                    <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img src="/images/icons/es.png"></h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -172,7 +199,7 @@
                     <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie</h5>
+                                <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img src="/images/icons/etgrün.png"></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -270,7 +297,7 @@
                 <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
+                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem<img src="/images/icons/esgrün.png"></h5></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -522,7 +549,7 @@
                 <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie</h5>
+                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img src="/images/icons/etgrün.png"></h5></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -623,7 +650,7 @@
 
     </body>
 
-
+  
 
     <script>
 
@@ -651,6 +678,8 @@
 
                 //Enter Map: 23802346582caa31
                 //Kronstana Map: 396ac7c2d5bcd46
+
+              
 
             }
 
@@ -1077,7 +1106,6 @@
                 }
 
 
-
                 //Doppelklick um ES auszuwählen
                 marker.addListener("dblclick", (e) => 
                 {
@@ -1097,21 +1125,22 @@
                     marker.setIcon("/images/icons/esgrün.png");
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                     print_List_Energietechnologie(id);
-                    map.setOptions({ draggableCursor: 'url(/images/icons/etgrün.png), move' });
                     
                     activeMarker = true;
                     activeClick=true;
 
                    
 
-            
+                    
                     setETMarker(map, id);
-                 
+                  
                     
                 
 
 
-                    
+                    @auth                    
+                    map.setOptions({ draggableCursor: 'url(/images/icons/etgrün.png), move' });
+
                     map.addListener("click", (e1) => { //Ausgefürht wenn Map-Klick
                     if(activeMarker){
                     let latLng = e1.latLng.toString();
@@ -1130,6 +1159,7 @@
                     }
 
                      });
+                     @endauth
 
 
                 });
