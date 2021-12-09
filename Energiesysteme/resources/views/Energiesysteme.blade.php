@@ -14,10 +14,15 @@
             <div class="row w-100">
 
 
+            
                 <div class="col-12 col-lg-7 shadow-lg rounded" id="map">
                 </div>
 
                 <div class="Liste col-12 col-lg-5">
+
+                    <input id="address" type="text" > <!--- INPUT FELD ZUM SUCHEN -->
+                    <div id="find" class="btn btn-success">Suchen</div> <!--- BUTTON ZUM SUCHEN -->
+
                     <div class="shadow-lg rounded p-5">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
@@ -47,20 +52,6 @@
                                 </thead>
 
 
-
-                                @auth
-                                <?php 
-
-                                $userID = Auth::user();
-                                if($userID->id != null){
-                                    echo ("User-ID: " . $userID->id);
-                                }
-                                else
-                                echo ("Nicht angemeldet");
-                                ?>
-                                @endauth
-                                
-
                                 @foreach ($data as $d)
                                     <tbody>
                                         <tr>
@@ -71,12 +62,18 @@
                                             <td>{{ $d->Postleitzahl }}</td>
 
                                             @auth
+                                            <?php 
+                                            $userID = Auth::user();
+                                            ?>
+
                                                 <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
                                                 <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten + Admin (ID 1) darf alle -->
                                                
                                              
-                                              
+                                                 <!--$userID->id == $d->id -->
 
+                                                 @if ($userID->id == $d->user_id || $userID->role == "Admin")
+                                                     
                                         
                                                 <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2"
                                                         style="background-image: url('/images/buttons/delete.png')"></a></td>
@@ -87,7 +84,18 @@
                                                 <td id="hov"> <a href="javascript:editfunction({{ $d->id }})" class="btn btn2" 
                                                     style="background-image: url('/images/buttons/stift.png')"></a></td>
                                                
-                                            
+
+                                                @else
+
+                                                <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
+                                                    style="background-image: url('/images/buttons/statistik.png')"></a></td>
+                                                <td> <a href="javascript:augefunction({{ $d->id }})"
+                                                    class="btn btn2"
+                                                    style="background-image: url('/images/buttons/auge.png')"></a></td>
+
+                                                @endif
+
+                                                
                                                
                                             @endauth
                                                 
@@ -111,6 +119,8 @@
                         </div>
 
                     </div>
+                </div>
+
 
 
 
@@ -184,7 +194,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+               
                 <!-- Modal aus -->
 
 
@@ -651,47 +661,106 @@
     </body>
 
   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+
+
+    <!-- Hier gehört der API Key eingebunden   -->
+
+    <!-- Kronstana API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
+    <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
+
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&callback=LoadMap">
+    </script>-->
+    
+
 
     <script>
 
+    var activeMarker = false;
+    var activeClick = false;
+    var markersArray= [];
+
+function initAutocomplete() {
 
 
+    let mapOptions = {
 
-        let activeMarker = false;
-        let activeClick = false;
-        let markersArray= [];
-
-
-        function LoadMap() {
-
-            let mapOptions = {
-
-                center: new google.maps.LatLng('48.14078077082782', '15.14955200012205'), //Ausgangspostion der Map
-                zoom: 12,
-                mapTypeId: "roadmap", //Typ der Map auf Road MAp setzen
-                streetViewControl: false, // STreet View Männdchen ausblenden
-                // mapTypeControl: false,  // Button um zwischen Satiliet und Roadmap umschalten
-                mapId: '23802346582caa31', // MapID von der selbst erstellen Map 
-                draggableCursor: 'crosshair',    
-                scrollwheel: true, //dass Mausscrollen ohne Probleme funktioniert
+        center: new google.maps.LatLng('48.14078077082782', '15.14955200012205'), //Ausgangspostion der Map
+        zoom: 12,
+        mapTypeId: "roadmap", //Typ der Map auf Road MAp setzen
+        streetViewControl: false, // STreet View Männdchen ausblenden
+        // mapTypeControl: false,  // Button um zwischen Satiliet und Roadmap umschalten
+        mapId: '23802346582caa31', // MapID von der selbst erstellen Map 
+        draggableCursor: 'crosshair',    
+        scrollwheel: true, //dass Mausscrollen ohne Probleme funktioniert
 
 
-                //Enter Map: 23802346582caa31
-                //Kronstana Map: 396ac7c2d5bcd46
+        //Enter Map: 23802346582caa31
+        //Kronstana Map: 396ac7c2d5bcd46
 
-              
+        }
 
-            }
+	autocomplete = new google.maps.places.Autocomplete((document.getElementById('address')),{
+		types: ['geocode']
+	});
+	
+		
+	var map		=	new google.maps.Map(document.getElementById('map'), mapOptions);
+	
+	// START BY CLICK
+	$('div#find').on('click', function() {
+		LatLngSearch();			
+	});
+	
+	// START BY PRESS ENTER
+	$('#address').bind("enterKey",function(e){
+		LatLngSearch();	
+	});
+	$('#address').keyup(function(e){
+		if(e.keyCode == 13) {
+			LatLngSearch();
+		}
+	});
+			
+	// SHOW LAT LNG		
+	function LatLngSearch(  ) {
+		
+		var value			=	$('input#address').val();
+		
+		if ( value ) {
+			var request		=	$.ajax({
+				url			:	"/mapsLocation",
+				method		:	"GET",
+				data		:	{ 
+									address		:	value
+								},
+				dataType	:	'json',
+				success		:	function(result) {
+					
+					var searchLatLng = {
+						lat			:	result['lat'],
+						lng			:	result['lng']
+					};
+					
+					// NEW POSITION
+                    mapOptions.center = searchLatLng
+                    mapOptions.zoom = 14
+					var map		=	new google.maps.Map(document.getElementById('map'),mapOptions);
 
+                    setMarkers(map);
+		            
+				},
+				error		:	function (xhr, ajaxOptions, thrownError) {
+					alert(xhr.status);
+					alert(thrownError);
+				}
+			});
+		}
+	}
 
-
-
-            let map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-            
-           
-
-            @auth //Gast darf keine ES erstellen
+    @auth //Gast darf keine ES erstellen
                 map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
                 if(!activeMarker){
                 breit = e.latLng.toString().substring(1, 16);
@@ -704,32 +773,19 @@
                
                 
                 });
-            @endauth
+    @endauth
 
-            google.maps.event.addListenerOnce(map, 'idle', function() { //ausgeführt wenn map geladen
-                // do something only the first time the map is loaded
-                //DB auslesen und einfügen
-                setMarkers(map);
+    google.maps.event.addListenerOnce(map, 'idle', function() { //ausgeführt wenn map geladen
+        // do something only the first time the map is loaded
+        //DB auslesen und einfügen
+        setMarkers(map);
 
-            });
+    });
 
-
-
-
-
-        }
+}
+    
     </script>
-
-
-
-
-    <!-- Hier gehört der API Key eingebunden   -->
-
-    <!-- Kronstana API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
-    <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&callback=LoadMap">
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&libraries=places&callback=initAutocomplete"></script>
 
 
 
@@ -1216,7 +1272,7 @@
             ETListe += "                                @foreach ($dataEnTech as $d)";
             ETListe += "                                    <tbody>";
             ETListe += "                                        <tr class='enTechTR-{{$d->ensys_id}}' style='display:none;'>";
-            ETListe += "";
+            ETListe += "";                                          
             ETListe += "                                            <td>{{ $d->ensys_id }}</td>"; //IDES
             ETListe += "                                            <td>{{ $d->id }}</td>"; //IDET
             ETListe += "                                            <td>{{ $d->Bezeichnung }}</td>"; //Bezeichnung
@@ -1224,6 +1280,8 @@
             ETListe += "                                            <td>{{ $d->Ort }}</td>"; //Ort
             ETListe += "";
             ETListe += "                                            @auth";
+
+            ETListe += "                                               @if (Auth::user()->id == $d->user_id || Auth::user()->role == 'Admin')"
             ETListe += "                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->";
             ETListe += "                                                <td> <a href=\"\/deleteET\/{{ $d->id }}\" class=\"btn btn2\"";
             ETListe += "                                                        style=\"background-image: url('/images/buttons/delete.png')\"><\/a><\/td>";
@@ -1232,6 +1290,14 @@
             ETListe += "                                                <td> <a href=\"javascript:editfunctionET({{ $d->id }})\"";
             ETListe += "                                                        class=\"btn btn2\"";
             ETListe += "                                                        style=\"background-image: url('/images/buttons/stift.png')\"><\/a><\/td>";
+
+            ETListe += "                                                @else"
+            ETListe += "                                            <td> <a href=\"javascript:GrafanafunctionET()\" class=\"btn btn2\"";
+            ETListe += "                                                style=\"background-image: url('/images/buttons/statistik.png')\"><\/a><\/td>";
+            ETListe += "                                            <td> <a href=\"javascript:augefunctionET({{ $d->id }})\"";
+            ETListe += "                                                class=\"btn btn2\"";
+            ETListe += "                                                style=\"background-image: url('/images/buttons/auge.png')\"><\/a><\/td>";
+            ETListe += "                                            @endif";
             ETListe += "                                            @endauth";
             ETListe += "";
             ETListe += "                                            @guest";
@@ -1287,6 +1353,8 @@
                         EnsysListe += "                                            <td>{{ $d->Postleitzahl }}<\/td>";
                         EnsysListe += "";
                         EnsysListe += "                                            @auth";
+                        EnsysListe += "                                               @if (Auth::user()->id == $d->user_id || Auth::user()->role == 'Admin')"
+
                         EnsysListe += "                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->";
                         EnsysListe += "                                                <td> <a href=\"\/delete\/{{ $d->id }}\" class=\"btn btn2\"";
                         EnsysListe += "                                                        style=\"background-image: url('/images/buttons/delete.png')\"><\/a><\/td>";
@@ -1295,6 +1363,14 @@
                         EnsysListe += "                                                <td> <a href=\"javascript:editfunction({{ $d->id }})\"";
                         EnsysListe += "                                                        class=\"btn btn2\"";
                         EnsysListe += "                                                        style=\"background-image: url('/images/buttons/stift.png')\"><\/a><\/td>";
+
+                        EnsysListe += "                                                @else"
+                        EnsysListe += "                                            <td> <a href=\"javascript:GrafanafunctionET()\" class=\"btn btn2\"";
+                        EnsysListe += "                                                style=\"background-image: url('/images/buttons/statistik.png')\"><\/a><\/td>";
+                        EnsysListe += "                                            <td> <a href=\"javascript:augefunctionET({{ $d->id }})\"";
+                        EnsysListe += "                                                class=\"btn btn2\"";
+                        EnsysListe += "                                                style=\"background-image: url('/images/buttons/auge.png')\"><\/a><\/td>";
+                        EnsysListe += "                                            @endif";
                         EnsysListe += "                                            @endauth";
                         EnsysListe += "";
                         EnsysListe += "                                            @guest";

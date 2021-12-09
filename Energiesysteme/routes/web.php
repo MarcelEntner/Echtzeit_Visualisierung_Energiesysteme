@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\EnSysController;
 use App\Http\Controllers\EnTechController;
 use App\Http\Controllers\EtAdAbKmController;
@@ -99,3 +99,21 @@ Route::get('/edit/{id}',[EnSysController::class, 'edit']);
 Route::get('/editET/{id}',[EnTechController::class, 'edit']);
 Route::get('/deleteET/{id}',[EnTechController::class, 'destroy']);
 
+
+Route::get('/mapsLocation',function(Request $request)
+{
+	$address			=	$request['address'];
+	$address			=	str_replace(array('ä','ü','ö','ß'), array('ae', 'ue', 'oe', 'ss'), $address );
+	$address			=	preg_replace("/[^a-zA-Z0-9\_\s]/", "", $address);
+	$address			=	strtolower($address);
+	$address			=	str_replace( array(' ', '--'), array('-', '-'), $address );						
+	$address			=	'https://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I';
+				
+	$json				=	file_get_contents($address);
+	$obj				=	json_decode($json);	
+											
+	$datas['lat']		=	$obj->results[0]->geometry->location->lat;
+	$datas['lng']		=	$obj->results[0]->geometry->location->lng;
+		
+	echo json_encode( $datas );
+});

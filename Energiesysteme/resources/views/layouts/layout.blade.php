@@ -278,9 +278,7 @@
             padding: 0px;
             margin: 0px;
         }
-        body{
-         overflow:hidden;
-        }
+       
 
      
 
@@ -422,6 +420,20 @@
             position: relative;
         }
 
+        #find{
+            width: 20%;
+            margin-bottom: 1%;
+            height:40px;
+            text-align: center;
+        }
+
+        #address{
+            width: 50%;
+            margin-bottom: 3%;
+            height:40px;
+
+
+        }
 
 
 

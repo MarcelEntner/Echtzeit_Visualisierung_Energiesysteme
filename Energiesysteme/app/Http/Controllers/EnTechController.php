@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\EnTech;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class EnTechController extends Controller
@@ -37,6 +39,8 @@ class EnTechController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+
         $enTech = new EnTech();
         
         $enTech->ensys_id=$request->IDES;
@@ -45,6 +49,7 @@ class EnTechController extends Controller
         $enTech->Breitengrad=$request->Breitengrad;
         $enTech->Typ=$request->Typ;
         $enTech->Ort=$request->Ort;
+        $enTech->user_id=$user->id;
         $enTech->save();
         $data = DB::table('EnTech')->get();
 
