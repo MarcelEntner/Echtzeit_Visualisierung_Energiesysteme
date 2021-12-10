@@ -93,6 +93,8 @@
                                                     class="btn btn2"
                                                     style="background-image: url('/images/buttons/auge.png')"></a></td>
 
+                                                <td> </td>    
+
                                                 @endif
 
                                                 
@@ -126,15 +128,17 @@
 
 
 
-                    <!--Pop Up Fenster -->
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+        style="margin-top: 6%; margin-left:35%; background-color:#3e8e41"; border:1px solid #3e8e41">
+        Energiesystem hinzufügen
+        </button>-->
+                           
+        
+        
+        
+        <!--Pop Up Fenster -->
 
-
-
-                    <!-- Button trigger modal -->
-                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                    style="margin-top: 6%; margin-left:35%; background-color:#3e8e41"; border:1px solid #3e8e41">
-                    Energiesystem hinzufügen
-                    </button>-->
 
 
                     <!-- Modal ES hinzufügen -->
@@ -143,7 +147,7 @@
                         <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img src="/images/icons/es.png"></h5>
+                                    <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img src="/images/icons/es2.png"></h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -188,7 +192,7 @@
 
                                         <br>
                                         <!--  <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
-                                        <input type="submit" class="btn btn3" id="ESerstellen" value="Energiesystem erstellen">
+                                        <input type="submit" class="btn btn-success" style="margin-left:30%" id="ESerstellen" value="Energiesystem erstellen">
                                     </form>
                                 </div>
                             </div>
@@ -209,7 +213,7 @@
                     <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img src="/images/icons/etgrün.png"></h5>
+                                <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img src="/images/icons/etgrün2.png"></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -288,7 +292,7 @@
 
 
                                     <br>
-                                    <input type="submit" class="btn btn3" id="ETerstellen"
+                                    <input type="submit" class="btn btn-success" style="margin-left:30%" id="ETerstellen"
                                         value="Energietechnologie erstellen">
                                 </form>
                             </div>
@@ -307,7 +311,7 @@
                 <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem<img src="/images/icons/esgrün.png"></h5></h5>
+                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img src="/images/icons/esgrün2.png"></h5></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -318,38 +322,45 @@
                             <form id="editForm" method="GET">
                                 <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
                                 @csrf
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
-                                    <input type="text" class="form-control form-control3" id="bezeichnung"
-                                        name="Bezeichnung" value="">
+                                <div class="input-group mb-3" style="margin-top:2%">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                        <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                        Bezeichnung</span>                                    
+                                <input type="text" class="form-control3" id="bezeichnung" name="Bezeichnung" value="" aria-label="Bezeichnung" aria-describedby="basic-addon1">
                                 </div>
-                                <div class="form-group ">
-                                    <label for="exampleFormControlInput1" style="margin-left:40%">Katastralgemeinde</label>
-                                    <input type="text" class="form-control form-control3" id="katastralgemeinde"
-                                        name="Katastralgemeinden" value="">
+
+                                <div class="input-group mb-3" style="margin-top:5%">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                        <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
+                                        Katastralgemeinde</span>    
+                                    <input type="text" class="form-control3" id="katastralgemeinde" name="Katastralgemeinden" value="" aria-label="Katastralgemeinden" aria-describedby="basic-addon1">
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1" style="margin-left:40%">Postleitzahl</label>
-                                    <input type="text" class="form-control form-control3" id="postleitzahl"
-                                        name="Postleitzahl" value="">
+
+                                <div class="input-group mb-3" style="margin-top:5%">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                        <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
+                                        Postleitzahl</span> 
+                                    <input type="text" class="form-control3" id="postleitzahl"  name="Postleitzahl" value="" aria-label="Postleitzahl" aria-describedby="basic-addon1">
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
-                                    <input type="text" class="form-control form-control3" id="LaengengradEdit"
-                                        name="Laengengrad" value="" readonly>
+                                <div class="input-group mb-3" style="margin-top:5%">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                        <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                        Längengrad</span> 
+                                    <input type="text" class="form-control3" id="LaengengradEdit" name="Laengengrad" value="" aria-label="Laengengrad" aria-describedby="basic-addon1" readonly>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
-                                    <input type="text" class="form-control form-control3" id="BreitengradEdit"
-                                        name="Breitengrad" value="" readonly>
+                                <div class="input-group mb-3" style="margin-top:5%">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                        <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                         Breitengrad</span> 
+                                    <input type="text" class="form-control3" id="BreitengradEdit" name="Breitengrad" value="" readonly aria-label="Breitengrad" aria-describedby="basic-addon1">
                                 </div>
 
 
 
                                 <br>
-                                <!-- <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
-                                <input type="submit" class="btn btn3" style="background-color:#3e8e41"
+                                <input type="submit" class="btn  btn-success" style="margin-left:30%"
                                     value="Energiesystem aktualisieren">
+                                    
                             </form>
 
 
@@ -363,6 +374,128 @@
                     </div>
                 </div>
             </div>
+
+
+
+        <!-- ModalEdit ET -->
+        <div class="modal modal2 fade" id="exampleModalCenterEditET" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img src="/images/icons/etgrün2.png"></h5></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form id="editFormET" method="GET">
+                        <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
+                        @csrf
+                        <div class="input-group mb-3" style="margin-top:2%">
+                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                <img src="/images/pop-up/id.png" style="margin-right:10px;">
+                                ID Energiesystem</span>                            
+                                <input type="text" class="form-control3" id="idEditES" name="idEditES" value="" aria-label="ID-ES" aria-describedby="basic-addon1" readonly>
+                        </div>
+
+                        <div class="input-group mb-3" style="margin-top:2%">
+                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                <img src="/images/pop-up/id.png" style="margin-right:10px;">
+                                ID Energietechnologie</span>  
+                            <input type="text" class="form-control3" id="idEditET" name="idEditET" value="" aria-label="idEditET" aria-describedby="basic-addon1" readonly>
+                        </div>
+
+                        <div class="input-group mb-3" style="margin-top:2%">
+                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                Bezeichnung</span>                              
+                                <input type="text" class="form-control3" id="BezeichnungEditET" name="BezeichnungEditET" value="" aria-label="BezeichnungEditET" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="input-group mb-3" style="margin-top:2%; width:445px;">
+                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                <img src="/images/pop-up/typ.png" style="margin-right:10px;">
+                                Typ</span>  
+                                <br>
+                                
+                                <select name="TypEditET" class="form-select" id="TypEditET" style="text-align:center;">
+                                    <option value="PV-Anlage">PV-Anlage</option>
+                                    <option value="Stromnetzbezug">Stromnetzbezug</option>
+                                    <option value="Batteriespeicher">Batteriespeicher</option>
+                                    <option value="Wasserstoff Elektrolyse">Wasserstoff Elektrolyse</option>
+                                    <option value="Wasserstoff Brennstoffzelle"> Wasserstoff Brennstoffzelle</option>
+                                    <option value="Wasserstoff Speicher"> Wasserstoff Speicher</option>
+                                    <option value="Windkraftanlage"> Windkraftanlage</option>
+                                    <option value="E-Ladestation"> E-Ladestation</option>
+                                    <option value="Hausanschlusszähler"> Hausanschlusszähler</option>
+                                    <option value="Wärmenetzbezug"> Wärmenetzbezug</option>
+                                    <option value="Biomasseheizkraftwerk"> Biomasseheizkraftwerk (BHKW)</option>
+                                    <option value="Biomasseheizwerk"> Biomasseheizwerk </option>
+                                    <option value="Biomasseheizkessel"> Biomasseheizkessel</option>
+                                    <option value="Wärmespeicher"> Wärmespeicher</option>
+                                    <option value="Solarthermieanlage"> Solarthermieanlage</option>
+                                    <option value="Wärmepumpe"> Wärmepumpe</option>
+                                    <option value="Gebäude Wärmebedarfszähler"> Gebäude Wärmebedarfszähler</option>
+                                    <option value="Kompressionskältemaschiene"> Kompressionskältemaschiene</option>
+                                    <option value="Ab oder Adsorbtionskältemaschiene"> Ab oder Adsorbtionskältemaschiene</option>
+                                    <option value="Kältespeicher">Kältespeicher</option>
+                                    <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
+                                  </select>
+                        </div>
+
+                        <div class="input-group mb-3" style="margin-top:2%">
+                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                <img src="/images/pop-up/ort.png" style="margin-right:10px;">
+                                Ort </span>                              
+                                <input type="text" class="form-control3" id="OrtEditET"  name="OrtEditET" value="" aria-label="OrtEditET" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="input-group mb-3" style="margin-top:2%">
+                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                Längengrad</span>                             
+                             <input type="text" class="form-control3" id="LaengengradEditET" name="LaengengradEditET" value="" readonly aria-label="LaengengradEditET" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="input-group mb-3" style="margin-top:2%">
+                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                Breitgengrad</span>                              
+                                <input type="text" class="form-control3" id="BreitengradEditET" name="BreitengradEditET" value="" readonly aria-label="BreitengradEditET" aria-describedby="basic-addon1">
+                        </div>
+
+
+
+                        <br>
+                        <!-- <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
+                        <input type="submit" class="btn btn-success" style="margin-left:30%"
+                            value="Energietechnologie aktualisieren">
+                
+                    </form>
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+       <!-- ModalEdit ET  aus-->
+
+
+
+
+
+
+
+</div>
 
 
 
@@ -553,110 +686,7 @@
 
 
 
-              <!-- ModalEdit ET -->
-          <div class="modal modal2 fade" id="exampleModalCenterEditET" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img src="/images/icons/etgrün.png"></h5></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-
-                            <form id="editFormET" method="GET">
-                                <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
-                                @csrf
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1" style="margin-left:40%">ID Energiesystem</label>
-                                    <input type="text" class="form-control form-control3" id="idEditES"
-                                        name="idEditES" value="" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1" style="margin-left:40%">ID Energietechnologie</label>
-                                    <input type="text" class="form-control form-control3" id="idEditET"
-                                        name="idEditET" value="" readonly>
-                                </div>
-                                <div class="form-group ">
-                                    <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
-                                    <input type="text" class="form-control form-control3" id="BezeichnungEditET"
-                                        name="BezeichnungEditET" value="">
-                                </div>
-                                <div class="form-group ">
-                                    <label for="exampleFormControlInput1"
-                                        style="margin-left:45%">Typ</label>
-                                        <br>
-                                        <select name="TypEditET" id="TypEditET" style="margin-left:20%; text-align:center">
-                                            <option value="PV-Anlage">PV-Anlage</option>
-                                            <option value="Stromnetzbezug">Stromnetzbezug</option>
-                                            <option value="Batteriespeicher">Batteriespeicher</option>
-                                            <option value="Wasserstoff Elektrolyse">Wasserstoff Elektrolyse</option>
-                                            <option value="Wasserstoff Brennstoffzelle"> Wasserstoff Brennstoffzelle</option>
-                                            <option value="Wasserstoff Speicher"> Wasserstoff Speicher</option>
-                                            <option value="Windkraftanlage"> Windkraftanlage</option>
-                                            <option value="E-Ladestation"> E-Ladestation</option>
-                                            <option value="Hausanschlusszähler"> Hausanschlusszähler</option>
-                                            <option value="Wärmenetzbezug"> Wärmenetzbezug</option>
-                                            <option value="Biomasseheizkraftwerk"> Biomasseheizkraftwerk (BHKW)</option>
-                                            <option value="Biomasseheizwerk"> Biomasseheizwerk </option>
-                                            <option value="Biomasseheizkessel"> Biomasseheizkessel</option>
-                                            <option value="Wärmespeicher"> Wärmespeicher</option>
-                                            <option value="Solarthermieanlage"> Solarthermieanlage</option>
-                                            <option value="Wärmepumpe"> Wärmepumpe</option>
-                                            <option value="Gebäude Wärmebedarfszähler"> Gebäude Wärmebedarfszähler</option>
-                                            <option value="Kompressionskältemaschiene"> Kompressionskältemaschiene</option>
-                                            <option value="Ab oder Adsorbtionskältemaschiene"> Ab oder Adsorbtionskältemaschiene</option>
-                                            <option value="Kältespeicher">Kältespeicher</option>
-                                            <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
-                                          </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1" style="margin-left:45%">Ort</label>
-                                    <input type="text" class="form-control form-control3" id="OrtEditET"
-                                        name="OrtEditET" value="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
-                                    <input type="text" class="form-control form-control3" id="LaengengradEditET"
-                                        name="LaengengradEditET" value="" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
-                                    <input type="text" class="form-control form-control3" id="BreitengradEditET"
-                                        name="BreitengradEditET" value="" readonly>
-                                </div>
-
-
-
-                                <br>
-                                <!-- <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
-                                <input type="submit" class="btn btn3" style="background-color:#3e8e41"
-                                    value="Energietechnologie aktualisieren">
-                            </form>
-
-
-
-
-
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-               <!-- ModalEdit ET  aus-->
-
-
-
-
-
-
-
-        </div>
+          
 
     </body>
 
@@ -695,6 +725,24 @@ function initAutocomplete() {
         mapId: '23802346582caa31', // MapID von der selbst erstellen Map 
         draggableCursor: 'crosshair',    
         scrollwheel: true, //dass Mausscrollen ohne Probleme funktioniert
+        fullscreenControl: false, //Vollbild Button entfernen
+       // scaleControl: false,
+       zoomControl: false, //rechts unten Zoom Buttons
+       scaleControl: true, //rechts unten Maßstab
+     
+    
+      
+       mapTypeControl: true,
+    mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        mapTypeIds: [
+            google.maps.MapTypeId.ROADMAP,
+            google.maps.MapTypeId.SATELLITE
+        ]
+    },
+    
+
+
 
 
         //Enter Map: 23802346582caa31
@@ -793,9 +841,9 @@ function initAutocomplete() {
 
     
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
 
     
@@ -1111,7 +1159,7 @@ function initAutocomplete() {
 
                     markerET.addListener("click", () => {
                         //alert("ET pressed");
-                        map.setZoom(20);
+                        map.setZoom(19);
                         map.setCenter(markerET.getPosition());
 
                     });
@@ -1310,6 +1358,7 @@ function initAutocomplete() {
             ETListe += "                                            <td> <a href=\"javascript:augefunctionET({{ $d->id }})\"";
             ETListe += "                                                class=\"btn btn2\"";
             ETListe += "                                                style=\"background-image: url('/images/buttons/auge.png')\"><\/a><\/td>";
+            ETListe += "                                            <td> </td>"  ;  
             ETListe += "                                            @endif";
             ETListe += "                                            @endauth";
             ETListe += "";
@@ -1383,6 +1432,7 @@ function initAutocomplete() {
                         EnsysListe += "                                            <td> <a href=\"javascript:augefunctionET({{ $d->id }})\"";
                         EnsysListe += "                                                class=\"btn btn2\"";
                         EnsysListe += "                                                style=\"background-image: url('/images/buttons/auge.png')\"><\/a><\/td>";
+                        EnsysListe += "                                            <td> </td> ";   
                         EnsysListe += "                                            @endif";
                         EnsysListe += "                                            @endauth";
                         EnsysListe += "";
