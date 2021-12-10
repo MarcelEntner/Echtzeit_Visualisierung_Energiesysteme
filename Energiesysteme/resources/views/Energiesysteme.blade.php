@@ -790,10 +790,12 @@ function initAutocomplete() {
 
 
     <?php
+
+    
     $servername = 'localhost';
-    $username = 'root';
-    $password = '';
-    $dbname = 'laravel';
+    $username = 'dev';
+    $password = 'Oi24Spc5';
+    $dbname = 'EnsysAlpha';
     
 
     
@@ -803,6 +805,13 @@ function initAutocomplete() {
     if ($conn->connect_error) {
         die('Connection failed: ' . $conn->connect_error);
     } else {
+
+
+
+
+
+
+
         $sql = 'SELECT id, Bezeichnung, Laengengrad, Breitengrad, Postleitzahl, Katastralgemeinden FROM EnSys';  // ES
         $es_select =  DB::select('select id, Bezeichnung, Laengengrad,Breitengrad, Postleitzahl, Katastralgemeinden from EnSys'); // ES Select mit Laravel
 
@@ -811,8 +820,12 @@ function initAutocomplete() {
         $et_select = DB::select('select id, ensys_id, Typ, Bezeichnung, Ort, Laengengrad, Breitengrad from EnTech'); // ET Select mit Laravel
     
 
-        $result = $conn->query($sql);
-        $result2 = $conn->query($sql2);
+        $result = $conn->query($sql); //für SQL DB Conn
+        $result2 = $conn->query($sql2); //für SQL DB Conn
+
+      //$result = $es_select; //für laravel DB Conn
+      //$result2 = $et_select; //für laravel DB Conn
+
         $locations = [];
         $locationsET = [];
 
@@ -839,10 +852,10 @@ function initAutocomplete() {
     
               
             }
-            $conn->close();
+            $conn->close();  //für SQL DB Conn
 
 
-        }
+      }
 
 
       
@@ -869,7 +882,7 @@ function initAutocomplete() {
 
 
 
-    }
+     } //für SQL DB Conn
     ?>
 
 
