@@ -7,6 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSS only  Bootstrap-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+
+
     <title>@yield('title')</title> <!-- Platzhalter für den Title , Title steht in der Variable title-->
     <style>
         body {
@@ -436,6 +446,35 @@
         }
 
 
+/*
+        .pagination > li > a 
+        {
+            background-color: white;
+            color: green;
+        }
+
+        .pagination > li > a:focus,
+        .pagination > li > a:hover,
+        .pagination > li > span:focus,
+        .pagination > li > span:hover
+        {
+            color: white;
+            background-color: green;
+            border-color: green;
+        }
+
+        .pagination > .active > a
+        {
+            color: green;
+            background-color: green;
+            border: solid 1px green;
+        }
+
+     .page-link{
+        background-color: green;
+     }*/
+      
+        
 
  
 
@@ -555,7 +594,7 @@
 
 
     <!-- JavaScript Bundle with Popper Bootstrap -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!--<script src="{{ asset('js/app.js') }}" defer></script>-->
 
     @include('partials.login')
 

@@ -23,11 +23,11 @@
                     <input id="address" type="text" > <!--- INPUT FELD ZUM SUCHEN -->
                     <div id="find" class="btn btn-success">Suchen</div> <!--- BUTTON ZUM SUCHEN -->
 
-                    <div class="shadow-lg rounded p-5">
+                    <div class="shadow-lg rounded p-4">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
                                 <h3> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/es.png" id="Listimage"></h3>
-                                <input class="form-control form-control2" placeholder="Suchen" aria-label="Search">
+                                <!--<input class="form-control form-control2" placeholder="Suchen" aria-label="Search">-->
                             </div>
 
                             
@@ -36,94 +36,221 @@
 
 
 
+                         <!-- DataTable -> Th und Td müssen gleiche Anzahl haben-->
 
                         <!-- Liste -->
-                        <div class="table-responsive" style="max-height: 41vh;" id="table">
-                        <table class="table table-borderless table-hover" id="table">
+                        <div class="table-responsive" style="height: 41vh;">
+                        <table class="table table-borderless table-hover" style="height: 30vh;" id="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Bezeichnung</th>
                                         <th scope="col">Katastralgemeinde</th>
                                         <th scope="col">Postleitzahl</th>
-
-
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
 
-
+                                <tbody>
                                 @foreach ($data as $d)
-                                    <tbody>
-                                        <tr>
+                                
+                                <tr>
 
-                                            <td>{{ $d->id }}</td>
-                                            <td>{{ $d->Bezeichnung }}</td>
-                                            <td>{{ $d->Katastralgemeinden }}</td>
-                                            <td>{{ $d->Postleitzahl }}</td>
+                                    <td>{{ $d->id }}</td>
+                                    <td>{{ $d->Bezeichnung }}</td>
+                                    <td>{{ $d->Katastralgemeinden }}</td>
+                                    <td>{{ $d->Postleitzahl }}</td>
 
-                                            @auth
-                                            <?php 
-                                            $userID = Auth::user();
-                                            ?>
+                                    @auth
+                                    <?php 
+                                    $userID = Auth::user();
+                                    ?>
 
-                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
-                                                <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten + Admin (ID 1) darf alle -->
-                                               
+                                        <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
+                                        <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten + Admin (Rolle Admin) darf alle -->
+                                       
+                                     
+
+                                         @if ($userID->id == $d->user_id || $userID->role == "Admin")
                                              
-                                                 <!--$userID->id == $d->id -->
+                                
+                                        <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2"
+                                                style="background-image: url('/images/buttons/delete.png')"></a></td>
 
-                                                 @if ($userID->id == $d->user_id || $userID->role == "Admin")
-                                                     
+                                        <td id="hov"> <a href="javascript:GrafanafunctionES()" class="btn btn2"
+                                                style="background-image: url('/images/buttons/statistik.png')"></a></td>
+
+                                        <td id="hov"> <a href="javascript:editfunction({{ $d->id }})" class="btn btn2" 
+                                            style="background-image: url('/images/buttons/stift.png')"></a></td>
+                                       
+
+                                        @else
+
+                                        <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
+                                            style="background-image: url('/images/buttons/statistik.png')"></a></td>
+                                        <td> <a href="javascript:augefunction({{ $d->id }})"
+                                            class="btn btn2"
+                                            style="background-image: url('/images/buttons/auge.png')"></a></td>
+
+                                        <td> </td>    
+
+                                        @endif
+
                                         
-                                                <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2"
-                                                        style="background-image: url('/images/buttons/delete.png')"></a></td>
+                                       
+                                    @endauth
+                                        
 
-                                                <td id="hov"> <a href="javascript:GrafanafunctionES()" class="btn btn2"
-                                                        style="background-image: url('/images/buttons/statistik.png')"></a></td>
 
-                                                <td id="hov"> <a href="javascript:editfunction({{ $d->id }})" class="btn btn2" 
-                                                    style="background-image: url('/images/buttons/stift.png')"></a></td>
+                                    @guest
+                                    <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
+                                        style="background-image: url('/images/buttons/statistik.png')"></a></td>
+                                    <td> <a href="javascript:augefunction({{ $d->id }})"
+                                        class="btn btn2"
+                                        style="background-image: url('/images/buttons/auge.png')"></a></td>
+                                    <td></td>
+                                    @endguest
                                                
+                                </tr>
+
+                                @endforeach
+                                </tbody>
+                            </table>
+
+
+                                    <table class="table table-borderless table-hover" id="tableET" style="display: none">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">ID-ES</th>
+                                                <th scope="col">ID-ET</th>
+                                                <th scope="col">Bezeichnung</th>
+                                                <th scope="col">Typ</th>
+                                                <th scope="col">Ort</th>
+                                                <th scope="col"></th>
+                                                <th scope="col"></th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                                @foreach ($dataEnTech as $d)
+                                            <tr class='enTechTR-{{$d->ensys_id}}' style='display:none;'>
+                                                                                  
+                                                    <td>{{ $d->ensys_id }}</td>
+                                                    <td>{{ $d->id }}</td>
+                                                    <td>{{ $d->Bezeichnung }}</td>
+                                                    <td>{{ $d->Typ }}</td>
+                                                    <td>{{ $d->Ort }}</td>
+                                                @auth
+                                    
+                                                @if (Auth::user()->id == $d->user_id || Auth::user()->role == 'Admin')
+                                                <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
+                                                <td> <a href="/deleteET/{{ $d->id }}" class="btn btn2"
+                                                    style="background-image: url('/images/buttons/delete.png')"></a></td>
+
+                                                <td> <a href="javascript:GrafanafunctionET()" class="btn btn2"
+                                                    style="background-image: url('/images/buttons/statistik.png')"></a></td>
+
+                                                <td> <a href="javascript:editfunctionET({{ $d->id }})" class="btn btn2"
+                                                    style="background-image: url('/images/buttons/stift.png')"></a></td>
 
                                                 @else
-
-                                                <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
+                                                <td> <a href="javascript:GrafanafunctionET()\" class="btn btn2"
                                                     style="background-image: url('/images/buttons/statistik.png')"></a></td>
-                                                <td> <a href="javascript:augefunction({{ $d->id }})"
-                                                    class="btn btn2"
+
+                                                <td> <a href="javascript:augefunctionET({{ $d->id }})" class="btn btn2"
                                                     style="background-image: url('/images/buttons/auge.png')"></a></td>
 
-                                                <td> </td>    
-
+                                                <td> </td>
                                                 @endif
-
+                                                @endauth
                                                 
-                                               
+                                                @guest
+                                                <td> <a href="javascript:GrafanafunctionET()" class="btn btn2"
+                                                    style="background-image: url('/images/buttons/statistik.png')"></a></td>
+
+                                                <td> <a href="javascript:augefunctionET({{ $d->id }})" class="btn btn2"
+                                                    style="background-image: url('/images/buttons/auge.png')"></a></td>
+                                                <td></td>
+                                                @endguest
+                                           
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+
+                                    </table>
+
+
+
+
+                        
+                                    <table class="table table-borderless table-hover" id="tableES" style="display: none">
+                                           <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Bezeichnung</th>
+                                                    <th scope="col">Katastralgemeinde</th>
+                                                    <th scope="col">Postleitzahl</th>
+                                                    <th scope="col"></th>
+                                                    <th scope="col"></th>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody>
+                                            @foreach ($data as $d)
+                                                <tr>
+                                                    <td>{{ $d->id }}</td>
+                                                    <td>{{ $d->Bezeichnung }}</td>
+                                                    <td>{{ $d->Katastralgemeinden }}</td>
+                                                    <td>{{ $d->Postleitzahl }}</td>
+                                           
+                                            @auth
+                                            @if (Auth::user()->id == $d->user_id || Auth::user()->role == 'Admin')
+                    
+                                            <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
+                                                    <td> <a href="/delete/{{ $d->id }}" class="btn btn2"
+                                                            style="background-image: url('/images/buttons/delete.png')"></a></td>
+
+                                                    <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
+                                                            style="background-image: url('/images/buttons/statistik.png')"></a></td>
+
+                                                    <td> <a href="javascript:editfunction({{ $d->id }})" class="btn btn2"
+                                                            style="background-image: url('/images/buttons/stift.png')"></a></td>
+                    
+                                            @else
+                                                    <td> <a href="javascript:GrafanafunctionET()" class="btn btn2"
+                                                            style="background-image: url('/images/buttons/statistik.png')"></a></td>
+
+                                                    <td> <a href="javascript:augefunctionET({{ $d->id }})" class="btn btn2"
+                                                            style="background-image: url('/images/buttons/auge.png')"></a></td>
+                                                    <td> </td>    
+                                            @endif
                                             @endauth
-                                                
-
-
+                                    
                                             @guest
                                             <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
-                                                style="background-image: url('/images/buttons/statistik.png')"></a></td>
-                                            <td> <a href="javascript:augefunction({{ $d->id }})"
-                                                class="btn btn2"
-                                                style="background-image: url('/images/buttons/auge.png')"></a></td>
+                                                    style="background-image: url('/images/buttons/statistik.png')"></a></td>
+
+                                            <td> <a href="javascript:augefunction({{ $d->id }})" class="btn btn2"
+                                                    style="background-image: url('/images/buttons/auge.png')"></a></td>
+                                            <td></td>
                                             @endguest
-                                                       
-                                        </tr>
-
-
-
-                                    </tbody>
-                                @endforeach
-                            </table>
+                                        
+                                            </tr>
+                                          
+                                            @endforeach
+                                            </tbody>
+                                    </table>
+                        
                         </div>
 
                     </div>
                 </div>
 
-
+            </div>
 
 
 
@@ -141,7 +268,7 @@
 
 
 
-                    <!-- Modal ES hinzufügen -->
+            <!-- Modal ES hinzufügen -->
                     <div class="modal modal2 fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
@@ -199,50 +326,224 @@
                         </div>
                     </div>
                
-                <!-- Modal aus -->
+            <!-- Modal ES hinzufügen aus -->
+
+
+
+            <!-- Modal ET hinzufügen -->
+                    <div class="modal modal2 fade" id="exampleModalCenterET" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img src="/images/icons/etgrün2.png"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form action="{{ route('EnTech.store') }}" id="ETerstellen" method="POST">
+                                        @csrf
+                                        <div class="input-group mb-3" style="margin-top:2%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/id.png" style="margin-right:10px;">
+                                                ID-ES</span>
+                                            <input type="text" class="form-control3" id="IDES"  name="IDES" readonly aria-label="ID-ES" aria-describedby="basic-addon1">
+                                        </div>
+
+                                        <div class="input-group mb-3" style="margin-top:2%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                                Bezeichnung</span>
+                                            <input type="text" class="form-control3" id="BezeichnungET"
+                                                name="Bezeichnung" placeholder="Bezeichung" aria-label="BezeichnungET" aria-describedby="basic-addon1">
+                                        </div>
+
+                                        <div class="input-group mb-3" style="margin-top:2%; width:445px;">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/typ.png" style="margin-right:10px;">
+                                                Typ</span>
+                                                <br>
+                                                <select class="form-select" name="Typ" id="Typ" style="text-align:center">
+                                                    <option value="PV-Anlage">PV-Anlage</option>
+                                                    <option value="Stromnetzbezug">Stromnetzbezug</option>
+                                                    <option value="Batteriespeicher">Batteriespeicher</option>
+                                                    <option value="Wasserstoff Elektrolyse">Wasserstoff Elektrolyse</option>
+                                                    <option value="Wasserstoff Brennstoffzelle"> Wasserstoff Brennstoffzelle</option>
+                                                    <option value="Wasserstoff Speicher"> Wasserstoff Speicher</option>
+                                                    <option value="Windkraftanlage"> Windkraftanlage</option>
+                                                    <option value="E-Ladestation"> E-Ladestation</option>
+                                                    <option value="Hausanschlusszähler"> Hausanschlusszähler</option>
+                                                    <option value="Wärmenetzbezug"> Wärmenetzbezug</option>
+                                                    <option value="Biomasseheizkraftwerk"> Biomasseheizkraftwerk (BHKW)</option>
+                                                    <option value="Biomasseheizwerk"> Biomasseheizwerk </option>
+                                                    <option value="Biomasseheizkessel"> Biomasseheizkessel</option>
+                                                    <option value="Wärmespeicher"> Wärmespeicher</option>
+                                                    <option value="Solarthermieanlage"> Solarthermieanlage</option>
+                                                    <option value="Wärmepumpe"> Wärmepumpe</option>
+                                                    <option value="Gebäude Wärmebedarfszähler"> Gebäude Wärmebedarfszähler</option>
+                                                    <option value="Kompressionskältemaschiene"> Kompressionskältemaschiene</option>
+                                                    <option value="Ab oder Adsorbtionskältemaschiene"> Ab oder Adsorbtionskältemaschiene</option>
+                                                    <option value="Kältespeicher">Kältespeicher</option>
+                                                    <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
+                                                </select>
+                                        </div>
+
+                                        <div class="input-group mb-3" style="margin-top:2%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/ort.png" style="margin-right:10px;">
+                                                Ort</span>
+                                            <input type="text" class="form-control3" id="OrtET"
+                                                name="Ort" placeholder="Wieselburg" aria-label="OrtET" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="input-group mb-3" style="margin-top:2%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                                Längengrad</span>
+                                            <input type="text" class="form-control3" id="LaengengradET"
+                                                name="Laengengrad"  aria-label="LängengradET" aria-describedby="basic-addon1" readonly>
+                                        </div>
+                                        <div class="input-group mb-3" style="margin-top:2%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                                Breitengrad</span>
+                                            <input type="text" class="form-control3" id="BreitengradET"
+                                                name="Breitengrad" aria-label="BreitengradET" aria-describedby="basic-addon1" readonly>
+                                        </div>
+
+
+
+                                        <br>
+                                        <input type="submit" class="btn btn-success" style="margin-left:30%" id="ETerstellen"
+                                            value="Energietechnologie erstellen">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            <!-- Modal ET hinzufügen aus -->
+
+
+            <!-- ModalEditES -->
+                    <div class="modal modal2 fade" id="exampleModalCenterEdit" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img src="/images/icons/esgrün2.png"></h5></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                    <form id="editForm" method="GET">
+                                        <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
+                                        @csrf
+                                        <div class="input-group mb-3" style="margin-top:2%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                                Bezeichnung</span>                                    
+                                        <input type="text" class="form-control3" id="bezeichnung" name="Bezeichnung" value="" aria-label="Bezeichnung" aria-describedby="basic-addon1">
+                                        </div>
+
+                                        <div class="input-group mb-3" style="margin-top:5%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
+                                                Katastralgemeinde</span>    
+                                            <input type="text" class="form-control3" id="katastralgemeinde" name="Katastralgemeinden" value="" aria-label="Katastralgemeinden" aria-describedby="basic-addon1">
+                                        </div>
+
+                                        <div class="input-group mb-3" style="margin-top:5%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
+                                                Postleitzahl</span> 
+                                            <input type="text" class="form-control3" id="postleitzahl"  name="Postleitzahl" value="" aria-label="Postleitzahl" aria-describedby="basic-addon1">
+                                        </div>
+                                        <div class="input-group mb-3" style="margin-top:5%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                                Längengrad</span> 
+                                            <input type="text" class="form-control3" id="LaengengradEdit" name="Laengengrad" value="" aria-label="Laengengrad" aria-describedby="basic-addon1" readonly>
+                                        </div>
+                                        <div class="input-group mb-3" style="margin-top:5%">
+                                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                                <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                                Breitengrad</span> 
+                                            <input type="text" class="form-control3" id="BreitengradEdit" name="Breitengrad" value="" readonly aria-label="Breitengrad" aria-describedby="basic-addon1">
+                                        </div>
+
+
+
+                                        <br>
+                                        <input type="submit" class="btn  btn-success" style="margin-left:30%"
+                                            value="Energiesystem aktualisieren">
+                                            
+                                    </form>
 
 
 
 
 
 
+                                </div>
 
-                <!-- Modal ET hinzufügen -->
-                <div class="modal modal2 fade" id="exampleModalCenterET" tabindex="-1" role="dialog"
+
+                            </div>
+                        </div>
+                    </div>
+            <!-- ModalEditES aus -->
+
+
+
+            <!-- ModalEdit ET -->
+                    <div class="modal modal2 fade" id="exampleModalCenterEditET" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img src="/images/icons/etgrün2.png"></h5>
+                                <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img src="/images/icons/etgrün2.png"></h5></h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
 
-                                <form action="{{ route('EnTech.store') }}" id="ETerstellen" method="POST">
+
+                                <form id="editFormET" method="GET">
+                                    <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
                                     @csrf
                                     <div class="input-group mb-3" style="margin-top:2%">
                                         <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                             <img src="/images/pop-up/id.png" style="margin-right:10px;">
-                                            ID-ES</span>
-                                        <input type="text" class="form-control3" id="IDES"  name="IDES" readonly aria-label="ID-ES" aria-describedby="basic-addon1">
+                                            ID Energiesystem</span>                            
+                                            <input type="text" class="form-control3" id="idEditES" name="idEditES" value="" aria-label="ID-ES" aria-describedby="basic-addon1" readonly>
+                                    </div>
+
+                                    <div class="input-group mb-3" style="margin-top:2%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/id.png" style="margin-right:10px;">
+                                            ID Energietechnologie</span>  
+                                        <input type="text" class="form-control3" id="idEditET" name="idEditET" value="" aria-label="idEditET" aria-describedby="basic-addon1" readonly>
                                     </div>
 
                                     <div class="input-group mb-3" style="margin-top:2%">
                                         <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                             <img src="/images/pop-up/name.png" style="margin-right:10px;">
-                                            Bezeichnung</span>
-                                        <input type="text" class="form-control3" id="BezeichnungET"
-                                            name="Bezeichnung" placeholder="Bezeichung" aria-label="BezeichnungET" aria-describedby="basic-addon1">
+                                            Bezeichnung</span>                              
+                                            <input type="text" class="form-control3" id="BezeichnungEditET" name="BezeichnungEditET" value="" aria-label="BezeichnungEditET" aria-describedby="basic-addon1">
                                     </div>
 
                                     <div class="input-group mb-3" style="margin-top:2%; width:445px;">
                                         <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                             <img src="/images/pop-up/typ.png" style="margin-right:10px;">
-                                            Typ</span>
+                                            Typ</span>  
                                             <br>
-                                            <select class="form-select" name="Typ" id="Typ" style="text-align:center">
+                                            
+                                            <select name="TypEditET" class="form-select" id="TypEditET" style="text-align:center;">
                                                 <option value="PV-Anlage">PV-Anlage</option>
                                                 <option value="Stromnetzbezug">Stromnetzbezug</option>
                                                 <option value="Batteriespeicher">Batteriespeicher</option>
@@ -264,435 +565,262 @@
                                                 <option value="Ab oder Adsorbtionskältemaschiene"> Ab oder Adsorbtionskältemaschiene</option>
                                                 <option value="Kältespeicher">Kältespeicher</option>
                                                 <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
-                                              </select>
+                                            </select>
                                     </div>
 
                                     <div class="input-group mb-3" style="margin-top:2%">
                                         <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                             <img src="/images/pop-up/ort.png" style="margin-right:10px;">
-                                            Ort</span>
-                                        <input type="text" class="form-control3" id="OrtET"
-                                            name="Ort" placeholder="Wieselburg" aria-label="OrtET" aria-describedby="basic-addon1">
+                                            Ort </span>                              
+                                            <input type="text" class="form-control3" id="OrtEditET"  name="OrtEditET" value="" aria-label="OrtEditET" aria-describedby="basic-addon1">
                                     </div>
+
                                     <div class="input-group mb-3" style="margin-top:2%">
                                         <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                             <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
-                                            Längengrad</span>
-                                        <input type="text" class="form-control3" id="LaengengradET"
-                                            name="Laengengrad"  aria-label="LängengradET" aria-describedby="basic-addon1" readonly>
+                                            Längengrad</span>                             
+                                        <input type="text" class="form-control3" id="LaengengradEditET" name="LaengengradEditET" value="" readonly aria-label="LaengengradEditET" aria-describedby="basic-addon1">
                                     </div>
+
                                     <div class="input-group mb-3" style="margin-top:2%">
                                         <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                             <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
-                                            Breitengrad</span>
-                                        <input type="text" class="form-control3" id="BreitengradET"
-                                            name="Breitengrad" aria-label="BreitengradET" aria-describedby="basic-addon1" readonly>
+                                            Breitgengrad</span>                              
+                                            <input type="text" class="form-control3" id="BreitengradEditET" name="BreitengradEditET" value="" readonly aria-label="BreitengradEditET" aria-describedby="basic-addon1">
                                     </div>
 
 
 
                                     <br>
-                                    <input type="submit" class="btn btn-success" style="margin-left:30%" id="ETerstellen"
-                                        value="Energietechnologie erstellen">
+                                    <!-- <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
+                                    <input type="submit" class="btn btn-success" style="margin-left:30%"
+                                        value="Energietechnologie aktualisieren">
+                            
                                 </form>
+
+
+
+
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    </div>
+          <!-- ModalEdit ET  aus-->
+
+
+          <!-- Grafana ES -->
+                    <div class="modal modal2 fade" id="exampleModalCenterGrafanaES" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Grafana-Statistiken Energiesysteme</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <iframe
+                                        src="https://snapshot.raintank.io/dashboard-solo/snapshot/y7zwi2bZ7FcoTlB93WN7yWO4aMiz3pZb?from=1493369923321&to=1493377123321&panelId=4"
+                                        width="460"
+                                        height="300"
+                                        frameborder="0"
+                                    ></iframe>
+
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- Modal aus -->
+          <!-- Grafana ES aus -->
 
 
 
+          <!-- Grafana ET -->
+                    <div class="modal modal2 fade" id="exampleModalCenterGrafanaET" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Grafana-Statistiken Energietechnologie</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                
 
-            <!-- ModalEditES -->
-            <div class="modal modal2 fade" id="exampleModalCenterEdit" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img src="/images/icons/esgrün2.png"></h5></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                                </div>
+
+
+                            </div>
                         </div>
-                        <div class="modal-body">
+                    </div>
+          <!-- Grafana ET aus -->
 
 
-                            <form id="editForm" method="GET">
+
+          <!-- ModalAuge ES -->
+                    <div class="modal modal2 fade" id="exampleModalCenterAuge" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <h3 style="text-align: center;"> Weitere Details </h3>
+                                <form id="augeForm" method="GET">
+                                    <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
+                                    @csrf
+                                    <div class="input-group mb-3" style="margin-top:2%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                            Bezeichnung</span> 
+                                        <input type="text" class="form-control3" id="bezeichnunga" name="Bezeichnung" aria-label="Bezeichnung" aria-describedby="basic-addon1" value="" readonly>
+                                    </div>
+
+                                    <div class="input-group mb-3" style="margin-top:5%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
+                                            Katastralgemeinde</span>                                         
+                                            <input type="text" class="form-control3" id="katastralgemeindea" name="Katastralgemeinden" value="" aria-label="Katastralgemeinde" aria-describedby="basic-addon1" readonly>
+                                    </div>
+                                    
+                                    <div class="input-group mb-3" style="margin-top:5%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
+                                            Postleitzahl</span> 
+                                        <input type="text" class="form-control3" id="postleitzahla" name="Postleitzahl" value="" aria-label="Postleitzahl" aria-describedby="basic-addon1" readonly>
+                                    </div>
+
+                                    <div class="input-group mb-3" style="margin-top:5%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                            Längengrad</span> 
+                                        <input type="text" class="form-control3" id="LaengengradEdita" name="Laengengrad" aria-label="Laengengrad" aria-describedby="basic-addon1" value="" readonly>
+                                    </div>
+
+                                    <div class="input-group mb-3" style="margin-top:5%">
+                                        <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                            <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                            Breitengrad</span> 
+                                        <input type="text" class="form-control3" id="BreitengradEdita"  name="Breitengrad" aria-label="Breitengrad" aria-describedby="basic-addon1" value="" readonly>
+                                    </div>
+                                </form>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    </div>
+          <!-- ModalAuge ES aus -->
+
+
+
+          <!-- ModalAuge ET -->
+                    <div class="modal modal2 fade" id="exampleModalCenterAugeET" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+    
+                            <div class="modal-body">
+                                <h3 style="text-align: center;"> Weitere Details </h3>
+                                <form id="augeFormET" method="GET">
                                 <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
                                 @csrf
-                                <div class="input-group mb-3" style="margin-top:2%">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/name.png" style="margin-right:10px;">
-                                        Bezeichnung</span>                                    
-                                <input type="text" class="form-control3" id="bezeichnung" name="Bezeichnung" value="" aria-label="Bezeichnung" aria-describedby="basic-addon1">
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1" style="margin-left:45%">ID-ES</label>
+                                    <input type="text" class="form-control form-control3" id="IDESAugeET"
+                                        name="Bezeichnung" value="" readonly>
                                 </div>
-
-                                <div class="input-group mb-3" style="margin-top:5%">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
-                                        Katastralgemeinde</span>    
-                                    <input type="text" class="form-control3" id="katastralgemeinde" name="Katastralgemeinden" value="" aria-label="Katastralgemeinden" aria-describedby="basic-addon1">
+                                <div class="form-group ">
+                                    <label for="exampleFormControlInput1" style="margin-left:45%">ID-ET</label>
+                                    <input type="text" class="form-control form-control3" id="IDETAugeET"
+                                        name="Katastralgemeinden" value="" readonly>
                                 </div>
-
-                                <div class="input-group mb-3" style="margin-top:5%">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
-                                        Postleitzahl</span> 
-                                    <input type="text" class="form-control3" id="postleitzahl"  name="Postleitzahl" value="" aria-label="Postleitzahl" aria-describedby="basic-addon1">
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
+                                    <input type="text" class="form-control form-control3" id="BezeichnungAugeET"
+                                        name="Postleitzahl" value="" readonly>
                                 </div>
-                                <div class="input-group mb-3" style="margin-top:5%">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
-                                        Längengrad</span> 
-                                    <input type="text" class="form-control3" id="LaengengradEdit" name="Laengengrad" value="" aria-label="Laengengrad" aria-describedby="basic-addon1" readonly>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1" style="margin-left:45%">Typ</label>
+                                    <input type="text" class="form-control form-control3" id="TypAugeET"
+                                        name="Laengengrad" value="" readonly>
                                 </div>
-                                <div class="input-group mb-3" style="margin-top:5%">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
-                                         Breitengrad</span> 
-                                    <input type="text" class="form-control3" id="BreitengradEdit" name="Breitengrad" value="" readonly aria-label="Breitengrad" aria-describedby="basic-addon1">
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1" style="margin-left:45%">Ort</label>
+                                    <input type="text" class="form-control form-control3" id="OrtAugeET"
+                                        name="Breitengrad" value="" readonly>
                                 </div>
-
-
-
-                                <br>
-                                <input type="submit" class="btn  btn-success" style="margin-left:30%"
-                                    value="Energiesystem aktualisieren">
-                                    
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
+                                    <input type="text" class="form-control form-control3" id="LaengengradAugeET"
+                                        name="Breitengrad" value="" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
+                                    <input type="text" class="form-control form-control3" id="BreitengradAugeET"
+                                        name="Breitengrad" value="" readonly>
+                                </div>
                             </form>
-
-
-
-
-
-
+    
+    
+                            </div>
+    
+    
                         </div>
-
-
                     </div>
-                </div>
-            </div>
-
-
-
-        <!-- ModalEdit ET -->
-        <div class="modal modal2 fade" id="exampleModalCenterEditET" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img src="/images/icons/etgrün2.png"></h5></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-
-                    <form id="editFormET" method="GET">
-                        <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
-                        @csrf
-                        <div class="input-group mb-3" style="margin-top:2%">
-                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                <img src="/images/pop-up/id.png" style="margin-right:10px;">
-                                ID Energiesystem</span>                            
-                                <input type="text" class="form-control3" id="idEditES" name="idEditES" value="" aria-label="ID-ES" aria-describedby="basic-addon1" readonly>
-                        </div>
-
-                        <div class="input-group mb-3" style="margin-top:2%">
-                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                <img src="/images/pop-up/id.png" style="margin-right:10px;">
-                                ID Energietechnologie</span>  
-                            <input type="text" class="form-control3" id="idEditET" name="idEditET" value="" aria-label="idEditET" aria-describedby="basic-addon1" readonly>
-                        </div>
-
-                        <div class="input-group mb-3" style="margin-top:2%">
-                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                <img src="/images/pop-up/name.png" style="margin-right:10px;">
-                                Bezeichnung</span>                              
-                                <input type="text" class="form-control3" id="BezeichnungEditET" name="BezeichnungEditET" value="" aria-label="BezeichnungEditET" aria-describedby="basic-addon1">
-                        </div>
-
-                        <div class="input-group mb-3" style="margin-top:2%; width:445px;">
-                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                <img src="/images/pop-up/typ.png" style="margin-right:10px;">
-                                Typ</span>  
-                                <br>
-                                
-                                <select name="TypEditET" class="form-select" id="TypEditET" style="text-align:center;">
-                                    <option value="PV-Anlage">PV-Anlage</option>
-                                    <option value="Stromnetzbezug">Stromnetzbezug</option>
-                                    <option value="Batteriespeicher">Batteriespeicher</option>
-                                    <option value="Wasserstoff Elektrolyse">Wasserstoff Elektrolyse</option>
-                                    <option value="Wasserstoff Brennstoffzelle"> Wasserstoff Brennstoffzelle</option>
-                                    <option value="Wasserstoff Speicher"> Wasserstoff Speicher</option>
-                                    <option value="Windkraftanlage"> Windkraftanlage</option>
-                                    <option value="E-Ladestation"> E-Ladestation</option>
-                                    <option value="Hausanschlusszähler"> Hausanschlusszähler</option>
-                                    <option value="Wärmenetzbezug"> Wärmenetzbezug</option>
-                                    <option value="Biomasseheizkraftwerk"> Biomasseheizkraftwerk (BHKW)</option>
-                                    <option value="Biomasseheizwerk"> Biomasseheizwerk </option>
-                                    <option value="Biomasseheizkessel"> Biomasseheizkessel</option>
-                                    <option value="Wärmespeicher"> Wärmespeicher</option>
-                                    <option value="Solarthermieanlage"> Solarthermieanlage</option>
-                                    <option value="Wärmepumpe"> Wärmepumpe</option>
-                                    <option value="Gebäude Wärmebedarfszähler"> Gebäude Wärmebedarfszähler</option>
-                                    <option value="Kompressionskältemaschiene"> Kompressionskältemaschiene</option>
-                                    <option value="Ab oder Adsorbtionskältemaschiene"> Ab oder Adsorbtionskältemaschiene</option>
-                                    <option value="Kältespeicher">Kältespeicher</option>
-                                    <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
-                                  </select>
-                        </div>
-
-                        <div class="input-group mb-3" style="margin-top:2%">
-                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                <img src="/images/pop-up/ort.png" style="margin-right:10px;">
-                                Ort </span>                              
-                                <input type="text" class="form-control3" id="OrtEditET"  name="OrtEditET" value="" aria-label="OrtEditET" aria-describedby="basic-addon1">
-                        </div>
-
-                        <div class="input-group mb-3" style="margin-top:2%">
-                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
-                                Längengrad</span>                             
-                             <input type="text" class="form-control3" id="LaengengradEditET" name="LaengengradEditET" value="" readonly aria-label="LaengengradEditET" aria-describedby="basic-addon1">
-                        </div>
-
-                        <div class="input-group mb-3" style="margin-top:2%">
-                            <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
-                                Breitgengrad</span>                              
-                                <input type="text" class="form-control3" id="BreitengradEditET" name="BreitengradEditET" value="" readonly aria-label="BreitengradEditET" aria-describedby="basic-addon1">
-                        </div>
-
-
-
-                        <br>
-                        <!-- <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
-                        <input type="submit" class="btn btn-success" style="margin-left:30%"
-                            value="Energietechnologie aktualisieren">
-                
-                    </form>
-
-
-
-
-
-
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-       <!-- ModalEdit ET  aus-->
-
-
-
-
-
-
-
-</div>
-
-
-
-
-            <!-- Grafana ES -->
-            <div class="modal modal2 fade" id="exampleModalCenterGrafanaES" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Grafana-Statistiken Energiesysteme</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <iframe
-                                src="https://snapshot.raintank.io/dashboard-solo/snapshot/y7zwi2bZ7FcoTlB93WN7yWO4aMiz3pZb?from=1493369923321&to=1493377123321&panelId=4"
-                                width="460"
-                                height="300"
-                                frameborder="0"
-                             ></iframe>
-
-                        </div>
-
-
                     </div>
-                </div>
-            </div>
-
-
-
-
-            
-            <!-- Grafana ET -->
-            <div class="modal modal2 fade" id="exampleModalCenterGrafanaET" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Grafana-Statistiken Energietechnologie</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                           
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
-              <!-- ModalAuge ES -->
-              <div class="modal modal2 fade" id="exampleModalCenterAuge" tabindex="-1" role="dialog"
-              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-
-                      <div class="modal-body">
-                          <h3 style="text-align: center;"> Weitere Details </h3>
-                          <form id="augeForm" method="GET">
-                            <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
-                            @csrf
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
-                                <input type="text" class="form-control form-control3" id="bezeichnunga"
-                                    name="Bezeichnung" value="" readonly>
-                            </div>
-                            <div class="form-group ">
-                                <label for="exampleFormControlInput1" style="margin-left:40%">Katastralgemeinde</label>
-                                <input type="text" class="form-control form-control3" id="katastralgemeindea"
-                                    name="Katastralgemeinden" value="" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:40%">Postleitzahl</label>
-                                <input type="text" class="form-control form-control3" id="postleitzahla"
-                                    name="Postleitzahl" value="" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
-                                <input type="text" class="form-control form-control3" id="LaengengradEdita"
-                                    name="Laengengrad" value="" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
-                                <input type="text" class="form-control form-control3" id="BreitengradEdita"
-                                    name="Breitengrad" value="" readonly>
-                            </div>
-                        </form>
-
-
-                      </div>
-
-
-                  </div>
-              </div>
-          </div>
-
-
-
-
-
-
-                <!-- ModalAuge ET -->
-                <div class="modal modal2 fade" id="exampleModalCenterAugeET" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-  
-                        <div class="modal-body">
-                            <h3 style="text-align: center;"> Weitere Details </h3>
-                            <form id="augeFormET" method="GET">
-                              <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
-                              @csrf
-                              <div class="form-group">
-                                  <label for="exampleFormControlInput1" style="margin-left:45%">ID-ES</label>
-                                  <input type="text" class="form-control form-control3" id="IDESAugeET"
-                                      name="Bezeichnung" value="" readonly>
-                              </div>
-                              <div class="form-group ">
-                                  <label for="exampleFormControlInput1" style="margin-left:45%">ID-ET</label>
-                                  <input type="text" class="form-control form-control3" id="IDETAugeET"
-                                      name="Katastralgemeinden" value="" readonly>
-                              </div>
-                              <div class="form-group">
-                                  <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
-                                  <input type="text" class="form-control form-control3" id="BezeichnungAugeET"
-                                      name="Postleitzahl" value="" readonly>
-                              </div>
-                              <div class="form-group">
-                                  <label for="exampleFormControlInput1" style="margin-left:45%">Typ</label>
-                                  <input type="text" class="form-control form-control3" id="TypAugeET"
-                                      name="Laengengrad" value="" readonly>
-                              </div>
-                              <div class="form-group">
-                                  <label for="exampleFormControlInput1" style="margin-left:45%">Ort</label>
-                                  <input type="text" class="form-control form-control3" id="OrtAugeET"
-                                      name="Breitengrad" value="" readonly>
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
-                                <input type="text" class="form-control form-control3" id="LaengengradAugeET"
-                                    name="Breitengrad" value="" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
-                                <input type="text" class="form-control form-control3" id="BreitengradAugeET"
-                                    name="Breitengrad" value="" readonly>
-                            </div>
-                          </form>
-  
-  
-                        </div>
-  
-  
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
+          <!-- ModalAuge ET aus -->
 
 
           
+            <script>
+                
+                function loadDataTable(){
+                    $('#table').DataTable( {
+                        "columnDefs": [
+                            { "orderable": false, "targets": 4 }, //Um die Sortierfunktion bei den Icons zu deaktivieren
+                            { "orderable": false, "targets": 5 },
+                            { "orderable": false, "targets": 6 }
+                        ], 
+                        lengthChange: false,
 
+                        lengthMenu: [5],  //Wieviele ES/ET pro Seite angezeigt werden 
+                        language: { "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"},  
+
+
+
+                        });
+
+
+                }
+
+                loadDataTable();
+            </script>
     </body>
 
   
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+    
 
 
 
@@ -845,7 +973,6 @@ function initAutocomplete() {
     $password = '';
     $dbname = 'laravel';
     
-
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -1316,22 +1443,54 @@ function initAutocomplete() {
 
         function print_List_Energietechnologie(id){
 
+            document.getElementById("table").style.display = "none";
+            document.getElementById("tableET").style.display = "block";
+            document.getElementById("tableES").style.display = "none";
+
+            $('#table').DataTable.destroy();
+            $('#tableES').DataTable.destroy();
+
+           
+            /* $("#tableET").DataTable()... */
+
+            
+                
+                function loadDataTableET(){
+                    $('#tableET').DataTable( {
+                        "columnDefs": [
+                            { "orderable": false, "targets": 5 }, //Um die Sortierfunktion bei den Icons zu deaktivieren
+                            { "orderable": false, "targets": 6 },
+                            { "orderable": false, "targets": 7 }
+                        ], 
+                        lengthChange: false,
+
+                        lengthMenu: [5],  //Wieviele ES/ET pro Seite angezeigt werden 
+                        });
+                }
+
+                loadDataTableET();
+            
+
+
+            /*
+
             var ETListe="";
             ETListe += "<table class=\"table table-borderless table-hover\" id=\"table\">";
             ETListe += "                                <thead>";
             ETListe += "                                    <tr>";
             ETListe += "                                        <th scope=\"col\">ID-ES<\/th>";
-            ETListe += "                                    <th scope=\"col\">ID-ET<\/th>";
+            ETListe += "                                        <th scope=\"col\">ID-ET<\/th>";
             ETListe += "                                        <th scope=\"col\">Bezeichnung<\/th>";
             ETListe += "                                        <th scope=\"col\">Typ<\/th>";
             ETListe += "                                        <th scope=\"col\">Ort<\/th>";
-            ETListe += "";
+            ETListe += "                                        <th scope=\"col\"<\/th>";                  
+            ETListe += "                                        <th scope=\"col\"<\/th>";                  
+            ETListe += "                                        <th scope=\"col\"<\/th>";                  
             ETListe += "";
             ETListe += "                                    <\/tr>";
             ETListe += "                                <\/thead>";
-
-            ETListe += "                                @foreach ($dataEnTech as $d)";
             ETListe += "                                    <tbody>";
+            ETListe += "                                @foreach ($dataEnTech as $d)";
             ETListe += "                                        <tr class='enTechTR-{{$d->ensys_id}}' style='display:none;'>";
             ETListe += "";                                          
             ETListe += "                                            <td>{{ $d->ensys_id }}</td>"; //IDES
@@ -1368,22 +1527,26 @@ function initAutocomplete() {
             ETListe += "                                            <td> <a href=\"javascript:augefunctionET({{ $d->id }})\"";
             ETListe += "                                                class=\"btn btn2\"";
             ETListe += "                                                style=\"background-image: url('/images/buttons/auge.png')\"><\/a><\/td>";
+            ETListe += "                                            <td></td>";
             ETListe += "                                            @endguest";
             ETListe += "";
             ETListe += "                                        <\/tr>";
-            ETListe += "                                    <\/tbody>";
             ETListe += "                                @endforeach";
+            ETListe += "                                    <\/tbody>";
 
             
           
             ETListe += "                            <\/table>";
+           
+            //document.getElementById("table").innerHTML = ETListe;
 
-            document.getElementById("table").innerHTML = ETListe;
 
             $(".enTechTR-" + id).css("display", "table-row");
 
                 document.getElementById("Listuberschrieft").innerHTML = "Energietechnologien";
-                document.getElementById("Listimage").src = "/images/icons/etgrün.png";
+                document.getElementById("Listimage").src = "/images/icons/etgrün.png"; 
+        */
+
         }
 
 
@@ -1391,6 +1554,34 @@ function initAutocomplete() {
 
         function print_List_Energiesysteme(){
 
+            document.getElementById("table").style.display = "none";
+            document.getElementById("tableET").style.display = "none";
+            document.getElementById("tableES").style.display = "block";
+
+                /* $("#tableET").DataTable()... */
+
+            $('#table').DataTable.destroy();
+            $('#tableET').DataTable.destroy();
+
+                
+                function loadDataTableES(){
+                    $('#tableES').DataTable( {
+                        "columnDefs": [
+                            { "orderable": false, "targets": 4 }, //Um die Sortierfunktion bei den Icons zu deaktivieren
+                            { "orderable": false, "targets": 5 },
+                            { "orderable": false, "targets": 6 }
+                        ], 
+                        lengthChange: false,
+
+                        lengthMenu: [5],  //Wieviele ES/ET pro Seite angezeigt werden 
+                        });
+                }
+
+                loadDataTableES();
+
+            
+
+            /*
 
             var EnsysListe="";
                         EnsysListe += "<table class=\"table table-borderless table-hover\" id=\"table\">";
@@ -1400,13 +1591,15 @@ function initAutocomplete() {
                         EnsysListe += "                                        <th scope=\"col\">Bezeichnung<\/th>";
                         EnsysListe += "                                        <th scope=\"col\">Katastralgemeinde<\/th>";
                         EnsysListe += "                                        <th scope=\"col\">Postleitzahl<\/th>";
-                        EnsysListe += "";
+                        EnsysListe += "                                        <th scope=\"col\"<\/th>";                  
+                        EnsysListe += "                                        <th scope=\"col\"<\/th>";                  
+                        EnsysListe += "                                        <th scope=\"col\"<\/th>";   
                         EnsysListe += "";
                         EnsysListe += "                                    <\/tr>";
                         EnsysListe += "                                <\/thead>";
                         EnsysListe += "";
-                        EnsysListe += "                                @foreach ($data as $d)";
                         EnsysListe += "                                    <tbody>";
+                        EnsysListe += "                                @foreach ($data as $d)";
                         EnsysListe += "                                        <tr>";
                         EnsysListe += "";
                         EnsysListe += "                                            <td>{{ $d->id }}<\/td>";
@@ -1443,13 +1636,13 @@ function initAutocomplete() {
                         EnsysListe += "                                                class=\"btn btn2\"";
                         EnsysListe += "                                                style=\"background-image: url('/images/buttons/auge.png')\"><\/a><\/td>";
                         EnsysListe += "                                            @endguest";
-                        EnsysListe += "";
+                        EnsysListe += "                                             <td></td>";
                         EnsysListe += "                                        <\/tr>";
                         EnsysListe += "";
                         EnsysListe += "";
                         EnsysListe += "";
-                        EnsysListe += "                                    <\/tbody>";
                         EnsysListe += "                                @endforeach";
+                        EnsysListe += "                                    <\/tbody>";
                         EnsysListe += "                            <\/table>";
 
 
@@ -1458,6 +1651,10 @@ function initAutocomplete() {
             document.getElementById("table").innerHTML = EnsysListe;
             document.getElementById("Listuberschrieft").innerHTML = "Energiesysteme";
             document.getElementById("Listimage").src = "/images/icons/es.png";
+            $("#table").DataTable().destroy();
+            loadDataTable();
+            */
+            
         }
 
 
