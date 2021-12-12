@@ -689,10 +689,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <iframe
-                            src="https://snapshot.raintank.io/dashboard-solo/snapshot/y7zwi2bZ7FcoTlB93WN7yWO4aMiz3pZb?from=1493369923321&to=1493377123321&panelId=4"
-                            width="460" height="300" frameborder="0"></iframe>
+                        
 
+                        <!--Grafana Statistik iframe-->
+
+                        <iframe src="http://192.168.1.5:3000/d-solo/ghfxRoWRz/roomtemp_zi_tk?orgId=1&refresh=5s&from=1639303909049&to=1639325509049&panelId=2" width="450" height="200" frameborder="0"></iframe>
                     </div>
 
 
@@ -1091,9 +1092,9 @@
     <?php
     
     $servername = 'localhost';
-    $username = 'root';
-    $password = '';
-    $dbname = 'laravel';
+    $username = 'dev';
+    $password = 'Oi24Spc5';
+    $dbname = 'EnsysAlpha';
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
