@@ -99,7 +99,6 @@ Route::get('/edit/{id}',[EnSysController::class, 'edit']);
 Route::get('/editET/{id}',[EnTechController::class, 'edit']);
 Route::get('/deleteET/{id}',[EnTechController::class, 'destroy']);
 
-
 Route::get('/mapsLocation',function(Request $request)
 {
 	$address			=	$request['address'];

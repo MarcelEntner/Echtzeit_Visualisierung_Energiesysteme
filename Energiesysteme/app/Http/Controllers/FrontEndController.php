@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use stdClass;
 
 class FrontEndController extends Controller
 {
@@ -27,6 +29,7 @@ class FrontEndController extends Controller
 
         return view('Energiesysteme' , compact('data', 'dataEnTech'));
     }
+
     public function impressum()
     {
         return view('Impressum');

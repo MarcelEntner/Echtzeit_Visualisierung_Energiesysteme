@@ -445,34 +445,6 @@
 
         }
 
-
-/*
-        .pagination > li > a 
-        {
-            background-color: white;
-            color: green;
-        }
-
-        .pagination > li > a:focus,
-        .pagination > li > a:hover,
-        .pagination > li > span:focus,
-        .pagination > li > span:hover
-        {
-            color: white;
-            background-color: green;
-            border-color: green;
-        }
-
-        .pagination > .active > a
-        {
-            color: green;
-            background-color: green;
-            border: solid 1px green;
-        }
-
-     .page-link{
-        background-color: green;
-     }*/
       
         
 
