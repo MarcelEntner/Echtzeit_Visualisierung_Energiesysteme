@@ -692,8 +692,8 @@
                         
 
                         <!--Grafana Statistik iframe-->
-
-                        <iframe src="http://192.168.1.5:3000/d-solo/ghfxRoWRz/roomtemp_zi_tk?orgId=1&refresh=5s&from=1639303909049&to=1639325509049&panelId=2" width="450" height="200" frameborder="0"></iframe>
+                        <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639322082154&to=1639343682154&panelId=2" width="450" height="200" frameborder="0"></iframe>
+                        
                     </div>
 
 
