@@ -25,7 +25,7 @@
                     <div id="find" class="btn btn-success">Suchen</div>
                     <!--- BUTTON ZUM SUCHEN -->
 
-                    <div class="shadow-lg rounded p-4">
+                    <div class="shadow-lg rounded p-3">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
                                 <h3> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/es.png"
@@ -41,10 +41,12 @@
 
                         <!-- DataTable -> Th und Td müssen gleiche Anzahl haben-->
 
-                        <!-- Main Liste -->
-                        <div class="table-responsive" style="height: 41vh;">
+                        <!-- Main Liste class="table-responsive" -->
+                        <div style="height: 41vh; width:100%;">
+
+                           <!-- style="height: 30vh;" -->
                             <div id="tableDiv">
-                                <table class="table table-borderless table-hover" style="height: 30vh;" id="table">
+                                <table class="table table-borderless table-hover" id="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
@@ -133,14 +135,15 @@
                                 </table>
                             </div>
 
+                           
 
                             <div id="tableETDiv" style="display: none">
-                                <!-- ET Liste -->
+                                <!-- ET Liste style="height: 30vh;" -->
                                 <table class="table table-borderless table-hover" id="tableET">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID-ES</th>
-                                            <th scope="col">ID-ET</th>
+                                            <th scope="col">IDES</th>
+                                            <th scope="col">IDET</th>
                                             <th scope="col">Bezeichnung</th>
                                             <th scope="col">Typ</th>
                                             <th scope="col">Ort</th>
@@ -212,7 +215,7 @@
 
 
                             <div id="tableESDiv" style="display: none">
-                                <!-- ES Liste -->
+                                <!-- ES Liste style="height: 30vh; -->
                                 <table class="table table-borderless table-hover" id="tableES" >
                                     <thead>
                                         <tr>
@@ -252,11 +255,11 @@
                                                         </td>
 
                                                     @else
-                                                        <td> <a href="javascript:GrafanafunctionET()" class="btn btn2"
+                                                        <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
 
-                                                        <td> <a href="javascript:augefunctionET({{ $d->id }})"
+                                                        <td> <a href="javascript:augefunction({{ $d->id }})"
                                                                 class="btn btn2"
                                                                 style="background-image: url('/images/buttons/auge.png')"></a>
                                                         </td>
@@ -283,6 +286,9 @@
                             </div>
 
                         </div>
+
+
+
 
                     </div>
                 </div>
@@ -381,7 +387,7 @@
                 <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img
+                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie <img
                                     src="/images/icons/etgrün2.png"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -560,7 +566,7 @@
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie<img
+                        <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie <img
                                 src="/images/icons/etgrün2.png"></h5>
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -735,7 +741,8 @@
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem</h5>
+                        <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img
+                            src="/images/icons/esgrün2.png"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -804,7 +811,8 @@
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie</h5>
+                        <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie <img
+                            src="/images/icons/etgrün2.png"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -815,39 +823,59 @@
                         <form id="augeFormET" method="GET">
                             <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
                             @csrf
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:45%">ID-ES</label>
-                                <input type="text" class="form-control form-control3" id="IDESAugeET" name="Bezeichnung"
+                            <div class="input-group mb-3" style="margin-top:2%">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                    <img src="/images/pop-up/id.png" style="margin-right:10px;">
+                                    ID-ES</span>
+                                <input type="text" class="form-control3" id="IDESAugeET" name="IDESAugeET" aria-label="IDESAugeET" aria-describedby="basic-addon1"
                                     value="" readonly>
                             </div>
-                            <div class="form-group ">
-                                <label for="exampleFormControlInput1" style="margin-left:45%">ID-ET</label>
-                                <input type="text" class="form-control form-control3" id="IDETAugeET"
-                                    name="Katastralgemeinden" value="" readonly>
+
+                            <div class="input-group mb-3" style="margin-top:2%">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                    <img src="/images/pop-up/id.png" style="margin-right:10px;">
+                                    ID-ET</span>
+                                <input type="text" class="form-control3" id="IDETAugeET"  aria-label="IDETAugeET" aria-describedby="basic-addon1"
+                                    name="IDETAugeET" value="" readonly>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:40%">Bezeichnung</label>
-                                <input type="text" class="form-control form-control3" id="BezeichnungAugeET"
+
+                            <div class="input-group mb-3" style="margin-top:2%">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                    <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                    Bezeichnung</span>
+                                <input type="text" class="form-control3" id="BezeichnungAugeET"  aria-label="BezeichnungAugeET" aria-describedby="basic-addon1"
                                     name="Postleitzahl" value="" readonly>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:45%">Typ</label>
-                                <input type="text" class="form-control form-control3" id="TypAugeET" name="Laengengrad"
+
+                            <div class="input-group mb-3" style="margin-top:2%">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                    <img src="/images/pop-up/typ.png" style="margin-right:10px;">
+                                    Typ</span>                                
+                                <input type="text" class="form-control3" id="TypAugeET" name="Laengengrad"
                                     value="" readonly>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:45%">Ort</label>
-                                <input type="text" class="form-control form-control3" id="OrtAugeET" name="Breitengrad"
+
+                            <div class="input-group mb-3" style="margin-top:2%">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                    <img src="/images/pop-up/ort.png" style="margin-right:10px;">
+                                    Ort</span>                                
+                                <input type="text" class="form-control3" id="OrtAugeET" name="Breitengrad"
                                     value="" readonly>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:40%">Längengrad</label>
-                                <input type="text" class="form-control form-control3" id="LaengengradAugeET"
+
+                            <div class="input-group mb-3" style="margin-top:2%">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                    <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                    Längengrad</span>                                   
+                                <input type="text" class="form-control3" id="LaengengradAugeET"
                                     name="Breitengrad" value="" readonly>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1" style="margin-left:40%">Breitengrad</label>
-                                <input type="text" class="form-control form-control3" id="BreitengradAugeET"
+
+                            <div class="input-group mb-3" style="margin-top:2%">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                    <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                    Breitengrad</span>                                   
+                                <input type="text" class="form-control3" id="BreitengradAugeET"
                                     name="Breitengrad" value="" readonly>
                             </div>
                         </form>
@@ -878,13 +906,12 @@
                         "targets": 6
                     }
                 ],
-                lengthChange: false,
+                lengthChange: false,  //Auswahl wieviele Pro Seite man sehen möchte
 
                 lengthMenu: [5], //Wieviele ES/ET pro Seite angezeigt werden 
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
                 }
-
 
             });
 
@@ -906,6 +933,9 @@
                 lengthChange: false,
 
                 lengthMenu: [5], //Wieviele ES/ET pro Seite angezeigt werden 
+                language: {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
+                }
             });
 
             $('#tableES').DataTable({
@@ -925,6 +955,9 @@
                 lengthChange: false,
 
                 lengthMenu: [5], //Wieviele ES/ET pro Seite angezeigt werden 
+                language: {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
+                }
             });
         </script>
     </body>
@@ -1092,9 +1125,9 @@
     <?php
     
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -1174,7 +1207,6 @@
             })
 
         }
-
 
 
         function GrafanafunctionES() {
