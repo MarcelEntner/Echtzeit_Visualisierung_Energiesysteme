@@ -50,6 +50,7 @@ class EnTechController extends Controller
         $enTech->Typ=$request->Typ;
         $enTech->Ort=$request->Ort;
         $enTech->user_id=$user->id;
+        $enTech->Bild=$request->imageET;
         $enTech->save();
         $data = DB::table('EnTech')->get();
 

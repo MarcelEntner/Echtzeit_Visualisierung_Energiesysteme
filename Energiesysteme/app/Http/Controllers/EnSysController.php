@@ -73,12 +73,13 @@ class EnSysController extends Controller
     {
        $EnSys = EnSys::find($id);
        $data = DB::table('EnSys')->get();
+       //$EnTech = DB::table('EnTech')->get();
+       $EnTech = EnTech::where('ensys_id', $id)->get();
+
+     
 
 
-        return view('GalerieES',[
-            'EnSys' =>$EnSys, 'data' =>$data
-
-        ]);
+       return view('GalerieES' , compact('EnSys', 'data','EnTech'));
        
       // $data = DB::table('EnSys')->get();
        // return view('GalerieES', compact('data'));
