@@ -24,7 +24,7 @@
 
     <div class="GalerieAnzeige shadow-lg rounded">
 
-        <h3 style="padding:10px"> <b> {{ $EnSys->Bezeichnung }} Energietechnologien</b></h3>
+        <h3 style="padding:10px;margin-left:39%"> <b> {{ $EnSys->Bezeichnung }} Energietechnologien</b></h3>
 
 
 
