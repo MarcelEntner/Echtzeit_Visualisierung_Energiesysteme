@@ -47,6 +47,7 @@ class EnTechController extends Controller
         $enTech->Bezeichnung=$request->Bezeichnung;
         $enTech->Laengengrad=$request->Laengengrad;
         $enTech->Breitengrad=$request->Breitengrad;
+        $enTech->Beschreibung=$request->BeschreibungET;
         $enTech->Typ=$request->Typ;
         $enTech->Ort=$request->Ort;
         $enTech->user_id=$user->id;

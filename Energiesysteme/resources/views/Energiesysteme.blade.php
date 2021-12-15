@@ -448,7 +448,7 @@
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/ort.png" style="margin-right:10px;">
                                         Ort</span>
-                                    <input type="text" class="form-control3" id="OrtET" name="Ort" placeholder="Wieselburg"
+                                    <input type="text" class="form-control3" id="OrtET" name="Ort" placeholder="Dach"
                                         aria-label="OrtET" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="input-group mb-3" style="margin-top:2%">
@@ -469,14 +469,14 @@
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/bild.png" style="margin-right:10px;">
                                         Bild einfügen</span>
-                                        <input type="file" class="form-control3" id="imageET" name="imageET" value="Bildhochladen">
+                                        <input type="file" class="form-control3" id="imageET" name="imageET" value="">
                                 </div>
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/beschreibung.png" style="margin-right:10px;">
                                         Beschreibung</span>
-                                    <input type="text" class="form-control3" id="Beschreibung" name="BeschreibungET"
-                                        aria-label="BreitengradET" aria-describedby="basic-addon1" >
+                                    <input type="text" class="form-control3" id="BeschreibungET" name="BeschreibungET" placeholder="..."
+                                        aria-label="BeschreibungET" aria-describedby="basic-addon1">
                                 </div>
 
 

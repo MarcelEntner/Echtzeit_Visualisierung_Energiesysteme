@@ -21,6 +21,7 @@ class EnTech extends Migration
             $table->foreign('ensys_id')->references('id')->on('EnSys')->onDelete('cascade');
             $table->string('Typ');
             $table->string('Bezeichnung');
+            $table->string('Beschreibung');
             $table->string('Ort');
             $table->double('Laengengrad');
             $table->double('Breitengrad');

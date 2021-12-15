@@ -450,6 +450,14 @@
             display: none;
         }
 
+
+        #card{
+            transition: transform 0.7s;
+        }
+
+        #card:hover{
+            transform: scale(1.1, 1.1);
+        }
       
         
 
