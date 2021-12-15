@@ -24,6 +24,7 @@ class EnTech extends Migration
             $table->string('Ort');
             $table->double('Laengengrad');
             $table->double('Breitengrad');
+            $table->binary('Bild')->nullable();
             $table->timestamps();
         });
     }

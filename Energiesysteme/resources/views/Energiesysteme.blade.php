@@ -465,7 +465,12 @@
                                     <input type="text" class="form-control3" id="BreitengradET" name="Breitengrad"
                                         aria-label="BreitengradET" aria-describedby="basic-addon1" readonly>
                                 </div>
-
+                                <div class="input-group mb-3" style="margin-top:5%">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                        <img src="/images/pop-up/bild.png" style="margin-right:10px;">
+                                        Bild einfügen</span>
+                                        <input type="file" class="form-control3" id="imageET" name="imageET" value="Bildhochladen">
+                                </div>
 
 
                                 <br>
@@ -536,7 +541,8 @@
                                 <input type="text" class="form-control3" id="BreitengradEdit" name="Breitengrad" value=""
                                     readonly aria-label="Breitengrad" aria-describedby="basic-addon1">
                             </div>
-
+                            <!-- picture input -->
+                            
 
 
                             <br>
