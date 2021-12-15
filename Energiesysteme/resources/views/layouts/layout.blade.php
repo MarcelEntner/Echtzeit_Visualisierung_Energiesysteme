@@ -445,6 +445,11 @@
 
         }
 
+        body::-webkit-scrollbar{
+
+            display: none;
+        }
+
       
         
 
