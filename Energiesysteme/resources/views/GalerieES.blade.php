@@ -34,9 +34,9 @@
             @foreach($EnTech as $EnTech)
         
 
-        <div class="d-flex flex-wrap justify-content-center">
+        <div class="d-flex flex-wrap justify-content-center" style="display:block;">
             <div class="card shadow-lg rounded" style="width: 25rem; height:25rem">
-                <img class="card-img-top" src="" alt="Card image cap" style="width: 100%; height:50%">
+                <img class="card-img-top" src="/images/gallerie.jpg" alt="Card image cap" style="width: 100%; height:50%">
                 <div class="card-body">
                     <h5 class="card-title"> {{$EnTech['Bezeichnung']}}</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the

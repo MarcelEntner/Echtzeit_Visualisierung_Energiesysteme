@@ -471,11 +471,24 @@
                                         Bild einfügen</span>
                                         <input type="file" class="form-control3" id="imageET" name="imageET" value="Bildhochladen">
                                 </div>
+                                <div class="input-group mb-3" style="margin-top:2%">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                        <img src="/images/pop-up/beschreibung.png" style="margin-right:10px;">
+                                        Beschreibung</span>
+                                    <input type="text" class="form-control3" id="Beschreibung" name="BeschreibungET"
+                                        aria-label="BreitengradET" aria-describedby="basic-addon1" >
+                                </div>
+
+
+                                
 
 
                                 <br>
                                 <input type="submit" class="btn btn-success" style="margin-left:30%" id="ETerstellen"
                                     value="Energietechnologie erstellen">
+
+
+                                
                             </form>
                         </div>
                     </div>
@@ -671,6 +684,8 @@
                             <!-- <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
                             <input type="submit" class="btn btn-success" style="margin-left:30%"
                                 value="Energietechnologie aktualisieren">
+
+
 
                         </form>
 
@@ -1131,9 +1146,9 @@
     <?php
     
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
