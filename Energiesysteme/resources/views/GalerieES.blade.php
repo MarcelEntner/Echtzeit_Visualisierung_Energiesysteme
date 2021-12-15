@@ -34,8 +34,8 @@
              @foreach($EnTech as $EnTech)
                     
 
-                    <div id="card" class="d-flex flex-wrap justify-content-center" style="float:left; padding-left:2%; padding-top:1%;">
-                        <div class="card shadow-lg rounded" style="width: 25rem; height:25rem">
+                    <div id="card" class="d-flex flex-wrap justify-content-center" style="float:left; padding-left:5%; padding-top:1%;">
+                        <div class="card shadow-lg rounded" style="width: 20rem; height:20rem">
                             <img class="card-img-top" src="/images/gallerie.jpg" alt="Card image cap" style="width: 100%; height:50%">
                             <div class="card-body">
                                 <h5 class="card-title"> {{$EnTech['Bezeichnung']}}</h5>

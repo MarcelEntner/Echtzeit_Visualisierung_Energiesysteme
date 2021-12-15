@@ -993,8 +993,8 @@
     <!-- Kronstana API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
     <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&callback=LoadMap">
-    </script>-->
+    <!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&callback=LoadMap">
+    </script>--> 
 
 
 
@@ -1473,13 +1473,13 @@
                         lng: beach[2]
                     },
                     map, // 0 Bezeichnung, 1 Längengrad, 2 Breitengrad, 3 Id
-                    icon: '/images/icons/es.png',
+                    icon: '/images/icons/esrotneu.png',
                     title: beach[0], //Hover 
                     //label: beach[0], // Was im Icon steht
                     label: {
                         text: beach[0],
-                        color: 'black',
-                        fontSize: '15px',
+                        color: 'red',
+                        fontSize: '17px',
                         className: 'marker-position',
                     },
                     animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
@@ -1560,7 +1560,7 @@
                 marker.addListener("click", () => {
                     map.setZoom(15);
                     map.setCenter(marker.getPosition());
-                    marker.setIcon("/images/icons/es.png");
+                    marker.setIcon("/images/icons/esrotneu.png");
                     marker.setAnimation(google.maps.Animation.DROP);
                     print_List_Energiesysteme();
                     map.setOptions({
