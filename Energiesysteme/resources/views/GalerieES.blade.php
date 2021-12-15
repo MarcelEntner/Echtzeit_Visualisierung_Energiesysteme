@@ -31,14 +31,14 @@
 
 
       
-            
+            @foreach($EnTech as $EnTech)
         
 
         <div class="d-flex flex-wrap justify-content-center">
             <div class="card shadow-lg rounded" style="width: 25rem; height:25rem">
                 <img class="card-img-top" src="" alt="Card image cap" style="width: 100%; height:50%">
                 <div class="card-body">
-                    <h5 class="card-title" > </h5>
+                    <h5 class="card-title"> {{$EnTech['Bezeichnung']}}</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -48,6 +48,8 @@
       
           
         </div>
+      
+        @endforeach
 
         
 
