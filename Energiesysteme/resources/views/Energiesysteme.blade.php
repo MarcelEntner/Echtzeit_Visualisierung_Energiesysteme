@@ -302,7 +302,7 @@
             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
                     style="margin-top: 6%; margin-left:35%; background-color:#3e8e41"; border:1px solid #3e8e41">
                     Energiesystem hinzufügen
-                    </button>-->
+            </button>-->
 
 
 
@@ -495,6 +495,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Modal ET hinzufügen aus -->
 
 
@@ -554,8 +555,93 @@
                                 <input type="text" class="form-control3" id="BreitengradEdit" name="Breitengrad" value=""
                                     readonly aria-label="Breitengrad" aria-describedby="basic-addon1">
                             </div>
-                            <!-- picture input -->
+
+                            <details closed>
+                                <summary>Mehr Details</summary>
+                           
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
+                                    Az-Erzeugungstechnologien</span>
+                                <input type="text" class="form-control3" id="Az-Erzeugungstechnologien" name="Az-Erzeugungstechnologien"
+                                    aria-label="Az-Erzeugungstechnologien" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
                             
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
+                                    Az-Verbraucher</span>
+                                <input type="text" class="form-control3" id="Az-Verbraucher" name="Az-Verbraucher"
+                                    aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
+                                    Az-Speicher</span>
+                                <input type="text" class="form-control3" id="Az-Speicher" name="Az-Speicher"
+                                    aria-label="Az-Speicher" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
+                                    Ges-Nennleistung</span>
+                                <input type="text" class="form-control3" id="Ges-Nennleistung" name="Ges-Nennleistung"
+                                    aria-label="Ges-Nennleistung" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/energie.png" style="margin-right:10px;">
+                                    Ges-Energie</span>
+                                <input type="text" class="form-control3" id="Ges-Energie" name="Ges-Energie"
+                                    aria-label="Ges-Energie" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
+                                    Ges-VerbraucherLeistung</span>
+                                <input type="text" class="form-control3" id="Ges-VerbraucherLeistung" name="Ges-VerbraucherLeistung"
+                                    aria-label="Ges-VerbraucherLeistung" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/gesverenergie.png" style="margin-right:10px;">
+                                    Ges-VerbraucherEnergie</span>
+                                <input type="text" class="form-control3" id="Ges-VerbraucherEnergie" name="Ges-VerbraucherEnergie"
+                                    aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
+                                    Ges-SpeicherKapazität</span>
+                                <input type="text" class="form-control3" id="Ges-SpeicherKapazität" name="Ges-SpeicherKapazität"
+                                    aria-label="Ges-SpeicherKapazität" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
+                                    Aktueller Netzbezug</span>
+                                <input type="text" class="form-control3" id="Aktueller Netzbezug" name= "Aktueller Netzbezug"
+                                    aria-label="Aktueller Netzbezug" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+                        </details>
+                                
 
 
                             <br>
@@ -757,9 +843,9 @@
 
 
         <!-- ModalAuge ES -->
-        <div class="modal modal2 fade" id="exampleModalCenterAuge" tabindex="-1" role="dialog"
+        <div class="modal2 fade" id="exampleModalCenterAuge" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document" >
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img
@@ -813,6 +899,94 @@
                                 <input type="text" class="form-control3" id="BreitengradEdita" name="Breitengrad"
                                     aria-label="Breitengrad" aria-describedby="basic-addon1" value="" readonly>
                             </div>
+
+                            <details closed>
+                                <summary>Mehr Details</summary>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
+                                    Az-Erzeugungstechnologien</span>
+                                <input type="text" class="form-control3" id="Az-Erzeugungstechnologien" name="Az-Erzeugungstechnologien"
+                                    aria-label="Az-Erzeugungstechnologien" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
+                                    Az-Verbraucher</span>
+                                <input type="text" class="form-control3" id="Az-Verbraucher" name="Az-Verbraucher"
+                                    aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
+                                    Az-Speicher</span>
+                                <input type="text" class="form-control3" id="Az-Speicher" name="Az-Speicher"
+                                    aria-label="Az-Speicher" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
+                                    Ges-Nennleistung</span>
+                                <input type="text" class="form-control3" id="Ges-Nennleistung" name="Ges-Nennleistung"
+                                    aria-label="Ges-Nennleistung" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/energie.png" style="margin-right:10px;">
+                                    Ges-Energie</span>
+                                <input type="text" class="form-control3" id="Ges-Energie" name="Ges-Energie"
+                                    aria-label="Ges-Energie" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
+                                    Ges-VerbraucherLeistung</span>
+                                <input type="text" class="form-control3" id="Ges-VerbraucherLeistung" name="Ges-VerbraucherLeistung"
+                                    aria-label="Ges-VerbraucherLeistung" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/gesverenergie.png" style="margin-right:10px;">
+                                    Ges-VerbraucherEnergie</span>
+                                <input type="text" class="form-control3" id="Ges-VerbraucherEnergie" name="Ges-VerbraucherEnergie"
+                                    aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
+                                    Ges-SpeicherKapazität</span>
+                                <input type="text" class="form-control3" id="Ges-SpeicherKapazität" name="Ges-SpeicherKapazität"
+                                    aria-label="Ges-SpeicherKapazität" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                            <div class="input-group mb-3" style="margin-top:5%;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                    <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
+                                    Aktueller Netzbezug</span>
+                                <input type="text" class="form-control3" id="Aktueller Netzbezug" name= "Aktueller Netzbezug"
+                                    aria-label="Aktueller Netzbezug" aria-describedby="basic-addon1" value="" 
+                                    style="width:180px;" readonly>
+                            </div>
+
+                        </details>
+
                         </form>
 
 

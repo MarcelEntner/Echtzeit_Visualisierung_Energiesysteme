@@ -9,16 +9,9 @@
     <div id="carouselExampleControls" class="carousel slide shadow-lg rounded">
         <div class="carousel-inner">
 
+
             <div class="carousel-item active">
-                <img class="picture" src="/images/homepage/HomePage1 - Kopie.jpg" alt="First slide">
-            </div>
-
-            <div class="carousel-item">
-                <img class="picture" src="/images/homepage/HomePage2 - Kopie.jpg" alt="Second slide">
-            </div>
-
-            <div class="carousel-item">
-                <img class="picture" src="/images/homepage/HomePage3 - Kopie.jpg" alt="Third slide">
+                <img class="picture" src="/images/homepage/HomePage2 - Kopie.jpg" alt="First slide">
             </div>
 
             <div class="carousel-item">
@@ -30,7 +23,7 @@
             </div>
 
             <div class="carousel-item">
-                <img class="picture" src="/images/homepage/HomePage6 - Kopie.jpg" alt="Sixth slide">
+                <img class="picture" src="/images/homepage/HomePage6 - Kopie (3).jpg" alt="Sixth slide">
             </div>
 
         </div>

@@ -59,7 +59,7 @@
         }
 
         #carouselExampleControls {
-            /*border: 1px solid black;
+           /* border: 1px solid black;
             border-radius: 15px;*/
             margin: 30px;
         }
@@ -376,8 +376,6 @@
 
         .modal2 {
             position: fixed;
-            top: 0;
-            left: 0;
             z-index: 1055;
             display: none;
             width: 60%;
@@ -393,6 +391,7 @@
             width: auto;
             margin: auto;
             pointer-events: none;
+            
 
         }
 
