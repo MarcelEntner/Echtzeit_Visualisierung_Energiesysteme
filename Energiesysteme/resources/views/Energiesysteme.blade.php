@@ -1319,10 +1319,11 @@
 
     <?php
     
+    
     $servername = 'localhost';
-    $username = 'root';
-    $password = '';
-    $dbname = 'laravel';
+    $username = 'dev';
+    $password = 'Oi24Spc5';
+    $dbname = 'EnSysAlpha';
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -1330,22 +1331,24 @@
     if ($conn->connect_error) {
         die('Connection failed: ' . $conn->connect_error);
     } else {
+        
+
         $sql = 'SELECT id, Bezeichnung, Laengengrad, Breitengrad, Postleitzahl, Katastralgemeinden FROM EnSys'; // ES
-        $es_select = DB::select('select id, Bezeichnung, Laengengrad,Breitengrad, Postleitzahl, Katastralgemeinden from EnSys'); // ES Select mit Laravel
+        $es_select = DB::table('EnSys')->get(); // ES Select mit Laravel
     
         $sql2 = 'SELECT id, ensys_id, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad  FROM EnTech'; // ET
-        $et_select = DB::select('select id, ensys_id, Typ, Bezeichnung, Ort, Laengengrad, Breitengrad from EnTech'); // ET Select mit Laravel
+        $et_select = DB::table('EnTech')->get(); //ET Select mit Laravel
     
         $result = $conn->query($sql); //für SQL DB Conn
-        $result2 = $conn->query($sql2); //für SQL DB Conn
+       $result2 = $conn->query($sql2); //für SQL DB Conn
     
-        //$result = $es_select; //für laravel DB Conn
-        //$result2 = $et_select; //für laravel DB Conn
+      //  $result = $es_select; //für laravel DB Conn
+       // $result2 = $et_select; //für laravel DB Conn
     
         $locations = [];
         $locationsET = [];
     
-        if ($result->num_rows > 0) {
+        
             // output data of each row
             while ($row = $result->fetch_assoc()) {
                 // echo "id: " . $row["id"]. " " . $row["Bezeichnung"]." ". $row["Laengengrad"]. " ". $row["Breitengrad"]. "<br>";
@@ -1353,7 +1356,7 @@
                 $location = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['id']}, {$row['Postleitzahl']}, '{$row['Katastralgemeinden']}']";
                 array_push($locations, $location);
             }
-        }
+        
     
         if ($result2->num_rows > 0) {
             // output data of each row
