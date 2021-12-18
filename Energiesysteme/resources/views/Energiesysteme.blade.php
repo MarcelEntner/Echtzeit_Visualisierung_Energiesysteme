@@ -135,8 +135,6 @@
                                 </table>
                             </div>
 
-                           
-
                             <div id="tableETDiv" style="display: none">
                                 <!-- ET Liste style="height: 30vh;" -->
                                 <table class="table table-borderless table-hover" id="tableET">
@@ -154,7 +152,9 @@
                                     </thead>
 
                                     <tbody>
+                                        
                                         @foreach ($dataEnTech as $d)
+                                        
                                             <tr class="enTechTR-{{ $d->ensys_id }}" style='display:none;'>
 
                                                 <td>{{ $d->ensys_id }}</td>
@@ -395,7 +395,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <form action="{{ route('EnTech.store') }}" id="ETerstellen" method="POST">
+                            <form action="{{ route('EnTech.store') }}" id="ETerstellen" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
@@ -500,8 +500,7 @@
 
 
         <!-- ModalEditES -->
-        <div class="modal modal2 fade" id="exampleModalCenterEdit" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal modal2 fade" id="exampleModalCenterEdit" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -546,18 +545,18 @@
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                     Längengrad</span>
                                 <input type="text" class="form-control3" id="LaengengradEdit" name="Laengengrad" value=""
-                                    aria-label="Laengengrad" aria-describedby="basic-addon1" readonly>
+                                    aria-label="Laengengrad" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef">
                             </div>
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                     Breitengrad</span>
                                 <input type="text" class="form-control3" id="BreitengradEdit" name="Breitengrad" value=""
-                                    readonly aria-label="Breitengrad" aria-describedby="basic-addon1">
+                                    readonly aria-label="Breitengrad" aria-describedby="basic-addon1" style="background-color:#e9ecef">
                             </div>
 
                             <details closed>
-                                <summary>Mehr Details</summary>
+                                <summary>Mehr Details zu diesem Energiesystem</summary>
                            
                             <div class="input-group mb-3" style="margin-top:5%;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
@@ -565,7 +564,7 @@
                                     Az-Erzeugungstechnologien</span>
                                 <input type="text" class="form-control3" id="Az-Erzeugungstechnologien" name="Az-Erzeugungstechnologien"
                                     aria-label="Az-Erzeugungstechnologien" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly >
                             </div>
 
                             
@@ -575,7 +574,7 @@
                                     Az-Verbraucher</span>
                                 <input type="text" class="form-control3" id="Az-Verbraucher" name="Az-Verbraucher"
                                     aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -584,7 +583,7 @@
                                     Az-Speicher</span>
                                 <input type="text" class="form-control3" id="Az-Speicher" name="Az-Speicher"
                                     aria-label="Az-Speicher" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -593,7 +592,7 @@
                                     Ges-Nennleistung</span>
                                 <input type="text" class="form-control3" id="Ges-Nennleistung" name="Ges-Nennleistung"
                                     aria-label="Ges-Nennleistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -602,7 +601,7 @@
                                     Ges-Energie</span>
                                 <input type="text" class="form-control3" id="Ges-Energie" name="Ges-Energie"
                                     aria-label="Ges-Energie" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -611,7 +610,7 @@
                                     Ges-VerbraucherLeistung</span>
                                 <input type="text" class="form-control3" id="Ges-VerbraucherLeistung" name="Ges-VerbraucherLeistung"
                                     aria-label="Ges-VerbraucherLeistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -620,7 +619,7 @@
                                     Ges-VerbraucherEnergie</span>
                                 <input type="text" class="form-control3" id="Ges-VerbraucherEnergie" name="Ges-VerbraucherEnergie"
                                     aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -629,7 +628,7 @@
                                     Ges-SpeicherKapazität</span>
                                 <input type="text" class="form-control3" id="Ges-SpeicherKapazität" name="Ges-SpeicherKapazität"
                                     aria-label="Ges-SpeicherKapazität" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -638,7 +637,7 @@
                                     Aktueller Netzbezug</span>
                                 <input type="text" class="form-control3" id="Aktueller Netzbezug" name= "Aktueller Netzbezug"
                                     aria-label="Aktueller Netzbezug" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly >
                             </div>
                         </details>
                                 
@@ -689,7 +688,7 @@
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID Energiesystem</span>
                                 <input type="text" class="form-control3" id="idEditES" name="idEditES" value=""
-                                    aria-label="ID-ES" aria-describedby="basic-addon1" readonly>
+                                    aria-label="ID-ES" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -697,7 +696,7 @@
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID Energietechnologie</span>
                                 <input type="text" class="form-control3" id="idEditET" name="idEditET" value=""
-                                    aria-label="idEditET" aria-describedby="basic-addon1" readonly>
+                                    aria-label="idEditET" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -753,7 +752,7 @@
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                     Längengrad</span>
                                 <input type="text" class="form-control3" id="LaengengradEditET" name="LaengengradEditET"
-                                    value="" readonly aria-label="LaengengradEditET" aria-describedby="basic-addon1">
+                                    value="" readonly aria-label="LaengengradEditET" aria-describedby="basic-addon1" style="background-color:#e9ecef;"> 
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -761,7 +760,7 @@
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                     Breitgengrad</span>
                                 <input type="text" class="form-control3" id="BreitengradEditET" name="BreitengradEditET"
-                                    value="" readonly aria-label="BreitengradEditET" aria-describedby="basic-addon1">
+                                    value="" readonly aria-label="BreitengradEditET" aria-describedby="basic-addon1" style="background-color:#e9ecef;">
                             </div>
 
 
@@ -804,9 +803,9 @@
                     <div class="modal-body">
                         
 
-                        <!--Grafana Statistik iframe-->
+                        <!--Grafana Statistik iframe
                         <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639334652637&to=1639507452638&panelId=2" width="800" height="1000" frameborder="0"></iframe>
-                        
+                    -->
                     </div>
 
 
@@ -843,7 +842,7 @@
 
 
         <!-- ModalAuge ES -->
-        <div class="modal2 fade" id="exampleModalCenterAuge" tabindex="-1" role="dialog"
+        <div class="modal modal2 fade" id="exampleModalCenterAuge" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document" >
                 <div class="modal-content">
@@ -865,7 +864,7 @@
                                     <img src="/images/pop-up/name.png" style="margin-right:10px;">
                                     Bezeichnung</span>
                                 <input type="text" class="form-control3" id="bezeichnunga" name="Bezeichnung"
-                                    aria-label="Bezeichnung" aria-describedby="basic-addon1" value="" readonly>
+                                    aria-label="Bezeichnung" aria-describedby="basic-addon1" value="" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%">
@@ -873,7 +872,7 @@
                                     <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
                                     Katastralgemeinde</span>
                                 <input type="text" class="form-control3" id="katastralgemeindea" name="Katastralgemeinden"
-                                    value="" aria-label="Katastralgemeinde" aria-describedby="basic-addon1" readonly>
+                                    value="" aria-label="Katastralgemeinde" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%">
@@ -881,7 +880,7 @@
                                     <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
                                     Postleitzahl</span>
                                 <input type="text" class="form-control3" id="postleitzahla" name="Postleitzahl" value=""
-                                    aria-label="Postleitzahl" aria-describedby="basic-addon1" readonly>
+                                    aria-label="Postleitzahl" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%">
@@ -889,7 +888,7 @@
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                     Längengrad</span>
                                 <input type="text" class="form-control3" id="LaengengradEdita" name="Laengengrad"
-                                    aria-label="Laengengrad" aria-describedby="basic-addon1" value="" readonly>
+                                    aria-label="Laengengrad" aria-describedby="basic-addon1" value="" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%">
@@ -897,11 +896,11 @@
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                     Breitengrad</span>
                                 <input type="text" class="form-control3" id="BreitengradEdita" name="Breitengrad"
-                                    aria-label="Breitengrad" aria-describedby="basic-addon1" value="" readonly>
+                                    aria-label="Breitengrad" aria-describedby="basic-addon1" value="" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <details closed>
-                                <summary>Mehr Details</summary>
+                                <summary>Mehr Details zu diesem Energiesystem</summary>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
@@ -909,7 +908,7 @@
                                     Az-Erzeugungstechnologien</span>
                                 <input type="text" class="form-control3" id="Az-Erzeugungstechnologien" name="Az-Erzeugungstechnologien"
                                     aria-label="Az-Erzeugungstechnologien" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
 
                             
@@ -919,7 +918,7 @@
                                     Az-Verbraucher</span>
                                 <input type="text" class="form-control3" id="Az-Verbraucher" name="Az-Verbraucher"
                                     aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -928,7 +927,7 @@
                                     Az-Speicher</span>
                                 <input type="text" class="form-control3" id="Az-Speicher" name="Az-Speicher"
                                     aria-label="Az-Speicher" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -937,7 +936,7 @@
                                     Ges-Nennleistung</span>
                                 <input type="text" class="form-control3" id="Ges-Nennleistung" name="Ges-Nennleistung"
                                     aria-label="Ges-Nennleistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -946,7 +945,7 @@
                                     Ges-Energie</span>
                                 <input type="text" class="form-control3" id="Ges-Energie" name="Ges-Energie"
                                     aria-label="Ges-Energie" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -955,7 +954,7 @@
                                     Ges-VerbraucherLeistung</span>
                                 <input type="text" class="form-control3" id="Ges-VerbraucherLeistung" name="Ges-VerbraucherLeistung"
                                     aria-label="Ges-VerbraucherLeistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -964,7 +963,7 @@
                                     Ges-VerbraucherEnergie</span>
                                 <input type="text" class="form-control3" id="Ges-VerbraucherEnergie" name="Ges-VerbraucherEnergie"
                                     aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -973,7 +972,7 @@
                                     Ges-SpeicherKapazität</span>
                                 <input type="text" class="form-control3" id="Ges-SpeicherKapazität" name="Ges-SpeicherKapazität"
                                     aria-label="Ges-SpeicherKapazität" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
@@ -982,7 +981,7 @@
                                     Aktueller Netzbezug</span>
                                 <input type="text" class="form-control3" id="Aktueller Netzbezug" name= "Aktueller Netzbezug"
                                     aria-label="Aktueller Netzbezug" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px;" readonly>
+                                    style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
 
                         </details>
@@ -1023,7 +1022,7 @@
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID-ES</span>
                                 <input type="text" class="form-control3" id="IDESAugeET" name="IDESAugeET" aria-label="IDESAugeET" aria-describedby="basic-addon1"
-                                    value="" readonly>
+                                    value="" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -1031,7 +1030,7 @@
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID-ET</span>
                                 <input type="text" class="form-control3" id="IDETAugeET"  aria-label="IDETAugeET" aria-describedby="basic-addon1"
-                                    name="IDETAugeET" value="" readonly>
+                                    name="IDETAugeET" value="" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -1039,7 +1038,7 @@
                                     <img src="/images/pop-up/name.png" style="margin-right:10px;">
                                     Bezeichnung</span>
                                 <input type="text" class="form-control3" id="BezeichnungAugeET"  aria-label="BezeichnungAugeET" aria-describedby="basic-addon1"
-                                    name="Postleitzahl" value="" readonly>
+                                    name="Postleitzahl" value="" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -1047,7 +1046,7 @@
                                     <img src="/images/pop-up/typ.png" style="margin-right:10px;">
                                     Typ</span>                                
                                 <input type="text" class="form-control3" id="TypAugeET" name="Laengengrad"
-                                    value="" readonly>
+                                    value="" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -1055,7 +1054,7 @@
                                     <img src="/images/pop-up/ort.png" style="margin-right:10px;">
                                     Ort</span>                                
                                 <input type="text" class="form-control3" id="OrtAugeET" name="Breitengrad"
-                                    value="" readonly>
+                                    value="" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -1063,7 +1062,7 @@
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                     Längengrad</span>                                   
                                 <input type="text" class="form-control3" id="LaengengradAugeET"
-                                    name="Breitengrad" value="" readonly>
+                                    name="Breitengrad" value="" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -1071,7 +1070,7 @@
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                     Breitengrad</span>                                   
                                 <input type="text" class="form-control3" id="BreitengradAugeET"
-                                    name="Breitengrad" value="" readonly>
+                                    name="Breitengrad" value="" readonly style="background-color:#e9ecef;">
                             </div>
                         </form>
 
@@ -1127,7 +1126,7 @@
                 ],
                 lengthChange: false,
 
-                lengthMenu: [5], //Wieviele ES/ET pro Seite angezeigt werden 
+                lengthMenu: [100], //Wieviele ES/ET pro Seite angezeigt werden 
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
                 }
@@ -1520,7 +1519,7 @@
                         break;
 
                     case "Stromnetzbezug":
-                        options.icon = "/images/icons/stromnetz_icon.png"
+                        options.icon = "/images/icons/stromnetz_icon.PNG"
                         break;
 
                     case "Batteriespeicher":
@@ -1528,75 +1527,75 @@
                         break;
 
                     case "Wasserstoff Elektrolyse":
-                        options.icon = "/images/icons/wasserspeicher_icon.png"
+                        options.icon = "/images/icons/elektrolyseur_icon.PNG"
                         break;
 
                     case "Wasserstoff Brennstoffzelle":
-                        options.icon = "/images/icons/wasserspeicher_icon.png"
+                        options.icon = "/images/icons/brennstoffzelle_icon.PNG"
                         break;
 
                     case "Wasserstoff Speicher":
-                        options.icon = "/images/icons/Speicher_icon.png"
+                        options.icon = "/images/icons/wasserstoffspeicher_icon.PNG"
                         break;
 
                     case "Windkraftanlage":
-                        options.icon = "/images/icons/batterie_icon.png"
+                        options.icon = "/images/icons/windkraft_icon.PNG"
                         break;
 
                     case "E-Ladestation":
-                        options.icon = "/images/icons/eauto_icon.png"
+                        options.icon = "/images/icons/etankstelle_icon.PNG"
                         break;
 
                     case "Hausanschlusszähler":
-                        options.icon = "/images/icons/batterie_icon.png"
+                        options.icon = "/images/icons/haus_icon.PNG"
                         break;
 
                     case "Wärmenetzbezug":
-                        options.icon = "/images/icons/stromnetz_icon.png"
+                        options.icon = "/images/icons/industrie_icon.PNG"
                         break;
 
                     case "Biomasseheizkraftwerk":
-                        options.icon = "/images/icons/batterie_icon.png"
+                        options.icon = "/images/icons/raffinerie_icon.PNG"
                         break;
 
                     case "Biomasseheizwerk":
-                        options.icon = "/images/icons/batterie_icon.png"
+                        options.icon = "/images/icons/bhkw_icon.PNG"
                         break;
 
                     case "Biomasseheizkessel":
-                        options.icon = "/images/icons/batterie_icon.png"
+                        options.icon = "/images/icons/biomassekessel_icon.PNG"
                         break;
 
                     case "Wärmespeicher":
-                        options.icon = "/images/icons/Speicher_icon.png"
+                        options.icon = "/images/icons/Wärmespeicher_icon.PNG"
                         break;
 
                     case "Solarthermieanlage":
-                        options.icon = "/images/icons/batterie_icon.png"
+                        options.icon = "/images/icons/solarthermie_icon.PNG"
                         break;
 
                     case "Wärmepumpe":
-                        options.icon = "/images/icons/batterie_icon.png"
+                        options.icon = "/images/icons/Wärmepumpe_icon.png"
                         break;
 
                     case "Gebäude Wärmebedarfszähler":
-                        options.icon = "/images/icons/batterie_icon.png"
+                        options.icon = "/images/icons/wohnhaus_icon.PNG"
                         break;
 
                     case "Kompressionskältemaschiene":
-                        options.icon = "/images/icons/batterie_icon.png"
+                        options.icon = "/images/icons/Kompressionskältemaschiene_icon.png"
                         break;
 
                     case "Ab oder Adsorbtionskältemaschiene":
-                        options.icon = "/images/icons/batterie_icon.png"
+                        options.icon = "/images/icons/Ab oder Adsorbtionskältemaschiene_icon.png"
                         break;
 
                     case "Kältespeicher":
-                        options.icon = "/images/icons/Speicher_icon.png"
+                        options.icon = "/images/icons/kältespeicher_icon.PNG"
                         break;
 
                     case "Gebäude Kältebedarfszähler":
-                        options.icon = "/images/icons/batterie_icon.png"
+                        options.icon = "/images/icons/Gebäude Kältebedarfszähler_icon.png"
                         break;
 
                     default:
@@ -1635,7 +1634,6 @@
 
 
         function setMarkers(map) {
-            // Adds markers to the map + alle Map-Funktionen
 
             // ES Marker
             for (let i = 0; i < locations.length; i++) {
@@ -1652,10 +1650,11 @@
                     //label: beach[0], // Was im Icon steht
                     label: {
                         text: beach[0],
-                        color: 'red',
-                        fontSize: '17px',
-                        className: 'marker-position',
-                    },
+                        color: 'red', //Farbe der Schrift unter dem ES
+                        fontWeight: "bold",
+                        fontSize: '17px', //Schriftgröße
+                        className: 'marker-position', //Damit die Schrift unter dem Icon steht
+                    }, 
                     animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
                 });
 
@@ -1688,7 +1687,7 @@
 
                     map.setZoom(17);
                     map.setCenter(marker.getPosition());
-                    marker.setIcon("/images/icons/esgrün.png");
+                    marker.setIcon("/images/icons/esrotneuausgewählt.png");
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                     print_List_Energietechnologie(id);
 
@@ -1771,6 +1770,7 @@
             document.getElementById("tableETDiv").style.display = "block";
             document.getElementById("tableESDiv").style.display = "none";
 
+            $("#tableETDiv tbody tr").css("display", "none");
             $(".enTechTR-" + id).css("display", "table-row");
 
             document.getElementById("Listuberschrieft").innerHTML = "Energietechnologien";

@@ -42,16 +42,21 @@ class EnTechController extends Controller
         $user = Auth::user();
 
         $enTech = new EnTech();
-        
-        $enTech->ensys_id=$request->IDES;
-        $enTech->Bezeichnung=$request->Bezeichnung;
-        $enTech->Laengengrad=$request->Laengengrad;
-        $enTech->Breitengrad=$request->Breitengrad;
-        $enTech->Beschreibung=$request->BeschreibungET;
-        $enTech->Typ=$request->Typ;
-        $enTech->Ort=$request->Ort;
-        $enTech->user_id=$user->id;
-        $enTech->Bild=$request->imageET;
+
+        $enTech->ensys_id = $request->IDES;
+        $enTech->Bezeichnung = $request->Bezeichnung;
+        $enTech->Laengengrad = $request->Laengengrad;
+        $enTech->Breitengrad = $request->Breitengrad;
+        $enTech->Beschreibung = $request->BeschreibungET;
+        $enTech->Typ = $request->Typ;
+        $enTech->Ort = $request->Ort;
+        $enTech->user_id = $user->id;
+
+        if ($request->file("imageET")) {
+            $image = base64_encode(file_get_contents($request->file('imageET')));
+            $enTech->Bild = $image;
+        }
+
         $enTech->save();
         $data = DB::table('EnTech')->get();
 
@@ -69,12 +74,12 @@ class EnTechController extends Controller
     {
         $EnTech = EnTech::find($id);
         $data = DB::table('EnTech')->get();
- 
- 
-         return view('energiesysteme',[
-             'EnTech' =>$EnTech, 'data' =>$data
- 
-         ]);
+
+
+        return view('energiesysteme', [
+            'EnTech' => $EnTech, 'data' => $data
+
+        ]);
     }
 
     /**
@@ -83,24 +88,21 @@ class EnTechController extends Controller
      * @param  \App\Models\EnTech  $enTech
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request,$id)
+    public function edit(Request $request, $id)
     {
-    
+
         $EnTech = EnTech::find($id);
 
-        $EnTech = EnTech::where('id',$id)->
-        update([
+        $EnTech = EnTech::where('id', $id)->update([
                 'Laengengrad' => $request->input('LaengengradEditET'),
                 'Breitengrad' => $request->input('BreitengradEditET'),
                 'Bezeichnung' => $request->input('BezeichnungEditET'),
                 'Typ' => $request->input('TypEditET'),
                 'Ort' => $request->input('OrtEditET'),
-        ]);
-      
+            ]);
 
-        return redirect ('/energiesysteme');
 
-        
+        return redirect('/energiesysteme');
     }
 
     /**
@@ -125,14 +127,12 @@ class EnTechController extends Controller
     {
         $EnTech = EnTech::find($id);
 
-        
-        if ($EnTech == null){
-            dd("Konnte nicht gelöscht werden");
-        }
 
-        else {
-          $EnTech->delete();
-         return redirect ('/energiesysteme');
-         }
+        if ($EnTech == null) {
+            dd("Konnte nicht gelöscht werden");
+        } else {
+            $EnTech->delete();
+            return redirect('/energiesysteme');
+        }
     }
 }

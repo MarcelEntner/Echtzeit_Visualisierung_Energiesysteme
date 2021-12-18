@@ -370,29 +370,21 @@
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
-
-
-
-
         .modal2 {
             position: fixed;
             z-index: 1055;
             display: none;
-            width: 60%;
             height: 100%;
             overflow-x: hidden;
             overflow-y: auto;
             outline: 0;
-            margin-left: 350px;
         }
 
         .modal2-dialog {
             position: relative;
-            width: auto;
             margin: auto;
             pointer-events: none;
-            
-
+        
         }
 
         .modal2-title {
@@ -449,6 +441,10 @@
             display: none;
         }
 
+        .modal2::-webkit-scrollbar{
+
+            display: none;
+        }
 
         #card{
             transition: transform 0.7s;

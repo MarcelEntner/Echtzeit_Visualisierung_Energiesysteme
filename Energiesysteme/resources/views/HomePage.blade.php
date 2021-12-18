@@ -22,9 +22,7 @@
                 <img class="picture" src="/images/homepage/HomePage5 - Kopie.jpg" alt="Fifth slide">
             </div>
 
-            <div class="carousel-item">
-                <img class="picture" src="/images/homepage/HomePage6 - Kopie (3).jpg" alt="Sixth slide">
-            </div>
+        
 
         </div>
 
