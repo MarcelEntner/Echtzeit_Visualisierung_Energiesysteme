@@ -1802,5 +1802,78 @@
 
 
 
+
+<?php
+
+use Illuminate\Support\Facades\Http;
+
+//$response = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/21');
+/*
+
+$createEnsysDashboard = Http::withHeaders([
+
+    'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+    
+])->post('192.168.1.5:3000/api/dashboards/db', [
+    "dashboard" => [
+         "id" => null, 
+         "uid" => null, 
+         "title" => 'tesffffft', 
+         "tags" => [
+            "templated" 
+         ], 
+         "timezone" => "browser", 
+         "schemaVersion" => 16, 
+         "version" => 0 
+      ], 
+   "folderId" => 0, 
+   "overwrite" => false 
+]);
+echo($createEnsysDashboard);
+*/
+
+/*
+$id = 27;
+
+$strid = strval($id);
+
+
+        $url = '192.168.1.5:3000/api/dashboards/uid/';
+
+
+        $furl = $url . $strid;
+
+
+        echo($furl);
+        $deleteEnsysDashboard = Http::withHeaders([
+
+            'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+
+        ])->delete($furl);
+
+
+
+        echo ($deleteEnsysDashboard);
+
+
+
+
+
+
+//echo($response);
+
+
+
+*/
+
+
+?>
+
+
+
 @endsection
 @section('foooter')
