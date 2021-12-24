@@ -63,6 +63,11 @@ class EnSysController extends Controller
         $enSys->save();
         $data = DB::table('EnSys')->get();
 
+
+        // Hier beginnt der Grafana Zugriff für Dashboard Erstellen
+
+        /*
+
         $uid = strval($enSys->id);
 
         $createEnsysDashboard = Http::withHeaders([
@@ -70,7 +75,7 @@ class EnSysController extends Controller
 
 
 
-            
+
 
             'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
             'Content-Type' => 'application/json',
@@ -95,8 +100,9 @@ class EnSysController extends Controller
         echo ($createEnsysDashboard);
 
 
+        */
 
-
+        // Grafana Ende
 
 
 
@@ -141,12 +147,12 @@ class EnSysController extends Controller
         $EnSys = EnSys::find($id);
 
         $EnSys = EnSys::where('id', $id)->update([
-                'Laengengrad' => $request->input('Laengengrad'),
-                'Breitengrad' => $request->input('Breitengrad'),
-                'Bezeichnung' => $request->input('Bezeichnung'),
-                'Katastralgemeinden' => $request->input('Katastralgemeinden'),
-                'Postleitzahl' => $request->input('Postleitzahl'),
-            ]);
+            'Laengengrad' => $request->input('Laengengrad'),
+            'Breitengrad' => $request->input('Breitengrad'),
+            'Bezeichnung' => $request->input('Bezeichnung'),
+            'Katastralgemeinden' => $request->input('Katastralgemeinden'),
+            'Postleitzahl' => $request->input('Postleitzahl'),
+        ]);
 
 
         return redirect('/energiesysteme');
@@ -174,6 +180,11 @@ class EnSysController extends Controller
 
 
 
+
+
+        // Hier beginnt der Grafana Zugriff für Dashboard löschen
+
+        /*
         $strid = strval($id);
 
 
@@ -195,7 +206,9 @@ class EnSysController extends Controller
         echo ($deleteEnsysDashboard);
 
 
+        //Grafana Ende 
 
+         */
 
 
 
@@ -214,9 +227,9 @@ class EnSysController extends Controller
         }
 
 
-        // Grafana API Call für deleten
+     
 
-       
+
 
 
 
