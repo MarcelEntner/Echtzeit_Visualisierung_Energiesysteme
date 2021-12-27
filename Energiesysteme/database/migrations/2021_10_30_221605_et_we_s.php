@@ -22,6 +22,7 @@ class EtWeS extends Migration
             $table->double('TempUnten');
             $table->double('TempMitte');
             $table->double('TempOben');
+            $table->dateTime('TimeMeasured')->nullable();
             $table->timestamps();
         });
     }

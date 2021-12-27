@@ -20,6 +20,7 @@ class EtKs extends Migration
             $table->double('Leistung');
             $table->double('Energie');
             $table->double('Speicherkap');
+            $table->dateTime('TimeMeasured')->nullable();
             $table->timestamps();
         });
     }

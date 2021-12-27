@@ -42,6 +42,7 @@ class EtBhKw extends Migration
             $table->double('FreuqenzL3');
             $table->double('Vorlauftemp');
             $table->double('Ruecklauftemp');
+            $table->dateTime('TimeMeasured')->nullable();
 
             $table->timestamps();
         });

@@ -18,6 +18,8 @@ class EtGKbZ extends Migration
             $table->bigInteger('EnTech_id')->unsigned();
             $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
             $table->double('Zaelerstand');
+            $table->dateTime('TimeMeasured')->nullable();
+            $table->timestamps();
         });
     }
 

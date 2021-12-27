@@ -39,6 +39,7 @@ class EtPv extends Migration
             $table->double('FreuqenzL1');
             $table->double('FreuqenzL2');
             $table->double('FreuqenzL3');
+            $table->dateTime('TimeMeasured')->nullable();
             $table->timestamps();
             $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
         

@@ -21,6 +21,7 @@ class EtKkM extends Migration
             $table->double('Energie');
             $table->double('Vorlauftemp');
             $table->double('Ruecklauftemp');
+            $table->dateTime('TimeMeasured')->nullable();
             $table->timestamps();
         });
     }

@@ -40,6 +40,7 @@ class EtBsZ extends Migration
             $table->double('FreuqenzL1');
             $table->double('FreuqenzL2');
             $table->double('FreuqenzL3');
+            $table->dateTime('TimeMeasured')->nullable();
             $table->timestamps();
         });
     }
