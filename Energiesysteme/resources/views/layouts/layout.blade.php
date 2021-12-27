@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSS only  Bootstrap-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -25,7 +25,7 @@
             min-height: 100vh;
         }
 
-       
+
         .footercontext {
             color: #21A500;
             padding-right: 10%;
@@ -59,7 +59,7 @@
         }
 
         #carouselExampleControls {
-           /* border: 1px solid black;
+            /* border: 1px solid black;
             border-radius: 15px;*/
             margin: 30px;
         }
@@ -258,8 +258,7 @@
             display: block;
         }
 
-        .dropdowngalerie:hover .dropbtngalerie
-         {
+        .dropdowngalerie:hover .dropbtngalerie {
             background-color: #3e8e41;
         }
 
@@ -288,9 +287,9 @@
             padding: 0px;
             margin: 0px;
         }
-       
 
-     
+
+
 
 
         /* Flip Chart */
@@ -384,7 +383,7 @@
             position: relative;
             margin: auto;
             pointer-events: none;
-        
+
         }
 
         .modal2-title {
@@ -421,42 +420,38 @@
             position: relative;
         }
 
-        #find{
+        #find {
             width: 20%;
             margin-bottom: 1%;
-            height:40px;
+            height: 40px;
             text-align: center;
         }
 
-        #address{
+        #address {
             width: 50%;
             margin-bottom: 3%;
-            height:40px;
+            height: 40px;
 
 
         }
 
-        body::-webkit-scrollbar{
+        body::-webkit-scrollbar {
 
             display: none;
         }
 
-        .modal2::-webkit-scrollbar{
+        .modal2::-webkit-scrollbar {
 
             display: none;
         }
 
-        #card{
+        #card {
             transition: transform 0.7s;
         }
 
-        #card:hover{
+        #card:hover {
             transform: scale(1.1, 1.1);
         }
-      
-        
-
- 
 
     </style>
 </head>
@@ -515,8 +510,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                       document.getElementById('logout-form').submit();">
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                               document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -524,7 +521,15 @@
                                         class="d-none">
                                         @csrf
                                     </form>
+
+                                    <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }} </a>
+                                          
+                                  
+
                                 </div>
+
+
+
                             </div>
                         @endguest
                     </div>
