@@ -61,6 +61,19 @@ class EnTechController extends Controller
         $data = DB::table('EnTech')->get();
 
 
+
+        //Tabellen-Eintrag im richtigen Typ für Echtzeitdaten
+        switch ($request->Typ){
+            case "PV-Anlage":
+                    $Controller = new EtPvController();
+                    $Controller->store($enTech->id);
+                break;
+        }
+
+ 
+
+
+
         return redirect("/energiesysteme")->with(['data' => $data]);
     }
 

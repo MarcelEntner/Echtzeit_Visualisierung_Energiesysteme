@@ -1320,9 +1320,9 @@
     
     
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnSysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -1392,6 +1392,35 @@
     <script>
         function editfunction(id) {
             $('#exampleModalCenterEdit').modal('show');
+
+            var AzErzeuger = 0;
+            var AzVerbraucher= 0;
+            var AzSpeicher= 0;
+            var GesNennleistung= 0;
+            var GesEnergie= 0;
+            var GesVerbraucherLeistung= 0;
+            var GesVerbraucherEnergie= 0;
+            var GesSpeicherKapazität= 0;
+            var AktuellerNetzbezug= 0;
+
+            locationsET.forEach(locET =>{
+                console.log(locET);
+                if(locET[3] == id){
+                    if (locET[4] == 'PV-Anlage'){
+                        AzErzeuger++;
+                    }
+
+                    if (locET[4] == 'E-Ladestation'){
+                        AzVerbraucher++;
+                    }
+
+                    if (locET[4] == 'Wasserstoff Speicher'){
+                        AzSpeicher++;
+                    }
+
+                }
+            })
+
             locations.forEach(loc => {
                 if (loc[3] == id) {
                     $("#bezeichnung").val(loc[0]);
@@ -1399,6 +1428,10 @@
                     $("#postleitzahl").val(loc[4]);
                     $("#LaengengradEdit").val(loc[1]);
                     $("#BreitengradEdit").val(loc[2]);
+                    $("#Az-Erzeugungstechnologien").val(AzErzeuger);
+                    $("#Az-Verbraucher").val(AzVerbraucher);
+                    $("#Az-Speicher").val(AzSpeicher);
+
                     $("#editForm").attr("action", "/edit/" + id)
                 }
             })
