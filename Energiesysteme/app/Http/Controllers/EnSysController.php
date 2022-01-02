@@ -66,7 +66,7 @@ class EnSysController extends Controller
 
         // Hier beginnt der Grafana Zugriff für Dashboard Erstellen
 
-        /*
+        
 
         $uid = strval($enSys->id);
 
@@ -100,7 +100,7 @@ class EnSysController extends Controller
         echo ($createEnsysDashboard);
 
 
-        */
+        
 
         // Grafana Ende
 
@@ -184,7 +184,7 @@ class EnSysController extends Controller
 
         // Hier beginnt der Grafana Zugriff für Dashboard löschen
 
-        /*
+        
         $strid = strval($id);
 
 
@@ -208,7 +208,7 @@ class EnSysController extends Controller
 
         //Grafana Ende 
 
-         */
+         
 
 
 
