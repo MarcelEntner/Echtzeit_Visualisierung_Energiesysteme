@@ -906,7 +906,7 @@
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
                                     <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
                                     Az-Erzeugungstechnologien</span>
-                                <input type="text" class="form-control3" id="Az-Erzeugungstechnologien" name="Az-Erzeugungstechnologien"
+                                <input type="text" class="form-control3" id="Az-ErzeugungstechnologienAuge" name="Az-Erzeugungstechnologien"
                                     aria-label="Az-Erzeugungstechnologien" aria-describedby="basic-addon1" value="" 
                                     style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
@@ -916,7 +916,7 @@
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
                                     <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
                                     Az-Verbraucher</span>
-                                <input type="text" class="form-control3" id="Az-Verbraucher" name="Az-Verbraucher"
+                                <input type="text" class="form-control3" id="Az-VerbraucherAuge" name="Az-Verbraucher"
                                     aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value="" 
                                     style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
@@ -925,7 +925,7 @@
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
                                     <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
                                     Az-Speicher</span>
-                                <input type="text" class="form-control3" id="Az-Speicher" name="Az-Speicher"
+                                <input type="text" class="form-control3" id="Az-SpeicherAuge" name="Az-Speicher"
                                     aria-label="Az-Speicher" aria-describedby="basic-addon1" value="" 
                                     style="width:180px; background-color:#e9ecef;" readonly>
                             </div>
@@ -1404,17 +1404,17 @@
             var AktuellerNetzbezug= 0;
 
             locationsET.forEach(locET =>{
-                console.log(locET);
+             
                 if(locET[3] == id){
-                    if (locET[4] == 'PV-Anlage'){
+                    if (locET[4] == 'PV-Anlage'){ //Erzeuger
                         AzErzeuger++;
                     }
 
-                    if (locET[4] == 'E-Ladestation'){
+                    if (locET[4] == 'E-Ladestation'){ //Verbraucher
                         AzVerbraucher++;
                     }
 
-                    if (locET[4] == 'Wasserstoff Speicher'){
+                    if (locET[4] == 'Wasserstoff Speicher'){ //Speicher
                         AzSpeicher++;
                     }
 
@@ -1447,6 +1447,38 @@
 
         function augefunction(id) {
             $('#exampleModalCenterAuge').modal('show');
+
+
+            var AzErzeuger = 0;
+            var AzVerbraucher= 0;
+            var AzSpeicher= 0;
+            var GesNennleistung= 0;
+            var GesEnergie= 0;
+            var GesVerbraucherLeistung= 0;
+            var GesVerbraucherEnergie= 0;
+            var GesSpeicherKapazität= 0;
+            var AktuellerNetzbezug= 0;
+
+            locationsET.forEach(locET =>{
+                if(locET[3] == id){
+                    if (locET[4] == 'PV-Anlage'){
+                        AzErzeuger++;
+                    }
+
+                    if (locET[4] == 'E-Ladestation'){
+                        AzVerbraucher++;
+                    }
+
+                    if (locET[4] == 'Wasserstoff Speicher'){
+                        AzSpeicher++;
+                    }
+
+                }
+            })
+
+
+
+
             locations.forEach(loc => {
                 if (loc[3] == id) {
                     $("#bezeichnunga").val(loc[0]);
@@ -1454,6 +1486,9 @@
                     $("#postleitzahla").val(loc[4]);
                     $("#LaengengradEdita").val(loc[1]);
                     $("#BreitengradEdita").val(loc[2]);
+                    $("#Az-ErzeugungstechnologienAuge").val(AzErzeuger);
+                    $("#Az-VerbraucherAuge").val(AzVerbraucher);
+                    $("#Az-SpeicherAuge").val(AzSpeicher);
                     $("#augeForm")
                 }
             })

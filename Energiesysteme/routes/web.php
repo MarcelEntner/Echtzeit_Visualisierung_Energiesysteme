@@ -60,12 +60,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 Route::resource('EnSys', FrontEndController::class); // Route zu Frontend Controller
 Route::resource('EnSys', EnSysController::class); // Route zu Energiesystem Controller
 Route::resource('EnTech', EnTechController::class); // Route zu Energietechnologie gemeinsamkeiten Controller
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     // User is authentication and has admin role
+
 });
 
 // Route für die einzelnen Energiesysteme

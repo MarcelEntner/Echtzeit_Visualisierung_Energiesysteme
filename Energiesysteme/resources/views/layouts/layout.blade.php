@@ -522,8 +522,13 @@
                                         @csrf
                                     </form>
 
+                                    <?php
+                                    $userID = Auth::user();
+                                    ?>
+                                    @if ($userID->role == 'Admin')
                                     <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }} </a>
-                                          
+                                    @endif
+
                                   
 
                                 </div>
