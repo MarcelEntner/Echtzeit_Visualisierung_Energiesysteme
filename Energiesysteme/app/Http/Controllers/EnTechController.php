@@ -40,6 +40,13 @@ class EnTechController extends Controller
      */
     public function store(Request $request)
     {
+
+/*
+
+        
+*/
+
+
         $user = Auth::user();
 
         $enTech = new EnTech();
@@ -58,6 +65,39 @@ class EnTechController extends Controller
             $enTech->Bild = $image;
         }
 
+
+
+ /*
+
+//Grafana Anfang
+        $uid = strval($request->IDES+1);
+       
+        $updateDashboardToAddPanel = Http::withHeaders([
+            'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+
+        ])->post('192.168.1.5:3000/api/dashboards/db', [
+            "dashboard" => [
+                "id" => null,
+                "uid" => null,
+                "title" => $request->Bezeichnung,
+                  "tags" => [
+                 "templated" 
+                   ], 
+                "timezone" => "browser",
+                "schemaVersion" => 16,
+                "version" => 0
+            ],
+            "folderId" => 0,
+            "overwrite" => false
+        ]);
+
+        echo($updateDashboardToAddPanel);
+// Um dashboard zu updaten -> vorhandenes Dashboard laden -> gesammten inhalt speichern 
+//-> vorhandenes dashboard updaten / überschreiben -> gespeichertes einfügen --> update mit post methode posten --> PROFIT
+        */
+        //Grafana ende
         $enTech->save();
         $data = DB::table('EnTech')->get();
 
@@ -81,6 +121,18 @@ class EnTechController extends Controller
 
 
         return redirect("/energiesysteme")->with(['data' => $data]);
+
+
+        // Http Request für Dashboard Updaten um Panels zu Adden
+
+
+
+        // Get key of Ensys ie. uid of panel
+
+
+
+
+
     }
 
     /**

@@ -67,7 +67,7 @@ class EnSysController extends Controller
         // Hier beginnt der Grafana Zugriff für Dashboard Erstellen
 
         
-
+/*
         $uid = strval($enSys->id);
 
         $createEnsysDashboard = Http::withHeaders([
@@ -99,7 +99,7 @@ class EnSysController extends Controller
 
         echo ($createEnsysDashboard);
 
-
+*/
         
 
         // Grafana Ende
