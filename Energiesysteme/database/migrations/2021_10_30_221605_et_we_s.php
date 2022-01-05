@@ -17,11 +17,11 @@ class EtWeS extends Migration
             $table->id();
             $table->bigInteger('EnTech_id')->unsigned();
             $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
-            $table->double('Leistung');
-            $table->double('Energie');
-            $table->double('TempUnten');
-            $table->double('TempMitte');
-            $table->double('TempOben');
+            $table->double('Leistung')->nullable();
+            $table->double('Energie')->nullable();
+            $table->double('TempUnten')->nullable();
+            $table->double('TempMitte')->nullable();
+            $table->double('TempOben')->nullable();
             $table->dateTime('TimeMeasured')->nullable();
             $table->timestamps();
         });

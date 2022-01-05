@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EtPv;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class EtPvController extends Controller
 {
@@ -36,11 +36,9 @@ class EtPvController extends Controller
      */
     public function store(int $id)
     {
-        //id	EnTech_id
         $EtPv = new EtPv();
         $EtPv->EnTech_id = $id;
         $EtPv->save();
-        $data = DB::table('etpv')->get();
     }
 
     /**

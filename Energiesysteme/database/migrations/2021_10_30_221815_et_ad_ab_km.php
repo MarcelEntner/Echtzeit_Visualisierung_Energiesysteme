@@ -17,10 +17,10 @@ class EtAdAbKm extends Migration
             $table->id();
             $table->bigInteger('EnTech_id')->unsigned();
             $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
-            $table->double('Leistung');
-            $table->double('Energie');
-            $table->double('Vorlauftemp');
-            $table->double('Ruecklauftemp');
+            $table->double('Leistung')->nullable();
+            $table->double('Energie')->nullable();
+            $table->double('Vorlauftemp')->nullable();
+            $table->double('Ruecklauftemp')->nullable();
             $table->dateTime('TimeMeasured')->nullable();
             $table->timestamps();
         });

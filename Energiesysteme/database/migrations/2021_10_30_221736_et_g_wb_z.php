@@ -17,7 +17,7 @@ class EtGWbZ extends Migration
             $table->id();
             $table->bigInteger('EnTech_id')->unsigned();
             $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
-            $table->double('Zaelerstand');
+            $table->double('Zaelerstand')->nullable();
             $table->dateTime('TimeMeasured')->nullable();
             $table->timestamps();
         });

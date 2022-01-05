@@ -33,9 +33,11 @@ class EtBmHkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(int $id)
     {
-        //
+        $EtBmHk = new EtBmHk();
+        $EtBmHk->EnTech_id = $id;
+        $EtBmHk->save();
     }
 
     /**

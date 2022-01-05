@@ -34,16 +34,11 @@ class EtBsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(int $id)
     {
         $EtBs = new EtBs();
-        $EtBs->Leistung=$request->Leistung;
-        $EtBs->Energie=$request->Energie;
-        $EtBs->Speicherkap=$request->Speicherkap;
+        $EtBs->EnTech_id = $id;
         $EtBs->save();
-        $data = DB::table('EtBs')->get();
-        return view('Galerie', compact('data'));
-
     }
 
     /**

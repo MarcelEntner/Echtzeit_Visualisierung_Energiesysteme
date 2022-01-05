@@ -33,9 +33,11 @@ class EtAdAbKmController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(int $id)
     {
-        //
+        $EtAdABKm = new EtAdAbKm();
+        $EtAdABKm->EnTech_id = $id;
+        $EtAdABKm->save();
     }
 
     /**

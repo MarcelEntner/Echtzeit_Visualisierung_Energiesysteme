@@ -33,9 +33,11 @@ class EtWsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(int $id)
     {
-        //
+        $EtWs = new EtWs();
+        $EtWs->EnTech_id = $id;
+        $EtWs->save();
     }
 
     /**

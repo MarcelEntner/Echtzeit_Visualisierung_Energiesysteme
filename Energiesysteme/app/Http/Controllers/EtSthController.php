@@ -33,9 +33,11 @@ class EtSthController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(int $id)
     {
-        //
+        $EtSth = new EtSth();
+        $EtSth->EnTech_id = $id;
+        $EtSth->save();
     }
 
     /**

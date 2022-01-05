@@ -33,9 +33,11 @@ class EtKsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(int $id)
     {
-        //
+        $EtKs = new EtKs();
+        $EtKs->EnTech_id = $id;
+        $EtKs->save();
     }
 
     /**

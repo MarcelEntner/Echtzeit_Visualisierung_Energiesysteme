@@ -33,10 +33,13 @@ class EtBhKwController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(int $id)
     {
-        //
+        $EtBhKw = new EtBhKw();
+        $EtBhKw->EnTech_id = $id;
+        $EtBhKw->save();
     }
+
 
     /**
      * Display the specified resource.

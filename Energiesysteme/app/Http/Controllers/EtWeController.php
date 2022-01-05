@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EtWs;
+use App\Models\EtWe;
 use Illuminate\Http\Request;
 
 class EtWeController extends Controller
@@ -33,18 +33,20 @@ class EtWeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(int $id)
     {
-        //
+        $EtWe = new EtWe();
+        $EtWe->EnTech_id = $id;
+        $EtWe->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\EtWs  $etWs
+     * @param  \App\Models\EtWe  $etWe
      * @return \Illuminate\Http\Response
      */
-    public function show(EtWs $etWs)
+    public function show(EtWe $etWe)
     {
         //
     }
@@ -52,10 +54,10 @@ class EtWeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\EtWs  $etWs
+     * @param  \App\Models\EtWe  $etWe
      * @return \Illuminate\Http\Response
      */
-    public function edit(EtWs $etWs)
+    public function edit(EtWe $etWe)
     {
         //
     }
@@ -64,10 +66,10 @@ class EtWeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\EtWs  $etWs
+     * @param  \App\Models\EtWe  $etWe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EtWs $etWs)
+    public function update(Request $request, EtWe $etWe)
     {
         //
     }
@@ -75,10 +77,10 @@ class EtWeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\EtWs  $etWs
+     * @param  \App\Models\etWe  $etWe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EtWs $etWs)
+    public function destroy(etWe $etWe)
     {
         //
     }

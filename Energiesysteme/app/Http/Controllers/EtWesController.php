@@ -33,9 +33,11 @@ class EtWesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(int $id)
     {
-        //
+        $EtWes = new EtWes();
+        $EtWes->EnTech_id = $id;
+        $EtWes->save();
     }
 
     /**

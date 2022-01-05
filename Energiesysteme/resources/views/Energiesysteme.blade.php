@@ -306,7 +306,6 @@
 
 
 
-
             <!--Pop Up Fenster -->
 
 
@@ -436,8 +435,8 @@
                                         <option value="Solarthermieanlage"> Solarthermieanlage</option>
                                         <option value="Wärmepumpe"> Wärmepumpe</option>
                                         <option value="Gebäude Wärmebedarfszähler"> Gebäude Wärmebedarfszähler</option>
-                                        <option value="Kompressionskältemaschiene"> Kompressionskältemaschiene</option>
-                                        <option value="Ab oder Adsorbtionskältemaschiene"> Ab oder Adsorbtionskältemaschiene
+                                        <option value="Kompressionskältemaschine"> Kompressionskältemaschine</option>
+                                        <option value="Ab oder Adsorbtionskältemaschine"> Ab oder Adsorbtionskältemaschine
                                         </option>
                                         <option value="Kältespeicher">Kältespeicher</option>
                                         <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
@@ -559,85 +558,85 @@
                                 <summary>Mehr Details zu diesem Energiesystem</summary>
                            
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
                                     Az-Erzeugungstechnologien</span>
                                 <input type="text" class="form-control3" id="Az-Erzeugungstechnologien" name="Az-Erzeugungstechnologien"
                                     aria-label="Az-Erzeugungstechnologien" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly >
+                                    style="width:160px; background-color:#e9ecef;" readonly >
                             </div>
 
                             
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
                                     Az-Verbraucher</span>
                                 <input type="text" class="form-control3" id="Az-Verbraucher" name="Az-Verbraucher"
                                     aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly >
+                                    style="width:160px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
                                     Az-Speicher</span>
                                 <input type="text" class="form-control3" id="Az-Speicher" name="Az-Speicher"
                                     aria-label="Az-Speicher" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly >
+                                    style="width:160px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
-                                    Ges-Nennleistung</span>
+                                    Ges-Nennleistung [kW]</span>
                                 <input type="text" class="form-control3" id="Ges-Nennleistung" name="Ges-Nennleistung"
                                     aria-label="Ges-Nennleistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly>
+                                    style="width:160px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/energie.png" style="margin-right:10px;">
-                                    Ges-Energie</span>
+                                    Ges-Energie [kW/s]</span>
                                 <input type="text" class="form-control3" id="Ges-Energie" name="Ges-Energie"
                                     aria-label="Ges-Energie" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly >
+                                    style="width:160px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
-                                    Ges-VerbraucherLeistung</span>
+                                    Ges-VerbraucherLeistung [kW]</span>
                                 <input type="text" class="form-control3" id="Ges-VerbraucherLeistung" name="Ges-VerbraucherLeistung"
                                     aria-label="Ges-VerbraucherLeistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly >
+                                    style="width:160px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
-                                    <img src="/images/pop-up/gesverenergie.png" style="margin-right:10px;">
-                                    Ges-VerbraucherEnergie</span>
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
+                                    Ges-VerbraucherEnergie [kW/s]</span>
                                 <input type="text" class="form-control3" id="Ges-VerbraucherEnergie" name="Ges-VerbraucherEnergie"
                                     aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly >
+                                    style="width:160px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
-                                    Ges-SpeicherKapazität</span>
+                                    Ges-SpeicherKapazität [kW/h]</span>
                                 <input type="text" class="form-control3" id="Ges-SpeicherKapazität" name="Ges-SpeicherKapazität"
                                     aria-label="Ges-SpeicherKapazität" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly >
+                                    style="width:160px; background-color:#e9ecef;" readonly >
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
-                                    Aktueller Netzbezug</span>
-                                <input type="text" class="form-control3" id="Aktueller Netzbezug" name= "Aktueller Netzbezug"
+                                    Aktueller Netzbezug [kW]</span>
+                                <input type="text" class="form-control3" id="AktuellerNetzbezug" name= "Aktueller Netzbezug"
                                     aria-label="Aktueller Netzbezug" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly >
+                                    style="width:160px; background-color:#e9ecef;" readonly >
                             </div>
                         </details>
                                 
@@ -731,8 +730,8 @@
                                     <option value="Solarthermieanlage"> Solarthermieanlage</option>
                                     <option value="Wärmepumpe"> Wärmepumpe</option>
                                     <option value="Gebäude Wärmebedarfszähler"> Gebäude Wärmebedarfszähler</option>
-                                    <option value="Kompressionskältemaschiene"> Kompressionskältemaschiene</option>
-                                    <option value="Ab oder Adsorbtionskältemaschiene"> Ab oder Adsorbtionskältemaschiene
+                                    <option value="Kompressionskältemaschine"> Kompressionskältemaschine</option>
+                                    <option value="Ab oder Adsorbtionskältemaschine"> Ab oder Adsorbtionskältemaschine
                                     </option>
                                     <option value="Kältespeicher">Kältespeicher</option>
                                     <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
@@ -903,85 +902,85 @@
                                 <summary>Mehr Details zu diesem Energiesystem</summary>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
                                     Az-Erzeugungstechnologien</span>
                                 <input type="text" class="form-control3" id="Az-ErzeugungstechnologienAuge" name="Az-Erzeugungstechnologien"
                                     aria-label="Az-Erzeugungstechnologien" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly>
+                                    style="width:160px; background-color:#e9ecef;" readonly>
                             </div>
 
                             
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
                                     Az-Verbraucher</span>
                                 <input type="text" class="form-control3" id="Az-VerbraucherAuge" name="Az-Verbraucher"
                                     aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly>
+                                    style="width:160px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
                                     Az-Speicher</span>
                                 <input type="text" class="form-control3" id="Az-SpeicherAuge" name="Az-Speicher"
                                     aria-label="Az-Speicher" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly>
+                                    style="width:160px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
-                                    Ges-Nennleistung</span>
-                                <input type="text" class="form-control3" id="Ges-Nennleistung" name="Ges-Nennleistung"
+                                    Ges-Nennleistung [kW]</span>
+                                <input type="text" class="form-control3" id="Ges-NennleistungAuge" name="Ges-Nennleistung"
                                     aria-label="Ges-Nennleistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly>
+                                    style="width:160px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/energie.png" style="margin-right:10px;">
-                                    Ges-Energie</span>
-                                <input type="text" class="form-control3" id="Ges-Energie" name="Ges-Energie"
+                                    Ges-Energie [kW/s]</span>
+                                <input type="text" class="form-control3" id="Ges-EnergieAuge" name="Ges-Energie"
                                     aria-label="Ges-Energie" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly>
+                                    style="width:160px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
-                                    Ges-VerbraucherLeistung</span>
-                                <input type="text" class="form-control3" id="Ges-VerbraucherLeistung" name="Ges-VerbraucherLeistung"
+                                    Ges-VerbraucherLeistung [kW]</span>
+                                <input type="text" class="form-control3" id="Ges-VerbraucherLeistungAuge" name="Ges-VerbraucherLeistung"
                                     aria-label="Ges-VerbraucherLeistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly>
+                                    style="width:160px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/gesverenergie.png" style="margin-right:10px;">
-                                    Ges-VerbraucherEnergie</span>
-                                <input type="text" class="form-control3" id="Ges-VerbraucherEnergie" name="Ges-VerbraucherEnergie"
+                                    Ges-VerbraucherEnergie [kW/s]</span>
+                                <input type="text" class="form-control3" id="Ges-VerbraucherEnergieAuge" name="Ges-VerbraucherEnergie"
                                     aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly>
+                                    style="width:160px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
-                                    Ges-SpeicherKapazität</span>
-                                <input type="text" class="form-control3" id="Ges-SpeicherKapazität" name="Ges-SpeicherKapazität"
+                                    Ges-SpeicherKapazität [kW/h]</span>
+                                <input type="text" class="form-control3" id="Ges-SpeicherKapazitätAuge" name="Ges-SpeicherKapazität"
                                     aria-label="Ges-SpeicherKapazität" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly>
+                                    style="width:160px; background-color:#e9ecef;" readonly>
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:250px;">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                     <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
-                                    Aktueller Netzbezug</span>
-                                <input type="text" class="form-control3" id="Aktueller Netzbezug" name= "Aktueller Netzbezug"
+                                    Aktueller Netzbezug [kW]</span>
+                                <input type="text" class="form-control3" id="AktuellerNetzbezugAuge" name= "Aktueller Netzbezug"
                                     aria-label="Aktueller Netzbezug" aria-describedby="basic-addon1" value="" 
-                                    style="width:180px; background-color:#e9ecef;" readonly>
+                                    style="width:160px; background-color:#e9ecef;" readonly>
                             </div>
 
                         </details>
@@ -1126,7 +1125,7 @@
                 ],
                 lengthChange: false,
 
-                lengthMenu: [100], //Wieviele ES/ET pro Seite angezeigt werden 
+                lengthMenu: [100], //Wieviele ES/ET pro Seite angezeigt werden, kann nicht 5 sein, da hier sonst nach allen ET in der DB sortiert und wir mit CSS nur die richtigen einblenden und dann stimmt die Anzeige nicht
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
                 }
@@ -1320,9 +1319,9 @@
     
     
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -1337,6 +1336,12 @@
     
         $sql2 = 'SELECT id, ensys_id, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad  FROM EnTech'; // ET
         $et_select = DB::table('EnTech')->get(); //ET Select mit Laravel
+
+        //SQL für die Erzeuger, Verbraucher, Speicher Anzeige beim ES
+        $sql2 = 'SELECT id, ensys_id, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad  FROM EnTech'; // ET
+
+
+
     
         $result = $conn->query($sql); //für SQL DB Conn
        $result2 = $conn->query($sql2); //für SQL DB Conn
@@ -1404,21 +1409,105 @@
             var AktuellerNetzbezug= 0;
 
             locationsET.forEach(locET =>{
-             
-                if(locET[3] == id){
-                    if (locET[4] == 'PV-Anlage'){ //Erzeuger
+
+                if(locET[3] == id){ //Damit nur ET aus dem ausgewählten ES gezählt werden
+                
+                switch (locET[4]){
+                     case "PV-Anlage":
                         AzErzeuger++;
-                    }
+                    break;
 
-                    if (locET[4] == 'E-Ladestation'){ //Verbraucher
-                        AzVerbraucher++;
-                    }
+                    case "Stromnetzbezug":
+                        AzErzeuger++;
+                    break;
 
-                    if (locET[4] == 'Wasserstoff Speicher'){ //Speicher
-                        AzSpeicher++;
-                    }
+                    case "Batteriespeicher":
+                          AzSpeicher++;
+                    break;
+
+                    case "Wasserstoff Elektrolyse":
+                          AzVerbraucher++;
+                    break;
+
+                    case "Wasserstoff Brennstoffzelle":
+                          AzErzeuger++;
+                    break;
+
+                    case "Wasserstoff Speicher":
+                            AzSpeicher++;
+                    break;
+
+                    case "Windkraftanlage":
+                            AzErzeuger++;
+                    break;
+
+                    case "E-Ladestation":
+                            AzVerbraucher++;
+                    break;
+
+                    case "Hausanschlusszähler":
+                            AzVerbraucher++;
+                    break;
+
+                    case "Wärmenetzbezug":
+                           AzErzeuger++;
+                    break;
+
+                    case "Biomasseheizkraftwerk":
+                            AzVerbraucher++;
+                            AzErzeuger++;
+                    break;
+
+                    case "Biomasseheizwerk":
+                            AzVerbraucher++;
+                            AzErzeuger++;
+                    break;
+
+                    case "Biomasseheizkessel":
+                            AzVerbraucher++;
+                            AzErzeuger++;
+                    break;
+
+                    case "Wärmespeicher":
+                            AzSpeicher++;
+                    break;
+
+                    case "Solarthermieanlage":
+                            AzErzeuger++;
+                    break;
+
+                    case "Wärmepumpe":
+                            AzErzeuger++;
+                    break;
+
+                    case "Gebäude Wärmebedarfszähler":
+                            AzVerbraucher++;
+                    break;
+
+                    case "Kompressionskältemaschine":
+                            AzVerbraucher++;
+                            AzErzeuger++;
+                    break;
+
+                    case "Ab oder Adsorbtionskältemaschine":
+                            AzVerbraucher++;
+                            AzErzeuger++;
+                    break;
+
+                    case "Kältespeicher":
+                            AzSpeicher++;
+                    break;
+
+                    case "Gebäude Kältebedarfszähler":
+                            AzVerbraucher++;
+                    break;
+
+
 
                 }
+                }
+
+
             })
 
             locations.forEach(loc => {
@@ -1431,7 +1520,12 @@
                     $("#Az-Erzeugungstechnologien").val(AzErzeuger);
                     $("#Az-Verbraucher").val(AzVerbraucher);
                     $("#Az-Speicher").val(AzSpeicher);
-
+                    $("#Ges-Nennleistung").val(GesNennleistung);
+                    $("#Ges-Energie").val(GesEnergie);
+                    $("#Ges-VerbraucherLeistung").val(GesVerbraucherLeistung);
+                    $("#Ges-VerbraucherEnergie").val(GesVerbraucherEnergie);
+                    $("#Ges-SpeicherKapazität").val(GesSpeicherKapazität);
+                    $("#AktuellerNetzbezug").val(AktuellerNetzbezug);
                     $("#editForm").attr("action", "/edit/" + id)
                 }
             })
@@ -1460,21 +1554,106 @@
             var AktuellerNetzbezug= 0;
 
             locationsET.forEach(locET =>{
-                if(locET[3] == id){
-                    if (locET[4] == 'PV-Anlage'){
-                        AzErzeuger++;
-                    }
 
-                    if (locET[4] == 'E-Ladestation'){
-                        AzVerbraucher++;
-                    }
+            if(locET[3] == id){ //Damit nur ET aus dem ausgewählten ES gezählt werden
+                
+            switch (locET[4]){
+                case "PV-Anlage":
+                    AzErzeuger++;
+                break;
 
-                    if (locET[4] == 'Wasserstoff Speicher'){
+                case "Stromnetzbezug":
+                    AzErzeuger++;
+                break;
+
+                case "Batteriespeicher":
+                    AzSpeicher++;
+                break;
+
+                case "Wasserstoff Elektrolyse":
+                    AzVerbraucher++;
+                break;
+
+                case "Wasserstoff Brennstoffzelle":
+                    AzErzeuger++;
+                break;
+
+                case "Wasserstoff Speicher":
                         AzSpeicher++;
-                    }
+                break;
 
-                }
-            })
+                case "Windkraftanlage":
+                        AzErzeuger++;
+                break;
+
+                case "E-Ladestation":
+                        AzVerbraucher++;
+                break;
+
+                case "Hausanschlusszähler":
+                        AzVerbraucher++;
+                break;
+
+                case "Wärmenetzbezug":
+                    AzErzeuger++;
+                break;
+
+                case "Biomasseheizkraftwerk":
+                        AzVerbraucher++;
+                        AzErzeuger++;
+                break;
+
+                case "Biomasseheizwerk":
+                        AzVerbraucher++;
+                        AzErzeuger++;
+                break;
+
+                case "Biomasseheizkessel":
+                        AzVerbraucher++;
+                        AzErzeuger++;
+                break;
+
+                case "Wärmespeicher":
+                        AzSpeicher++;
+                break;
+
+                case "Solarthermieanlage":
+                        AzErzeuger++;
+                break;
+
+                case "Wärmepumpe":
+                        AzErzeuger++;
+                break;
+
+                case "Gebäude Wärmebedarfszähler":
+                        AzVerbraucher++;
+                break;
+
+                case "Kompressionskältemaschine":
+                        AzVerbraucher++;
+                        AzErzeuger++;
+                break;
+
+                case "Ab oder Adsorbtionskältemaschine":
+                        AzVerbraucher++;
+                        AzErzeuger++;
+                break;
+
+                case "Kältespeicher":
+                        AzSpeicher++;
+                break;
+
+                case "Gebäude Kältebedarfszähler":
+                        AzVerbraucher++;
+                break;
+
+
+
+            }
+            }
+
+
+})
 
 
 
@@ -1489,6 +1668,12 @@
                     $("#Az-ErzeugungstechnologienAuge").val(AzErzeuger);
                     $("#Az-VerbraucherAuge").val(AzVerbraucher);
                     $("#Az-SpeicherAuge").val(AzSpeicher);
+                    $("#Ges-NennleistungAuge").val(GesNennleistung);
+                    $("#Ges-EnergieAuge").val(GesEnergie);
+                    $("#Ges-VerbraucherLeistungAuge").val(GesVerbraucherLeistung);
+                    $("#Ges-VerbraucherEnergieAuge").val(GesVerbraucherEnergie);
+                    $("#Ges-SpeicherKapazitätAuge").val(GesSpeicherKapazität);
+                    $("#AktuellerNetzbezugAuge").val(AktuellerNetzbezug);
                     $("#augeForm")
                 }
             })
@@ -1653,12 +1838,12 @@
                         options.icon = "/images/icons/wohnhaus_icon.PNG"
                         break;
 
-                    case "Kompressionskältemaschiene":
-                        options.icon = "/images/icons/Kompressionskältemaschiene_icon.png"
+                    case "Kompressionskältemaschine":
+                        options.icon = "/images/icons/Kompressionskältemaschine_icon.png"
                         break;
 
-                    case "Ab oder Adsorbtionskältemaschiene":
-                        options.icon = "/images/icons/Ab oder Adsorbtionskältemaschiene_icon.png"
+                    case "Ab oder Adsorbtionskältemaschine":
+                        options.icon = "/images/icons/Ab oder Adsorbtionskältemaschine_icon.png"
                         break;
 
                     case "Kältespeicher":

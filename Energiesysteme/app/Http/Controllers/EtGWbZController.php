@@ -33,9 +33,11 @@ class EtGWbZController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(int $id)
     {
-        //
+        $EtGWbZ = new EtGWbZ();
+        $EtGWbZ->EnTech_id = $id;
+        $EtGWbZ->save();
     }
 
     /**

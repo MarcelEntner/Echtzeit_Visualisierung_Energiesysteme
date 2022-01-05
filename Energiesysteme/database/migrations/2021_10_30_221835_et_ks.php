@@ -17,9 +17,9 @@ class EtKs extends Migration
             $table->id();
             $table->bigInteger('EnTech_id')->unsigned();
             $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
-            $table->double('Leistung');
-            $table->double('Energie');
-            $table->double('Speicherkap');
+            $table->double('Leistung')->nullable();
+            $table->double('Energie')->nullable();
+            $table->double('Speicherkap')->nullable();
             $table->dateTime('TimeMeasured')->nullable();
             $table->timestamps();
         });
