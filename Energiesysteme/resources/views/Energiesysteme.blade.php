@@ -1338,7 +1338,7 @@
         $et_select = DB::table('EnTech')->get(); //ET Select mit Laravel
 
         //SQL für die Erzeuger, Verbraucher, Speicher Anzeige beim ES
-        $sql2 = 'SELECT id, ensys_id, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad  FROM EnTech'; // ET
+        
 
 
 
