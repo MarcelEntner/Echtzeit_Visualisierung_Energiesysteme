@@ -1325,6 +1325,7 @@
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
+    
     // Check connection
     if ($conn->connect_error) {
         die('Connection failed: ' . $conn->connect_error);
@@ -1389,7 +1390,7 @@
         }
     
         echo ']</script>';
-    } //für SQL DB Conn
+        } 
     ?>
 
 
@@ -1407,6 +1408,7 @@
             var GesVerbraucherEnergie= 0;
             var GesSpeicherKapazität= 0;
             var AktuellerNetzbezug= 0;
+
 
             locationsET.forEach(locET =>{
 
@@ -1439,6 +1441,18 @@
 
                     case "Windkraftanlage":
                             AzErzeuger++;
+                            /*
+                            @foreach($windkraftwerk as $w)         
+
+                            if ( {{ $w->Leistung }} == null ){
+                                GesNennleistung += 0;
+                            }else {
+                                GesNennleistung += {{$w->Leistung}};
+                            }
+
+                            @endforeach*/
+
+                          // GesNennleistung =  {{ $windkraftanlage->Leistung }};
                     break;
 
                     case "E-Ladestation":
@@ -2125,6 +2139,12 @@ $strid = strval($id);
 
 
 ?>
+
+
+@foreach($windkraftwerk as $w)         
+        {{$w->id}}
+
+@endforeach
 
 
 

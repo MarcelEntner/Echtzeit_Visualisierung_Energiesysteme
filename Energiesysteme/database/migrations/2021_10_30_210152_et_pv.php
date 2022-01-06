@@ -16,8 +16,8 @@ class EtPv extends Migration
         Schema::create('EtPv', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('EnTech_id')->unsigned();
-            $table->double('Leistung')->nullable();
-            $table->double('Energie')->nullable();
+            $table->double('Leistung')->default(0);
+            $table->double('Energie')->default(0);
             $table->double('SpannungL1')->nullable();
             $table->double('SpannungL2')->nullable();
             $table->double('SpannungL3')->nullable();

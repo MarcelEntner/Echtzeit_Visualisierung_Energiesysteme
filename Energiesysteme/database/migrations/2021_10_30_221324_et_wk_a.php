@@ -17,8 +17,8 @@ class EtWkA extends Migration
             $table->id();
             $table->bigInteger('EnTech_id')->unsigned();
             $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
-            $table->double('Leistung')->nullable();
-            $table->double('Energie')->nullable();
+            $table->double('Leistung')->default(0);
+            $table->double('Energie')->default(0);
             $table->double('SpannungL1')->nullable();
             $table->double('SpannungL2')->nullable();
             $table->double('SpannungL3')->nullable();

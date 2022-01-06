@@ -26,18 +26,21 @@ class FrontEndController extends Controller
     {
         $data = DB::table('EnSys')->get();
         $dataEnTech = DB::table("EnTech")->get();
+        $windkraftwerk = DB::table("etwka")->get();
 
-        return view('Energiesysteme' , compact('data', 'dataEnTech'));
+        return view('Energiesysteme' , compact('data', 'dataEnTech', 'windkraftwerk'));
     }
 
     public function impressum()
     {
         return view('Impressum');
     }
+
     public function dsgvo()
     {
         return view('Dsgvo');
     }
+
     public function addes()
     {
         $data = DB::table('EnSys')->get();
