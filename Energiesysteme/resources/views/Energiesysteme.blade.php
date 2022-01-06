@@ -355,14 +355,14 @@
                                         <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                         Längengrad</span>
                                     <input type="text" class="form-control3" id="LaengengradES" name="LaengengradES"
-                                        aria-label="LaengengradES" aria-describedby="basic-addon1" readonly>
+                                        aria-label="LaengengradES" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef">
                                 </div>
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                         Breitengrad</span>
                                     <input type="text" class="form-control3" id="BreitengradES" name="BreitengradES"
-                                        aria-label="BreitengradES" aria-describedby="basic-addon1" readonly>
+                                        aria-label="BreitengradES" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef">
                                 </div>
 
 
@@ -401,7 +401,7 @@
                                         <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                         ID-ES</span>
                                     <input type="text" class="form-control3" id="IDES" name="IDES" readonly
-                                        aria-label="ID-ES" aria-describedby="basic-addon1">
+                                        aria-label="ID-ES" aria-describedby="basic-addon1" style="background-color:#e9ecef">
                                 </div>
 
                                 <div class="input-group mb-3" style="margin-top:2%">
@@ -455,14 +455,14 @@
                                         <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                         Längengrad</span>
                                     <input type="text" class="form-control3" id="LaengengradET" name="Laengengrad"
-                                        aria-label="LängengradET" aria-describedby="basic-addon1" readonly>
+                                        aria-label="LängengradET" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef">
                                 </div>
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                         Breitengrad</span>
                                     <input type="text" class="form-control3" id="BreitengradET" name="Breitengrad"
-                                        aria-label="BreitengradET" aria-describedby="basic-addon1" readonly>
+                                        aria-label="BreitengradET" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef">
                                 </div>
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
@@ -712,7 +712,7 @@
                                     Typ</span>
                                 <br>
 
-                                <select name="TypEditET" class="form-select" id="TypEditET" style="text-align:center;">
+                                <select name="TypEditET" class="form-select" id="TypEditET" style="text-align:center; background-color:#e9ecef" aria-readonly="true">
                                     <option value="PV-Anlage">PV-Anlage</option>
                                     <option value="Stromnetzbezug">Stromnetzbezug</option>
                                     <option value="Batteriespeicher">Batteriespeicher</option>
@@ -1399,6 +1399,7 @@
         function editfunction(id) {
             $('#exampleModalCenterEdit').modal('show');
 
+            //Gesamt Variablen
             var AzErzeuger = 0;
             var AzVerbraucher= 0;
             var AzSpeicher= 0;
@@ -1409,6 +1410,18 @@
             var GesSpeicherKapazität= 0;
             var AktuellerNetzbezug= 0;
 
+            
+            //Technologien Variablen
+
+            //PV-Anlage
+            var PVAnlageleistung = 0;
+
+
+            //Windkraftanlage
+            var WindkraftanlageLeistung = 0;
+
+
+
 
             locationsET.forEach(locET =>{
 
@@ -1417,6 +1430,20 @@
                 switch (locET[4]){
                      case "PV-Anlage":
                         AzErzeuger++;
+                        
+                        if (PVAnlageleistung == 0)
+                        {
+                            @foreach($pvanlage as $pv)          
+                                        if ( {{ $pv->Leistung }} == 0 )
+                                        {
+                                            PVAnlageleistung += 0;
+                                        }
+                                        else 
+                                        {
+                                            PVAnlageleistung += {{$pv->Leistung}};
+                                        }
+                                @endforeach
+                        }
                     break;
 
                     case "Stromnetzbezug":
@@ -1441,18 +1468,22 @@
 
                     case "Windkraftanlage":
                             AzErzeuger++;
-                            /*
-                            @foreach($windkraftwerk as $w)         
+  
+                        if (WindkraftanlageLeistung == 0)
+                        {
+                            @foreach($windkraftanlage as $w)          
+                                        if ( {{ $w->Leistung }} == 0 )
+                                        {
+                                            WindkraftanlageLeistung += 0;
+                                        }
+                                        else 
+                                        {
+                                            WindkraftanlageLeistung += {{$w->Leistung}};
+                                        }
+                                @endforeach
+                        }
 
-                            if ( {{ $w->Leistung }} == null ){
-                                GesNennleistung += 0;
-                            }else {
-                                GesNennleistung += {{$w->Leistung}};
-                            }
 
-                            @endforeach*/
-
-                          // GesNennleistung =  {{ $windkraftanlage->Leistung }};
                     break;
 
                     case "E-Ladestation":
@@ -1517,8 +1548,9 @@
                     break;
 
 
-
                 }
+                GesNennleistung =   PVAnlageleistung + WindkraftanlageLeistung;
+
                 }
 
 
@@ -2141,10 +2173,7 @@ $strid = strval($id);
 ?>
 
 
-@foreach($windkraftwerk as $w)         
-        {{$w->id}}
 
-@endforeach
 
 
 

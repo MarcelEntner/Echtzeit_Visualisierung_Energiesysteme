@@ -26,9 +26,12 @@ class FrontEndController extends Controller
     {
         $data = DB::table('EnSys')->get();
         $dataEnTech = DB::table("EnTech")->get();
-        $windkraftwerk = DB::table("etwka")->get();
+        
+        $pvanlage = DB::table("etpv")->get();
+        $windkraftanlage = DB::table("etwka")->get();
 
-        return view('Energiesysteme' , compact('data', 'dataEnTech', 'windkraftwerk'));
+        return view('Energiesysteme' , compact('data', 'dataEnTech','pvanlage', 'windkraftanlage'));
+        
     }
 
     public function impressum()
