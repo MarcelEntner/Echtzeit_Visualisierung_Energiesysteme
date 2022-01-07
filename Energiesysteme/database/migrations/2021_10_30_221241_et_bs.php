@@ -19,7 +19,7 @@ class EtBs extends Migration
             $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
             $table->double('Leistung')->default(0);
             $table->double('Energie')->default(0);
-            $table->double('Speicherkap')->nullable();
+            $table->double('Speicherkap')->default(0);
             $table->dateTime('TimeMeasured')->nullable();
             $table->timestamps();
         });

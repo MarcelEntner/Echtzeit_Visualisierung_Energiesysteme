@@ -453,6 +453,9 @@
             transform: scale(1.1, 1.1);
         }
 
+
+        
+
     </style>
 </head>
 
@@ -568,7 +571,7 @@
 
         <div class="footer mt-auto">
             <footer class="mt-5 d-flex flex-wrap justify-content-around align-items-center py-3 border border-success">
-                <p class="col-md-4 mb-0 text-primary">&copy; 2021 Best GmbH</p>
+                <p class="col-md-4 mb-0 text-primary">&copy; 2022 Best GmbH</p>
 
                 <ul class="nav col-md-4 justify-content-end">
                     <li class="nav-item"><a href="{{ route('impressum') }}"

@@ -135,9 +135,9 @@
                                 </table>
                             </div>
 
-                            <div id="tableETDiv" style="display: none">
+                            <div id="tableETDiv" style="display: none;">
                                 <!-- ET Liste style="height: 30vh;" -->
-                                <table class="table table-borderless table-hover" id="tableET">
+                                <table class="table table-borderless table-hover"  id="tableET">
                                     <thead>
                                         <tr>
                                             <th scope="col">IDES</th>
@@ -1391,6 +1391,7 @@
     
         echo ']</script>';
         } 
+
     ?>
 
 
@@ -1408,153 +1409,306 @@
             var GesVerbraucherLeistung= 0;
             var GesVerbraucherEnergie= 0;
             var GesSpeicherKapazität= 0;
-            var AktuellerNetzbezug= 0;
+            var AktuellerNetzbezug= 0; //öffentliche Stromnetz nur ET Stromnetzbezug
 
+        
             
-            //Technologien Variablen
 
-            //PV-Anlage
-            var PVAnlageleistung = 0;
-
-
-            //Windkraftanlage
-            var WindkraftanlageLeistung = 0;
-
-
+          
 
 
             locationsET.forEach(locET =>{
 
+
+
                 if(locET[3] == id){ //Damit nur ET aus dem ausgewählten ES gezählt werden
-                
+
                 switch (locET[4]){
                      case "PV-Anlage":
                         AzErzeuger++;
-                        
-                        if (PVAnlageleistung == 0)
-                        {
-                            @foreach($pvanlage as $pv)          
-                                        if ( {{ $pv->Leistung }} == 0 )
-                                        {
-                                            PVAnlageleistung += 0;
-                                        }
-                                        else 
-                                        {
-                                            PVAnlageleistung += {{$pv->Leistung}};
-                                        }
-                                @endforeach
-                        }
+
+                        @foreach($etpv as $pv)          
+                            if ({{ $pv->EnTech_id }} == locET[6] ) //damit nur die PV von diesem ES nimmt
+                            {
+                                GesNennleistung += {{$pv->Leistung}};
+                                GesEnergie += {{$pv->Energie}};
+                            }
+                         @endforeach
                     break;
 
                     case "Stromnetzbezug":
                         AzErzeuger++;
+
+                        @foreach($etsnb as $s)          
+                                if ({{ $s->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$s->Leistung}};
+                                        GesEnergie += {{$s->Energie}};
+                                        AktuellerNetzbezug += {{$s->Leistung}};
+                                    }
+                        @endforeach
                     break;
 
                     case "Batteriespeicher":
                           AzSpeicher++;
+                          @foreach($etbs as $b)          
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$b->Leistung}};
+                                        GesEnergie += {{$b->Energie}};
+                                        GesSpeicherKapazität += {{$b->Speicherkap}};
+                                    }
+                            @endforeach
                     break;
 
                     case "Wasserstoff Elektrolyse":
                           AzVerbraucher++;
+
+                          @foreach($etwe as $w)          
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$w->Leistung}};
+                                        GesEnergie += {{$w->Energie}};
+                                        GesVerbraucherLeistung += {{$w->Leistung}};
+                                        GesVerbraucherEnergie += {{$w->Energie}};
+                                    }
+                             @endforeach
                     break;
 
                     case "Wasserstoff Brennstoffzelle":
                           AzErzeuger++;
+                          @foreach($etbsz as $b)          
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$b->Leistung}};
+                                        GesEnergie += {{$b->Energie}};
+                                    }
+                            @endforeach
                     break;
 
                     case "Wasserstoff Speicher":
                             AzSpeicher++;
+
+                            @foreach($etws as $w)          
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$w->Leistung}};
+                                        GesEnergie += {{$w->Energie}};
+                                        GesSpeicherKapazität += {{$w->Speicherkap}};
+                                    }
+                            @endforeach
                     break;
 
                     case "Windkraftanlage":
                             AzErzeuger++;
-  
-                        if (WindkraftanlageLeistung == 0)
-                        {
-                            @foreach($windkraftanlage as $w)          
-                                        if ( {{ $w->Leistung }} == 0 )
-                                        {
-                                            WindkraftanlageLeistung += 0;
-                                        }
-                                        else 
-                                        {
-                                            WindkraftanlageLeistung += {{$w->Leistung}};
-                                        }
-                                @endforeach
-                        }
 
-
+                            @foreach($etwka as $w)          
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$w->Leistung}};
+                                        GesEnergie += {{$w->Energie}};
+                                    }
+                            @endforeach
                     break;
 
                     case "E-Ladestation":
                             AzVerbraucher++;
+
+                            @foreach($etel as $e)          
+                                if ({{ $e->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$e->Leistung}};
+                                        GesEnergie += {{$e->Energie}};
+                                        GesVerbraucherLeistung += {{$e->Leistung}};
+                                        GesVerbraucherEnergie += {{$e->Energie}};
+                                    }
+                            @endforeach
                     break;
 
                     case "Hausanschlusszähler":
                             AzVerbraucher++;
+
+                            @foreach($ethaz as $h)          
+                                if ({{ $h->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$h->Leistung}};
+                                        GesEnergie += {{$h->Energie}};
+                                        GesVerbraucherLeistung += {{$h->Leistung}};
+                                        GesVerbraucherEnergie += {{$h->Energie}};
+
+                                    }
+                             @endforeach
                     break;
 
                     case "Wärmenetzbezug":
                            AzErzeuger++;
+
+                           @foreach($etwnb as $w)          
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$w->Leistung}};
+                                        GesEnergie += {{$w->Energie}};
+                                    }
+                             @endforeach
                     break;
 
                     case "Biomasseheizkraftwerk":
                             AzVerbraucher++;
                             AzErzeuger++;
+
+                            @foreach($etbhkw as $b)          
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$b->Leistung}};
+                                        GesEnergie += {{$b->Energie}};
+                                        GesVerbraucherLeistung += {{$b->Leistung}};
+                                        GesVerbraucherEnergie += {{$b->Energie}};
+
+                                    }
+                            @endforeach
+                            
                     break;
 
                     case "Biomasseheizwerk":
                             AzVerbraucher++;
                             AzErzeuger++;
+                            @foreach($etbmhw as $b)          
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$b->Leistung}};
+                                        GesEnergie += {{$b->Energie}};
+                                        GesVerbraucherLeistung += {{$b->Leistung}};
+                                        GesVerbraucherEnergie += {{$b->Energie}};
+
+                                    }
+                            @endforeach
                     break;
 
                     case "Biomasseheizkessel":
                             AzVerbraucher++;
                             AzErzeuger++;
+                            @foreach($etbmhk as $b)          
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$b->Leistung}};
+                                        GesEnergie += {{$b->Energie}};
+                                        GesVerbraucherLeistung += {{$b->Leistung}};
+                                        GesVerbraucherEnergie += {{$b->Energie}};
+
+                                    }
+                             @endforeach
                     break;
 
                     case "Wärmespeicher":
                             AzSpeicher++;
+
+                            @foreach($etwes as $w)          
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$w->Leistung}};
+                                        GesEnergie += {{$w->Energie}};
+                                       //keine Speicherkap sondern TempUnten TempMitte TempOben
+
+                                    }
+                             @endforeach
                     break;
 
                     case "Solarthermieanlage":
                             AzErzeuger++;
+
+                            @foreach($etsth as $s)          
+                                if ({{ $s->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$s->Leistung}};
+                                        GesEnergie += {{$s->Energie}};
+                                    }
+                             @endforeach
                     break;
 
                     case "Wärmepumpe":
                             AzErzeuger++;
+
+                            @foreach($etwp as $w)          
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$w->Leistung}};
+                                        GesEnergie += {{$w->Energie}};
+                                    }
+                             @endforeach
                     break;
 
                     case "Gebäude Wärmebedarfszähler":
                             AzVerbraucher++;
+                            //etgwbz hat keine Leistung nur Zählerstand
+
                     break;
 
                     case "Kompressionskältemaschine":
                             AzVerbraucher++;
                             AzErzeuger++;
+
+                            @foreach($etkkm as $k)          
+                                if ({{ $k->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$k->Leistung}};
+                                        GesEnergie += {{$k->Energie}};
+                                        GesVerbraucherLeistung += {{$k->Leistung}};
+                                        GesVerbraucherEnergie += {{$k->Energie}};
+
+                                    }
+                             @endforeach
                     break;
 
                     case "Ab oder Adsorbtionskältemaschine":
                             AzVerbraucher++;
                             AzErzeuger++;
+
+                            @foreach($etadabkm as $e)          
+                                if ({{ $e->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$e->Leistung}};
+                                        GesEnergie += {{$e->Energie}};
+                                        GesVerbraucherLeistung += {{$e->Leistung}};
+                                        GesVerbraucherEnergie += {{$e->Energie}};
+
+                                    }
+                             @endforeach
                     break;
 
                     case "Kältespeicher":
                             AzSpeicher++;
+
+                            @foreach($etks as $k)          
+                                if ({{ $k->EnTech_id }} == locET[6] )
+                                    {
+                                        GesNennleistung += {{$k->Leistung}};
+                                        GesEnergie += {{$k->Energie}};
+                                        GesSpeicherKapazität += {{$k->Speicherkap}};
+
+                                    }
+                             @endforeach
                     break;
 
                     case "Gebäude Kältebedarfszähler":
                             AzVerbraucher++;
+                             //etgkbz hat keine Leistung nur Zählerstand
+                             
                     break;
 
 
                 }
-                GesNennleistung =   PVAnlageleistung + WindkraftanlageLeistung;
+               
 
                 }
 
 
-            })
+            }) //foreach aus
+
+
+
+
+            
+
 
             locations.forEach(loc => {
                 if (loc[3] == id) {
