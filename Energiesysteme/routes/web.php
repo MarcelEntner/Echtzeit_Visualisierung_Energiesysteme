@@ -127,7 +127,9 @@ Route::get('/home', function () {
 	if (Auth::user()->role == "Admin") {
 		return view('home');
 	} else {
-		return 'Don\'t know where to send you :(';
+		return 'Keine Berechtigung';
 	}
 });
+
+
 
