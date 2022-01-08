@@ -47,7 +47,7 @@ Route::get('/addes', [\App\Http\Controllers\FrontEndController:: class, 'addes']
 
 //Route::get('/galerieES/{id}',[\App\Http\Controllers\FrontEndController:: class, 'show']);
 
-
+//Route::get('/registerpage', [App\Http\Controllers\HomeController::class, 'index'])->name('registerpage');
 
 /* Test Seite */
 
@@ -58,7 +58,6 @@ Route::get('/addes', [\App\Http\Controllers\FrontEndController:: class, 'addes']
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::resource('EnSys', FrontEndController::class); // Route zu Frontend Controller
@@ -118,3 +117,17 @@ Route::get('/mapsLocation',function(Request $request)
 		
 	echo json_encode( $datas );
 });
+
+
+
+
+
+
+Route::get('/home', function () {
+	if (Auth::user()->role == "Admin") {
+		return view('home');
+	} else {
+		return 'Don\'t know where to send you :(';
+	}
+});
+

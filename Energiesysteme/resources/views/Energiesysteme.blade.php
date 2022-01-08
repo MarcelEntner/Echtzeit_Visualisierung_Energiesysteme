@@ -1452,7 +1452,7 @@
 
                             @endforeach*/
 
-                          // GesNennleistung =  {{ $windkraftanlage->Leistung }};
+                         
                     break;
 
                     case "E-Ladestation":
