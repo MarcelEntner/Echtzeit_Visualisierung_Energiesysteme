@@ -131,5 +131,21 @@ Route::get('/home', function () {
 	}
 });
 
+Route::get('/login', function () {
+	if (Auth::user()->role == "Admin") {
+		return view('auth.login');
+	} else {
+		return 'Keine Berechtigung';
+	}
+});
+Route::get('/register', function () {
+	if (Auth::user()->role == "Admin") {
+		return view('auth.register');
+	} else {
+		return 'Keine Berechtigung';
+	}
+});
+
+
 
 
