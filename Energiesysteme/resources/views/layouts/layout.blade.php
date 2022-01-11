@@ -520,6 +520,14 @@
                                         {{ __('Logout') }}
                                     </a>
 
+
+
+                                    <!-- TODO: Register Controller Ändern sodass neue User angelegt werden können -->
+                                    
+                                     
+                                  
+                               
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">
                                         @csrf

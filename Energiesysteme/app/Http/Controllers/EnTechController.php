@@ -67,9 +67,16 @@ class EnTechController extends Controller
 
 
 
- /*
+ define("APIKEY", "eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ=='");
 
 //Grafana Anfang
+/*
+//get Dashboard with coresbonding ID
+$suid = strval($request->IDES);
+
+ $getExistingDashboard = Http::withToken(APIKEY)->get('192.168.1.5:3000/api/dashboards/'. $suid);
+
+ 
         $uid = strval($request->IDES+1);
        
         $updateDashboardToAddPanel = Http::withHeaders([
@@ -94,11 +101,13 @@ class EnTechController extends Controller
         ]);
 
         echo($updateDashboardToAddPanel);
+       echo($getExistingDashboard);
+
 // Um dashboard zu updaten -> vorhandenes Dashboard laden -> gesammten inhalt speichern 
 //-> vorhandenes dashboard updaten / überschreiben -> gespeichertes einfügen --> update mit post methode posten --> PROFIT
-        */
+        
         //Grafana ende
-
+*/
         $enTech->save();
         $data = DB::table('EnTech')->get();
 
