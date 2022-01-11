@@ -127,24 +127,17 @@ Route::get('/home', function () {
 	if (Auth::user()->role == "Admin") {
 		return view('home');
 	} else {
-		return 'Keine Berechtigung';
+		return view('HomePage');
 	}
 });
 
-Route::get('/login', function () {
-	if (Auth::user()->role == "Admin") {
-		return view('auth.login');
-	} else {
-		return 'Keine Berechtigung';
-	}
-});
-Route::get('/register', function () {
-	if (Auth::user()->role == "Admin") {
-		return view('auth.register');
-	} else {
-		return 'Keine Berechtigung';
-	}
-});
+
+
+
+
+Route::redirect('/login', '/');
+Route::redirect('/register', '/');
+
 
 
 
