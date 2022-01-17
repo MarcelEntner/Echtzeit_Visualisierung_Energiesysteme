@@ -44,7 +44,7 @@
                         <!-- Main Liste class="table-responsive" -->
                         <div style="height: 41vh; width:100%;">
 
-                           <!-- style="height: 30vh;" -->
+                            <!-- style="height: 30vh;" -->
                             <div id="tableDiv">
                                 <table class="table table-borderless table-hover" id="table">
                                     <thead>
@@ -61,7 +61,7 @@
                                     <tbody>
                                         @foreach ($data as $d)
 
-                                            <tr>
+                                            <tr onclick="moveToMarker({{ $d->id }})">
 
                                                 <td>{{ $d->id }}</td>
                                                 <td>{{ $d->Bezeichnung }}</td>
@@ -131,13 +131,13 @@
 
                                         @endforeach
                                     </tbody>
-                                   
+
                                 </table>
                             </div>
 
                             <div id="tableETDiv" style="display: none;">
                                 <!-- ET Liste style="height: 30vh;" -->
-                                <table class="table table-borderless table-hover"  id="tableET">
+                                <table class="table table-borderless table-hover" id="tableET">
                                     <thead>
                                         <tr>
                                             <th scope="col">IDES</th>
@@ -152,9 +152,9 @@
                                     </thead>
 
                                     <tbody>
-                                        
+
                                         @foreach ($dataEnTech as $d)
-                                        
+
                                             <tr class="enTechTR-{{ $d->ensys_id }}" style='display:none;'>
 
                                                 <td>{{ $d->ensys_id }}</td>
@@ -216,7 +216,7 @@
 
                             <div id="tableESDiv" style="display: none">
                                 <!-- ES Liste style="height: 30vh; -->
-                                <table class="table table-borderless table-hover" id="tableES" >
+                                <table class="table table-borderless table-hover" id="tableES">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
@@ -300,9 +300,9 @@
 
             <!-- Button trigger modal -->
             <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                    style="margin-top: 6%; margin-left:35%; background-color:#3e8e41"; border:1px solid #3e8e41">
-                    Energiesystem hinzufügen
-            </button>-->
+                                style="margin-top: 6%; margin-left:35%; background-color:#3e8e41"; border:1px solid #3e8e41">
+                                Energiesystem hinzufügen
+                        </button>-->
 
 
 
@@ -355,14 +355,16 @@
                                         <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                         Längengrad</span>
                                     <input type="text" class="form-control3" id="LaengengradES" name="LaengengradES"
-                                        aria-label="LaengengradES" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef">
+                                        aria-label="LaengengradES" aria-describedby="basic-addon1" readonly
+                                        style="background-color:#e9ecef">
                                 </div>
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                         Breitengrad</span>
                                     <input type="text" class="form-control3" id="BreitengradES" name="BreitengradES"
-                                        aria-label="BreitengradES" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef">
+                                        aria-label="BreitengradES" aria-describedby="basic-addon1" readonly
+                                        style="background-color:#e9ecef">
                                 </div>
 
 
@@ -394,7 +396,8 @@
                         </div>
                         <div class="modal-body">
 
-                            <form action="{{ route('EnTech.store') }}" id="ETerstellen" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('EnTech.store') }}" id="ETerstellen" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
@@ -455,31 +458,33 @@
                                         <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                         Längengrad</span>
                                     <input type="text" class="form-control3" id="LaengengradET" name="Laengengrad"
-                                        aria-label="LängengradET" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef">
+                                        aria-label="LängengradET" aria-describedby="basic-addon1" readonly
+                                        style="background-color:#e9ecef">
                                 </div>
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                         Breitengrad</span>
                                     <input type="text" class="form-control3" id="BreitengradET" name="Breitengrad"
-                                        aria-label="BreitengradET" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef">
+                                        aria-label="BreitengradET" aria-describedby="basic-addon1" readonly
+                                        style="background-color:#e9ecef">
                                 </div>
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/bild.png" style="margin-right:10px;">
                                         Bild einfügen</span>
-                                        <input type="file" class="form-control3" id="imageET" name="imageET" value="">
+                                    <input type="file" class="form-control3" id="imageET" name="imageET" value="">
                                 </div>
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/beschreibung.png" style="margin-right:10px;">
                                         Beschreibung</span>
-                                    <input type="text" class="form-control3" id="BeschreibungET" name="BeschreibungET" placeholder="..."
-                                        aria-label="BeschreibungET" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control3" id="BeschreibungET" name="BeschreibungET"
+                                        placeholder="..." aria-label="BeschreibungET" aria-describedby="basic-addon1">
                                 </div>
 
 
-                                
+
 
 
                                 <br>
@@ -487,7 +492,7 @@
                                     value="Energietechnologie erstellen">
 
 
-                                
+
                             </form>
                         </div>
                     </div>
@@ -499,7 +504,8 @@
 
 
         <!-- ModalEditES -->
-        <div class="modal modal2 fade" id="exampleModalCenterEdit" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal modal2 fade" id="exampleModalCenterEdit" tabindex="-1" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -544,120 +550,129 @@
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                     Längengrad</span>
                                 <input type="text" class="form-control3" id="LaengengradEdit" name="Laengengrad" value=""
-                                    aria-label="Laengengrad" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef">
+                                    aria-label="Laengengrad" aria-describedby="basic-addon1" readonly
+                                    style="background-color:#e9ecef">
                             </div>
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                     Breitengrad</span>
                                 <input type="text" class="form-control3" id="BreitengradEdit" name="Breitengrad" value=""
-                                    readonly aria-label="Breitengrad" aria-describedby="basic-addon1" style="background-color:#e9ecef">
+                                    readonly aria-label="Breitengrad" aria-describedby="basic-addon1"
+                                    style="background-color:#e9ecef">
                             </div>
 
                             <details closed>
                                 <summary>Mehr Details zu diesem Energiesystem</summary>
-                           
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
-                                    Az-Erzeugungstechnologien</span>
-                                <input type="text" class="form-control3" id="Az-Erzeugungstechnologien" name="Az-Erzeugungstechnologien"
-                                    aria-label="Az-Erzeugungstechnologien" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
 
-                            
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
-                                    Az-Verbraucher</span>
-                                <input type="text" class="form-control3" id="Az-Verbraucher" name="Az-Verbraucher"
-                                    aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
+                                        Az-Erzeugungstechnologien</span>
+                                    <input type="text" class="form-control3" id="Az-Erzeugungstechnologien"
+                                        name="Az-Erzeugungstechnologien" aria-label="Az-Erzeugungstechnologien"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
 
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
-                                    Az-Speicher</span>
-                                <input type="text" class="form-control3" id="Az-Speicher" name="Az-Speicher"
-                                    aria-label="Az-Speicher" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
 
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
-                                    Ges-Nennleistung [kW]</span>
-                                <input type="text" class="form-control3" id="Ges-Nennleistung" name="Ges-Nennleistung"
-                                    aria-label="Ges-Nennleistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly>
-                            </div>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
+                                        Az-Verbraucher</span>
+                                    <input type="text" class="form-control3" id="Az-Verbraucher" name="Az-Verbraucher"
+                                        aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
 
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/energie.png" style="margin-right:10px;">
-                                    Ges-Energie [kW/h]</span>
-                                <input type="text" class="form-control3" id="Ges-Energie" name="Ges-Energie"
-                                    aria-label="Ges-Energie" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
+                                        Az-Speicher</span>
+                                    <input type="text" class="form-control3" id="Az-Speicher" name="Az-Speicher"
+                                        aria-label="Az-Speicher" aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
 
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
-                                    Ges-VerbraucherLeistung [kW]</span>
-                                <input type="text" class="form-control3" id="Ges-VerbraucherLeistung" name="Ges-VerbraucherLeistung"
-                                    aria-label="Ges-VerbraucherLeistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
+                                        Ges-Nennleistung [kW]</span>
+                                    <input type="text" class="form-control3" id="Ges-Nennleistung" name="Ges-Nennleistung"
+                                        aria-label="Ges-Nennleistung" aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
 
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
-                                    Ges-VerbraucherEnergie [kW/h]</span>
-                                <input type="text" class="form-control3" id="Ges-VerbraucherEnergie" name="Ges-VerbraucherEnergie"
-                                    aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/energie.png" style="margin-right:10px;">
+                                        Ges-Energie [kW/h]</span>
+                                    <input type="text" class="form-control3" id="Ges-Energie" name="Ges-Energie"
+                                        aria-label="Ges-Energie" aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
 
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
-                                    Ges-ErzeugerLeistung [kW]</span>
-                                <input type="text" class="form-control3" id="Ges-ErzeugerLeistung" name="Ges-VerbraucherEnergie"
-                                    aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
+                                        Ges-VerbraucherLeistung [kW]</span>
+                                    <input type="text" class="form-control3" id="Ges-VerbraucherLeistung"
+                                        name="Ges-VerbraucherLeistung" aria-label="Ges-VerbraucherLeistung"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
 
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
-                                    Ges-ErzeugerEnergie [kW/h]</span>
-                                <input type="text" class="form-control3" id="Ges-ErzeugerEnergie" name="Ges-VerbraucherEnergie"
-                                    aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
+                                        Ges-VerbraucherEnergie [kW/h]</span>
+                                    <input type="text" class="form-control3" id="Ges-VerbraucherEnergie"
+                                        name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
 
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
-                                    Ges-SpeicherKapazität [kW/h]</span>
-                                <input type="text" class="form-control3" id="Ges-SpeicherKapazität" name="Ges-SpeicherKapazität"
-                                    aria-label="Ges-SpeicherKapazität" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
+                                        Ges-ErzeugerLeistung [kW]</span>
+                                    <input type="text" class="form-control3" id="Ges-ErzeugerLeistung"
+                                        name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
 
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
-                                    Aktueller Netzbezug [kW]</span>
-                                <input type="text" class="form-control3" id="AktuellerNetzbezug" name= "Aktueller Netzbezug"
-                                    aria-label="Aktueller Netzbezug" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
-                        </details>
-                                
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
+                                        Ges-ErzeugerEnergie [kW/h]</span>
+                                    <input type="text" class="form-control3" id="Ges-ErzeugerEnergie"
+                                        name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
+
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
+                                        Ges-SpeicherKapazität [kW/h]</span>
+                                    <input type="text" class="form-control3" id="Ges-SpeicherKapazität"
+                                        name="Ges-SpeicherKapazität" aria-label="Ges-SpeicherKapazität"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
+
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
+                                        Aktueller Netzbezug [kW]</span>
+                                    <input type="text" class="form-control3" id="AktuellerNetzbezug"
+                                        name="Aktueller Netzbezug" aria-label="Aktueller Netzbezug"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
+                            </details>
+
 
 
                             <br>
@@ -705,7 +720,8 @@
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID Energiesystem</span>
                                 <input type="text" class="form-control3" id="idEditES" name="idEditES" value=""
-                                    aria-label="ID-ES" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef;">
+                                    aria-label="ID-ES" aria-describedby="basic-addon1" readonly
+                                    style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -713,7 +729,8 @@
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID Energietechnologie</span>
                                 <input type="text" class="form-control3" id="idEditET" name="idEditET" value=""
-                                    aria-label="idEditET" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef;">
+                                    aria-label="idEditET" aria-describedby="basic-addon1" readonly
+                                    style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -730,7 +747,8 @@
                                     Typ</span>
                                 <br>
 
-                                <select name="TypEditET" class="form-select" id="TypEditET" style="text-align:center; background-color:#e9ecef" aria-readonly="true">
+                                <select name="TypEditET" class="form-select" id="TypEditET"
+                                    style="text-align:center; background-color:#e9ecef" aria-readonly="true">
                                     <option value="PV-Anlage">PV-Anlage</option>
                                     <option value="Stromnetzbezug">Stromnetzbezug</option>
                                     <option value="Batteriespeicher">Batteriespeicher</option>
@@ -769,7 +787,8 @@
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                     Längengrad</span>
                                 <input type="text" class="form-control3" id="LaengengradEditET" name="LaengengradEditET"
-                                    value="" readonly aria-label="LaengengradEditET" aria-describedby="basic-addon1" style="background-color:#e9ecef;"> 
+                                    value="" readonly aria-label="LaengengradEditET" aria-describedby="basic-addon1"
+                                    style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -777,7 +796,8 @@
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                     Breitgengrad</span>
                                 <input type="text" class="form-control3" id="BreitengradEditET" name="BreitengradEditET"
-                                    value="" readonly aria-label="BreitengradEditET" aria-describedby="basic-addon1" style="background-color:#e9ecef;">
+                                    value="" readonly aria-label="BreitengradEditET" aria-describedby="basic-addon1"
+                                    style="background-color:#e9ecef;">
                             </div>
 
 
@@ -818,11 +838,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        
+
 
                         <!--Grafana Statistik iframe
-                        <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639334652637&to=1639507452638&panelId=2" width="800" height="1000" frameborder="0"></iframe>
-                    -->
+                                    <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639334652637&to=1639507452638&panelId=2" width="800" height="1000" frameborder="0"></iframe>
+                                -->
                     </div>
 
 
@@ -861,11 +881,11 @@
         <!-- ModalAuge ES -->
         <div class="modal modal2 fade" id="exampleModalCenterAuge" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document" >
+            <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img
-                            src="/images/icons/esgrün2.png"></h5>
+                                src="/images/icons/esgrün2.png"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -881,7 +901,8 @@
                                     <img src="/images/pop-up/name.png" style="margin-right:10px;">
                                     Bezeichnung</span>
                                 <input type="text" class="form-control3" id="bezeichnunga" name="Bezeichnung"
-                                    aria-label="Bezeichnung" aria-describedby="basic-addon1" value="" readonly style="background-color:#e9ecef;">
+                                    aria-label="Bezeichnung" aria-describedby="basic-addon1" value="" readonly
+                                    style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%">
@@ -889,7 +910,8 @@
                                     <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
                                     Katastralgemeinde</span>
                                 <input type="text" class="form-control3" id="katastralgemeindea" name="Katastralgemeinden"
-                                    value="" aria-label="Katastralgemeinde" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef;">
+                                    value="" aria-label="Katastralgemeinde" aria-describedby="basic-addon1" readonly
+                                    style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%">
@@ -897,7 +919,8 @@
                                     <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
                                     Postleitzahl</span>
                                 <input type="text" class="form-control3" id="postleitzahla" name="Postleitzahl" value=""
-                                    aria-label="Postleitzahl" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef;">
+                                    aria-label="Postleitzahl" aria-describedby="basic-addon1" readonly
+                                    style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%">
@@ -905,7 +928,8 @@
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                     Längengrad</span>
                                 <input type="text" class="form-control3" id="LaengengradEdita" name="Laengengrad"
-                                    aria-label="Laengengrad" aria-describedby="basic-addon1" value="" readonly style="background-color:#e9ecef;">
+                                    aria-label="Laengengrad" aria-describedby="basic-addon1" value="" readonly
+                                    style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:5%">
@@ -913,116 +937,125 @@
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                     Breitengrad</span>
                                 <input type="text" class="form-control3" id="BreitengradEdita" name="Breitengrad"
-                                    aria-label="Breitengrad" aria-describedby="basic-addon1" value="" readonly style="background-color:#e9ecef;">
+                                    aria-label="Breitengrad" aria-describedby="basic-addon1" value="" readonly
+                                    style="background-color:#e9ecef;">
                             </div>
 
                             <details closed>
                                 <summary>Mehr Details zu diesem Energiesystem</summary>
 
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
-                                    Az-Erzeugungstechnologien</span>
-                                <input type="text" class="form-control3" id="Az-ErzeugungstechnologienAuge" name="Az-Erzeugungstechnologien"
-                                    aria-label="Az-Erzeugungstechnologien" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly>
-                            </div>
-
-                            
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
-                                    Az-Verbraucher</span>
-                                <input type="text" class="form-control3" id="Az-VerbraucherAuge" name="Az-Verbraucher"
-                                    aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly>
-                            </div>
-
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
-                                    Az-Speicher</span>
-                                <input type="text" class="form-control3" id="Az-SpeicherAuge" name="Az-Speicher"
-                                    aria-label="Az-Speicher" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly>
-                            </div>
-
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
-                                    Ges-Nennleistung [kW]</span>
-                                <input type="text" class="form-control3" id="Ges-NennleistungAuge" name="Ges-Nennleistung"
-                                    aria-label="Ges-Nennleistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly>
-                            </div>
-
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/energie.png" style="margin-right:10px;">
-                                    Ges-Energie [kW/h]</span>
-                                <input type="text" class="form-control3" id="Ges-EnergieAuge" name="Ges-Energie"
-                                    aria-label="Ges-Energie" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly>
-                            </div>
-
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
-                                    Ges-VerbraucherLeistung [kW]</span>
-                                <input type="text" class="form-control3" id="Ges-VerbraucherLeistungAuge" name="Ges-VerbraucherLeistung"
-                                    aria-label="Ges-VerbraucherLeistung" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly>
-                            </div>
-
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/gesverenergie.png" style="margin-right:10px;">
-                                    Ges-VerbraucherEnergie [kW/h]</span>
-                                <input type="text" class="form-control3" id="Ges-VerbraucherEnergieAuge" name="Ges-VerbraucherEnergie"
-                                    aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly>
-                            </div>
-
-                            
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
-                                    Ges-ErzeugerLeistung [kW]</span>
-                                <input type="text" class="form-control3" id="Ges-ErzeugerLeistungAuge" name="Ges-VerbraucherEnergie"
-                                    aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
-
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
-                            Ges-ErzeugerEnergie [kW/h]</span>
-                                <input type="text" class="form-control3" id="Ges-ErzeugerEnergieAuge" name="Ges-VerbraucherEnergie"
-                                    aria-label="Ges-VerbraucherEnergie" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly >
-                            </div>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
+                                        Az-Erzeugungstechnologien</span>
+                                    <input type="text" class="form-control3" id="Az-ErzeugungstechnologienAuge"
+                                        name="Az-Erzeugungstechnologien" aria-label="Az-Erzeugungstechnologien"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
 
 
-                         
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
-                                    Ges-SpeicherKapazität [kW/h]</span>
-                                <input type="text" class="form-control3" id="Ges-SpeicherKapazitätAuge" name="Ges-SpeicherKapazität"
-                                    aria-label="Ges-SpeicherKapazität" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly>
-                            </div>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
+                                        Az-Verbraucher</span>
+                                    <input type="text" class="form-control3" id="Az-VerbraucherAuge" name="Az-Verbraucher"
+                                        aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
 
-                            <div class="input-group mb-3" style="margin-top:5%;">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                    <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
-                                    Aktueller Netzbezug [kW]</span>
-                                <input type="text" class="form-control3" id="AktuellerNetzbezugAuge" name= "Aktueller Netzbezug"
-                                    aria-label="Aktueller Netzbezug" aria-describedby="basic-addon1" value="" 
-                                    style="width:160px; background-color:#e9ecef;" readonly>
-                            </div>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
+                                        Az-Speicher</span>
+                                    <input type="text" class="form-control3" id="Az-SpeicherAuge" name="Az-Speicher"
+                                        aria-label="Az-Speicher" aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
 
-                        </details>
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
+                                        Ges-Nennleistung [kW]</span>
+                                    <input type="text" class="form-control3" id="Ges-NennleistungAuge"
+                                        name="Ges-Nennleistung" aria-label="Ges-Nennleistung"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
+
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/energie.png" style="margin-right:10px;">
+                                        Ges-Energie [kW/h]</span>
+                                    <input type="text" class="form-control3" id="Ges-EnergieAuge" name="Ges-Energie"
+                                        aria-label="Ges-Energie" aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
+
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
+                                        Ges-VerbraucherLeistung [kW]</span>
+                                    <input type="text" class="form-control3" id="Ges-VerbraucherLeistungAuge"
+                                        name="Ges-VerbraucherLeistung" aria-label="Ges-VerbraucherLeistung"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
+
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:10px;">
+                                        Ges-VerbraucherEnergie [kW/h]</span>
+                                    <input type="text" class="form-control3" id="Ges-VerbraucherEnergieAuge"
+                                        name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
+
+
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
+                                        Ges-ErzeugerLeistung [kW]</span>
+                                    <input type="text" class="form-control3" id="Ges-ErzeugerLeistungAuge"
+                                        name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
+
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
+                                        Ges-ErzeugerEnergie [kW/h]</span>
+                                    <input type="text" class="form-control3" id="Ges-ErzeugerEnergieAuge"
+                                        name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
+
+
+
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
+                                        Ges-SpeicherKapazität [kW/h]</span>
+                                    <input type="text" class="form-control3" id="Ges-SpeicherKapazitätAuge"
+                                        name="Ges-SpeicherKapazität" aria-label="Ges-SpeicherKapazität"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
+
+                                <div class="input-group mb-3" style="margin-top:5%;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                        <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
+                                        Aktueller Netzbezug [kW]</span>
+                                    <input type="text" class="form-control3" id="AktuellerNetzbezugAuge"
+                                        name="Aktueller Netzbezug" aria-label="Aktueller Netzbezug"
+                                        aria-describedby="basic-addon1" value=""
+                                        style="width:160px; background-color:#e9ecef;" readonly>
+                                </div>
+
+                            </details>
 
                         </form>
 
@@ -1044,7 +1077,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie <img
-                            src="/images/icons/etgrün2.png"></h5>
+                                src="/images/icons/etgrün2.png"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -1059,56 +1092,59 @@
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID-ES</span>
-                                <input type="text" class="form-control3" id="IDESAugeET" name="IDESAugeET" aria-label="IDESAugeET" aria-describedby="basic-addon1"
-                                    value="" readonly style="background-color:#e9ecef;">
+                                <input type="text" class="form-control3" id="IDESAugeET" name="IDESAugeET"
+                                    aria-label="IDESAugeET" aria-describedby="basic-addon1" value="" readonly
+                                    style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID-ET</span>
-                                <input type="text" class="form-control3" id="IDETAugeET"  aria-label="IDETAugeET" aria-describedby="basic-addon1"
-                                    name="IDETAugeET" value="" readonly style="background-color:#e9ecef;">
+                                <input type="text" class="form-control3" id="IDETAugeET" aria-label="IDETAugeET"
+                                    aria-describedby="basic-addon1" name="IDETAugeET" value="" readonly
+                                    style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/name.png" style="margin-right:10px;">
                                     Bezeichnung</span>
-                                <input type="text" class="form-control3" id="BezeichnungAugeET"  aria-label="BezeichnungAugeET" aria-describedby="basic-addon1"
-                                    name="Postleitzahl" value="" readonly style="background-color:#e9ecef;">
+                                <input type="text" class="form-control3" id="BezeichnungAugeET"
+                                    aria-label="BezeichnungAugeET" aria-describedby="basic-addon1" name="Postleitzahl"
+                                    value="" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/typ.png" style="margin-right:10px;">
-                                    Typ</span>                                
-                                <input type="text" class="form-control3" id="TypAugeET" name="Laengengrad"
-                                    value="" readonly style="background-color:#e9ecef;">
+                                    Typ</span>
+                                <input type="text" class="form-control3" id="TypAugeET" name="Laengengrad" value=""
+                                    readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/ort.png" style="margin-right:10px;">
-                                    Ort</span>                                
-                                <input type="text" class="form-control3" id="OrtAugeET" name="Breitengrad"
-                                    value="" readonly style="background-color:#e9ecef;">
+                                    Ort</span>
+                                <input type="text" class="form-control3" id="OrtAugeET" name="Breitengrad" value=""
+                                    readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
-                                    Längengrad</span>                                   
-                                <input type="text" class="form-control3" id="LaengengradAugeET"
-                                    name="Breitengrad" value="" readonly style="background-color:#e9ecef;">
+                                    Längengrad</span>
+                                <input type="text" class="form-control3" id="LaengengradAugeET" name="Breitengrad"
+                                    value="" readonly style="background-color:#e9ecef;">
                             </div>
 
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
-                                    Breitengrad</span>                                   
-                                <input type="text" class="form-control3" id="BreitengradAugeET"
-                                    name="Breitengrad" value="" readonly style="background-color:#e9ecef;">
+                                    Breitengrad</span>
+                                <input type="text" class="form-control3" id="BreitengradAugeET" name="Breitengrad"
+                                    value="" readonly style="background-color:#e9ecef;">
                             </div>
                         </form>
 
@@ -1138,7 +1174,7 @@
                         "targets": 6
                     }
                 ],
-                lengthChange: false,  //Auswahl wieviele Pro Seite man sehen möchte
+                lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte
 
                 lengthMenu: [5], //Wieviele ES/ET pro Seite angezeigt werden 
                 language: {
@@ -1147,7 +1183,7 @@
 
             });
 
-            
+
             $('#tableET').DataTable({
                 "columnDefs": [{
                         "orderable": false,
@@ -1164,7 +1200,9 @@
                 ],
                 lengthChange: false,
 
-                lengthMenu: [100], //Wieviele ES/ET pro Seite angezeigt werden, kann nicht 5 sein, da hier sonst nach allen ET in der DB sortiert und wir mit CSS nur die richtigen einblenden und dann stimmt die Anzeige nicht
+                lengthMenu: [
+                    100
+                ], //Wieviele ES/ET pro Seite angezeigt werden, kann nicht 5 sein, da hier sonst nach allen ET in der DB sortiert und wir mit CSS nur die richtigen einblenden und dann stimmt die Anzeige nicht
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
                 }
@@ -1204,8 +1242,8 @@
     <!-- Kronstana API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
     <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
 
-    <!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&callback=LoadMap">
-    </script>--> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&callback=LoadMap">
+    </script>-->
 
 
 
@@ -1301,19 +1339,19 @@
 
                             setMarkers(map);
                             @auth //Gast darf keine ES erstellen
-                            map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
-                            if(!activeMarker){
-                            breit = e.latLng.toString().substring(1, 16);
-                            lang = e.latLng.toString().substring(20, 35);
-                            document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
-                            document.getElementById("BreitengradES").setAttribute('value', lang);
-                        
-                            $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
-                            }
-                        
-                        
-                            });
-                        @endauth
+                                map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
+                                if(!activeMarker){
+                                breit = e.latLng.toString().substring(1, 16);
+                                lang = e.latLng.toString().substring(20, 35);
+                                document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
+                                document.getElementById("BreitengradES").setAttribute('value', lang);
+                            
+                                $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
+                                }
+                            
+                            
+                                });
+                            @endauth
 
                         },
                         error: function(xhr, ajaxOptions, thrownError) {
@@ -1356,11 +1394,10 @@
 
     <?php
     
-    
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -1369,38 +1406,30 @@
     if ($conn->connect_error) {
         die('Connection failed: ' . $conn->connect_error);
     } else {
-        
-
         $sql = 'SELECT id, Bezeichnung, Laengengrad, Breitengrad, Postleitzahl, Katastralgemeinden FROM EnSys'; // ES
         $es_select = DB::table('EnSys')->get(); // ES Select mit Laravel
     
         $sql2 = 'SELECT id, ensys_id, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad  FROM EnTech'; // ET
         $et_select = DB::table('EnTech')->get(); //ET Select mit Laravel
-
+    
         //SQL für die Erzeuger, Verbraucher, Speicher Anzeige beim ES
-        
-
-
-
     
         $result = $conn->query($sql); //für SQL DB Conn
-       $result2 = $conn->query($sql2); //für SQL DB Conn
+        $result2 = $conn->query($sql2); //für SQL DB Conn
     
-      //  $result = $es_select; //für laravel DB Conn
-       // $result2 = $et_select; //für laravel DB Conn
+        //  $result = $es_select; //für laravel DB Conn
+        // $result2 = $et_select; //für laravel DB Conn
     
         $locations = [];
         $locationsET = [];
     
-        
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                // echo "id: " . $row["id"]. " " . $row["Bezeichnung"]." ". $row["Laengengrad"]. " ". $row["Breitengrad"]. "<br>";
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            // echo "id: " . $row["id"]. " " . $row["Bezeichnung"]." ". $row["Laengengrad"]. " ". $row["Breitengrad"]. "<br>";
     
-                $location = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['id']}, {$row['Postleitzahl']}, '{$row['Katastralgemeinden']}']";
-                array_push($locations, $location);
-            }
-        
+            $location = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['id']}, {$row['Postleitzahl']}, '{$row['Katastralgemeinden']}']";
+            array_push($locations, $location);
+        }
     
         if ($result2->num_rows > 0) {
             // output data of each row
@@ -1429,8 +1458,8 @@
         }
     
         echo ']</script>';
-        } 
-
+    }
+    
     ?>
 
 
@@ -1441,333 +1470,333 @@
 
             //Gesamt Variablen
             var AzErzeuger = 0;
-            var AzVerbraucher= 0;
-            var AzSpeicher= 0;
-            var GesNennleistung= 0;
-            var GesEnergie= 0;
-            var GesVerbraucherLeistung= 0;
-            var GesVerbraucherEnergie= 0;
+            var AzVerbraucher = 0;
+            var AzSpeicher = 0;
+            var GesNennleistung = 0;
+            var GesEnergie = 0;
+            var GesVerbraucherLeistung = 0;
+            var GesVerbraucherEnergie = 0;
             var GesErzeugerLeistung = 0;
             var GesErzeugerEnergie = 0;
-            var GesSpeicherKapazität= 0;
-            var AktuellerNetzbezug= 0; //öffentliche Stromnetz = Differenz von GesVerbraucherLeistung & GesErzeugerLeistung
-         
-
-        
-            
-
-          
-
-
-            locationsET.forEach(locET =>{
+            var GesSpeicherKapazität = 0;
+            var AktuellerNetzbezug = 0; //öffentliche Stromnetz = Differenz von GesVerbraucherLeistung & GesErzeugerLeistung
 
 
 
-                if(locET[3] == id){ //Damit nur ET aus dem ausgewählten ES gezählt werden
 
-                switch (locET[4]){
-                     case "PV-Anlage":
-                        AzErzeuger++;
 
-                        @foreach($etpv as $pv)          
-                            if ({{ $pv->EnTech_id }} == locET[6] ) //damit nur die PV von diesem ES nimmt
-                            {
-                                GesNennleistung += {{$pv->Leistung}};
-                                GesEnergie += {{$pv->Energie}};
-                                GesErzeugerLeistung += {{$pv->Leistung}};
-                                GesErzeugerEnergie += {{$pv->Energie}};
-                            }
-                         @endforeach
-                    break;
 
-                    case "Stromnetzbezug":
-                        AzErzeuger++;
 
-                        @foreach($etsnb as $s)          
-                                if ({{ $s->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$s->Leistung}};
-                                        GesEnergie += {{$s->Energie}};
-                                        AktuellerNetzbezug += {{$s->Leistung}};
-                                        GesErzeugerLeistung += {{$s->Leistung}};
-                                        GesErzeugerEnergie += {{$s->Energie}};
-                                    }
-                        @endforeach
-                    break;
 
-                    case "Batteriespeicher":
-                          AzSpeicher++;
-                          @foreach($etbs as $b)          
-                                if ({{ $b->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$b->Leistung}};
-                                        GesEnergie += {{$b->Energie}};
-                                        GesSpeicherKapazität += {{$b->Speicherkap}};
-                                    }
-                            @endforeach
-                    break;
+            locationsET.forEach(locET => {
 
-                    case "Wasserstoff Elektrolyse":
-                          AzVerbraucher++;
 
-                          @foreach($etwe as $w)          
-                                if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                        GesVerbraucherLeistung += {{$w->Leistung}};
-                                        GesVerbraucherEnergie += {{$w->Energie}};
-                                    }
-                             @endforeach
-                    break;
 
-                    case "Wasserstoff Brennstoffzelle":
-                          AzErzeuger++;
-                          @foreach($etbsz as $b)          
-                                if ({{ $b->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$b->Leistung}};
-                                        GesEnergie += {{$b->Energie}};
-                                        GesErzeugerLeistung += {{$b->Leistung}};
-                                        GesErzeugerEnergie += {{$b->Energie}};
-                                    }
-                            @endforeach
-                    break;
+                if (locET[3] == id) { //Damit nur ET aus dem ausgewählten ES gezählt werden
 
-                    case "Wasserstoff Speicher":
-                            AzSpeicher++;
-
-                            @foreach($etws as $w)          
-                                if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                        GesSpeicherKapazität += {{$w->Speicherkap}};
-                                    }
-                            @endforeach
-                    break;
-
-                    case "Windkraftanlage":
+                    switch (locET[4]) {
+                        case "PV-Anlage":
                             AzErzeuger++;
 
-                            @foreach($etwka as $w)          
-                                if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                        GesErzeugerLeistung += {{$w->Leistung}};
-                                        GesErzeugerEnergie += {{$w->Energie}};
-                                    }
+                            @foreach ($etpv as $pv)
+                                if ({{ $pv->EnTech_id }} == locET[6] ) //damit nur die PV von diesem ES nimmt
+                                {
+                                GesNennleistung += {{ $pv->Leistung }};
+                                GesEnergie += {{ $pv->Energie }};
+                                GesErzeugerLeistung += {{ $pv->Leistung }};
+                                GesErzeugerEnergie += {{ $pv->Energie }};
+                                }
                             @endforeach
-                    break;
+                            break;
 
-                    case "E-Ladestation":
+                        case "Stromnetzbezug":
+                            AzErzeuger++;
+
+                            @foreach ($etsnb as $s)
+                                if ({{ $s->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $s->Leistung }};
+                                GesEnergie += {{ $s->Energie }};
+                                AktuellerNetzbezug += {{ $s->Leistung }};
+                                GesErzeugerLeistung += {{ $s->Leistung }};
+                                GesErzeugerEnergie += {{ $s->Energie }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "Batteriespeicher":
+                            AzSpeicher++;
+                            @foreach ($etbs as $b)
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $b->Leistung }};
+                                GesEnergie += {{ $b->Energie }};
+                                GesSpeicherKapazität += {{ $b->Speicherkap }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "Wasserstoff Elektrolyse":
                             AzVerbraucher++;
 
-                            @foreach($etel as $e)          
+                            @foreach ($etwe as $w)
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                GesVerbraucherLeistung += {{ $w->Leistung }};
+                                GesVerbraucherEnergie += {{ $w->Energie }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "Wasserstoff Brennstoffzelle":
+                            AzErzeuger++;
+                            @foreach ($etbsz as $b)
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $b->Leistung }};
+                                GesEnergie += {{ $b->Energie }};
+                                GesErzeugerLeistung += {{ $b->Leistung }};
+                                GesErzeugerEnergie += {{ $b->Energie }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "Wasserstoff Speicher":
+                            AzSpeicher++;
+
+                            @foreach ($etws as $w)
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                GesSpeicherKapazität += {{ $w->Speicherkap }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "Windkraftanlage":
+                            AzErzeuger++;
+
+                            @foreach ($etwka as $w)
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                GesErzeugerLeistung += {{ $w->Leistung }};
+                                GesErzeugerEnergie += {{ $w->Energie }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "E-Ladestation":
+                            AzVerbraucher++;
+
+                            @foreach ($etel as $e)
                                 if ({{ $e->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$e->Leistung}};
-                                        GesEnergie += {{$e->Energie}};
-                                        GesVerbraucherLeistung += {{$e->Leistung}};
-                                        GesVerbraucherEnergie += {{$e->Energie}};
-                                    }
+                                {
+                                GesNennleistung += {{ $e->Leistung }};
+                                GesEnergie += {{ $e->Energie }};
+                                GesVerbraucherLeistung += {{ $e->Leistung }};
+                                GesVerbraucherEnergie += {{ $e->Energie }};
+                                }
                             @endforeach
-                    break;
+                            break;
 
-                    case "Hausanschlusszähler":
+                        case "Hausanschlusszähler":
                             AzVerbraucher++;
 
-                            @foreach($ethaz as $h)          
+                            @foreach ($ethaz as $h)
                                 if ({{ $h->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$h->Leistung}};
-                                        GesEnergie += {{$h->Energie}};
-                                        GesVerbraucherLeistung += {{$h->Leistung}};
-                                        GesVerbraucherEnergie += {{$h->Energie}};
-
-                                    }
-                             @endforeach
-                    break;
-
-                    case "Wärmenetzbezug":
-                           AzErzeuger++;
-
-                           @foreach($etwnb as $w)          
-                                if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                        GesErzeugerLeistung += {{$w->Leistung}};
-                                        GesErzeugerEnergie += {{$w->Energie}};
-                                    }
-                             @endforeach
-                    break;
-
-                    case "Biomasseheizkraftwerk":
-                            AzVerbraucher++;
-                            AzErzeuger++;
-
-                            @foreach($etbhkw as $b)          
-                                if ({{ $b->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$b->Leistung}};
-                                        GesEnergie += {{$b->Energie}};
-                                        GesVerbraucherLeistung += {{$b->Leistung}};
-                                        GesVerbraucherEnergie += {{$b->Energie}};
-                                        GesErzeugerLeistung += {{$b->Leistung}};
-                                        GesErzeugerEnergie += {{$b->Energie}};
-
-                                    }
-                            @endforeach
+                                {
+                                GesNennleistung += {{ $h->Leistung }};
+                                GesEnergie += {{ $h->Energie }};
+                                GesVerbraucherLeistung += {{ $h->Leistung }};
+                                GesVerbraucherEnergie += {{ $h->Energie }};
                             
-                    break;
-
-                    case "Biomasseheizwerk":
-                            AzVerbraucher++;
-                            AzErzeuger++;
-                            @foreach($etbmhw as $b)          
-                                if ({{ $b->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$b->Leistung}};
-                                        GesEnergie += {{$b->Energie}};
-                                        GesVerbraucherLeistung += {{$b->Leistung}};
-                                        GesVerbraucherEnergie += {{$b->Energie}};
-                                        GesErzeugerLeistung += {{$b->Leistung}};
-                                        GesErzeugerEnergie += {{$b->Energie}};
-
-                                    }
+                                }
                             @endforeach
-                    break;
+                            break;
 
-                    case "Biomasseheizkessel":
+                        case "Wärmenetzbezug":
+                            AzErzeuger++;
+
+                            @foreach ($etwnb as $w)
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                GesErzeugerLeistung += {{ $w->Leistung }};
+                                GesErzeugerEnergie += {{ $w->Energie }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "Biomasseheizkraftwerk":
                             AzVerbraucher++;
                             AzErzeuger++;
-                            @foreach($etbmhk as $b)          
+
+                            @foreach ($etbhkw as $b)
                                 if ({{ $b->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$b->Leistung}};
-                                        GesEnergie += {{$b->Energie}};
-                                        GesVerbraucherLeistung += {{$b->Leistung}};
-                                        GesVerbraucherEnergie += {{$b->Energie}};
-                                        GesErzeugerLeistung += {{$b->Leistung}};
-                                        GesErzeugerEnergie += {{$b->Energie}};
+                                {
+                                GesNennleistung += {{ $b->Leistung }};
+                                GesEnergie += {{ $b->Energie }};
+                                GesVerbraucherLeistung += {{ $b->Leistung }};
+                                GesVerbraucherEnergie += {{ $b->Energie }};
+                                GesErzeugerLeistung += {{ $b->Leistung }};
+                                GesErzeugerEnergie += {{ $b->Energie }};
+                            
+                                }
+                            @endforeach
 
-                                    }
-                             @endforeach
-                    break;
+                            break;
 
-                    case "Wärmespeicher":
+                        case "Biomasseheizwerk":
+                            AzVerbraucher++;
+                            AzErzeuger++;
+                            @foreach ($etbmhw as $b)
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $b->Leistung }};
+                                GesEnergie += {{ $b->Energie }};
+                                GesVerbraucherLeistung += {{ $b->Leistung }};
+                                GesVerbraucherEnergie += {{ $b->Energie }};
+                                GesErzeugerLeistung += {{ $b->Leistung }};
+                                GesErzeugerEnergie += {{ $b->Energie }};
+                            
+                                }
+                            @endforeach
+                            break;
+
+                        case "Biomasseheizkessel":
+                            AzVerbraucher++;
+                            AzErzeuger++;
+                            @foreach ($etbmhk as $b)
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $b->Leistung }};
+                                GesEnergie += {{ $b->Energie }};
+                                GesVerbraucherLeistung += {{ $b->Leistung }};
+                                GesVerbraucherEnergie += {{ $b->Energie }};
+                                GesErzeugerLeistung += {{ $b->Leistung }};
+                                GesErzeugerEnergie += {{ $b->Energie }};
+                            
+                                }
+                            @endforeach
+                            break;
+
+                        case "Wärmespeicher":
                             AzSpeicher++;
 
-                            @foreach($etwes as $w)          
+                            @foreach ($etwes as $w)
                                 if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                       //keine Speicherkap sondern TempUnten TempMitte TempOben
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                //keine Speicherkap sondern TempUnten TempMitte TempOben
+                            
+                                }
+                            @endforeach
+                            break;
 
-                                    }
-                             @endforeach
-                    break;
-
-                    case "Solarthermieanlage":
+                        case "Solarthermieanlage":
                             AzErzeuger++;
 
-                            @foreach($etsth as $s)          
+                            @foreach ($etsth as $s)
                                 if ({{ $s->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$s->Leistung}};
-                                        GesEnergie += {{$s->Energie}};
-                                        GesErzeugerLeistung += {{$s->Leistung}};
-                                        GesErzeugerEnergie += {{$s->Energie}};
+                                {
+                                GesNennleistung += {{ $s->Leistung }};
+                                GesEnergie += {{ $s->Energie }};
+                                GesErzeugerLeistung += {{ $s->Leistung }};
+                                GesErzeugerEnergie += {{ $s->Energie }};
+                            
+                                }
+                            @endforeach
+                            break;
 
-                                    }
-                             @endforeach
-                    break;
-
-                    case "Wärmepumpe":
+                        case "Wärmepumpe":
                             AzErzeuger++;
 
-                            @foreach($etwp as $w)          
+                            @foreach ($etwp as $w)
                                 if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                        GesErzeugerLeistung += {{$w->Leistung}};
-                                        GesErzeugerEnergie += {{$w->Energie}};
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                GesErzeugerLeistung += {{ $w->Leistung }};
+                                GesErzeugerEnergie += {{ $w->Energie }};
+                            
+                                }
+                            @endforeach
+                            break;
 
-                                    }
-                             @endforeach
-                    break;
-
-                    case "Gebäude Wärmebedarfszähler":
+                        case "Gebäude Wärmebedarfszähler":
                             AzVerbraucher++;
                             //etgwbz hat keine Leistung nur Zählerstand
 
-                    break;
+                            break;
 
-                    case "Kompressionskältemaschine":
+                        case "Kompressionskältemaschine":
                             AzVerbraucher++;
                             AzErzeuger++;
 
-                            @foreach($etkkm as $k)          
+                            @foreach ($etkkm as $k)
                                 if ({{ $k->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$k->Leistung}};
-                                        GesEnergie += {{$k->Energie}};
-                                        GesVerbraucherLeistung += {{$k->Leistung}};
-                                        GesVerbraucherEnergie += {{$k->Energie}};
-                                        GesErzeugerLeistung += {{$k->Leistung}};
-                                        GesErzeugerEnergie += {{$k->Energie}};
+                                {
+                                GesNennleistung += {{ $k->Leistung }};
+                                GesEnergie += {{ $k->Energie }};
+                                GesVerbraucherLeistung += {{ $k->Leistung }};
+                                GesVerbraucherEnergie += {{ $k->Energie }};
+                                GesErzeugerLeistung += {{ $k->Leistung }};
+                                GesErzeugerEnergie += {{ $k->Energie }};
+                            
+                            
+                                }
+                            @endforeach
+                            break;
 
-
-                                    }
-                             @endforeach
-                    break;
-
-                    case "Ab oder Adsorbtionskältemaschine":
+                        case "Ab oder Adsorbtionskältemaschine":
                             AzVerbraucher++;
                             AzErzeuger++;
 
-                            @foreach($etadabkm as $e)          
+                            @foreach ($etadabkm as $e)
                                 if ({{ $e->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$e->Leistung}};
-                                        GesEnergie += {{$e->Energie}};
-                                        GesVerbraucherLeistung += {{$e->Leistung}};
-                                        GesVerbraucherEnergie += {{$e->Energie}};
-                                        GesErzeugerLeistung += {{$e->Leistung}};
-                                        GesErzeugerEnergie += {{$e->Energie}};
+                                {
+                                GesNennleistung += {{ $e->Leistung }};
+                                GesEnergie += {{ $e->Energie }};
+                                GesVerbraucherLeistung += {{ $e->Leistung }};
+                                GesVerbraucherEnergie += {{ $e->Energie }};
+                                GesErzeugerLeistung += {{ $e->Leistung }};
+                                GesErzeugerEnergie += {{ $e->Energie }};
+                            
+                            
+                                }
+                            @endforeach
+                            break;
 
-
-                                    }
-                             @endforeach
-                    break;
-
-                    case "Kältespeicher":
+                        case "Kältespeicher":
                             AzSpeicher++;
 
-                            @foreach($etks as $k)          
+                            @foreach ($etks as $k)
                                 if ({{ $k->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$k->Leistung}};
-                                        GesEnergie += {{$k->Energie}};
-                                        GesSpeicherKapazität += {{$k->Speicherkap}};
+                                {
+                                GesNennleistung += {{ $k->Leistung }};
+                                GesEnergie += {{ $k->Energie }};
+                                GesSpeicherKapazität += {{ $k->Speicherkap }};
+                            
+                                }
+                            @endforeach
+                            break;
 
-                                    }
-                             @endforeach
-                    break;
-
-                    case "Gebäude Kältebedarfszähler":
+                        case "Gebäude Kältebedarfszähler":
                             AzVerbraucher++;
-                             //etgkbz hat keine Leistung nur Zählerstand
-                             
-                    break;
+                            //etgkbz hat keine Leistung nur Zählerstand
+
+                            break;
 
 
-                }
-               
+                    }
+
 
                 }
 
@@ -1776,8 +1805,7 @@
 
 
             AktuellerNetzbezug = GesVerbraucherLeistung - GesErzeugerLeistung;
-            if (AktuellerNetzbezug < 0 )
-            {
+            if (AktuellerNetzbezug < 0) {
                 AktuellerNetzbezug = 0;
             }
 
@@ -1818,339 +1846,338 @@
 
 
             var AzErzeuger = 0;
-            var AzVerbraucher= 0;
-            var AzSpeicher= 0;
-            var GesNennleistung= 0;
-            var GesEnergie= 0;
-            var GesVerbraucherLeistung= 0;
-            var GesVerbraucherEnergie= 0;
+            var AzVerbraucher = 0;
+            var AzSpeicher = 0;
+            var GesNennleistung = 0;
+            var GesEnergie = 0;
+            var GesVerbraucherLeistung = 0;
+            var GesVerbraucherEnergie = 0;
             var GesErzeugerLeistung = 0;
             var GesErzeugerEnergie = 0;
-            var GesSpeicherKapazität= 0;
-            var AktuellerNetzbezug= 0; //öffentliche Stromnetz = Differenz von GesVerbraucherLeistung & GesErzeugerLeistung
-           
-            
-
-            locationsET.forEach(locET =>{
+            var GesSpeicherKapazität = 0;
+            var AktuellerNetzbezug = 0; //öffentliche Stromnetz = Differenz von GesVerbraucherLeistung & GesErzeugerLeistung
 
 
 
-                if(locET[3] == id){ //Damit nur ET aus dem ausgewählten ES gezählt werden
+            locationsET.forEach(locET => {
 
-                switch (locET[4]){
-                    case "PV-Anlage":
-                        AzErzeuger++;
 
-                        @foreach($etpv as $pv)          
-                            if ({{ $pv->EnTech_id }} == locET[6] ) //damit nur die PV von diesem ES nimmt
-                            {
-                                GesNennleistung += {{$pv->Leistung}};
-                                GesEnergie += {{$pv->Energie}};
-                                GesErzeugerLeistung += {{$pv->Leistung}};
-                                GesErzeugerEnergie += {{$pv->Energie}};
-                            }
-                        @endforeach
-                    break;
 
-                    case "Stromnetzbezug":
-                        AzErzeuger++;
+                if (locET[3] == id) { //Damit nur ET aus dem ausgewählten ES gezählt werden
 
-                        @foreach($etsnb as $s)          
+                    switch (locET[4]) {
+                        case "PV-Anlage":
+                            AzErzeuger++;
+
+                            @foreach ($etpv as $pv)
+                                if ({{ $pv->EnTech_id }} == locET[6] ) //damit nur die PV von diesem ES nimmt
+                                {
+                                GesNennleistung += {{ $pv->Leistung }};
+                                GesEnergie += {{ $pv->Energie }};
+                                GesErzeugerLeistung += {{ $pv->Leistung }};
+                                GesErzeugerEnergie += {{ $pv->Energie }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "Stromnetzbezug":
+                            AzErzeuger++;
+
+                            @foreach ($etsnb as $s)
                                 if ({{ $s->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$s->Leistung}};
-                                        GesEnergie += {{$s->Energie}};
-                                        AktuellerNetzbezug += {{$s->Leistung}};
-                                        GesErzeugerLeistung += {{$s->Leistung}};
-                                        GesErzeugerEnergie += {{$s->Energie}};
-
-                                    }
-                        @endforeach
-                    break;
-
-                    case "Batteriespeicher":
-                        AzSpeicher++;
-                        @foreach($etbs as $b)          
-                                if ({{ $b->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$b->Leistung}};
-                                        GesEnergie += {{$b->Energie}};
-                                        GesSpeicherKapazität += {{$b->Speicherkap}};
-                                    }
-                            @endforeach
-                    break;
-
-                    case "Wasserstoff Elektrolyse":
-                        AzVerbraucher++;
-
-                        @foreach($etwe as $w)          
-                                if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                        GesVerbraucherLeistung += {{$w->Leistung}};
-                                        GesVerbraucherEnergie += {{$w->Energie}};
-                                    }
-                            @endforeach
-                    break;
-
-                    case "Wasserstoff Brennstoffzelle":
-                        AzErzeuger++;
-                        @foreach($etbsz as $b)          
-                                if ({{ $b->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$b->Leistung}};
-                                        GesEnergie += {{$b->Energie}};
-                                        GesErzeugerLeistung += {{$b->Leistung}};
-                                        GesErzeugerEnergie += {{$b->Energie}};
-
-                                    }
-                            @endforeach
-                    break;
-
-                    case "Wasserstoff Speicher":
-                            AzSpeicher++;
-
-                            @foreach($etws as $w)          
-                                if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                        GesSpeicherKapazität += {{$w->Speicherkap}};
-                                    }
-                            @endforeach
-                    break;
-
-                    case "Windkraftanlage":
-                            AzErzeuger++;
-
-                            @foreach($etwka as $w)          
-                                if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                        GesErzeugerLeistung += {{$w->Leistung}};
-                                        GesErzeugerEnergie += {{$w->Energie}};
-
-                                    }
-                            @endforeach
-                    break;
-
-                    case "E-Ladestation":
-                            AzVerbraucher++;
-
-                            @foreach($etel as $e)          
-                                if ({{ $e->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$e->Leistung}};
-                                        GesEnergie += {{$e->Energie}};
-                                        GesVerbraucherLeistung += {{$e->Leistung}};
-                                        GesVerbraucherEnergie += {{$e->Energie}};
-                                    }
-                            @endforeach
-                    break;
-
-                    case "Hausanschlusszähler":
-                            AzVerbraucher++;
-
-                            @foreach($ethaz as $h)          
-                                if ({{ $h->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$h->Leistung}};
-                                        GesEnergie += {{$h->Energie}};
-                                        GesVerbraucherLeistung += {{$h->Leistung}};
-                                        GesVerbraucherEnergie += {{$h->Energie}};
-
-                                    }
-                            @endforeach
-                    break;
-
-                    case "Wärmenetzbezug":
-                        AzErzeuger++;
-
-                        @foreach($etwnb as $w)          
-                                if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                        GesErzeugerLeistung += {{$w->Leistung}};
-                                        GesErzeugerEnergie += {{$w->Energie}};
-                                    }
-                            @endforeach
-                    break;
-
-                    case "Biomasseheizkraftwerk":
-                            AzVerbraucher++;
-                            AzErzeuger++;
-
-                            @foreach($etbhkw as $b)          
-                                if ({{ $b->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$b->Leistung}};
-                                        GesEnergie += {{$b->Energie}};
-                                        GesVerbraucherLeistung += {{$b->Leistung}};
-                                        GesVerbraucherEnergie += {{$b->Energie}};
-                                        GesErzeugerLeistung += {{$b->Leistung}};
-                                        GesErzeugerEnergie += {{$b->Energie}};
-                                    }
-                            @endforeach
+                                {
+                                GesNennleistung += {{ $s->Leistung }};
+                                GesEnergie += {{ $s->Energie }};
+                                AktuellerNetzbezug += {{ $s->Leistung }};
+                                GesErzeugerLeistung += {{ $s->Leistung }};
+                                GesErzeugerEnergie += {{ $s->Energie }};
                             
-                    break;
-
-                    case "Biomasseheizwerk":
-                            AzVerbraucher++;
-                            AzErzeuger++;
-                            @foreach($etbmhw as $b)          
-                                if ({{ $b->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$b->Leistung}};
-                                        GesEnergie += {{$b->Energie}};
-                                        GesVerbraucherLeistung += {{$b->Leistung}};
-                                        GesVerbraucherEnergie += {{$b->Energie}};
-                                        GesErzeugerLeistung += {{$b->Leistung}};
-                                        GesErzeugerEnergie += {{$b->Energie}};
-                                    }
+                                }
                             @endforeach
-                    break;
+                            break;
 
-                    case "Biomasseheizkessel":
-                            AzVerbraucher++;
-                            AzErzeuger++;
-                            @foreach($etbmhk as $b)          
+                        case "Batteriespeicher":
+                            AzSpeicher++;
+                            @foreach ($etbs as $b)
                                 if ({{ $b->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$b->Leistung}};
-                                        GesEnergie += {{$b->Energie}};
-                                        GesVerbraucherLeistung += {{$b->Leistung}};
-                                        GesVerbraucherEnergie += {{$b->Energie}};
-                                        GesErzeugerLeistung += {{$b->Leistung}};
-                                        GesErzeugerEnergie += {{$b->Energie}};
-
-                                    }
+                                {
+                                GesNennleistung += {{ $b->Leistung }};
+                                GesEnergie += {{ $b->Energie }};
+                                GesSpeicherKapazität += {{ $b->Speicherkap }};
+                                }
                             @endforeach
-                    break;
+                            break;
 
-                    case "Wärmespeicher":
+                        case "Wasserstoff Elektrolyse":
+                            AzVerbraucher++;
+
+                            @foreach ($etwe as $w)
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                GesVerbraucherLeistung += {{ $w->Leistung }};
+                                GesVerbraucherEnergie += {{ $w->Energie }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "Wasserstoff Brennstoffzelle":
+                            AzErzeuger++;
+                            @foreach ($etbsz as $b)
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $b->Leistung }};
+                                GesEnergie += {{ $b->Energie }};
+                                GesErzeugerLeistung += {{ $b->Leistung }};
+                                GesErzeugerEnergie += {{ $b->Energie }};
+                            
+                                }
+                            @endforeach
+                            break;
+
+                        case "Wasserstoff Speicher":
                             AzSpeicher++;
 
-                            @foreach($etwes as $w)          
+                            @foreach ($etws as $w)
                                 if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                    //keine Speicherkap sondern TempUnten TempMitte TempOben
-
-                                    }
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                GesSpeicherKapazität += {{ $w->Speicherkap }};
+                                }
                             @endforeach
-                    break;
+                            break;
 
-                    case "Solarthermieanlage":
+                        case "Windkraftanlage":
                             AzErzeuger++;
 
-                            @foreach($etsth as $s)          
+                            @foreach ($etwka as $w)
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                GesErzeugerLeistung += {{ $w->Leistung }};
+                                GesErzeugerEnergie += {{ $w->Energie }};
+                            
+                                }
+                            @endforeach
+                            break;
+
+                        case "E-Ladestation":
+                            AzVerbraucher++;
+
+                            @foreach ($etel as $e)
+                                if ({{ $e->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $e->Leistung }};
+                                GesEnergie += {{ $e->Energie }};
+                                GesVerbraucherLeistung += {{ $e->Leistung }};
+                                GesVerbraucherEnergie += {{ $e->Energie }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "Hausanschlusszähler":
+                            AzVerbraucher++;
+
+                            @foreach ($ethaz as $h)
+                                if ({{ $h->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $h->Leistung }};
+                                GesEnergie += {{ $h->Energie }};
+                                GesVerbraucherLeistung += {{ $h->Leistung }};
+                                GesVerbraucherEnergie += {{ $h->Energie }};
+                            
+                                }
+                            @endforeach
+                            break;
+
+                        case "Wärmenetzbezug":
+                            AzErzeuger++;
+
+                            @foreach ($etwnb as $w)
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                GesErzeugerLeistung += {{ $w->Leistung }};
+                                GesErzeugerEnergie += {{ $w->Energie }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "Biomasseheizkraftwerk":
+                            AzVerbraucher++;
+                            AzErzeuger++;
+
+                            @foreach ($etbhkw as $b)
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $b->Leistung }};
+                                GesEnergie += {{ $b->Energie }};
+                                GesVerbraucherLeistung += {{ $b->Leistung }};
+                                GesVerbraucherEnergie += {{ $b->Energie }};
+                                GesErzeugerLeistung += {{ $b->Leistung }};
+                                GesErzeugerEnergie += {{ $b->Energie }};
+                                }
+                            @endforeach
+
+                            break;
+
+                        case "Biomasseheizwerk":
+                            AzVerbraucher++;
+                            AzErzeuger++;
+                            @foreach ($etbmhw as $b)
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $b->Leistung }};
+                                GesEnergie += {{ $b->Energie }};
+                                GesVerbraucherLeistung += {{ $b->Leistung }};
+                                GesVerbraucherEnergie += {{ $b->Energie }};
+                                GesErzeugerLeistung += {{ $b->Leistung }};
+                                GesErzeugerEnergie += {{ $b->Energie }};
+                                }
+                            @endforeach
+                            break;
+
+                        case "Biomasseheizkessel":
+                            AzVerbraucher++;
+                            AzErzeuger++;
+                            @foreach ($etbmhk as $b)
+                                if ({{ $b->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $b->Leistung }};
+                                GesEnergie += {{ $b->Energie }};
+                                GesVerbraucherLeistung += {{ $b->Leistung }};
+                                GesVerbraucherEnergie += {{ $b->Energie }};
+                                GesErzeugerLeistung += {{ $b->Leistung }};
+                                GesErzeugerEnergie += {{ $b->Energie }};
+                            
+                                }
+                            @endforeach
+                            break;
+
+                        case "Wärmespeicher":
+                            AzSpeicher++;
+
+                            @foreach ($etwes as $w)
+                                if ({{ $w->EnTech_id }} == locET[6] )
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                //keine Speicherkap sondern TempUnten TempMitte TempOben
+                            
+                                }
+                            @endforeach
+                            break;
+
+                        case "Solarthermieanlage":
+                            AzErzeuger++;
+
+                            @foreach ($etsth as $s)
                                 if ({{ $s->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$s->Leistung}};
-                                        GesEnergie += {{$s->Energie}};
-                                        GesErzeugerLeistung += {{$s->Leistung}};
-                                        GesErzeugerEnergie += {{$s->Energie}};
-
-
-                                    }
+                                {
+                                GesNennleistung += {{ $s->Leistung }};
+                                GesEnergie += {{ $s->Energie }};
+                                GesErzeugerLeistung += {{ $s->Leistung }};
+                                GesErzeugerEnergie += {{ $s->Energie }};
+                            
+                            
+                                }
                             @endforeach
-                    break;
+                            break;
 
-                    case "Wärmepumpe":
+                        case "Wärmepumpe":
                             AzErzeuger++;
 
-                            @foreach($etwp as $w)          
+                            @foreach ($etwp as $w)
                                 if ({{ $w->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$w->Leistung}};
-                                        GesEnergie += {{$w->Energie}};
-                                        GesErzeugerLeistung += {{$w->Leistung}};
-                                        GesErzeugerEnergie += {{$w->Energie}};
-
-
-                                    }
+                                {
+                                GesNennleistung += {{ $w->Leistung }};
+                                GesEnergie += {{ $w->Energie }};
+                                GesErzeugerLeistung += {{ $w->Leistung }};
+                                GesErzeugerEnergie += {{ $w->Energie }};
+                            
+                            
+                                }
                             @endforeach
-                    break;
+                            break;
 
-                    case "Gebäude Wärmebedarfszähler":
+                        case "Gebäude Wärmebedarfszähler":
                             AzVerbraucher++;
                             //etgwbz hat keine Leistung nur Zählerstand
 
-                    break;
+                            break;
 
-                    case "Kompressionskältemaschine":
+                        case "Kompressionskältemaschine":
                             AzVerbraucher++;
                             AzErzeuger++;
 
-                            @foreach($etkkm as $k)          
+                            @foreach ($etkkm as $k)
                                 if ({{ $k->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$k->Leistung}};
-                                        GesEnergie += {{$k->Energie}};
-                                        GesVerbraucherLeistung += {{$k->Leistung}};
-                                        GesVerbraucherEnergie += {{$k->Energie}};
-                                        GesErzeugerLeistung += {{$k->Leistung}};
-                                        GesErzeugerEnergie += {{$k->Energie}};
-                                    }
+                                {
+                                GesNennleistung += {{ $k->Leistung }};
+                                GesEnergie += {{ $k->Energie }};
+                                GesVerbraucherLeistung += {{ $k->Leistung }};
+                                GesVerbraucherEnergie += {{ $k->Energie }};
+                                GesErzeugerLeistung += {{ $k->Leistung }};
+                                GesErzeugerEnergie += {{ $k->Energie }};
+                                }
                             @endforeach
-                    break;
+                            break;
 
-                    case "Ab oder Adsorbtionskältemaschine":
+                        case "Ab oder Adsorbtionskältemaschine":
                             AzVerbraucher++;
                             AzErzeuger++;
 
-                            @foreach($etadabkm as $e)          
+                            @foreach ($etadabkm as $e)
                                 if ({{ $e->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$e->Leistung}};
-                                        GesEnergie += {{$e->Energie}};
-                                        GesVerbraucherLeistung += {{$e->Leistung}};
-                                        GesVerbraucherEnergie += {{$e->Energie}};
-                                        GesErzeugerLeistung += {{$e->Leistung}};
-                                        GesErzeugerEnergie += {{$e->Energie}};
-                                    }
+                                {
+                                GesNennleistung += {{ $e->Leistung }};
+                                GesEnergie += {{ $e->Energie }};
+                                GesVerbraucherLeistung += {{ $e->Leistung }};
+                                GesVerbraucherEnergie += {{ $e->Energie }};
+                                GesErzeugerLeistung += {{ $e->Leistung }};
+                                GesErzeugerEnergie += {{ $e->Energie }};
+                                }
                             @endforeach
-                    break;
+                            break;
 
-                    case "Kältespeicher":
+                        case "Kältespeicher":
                             AzSpeicher++;
 
-                            @foreach($etks as $k)          
+                            @foreach ($etks as $k)
                                 if ({{ $k->EnTech_id }} == locET[6] )
-                                    {
-                                        GesNennleistung += {{$k->Leistung}};
-                                        GesEnergie += {{$k->Energie}};
-                                        GesSpeicherKapazität += {{$k->Speicherkap}};
-
-                                    }
+                                {
+                                GesNennleistung += {{ $k->Leistung }};
+                                GesEnergie += {{ $k->Energie }};
+                                GesSpeicherKapazität += {{ $k->Speicherkap }};
+                            
+                                }
                             @endforeach
-                    break;
+                            break;
 
-                    case "Gebäude Kältebedarfszähler":
+                        case "Gebäude Kältebedarfszähler":
                             AzVerbraucher++;
                             //etgkbz hat keine Leistung nur Zählerstand
-                            
-                    break;
+
+                            break;
+
+
+                    }
 
 
                 }
 
 
-                }
+            }) //foreach aus
 
 
-                }) //foreach aus
-
-
-                AktuellerNetzbezug = GesVerbraucherLeistung - GesErzeugerLeistung;
-                if (AktuellerNetzbezug < 0 )
-                {
+            AktuellerNetzbezug = GesVerbraucherLeistung - GesErzeugerLeistung;
+            if (AktuellerNetzbezug < 0) {
                 AktuellerNetzbezug = 0;
-                }
+            }
 
 
 
@@ -2408,7 +2435,7 @@
                         fontWeight: "bold",
                         fontSize: '17px', //Schriftgröße
                         className: 'marker-position', //Damit die Schrift unter dem Icon steht
-                    }, 
+                    },
                     animation: google.maps.Animation.DROP, //verschiedene Moduse: DROP, BOUNCE
                 });
 
@@ -2528,8 +2555,8 @@
             $(".enTechTR-" + id).css("display", "table-row");
 
             document.getElementById("Listuberschrieft").innerHTML = "Energietechnologien";
-            document.getElementById("Listimage").src = "/images/icons/etgrün.png"; 
-            
+            document.getElementById("Listimage").src = "/images/icons/etgrün.png";
+
 
         }
 
@@ -2542,10 +2569,83 @@
             document.getElementById("tableETDiv").style.display = "none";
             document.getElementById("tableESDiv").style.display = "block";
 
-            
+
             document.getElementById("Listuberschrieft").innerHTML = "Energiesysteme";
             document.getElementById("Listimage").src = "/images/icons/es.png";
-            
+
+
+        }
+
+
+
+        function moveToMarker(id) {
+
+            let mapOptions = {
+
+                center: new google.maps.LatLng('48.14078077082782', '15.14955200012205'), //Ausgangspostion der Map
+                zoom: 12,
+                mapTypeId: "roadmap", //Typ der Map auf Road MAp setzen
+                streetViewControl: false, // STreet View Männdchen ausblenden
+                // mapTypeControl: false,  // Button um zwischen Satiliet und Roadmap umschalten
+                mapId: '23802346582caa31', // MapID von der selbst erstellen Map 
+                draggableCursor: 'crosshair',
+                scrollwheel: true, //dass Mausscrollen ohne Probleme funktioniert
+                fullscreenControl: false, //Vollbild Button entfernen
+                // scaleControl: false,
+                zoomControl: false, //rechts unten Zoom Buttons
+                scaleControl: true, //rechts unten Maßstab
+
+
+
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                    mapTypeIds: [
+                        google.maps.MapTypeId.ROADMAP,
+                        google.maps.MapTypeId.SATELLITE
+                    ]
+                },
+
+
+
+
+
+                //Enter Map: 23802346582caa31
+                //Kronstana Map: 396ac7c2d5bcd46
+
+            }
+
+            locations.forEach(loc => {
+                if (loc[3] == id) {
+
+                    var searchLatLng = {
+                        lat: loc[1],
+                        lng: loc[2]
+                    };
+
+                    // NEW POSITION
+                    mapOptions.center = searchLatLng
+                    mapOptions.zoom = 12
+                    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+                    setMarkers(map);
+                    @auth //Gast darf keine ES erstellen
+                        map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
+                        if(!activeMarker){
+                        breit = e.latLng.toString().substring(1, 16);
+                        lang = e.latLng.toString().substring(20, 35);
+                        document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
+                        document.getElementById("BreitengradES").setAttribute('value', lang);
+                        $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
+                        }
+                    
+                    
+                        });
+                    @endauth
+
+                }
+
+            })
 
         }
     </script>
@@ -2554,75 +2654,74 @@
 
 
 
-<?php
-
-use Illuminate\Support\Facades\Http;
-
-//$response = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/21');
-/*
-
-$createEnsysDashboard = Http::withHeaders([
-
-    'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
-    'Content-Type' => 'application/json',
-    'Accept' => 'application/json',
+    <?php
     
-])->post('192.168.1.5:3000/api/dashboards/db', [
-    "dashboard" => [
-         "id" => null, 
-         "uid" => null, 
-         "title" => 'tesffffft', 
-         "tags" => [
-            "templated" 
-         ], 
-         "timezone" => "browser", 
-         "schemaVersion" => 16, 
-         "version" => 0 
-      ], 
-   "folderId" => 0, 
-   "overwrite" => false 
-]);
-echo($createEnsysDashboard);
-*/
-
-/*
-$id = 27;
-
-$strid = strval($id);
-
-
-        $url = '192.168.1.5:3000/api/dashboards/uid/';
-
-
-        $furl = $url . $strid;
-
-
-        echo($furl);
-        $deleteEnsysDashboard = Http::withHeaders([
-
-            'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-
-        ])->delete($furl);
-
-
-
-        echo ($deleteEnsysDashboard);
-
-
-
-
-
-
-//echo($response);
-
-
-
-*/
-
-
-?>
+    use Illuminate\Support\Facades\Http;
+    
+    //$response = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/21');
+    /*
+            
+            $createEnsysDashboard = Http::withHeaders([
+            
+                'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+                
+            ])->post('192.168.1.5:3000/api/dashboards/db', [
+                "dashboard" => [
+                     "id" => null, 
+                     "uid" => null, 
+                     "title" => 'tesffffft', 
+                     "tags" => [
+                        "templated" 
+                     ], 
+                     "timezone" => "browser", 
+                     "schemaVersion" => 16, 
+                     "version" => 0 
+                  ], 
+               "folderId" => 0, 
+               "overwrite" => false 
+            ]);
+            echo($createEnsysDashboard);
+            */
+    
+    /*
+            $id = 27;
+            
+            $strid = strval($id);
+            
+            
+                    $url = '192.168.1.5:3000/api/dashboards/uid/';
+            
+            
+                    $furl = $url . $strid;
+            
+            
+                    echo($furl);
+                    $deleteEnsysDashboard = Http::withHeaders([
+            
+                        'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+                        'Content-Type' => 'application/json',
+                        'Accept' => 'application/json',
+            
+                    ])->delete($furl);
+            
+            
+            
+                    echo ($deleteEnsysDashboard);
+            
+            
+            
+            
+            
+            
+            //echo($response);
+            
+            
+            
+            */
+    
+    ?>
 
 
 

@@ -36,7 +36,14 @@
             
                     <div id="card" class="d-flex flex-wrap justify-content-center" style="float:left; padding-left:5%; padding-top:1%;">
                         <div class="card shadow-lg rounded" style="width: 20rem; height:20rem">
-                            <img class="card-img-top" <?php echo 'src="data:image/jpg;base64,' . $EnTech["Bild"] . '"'; ?> 
+                           
+                           
+                            <img class="card-img-top" <?php 
+                            if(empty($EnTech['Bild'])){
+                                    echo 'src="/images/homepage/HomePage5 - Kopie.jpg"';
+                            } else{
+                                echo 'src="data:image/jpg;base64,' . $EnTech["Bild"] . '"';  
+                            } ?>
                                 alt="Für dies Technologie wurde kein Foto hinzugefügt" style="width: 100%; height:50%">
                             <div class="card-body">
                                 <h5 class="card-title"> {{$EnTech['Bezeichnung']}}</h5>
