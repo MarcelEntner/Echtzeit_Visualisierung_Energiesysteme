@@ -4,8 +4,10 @@
 @endsection
 @section('content')
 
-    <!-- Zeile 415 API Key eingebunden -->
-    <!-- Zeile 335 Map Key eingebunden -->
+    <!-- Google Maps API Informationen -->
+    <!-- ca. Zeile 1300 : API Key einbinden -->
+    <!-- ca. Zeile 1175 : Eigene designte Map einbinden -->
+    <!-- ca. Zeile : Map Key einbinden -->
 
 
 
@@ -763,8 +765,8 @@
         <!-- Et Editieren Ende-->
 
 
-        <!-- Grafana ES -->
-        <div class="modal modal2 fade" id="exampleModalCenterGrafanaES" tabindex="-1" role="dialog"
+        <!-- ES Grafana -->
+        <div class="modal modal2 fade" id="PopUpESGrafana" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -776,23 +778,19 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
-
+                        <!-- Grafana Statistiken-->
                         <!--Grafana Statistik iframe
-                                                                                                                        <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639334652637&to=1639507452638&panelId=2" width="800" height="1000" frameborder="0"></iframe>
-                                                                                                                    -->
+                                        <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639334652637&to=1639507452638&panelId=2" width="800" height="1000" frameborder="0"></iframe> -->
                     </div>
-
-
                 </div>
             </div>
         </div>
-        <!-- Grafana ES aus -->
+        <!-- ES Grafana Ende -->
 
 
 
-        <!-- Grafana ET -->
-        <div class="modal modal2 fade" id="exampleModalCenterGrafanaET" tabindex="-1" role="dialog"
+        <!-- ET Grafana -->
+        <div class="modal modal2 fade" id="PopUpETGrafana" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -804,20 +802,17 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
-
+                        <!-- Grafana Statistiken-->
                     </div>
-
-
                 </div>
             </div>
         </div>
-        <!-- Grafana ET aus -->
+        <!-- ET Grafana Ende -->
 
 
 
-        <!-- ModalAuge ES -->
-        <div class="modal modal2 fade" id="exampleModalCenterAuge" tabindex="-1" role="dialog"
+        <!-- ES Auge -->
+        <div class="modal modal2 fade" id="PopUpESAuge" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -832,56 +827,58 @@
                     <div class="modal-body">
                         <h3 style="text-align: center;"> Weitere Details </h3>
                         <form id="augeForm" method="GET">
-                            <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
+                            <!-- Wird nur am Seitenaufruf gemacht und nicht zwischendurch, deswegen werden die Attribut-Daten beim Klick auf Stift neu geladen-->
                             @csrf
+                            <!--Input Felder -->
+                            <!--Input Bezeichnung  Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/name.png" style="margin-right:10px;">
                                     Bezeichnung</span>
-                                <input type="text" class="form-control3" id="bezeichnunga" name="Bezeichnung"
+                                <input type="text" class="form-control3" id="BezeichnungAuge" name="Bezeichnung"
                                     aria-label="Bezeichnung" aria-describedby="basic-addon1" value="" readonly
                                     style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Katastralgemeinde  Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
                                     Katastralgemeinde</span>
-                                <input type="text" class="form-control3" id="katastralgemeindea" name="Katastralgemeinden"
-                                    value="" aria-label="Katastralgemeinde" aria-describedby="basic-addon1" readonly
-                                    style="background-color:#e9ecef;">
+                                <input type="text" class="form-control3" id="KatastralgemeindeAuge"
+                                    name="Katastralgemeinden" value="" aria-label="Katastralgemeinde"
+                                    aria-describedby="basic-addon1" readonly style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Postleitzahl  Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
                                     Postleitzahl</span>
-                                <input type="text" class="form-control3" id="postleitzahla" name="Postleitzahl" value=""
-                                    aria-label="Postleitzahl" aria-describedby="basic-addon1" readonly
+                                <input type="text" class="form-control3" id="PostleitzahlAuge" name="Postleitzahl"
+                                    value="" aria-label="Postleitzahl" aria-describedby="basic-addon1" readonly
                                     style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Längengrad  Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                     Längengrad</span>
-                                <input type="text" class="form-control3" id="LaengengradEdita" name="Laengengrad"
+                                <input type="text" class="form-control3" id="LaengengradAuge" name="Laengengrad"
                                     aria-label="Laengengrad" aria-describedby="basic-addon1" value="" readonly
                                     style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Breitengrad  Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                     Breitengrad</span>
-                                <input type="text" class="form-control3" id="BreitengradEdita" name="Breitengrad"
+                                <input type="text" class="form-control3" id="BreitengradAuge" name="Breitengrad"
                                     aria-label="Breitengrad" aria-describedby="basic-addon1" value="" readonly
                                     style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Mehr Details  -->
                             <details closed>
                                 <summary>Mehr Details zu diesem Energiesystem</summary>
-
+                                <!--Input Az-Erzeugungstechnologien  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
@@ -891,8 +888,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
-
+                                <!--Input Az-Verbraucher  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
@@ -901,7 +897,7 @@
                                         aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Az-Speicher  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
@@ -910,7 +906,7 @@
                                         aria-label="Az-Speicher" aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Ges-Nennleistung [kW]  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
@@ -920,7 +916,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Ges-Energie [kW/h]  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/energie.png" style="margin-right:10px;">
@@ -929,7 +925,7 @@
                                         aria-label="Ges-Energie" aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Ges-VerbraucherLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
@@ -939,7 +935,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Ges-VerbraucherEnergie [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/gesverenergie.png" style="margin-right:10px;">
@@ -949,8 +945,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
-
+                                <!--Input Ges-ErzeugerLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
@@ -960,7 +955,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Ges-ErzeugerEnergie [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
@@ -970,9 +965,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
-
-
+                                <!--Input Ges-SpeicherKapazität [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
@@ -982,7 +975,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input  Aktueller Netzbezug [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
@@ -992,24 +985,18 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
                             </details>
-
                         </form>
-
-
                     </div>
-
-
                 </div>
             </div>
         </div>
-        <!-- ModalAuge ES aus -->
+        <!-- ES Auge Ende -->
 
 
 
-        <!-- ModalAuge ET -->
-        <div class="modal modal2 fade" id="exampleModalCenterAugeET" tabindex="-1" role="dialog"
+        <!-- ET Auge -->
+        <div class="modal modal2 fade" id="PopUpETAuge" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -1024,8 +1011,10 @@
                     <div class="modal-body">
                         <h3 style="text-align: center;"> Weitere Details </h3>
                         <form id="augeFormET" method="GET">
-                            <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
+                            <!-- Wird nur am Seitenaufruf gemacht und nicht zwischendurch, deswegen werden die Attribut-Daten beim Klick auf Stift neu geladen-->
                             @csrf
+                            <!--Input Felder -->
+                            <!--Input ID-ES  Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
@@ -1034,7 +1023,7 @@
                                     aria-label="IDESAugeET" aria-describedby="basic-addon1" value="" readonly
                                     style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input ID-ET  Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
@@ -1043,7 +1032,7 @@
                                     aria-describedby="basic-addon1" name="IDETAugeET" value="" readonly
                                     style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Bezeichnung Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/name.png" style="margin-right:10px;">
@@ -1052,7 +1041,7 @@
                                     aria-label="BezeichnungAugeET" aria-describedby="basic-addon1" name="Postleitzahl"
                                     value="" readonly style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Typ Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/typ.png" style="margin-right:10px;">
@@ -1060,7 +1049,7 @@
                                 <input type="text" class="form-control3" id="TypAugeET" name="Laengengrad" value=""
                                     readonly style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Ort Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/ort.png" style="margin-right:10px;">
@@ -1068,7 +1057,7 @@
                                 <input type="text" class="form-control3" id="OrtAugeET" name="Breitengrad" value=""
                                     readonly style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Längengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
@@ -1076,7 +1065,7 @@
                                 <input type="text" class="form-control3" id="LaengengradAugeET" name="Breitengrad"
                                     value="" readonly style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Breitengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
@@ -1085,104 +1074,89 @@
                                     value="" readonly style="background-color:#e9ecef;">
                             </div>
                         </form>
-
-
                     </div>
-
-
                 </div>
             </div>
         </div>
-        <!-- ModalAuge ET aus -->
+        <!-- ET Auge Ende -->
 
 
 
+        <!-- DataTable Definitionen -->
         <script>
+            //DataTanble ES Ausgangslage
             $('#table').DataTable({
                 "columnDefs": [{
                         "orderable": false,
-                        "targets": 4
-                    }, //Um die Sortierfunktion bei den Icons zu deaktivieren
+                        "targets": 4 //Auf 4 kommt man weil man beim zählen bei 0 beginnt ( 0 = ID, 1 = Bezeichnung, 2 = Katastralgemeinde, 3 = Postleitzahl 4 = Mülleimer )
+                    }, //Um die Sortierfunktion bei den Icon  zu deaktivieren
                     {
                         "orderable": false,
                         "targets": 5
-                    },
+                    }, //Um die Sortierfunktion bei den Icon Statistiken zu deaktivieren
                     {
                         "orderable": false,
                         "targets": 6
-                    }
+                    } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
                 ],
-                lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte
+                lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
 
                 lengthMenu: [5], //Wieviele ES/ET pro Seite angezeigt werden 
                 language: {
-                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json" //Sprache des DataTables z.B. der Buttenbeschriftung
                 }
 
             });
 
-
+            //DataTanble ET
             $('#tableET').DataTable({
                 "columnDefs": [{
                         "orderable": false,
                         "targets": 5
-                    }, //Um die Sortierfunktion bei den Icons zu deaktivieren
+                    }, //Um die Sortierfunktion bei den Icon Mülleimer zu deaktivieren
                     {
                         "orderable": false,
                         "targets": 6
-                    },
+                    }, //Um die Sortierfunktion bei den Icon Statistiken zu deaktivieren
                     {
                         "orderable": false,
                         "targets": 7
-                    }
+                    } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
                 ],
-                lengthChange: false,
+                lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
 
                 lengthMenu: [
-                    100
-                ], //Wieviele ES/ET pro Seite angezeigt werden, kann nicht 5 sein, da hier sonst nach allen ET in der DB sortiert und wir mit CSS nur die richtigen einblenden und dann stimmt die Anzeige nicht
+                100], //Wieviele ES/ET pro Seite angezeigt werden, kann nicht 5 sein, da hier sonst nach allen ET in der DB sortiert und wir mit CSS nur die richtigen einblenden und dann stimmt die Anzeige nicht
                 language: {
-                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json" //Sprache des DataTables z.B. der Buttenbeschriftung
                 }
             });
 
+            //DataTanble ES, bei aktualisierung des ES DataTables
             $('#tableES').DataTable({
                 "columnDefs": [{
                         "orderable": false,
                         "targets": 4
-                    }, //Um die Sortierfunktion bei den Icons zu deaktivieren
+                    }, //Um die Sortierfunktion bei den Icon Mülleimer zu deaktivieren
                     {
                         "orderable": false,
                         "targets": 5
-                    },
+                    }, //Um die Sortierfunktion bei den Icon Statistiken zu deaktivieren
                     {
                         "orderable": false,
                         "targets": 6
-                    }
+                    } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
                 ],
-                lengthChange: false,
+                lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
 
                 lengthMenu: [5], //Wieviele ES/ET pro Seite angezeigt werden 
                 language: {
-                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json"
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json" //Sprache des DataTables z.B. der Buttenbeschriftung
                 }
             });
         </script>
+
     </body>
-
-
-
-
-
-
-    <!-- Hier gehört der API Key eingebunden   -->
-
-    <!-- Kronstana API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
-    <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&callback=LoadMap">
-    </script>
-
 
 
     <script>
@@ -1191,56 +1165,42 @@
         var markersArray = [];
 
         function initAutocomplete() {
-
-
+            //Hier werden die Map Optionen definiert
             let mapOptions = {
-
-                center: new google.maps.LatLng('48.14078077082782', '15.14955200012205'), //Ausgangspostion der Map
-                zoom: 12,
-                mapTypeId: "roadmap", //Typ der Map auf Road MAp setzen
-                streetViewControl: false, // STreet View Männdchen ausblenden
-                // mapTypeControl: false,  // Button um zwischen Satiliet und Roadmap umschalten
-                mapId: '23802346582caa31', // MapID von der selbst erstellen Map 
-                draggableCursor: 'crosshair',
+                center: new google.maps.LatLng('48.14078077082782', '15.14955200012205'), //Ausgangspostion der Map beim Laden (Wieselburg)
+                zoom: 12, //Zoom Level beim Laden der Map
+                mapTypeId: "roadmap", //Typ der Map Road Map (weitere: satellite, hybrid, terrain)
+                streetViewControl: false, // Street View Männdchen rechts unten ausblenden
+                mapId: '23802346582caa31', // MapID von der selbst erstellen Map                     Enter Map: 23802346582caa31 Kronstana Map: 396ac7c2d5bcd46
+                draggableCursor: 'crosshair', //Curser auf der Map
                 scrollwheel: true, //dass Mausscrollen ohne Probleme funktioniert
                 fullscreenControl: false, //Vollbild Button entfernen
-                // scaleControl: false,
+                scaleControl: true,  //Maßstabselement rechts unten anzeigen
                 zoomControl: false, //rechts unten Zoom Buttons
-                scaleControl: true, //rechts unten Maßstab
-
-
-
-                mapTypeControl: true,
-                mapTypeControlOptions: {
-                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                mapTypeControl: true,  // Button um zwischen Satellit und Roadmap wechseln
+                mapTypeControlOptions: { //Unterfunktionen bei Satellit und Roadmap ausblenden
+                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR, 
                     mapTypeIds: [
                         google.maps.MapTypeId.ROADMAP,
                         google.maps.MapTypeId.SATELLITE
-                    ]
-                },
-
-
-
-
-
-                //Enter Map: 23802346582caa31
-                //Kronstana Map: 396ac7c2d5bcd46
+                                ]
+                                      },
 
             }
-
+            //Autocomplete für das Addresssuchfeld
             autocomplete = new google.maps.places.Autocomplete((document.getElementById('address')), {
                 types: ['geocode']
             });
 
-
+            //Der Map die MapOptions zuordnen
             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-            // START BY CLICK
+            //Addresssuchfeld beginnt bei Click auf Button oder
             $('div#find').on('click', function() {
                 LatLngSearch();
             });
 
-            // START BY PRESS ENTER
+            // oder bei ENTER
             $('#address').bind("enterKey", function(e) {
                 LatLngSearch();
             });
@@ -1250,44 +1210,43 @@
                 }
             });
 
-            // SHOW LAT LNG		
+            //Aus der Addresse die Koordinaten bekommen
             function LatLngSearch() {
 
                 var value = $('input#address').val();
 
                 if (value) {
                     var request = $.ajax({
-                        url: "/mapsLocation",
+                        url: "/mapsLocation", //Route im web.php
                         method: "GET",
                         data: {
                             address: value
                         },
                         dataType: 'json',
                         success: function(result) {
-
+                            //Neue Koordinaten
                             var searchLatLng = {
                                 lat: result['lat'],
                                 lng: result['lng']
                             };
 
-                            // NEW POSITION
+                            // Bei erfolgreichen Umwandeln werden die neuen Koordinaten auf der Map angezeigt
                             mapOptions.center = searchLatLng
                             mapOptions.zoom = 14
                             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+                            //Anschließend werden alle Marker auf der Map plaziert
                             setMarkers(map);
                             @auth //Gast darf keine ES erstellen
-                                map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
-                                if(!activeMarker){
-                                breit = e.latLng.toString().substring(1, 16);
-                                lang = e.latLng.toString().substring(20, 35);
-                                document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
-                                document.getElementById("BreitengradES").setAttribute('value', lang);
-                            
-                                $('#PopUpESHinzufügen').modal('show'); //Pop Up ES erstellen Aufruf
-                                }
-                            
-                            
+                                map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick -> Um ein ES hinzufügen zu können
+                                    if(!activeMarker){ //Überprüfung ob e kein ES ausgewählt ist
+                                        breit = e.latLng.toString().substring(1, 16); //Breitengrad-Koordinaten des Klickes speichern
+                                        lang = e.latLng.toString().substring(20, 35); //Längengrad-Koordinaten des Klickes speichern
+                                        document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen (PopUpES)
+                                        document.getElementById("BreitengradES").setAttribute('value', lang); //Koordinaten den Input Feldern hinzufügen (PopUpES)
+                                    
+                                        $('#PopUpESHinzufügen').modal('show'); //PopUpESHinzufügen öffnen
+                                    }
                                 });
                             @endauth
 
@@ -1300,6 +1259,7 @@
                 }
             }
 
+            //Genereller 
             @auth //Gast darf keine ES erstellen
                 map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
                 if(!activeMarker){
@@ -1324,6 +1284,12 @@
 
         }
     </script>
+
+    <!-- Hier gehört der API Key eingebunden   -->
+    <!-- Kronstana API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
+    <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
+    
+    <!-- key=.....&callback= initAutocomplete Funktion wird aufgerufen-->
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&libraries=places&callback=initAutocomplete">
     </script>
@@ -1774,13 +1740,13 @@
 
 
         function GrafanafunctionES() {
-            $('#exampleModalCenterGrafanaES').modal('show');
+            $('#PopUpESGrafana').modal('show');
 
         }
 
 
         function augefunction(id) {
-            $('#exampleModalCenterAuge').modal('show');
+            $('#PopUpESAuge').modal('show');
 
 
             var AzErzeuger = 0;
@@ -2121,11 +2087,11 @@
 
             locations.forEach(loc => {
                 if (loc[3] == id) {
-                    $("#bezeichnunga").val(loc[0]);
-                    $("#katastralgemeindea").val(loc[5]);
-                    $("#postleitzahla").val(loc[4]);
-                    $("#LaengengradEdita").val(loc[1]);
-                    $("#BreitengradEdita").val(loc[2]);
+                    $("#BezeichnungAuge").val(loc[0]);
+                    $("#KatastralgemeindeAuge").val(loc[5]);
+                    $("#PostleitzahlAuge").val(loc[4]);
+                    $("#LaengengradAuge").val(loc[1]);
+                    $("#BreitengradAuge").val(loc[2]);
                     $("#Az-ErzeugungstechnologienAuge").val(AzErzeuger);
                     $("#Az-VerbraucherAuge").val(AzVerbraucher);
                     $("#Az-SpeicherAuge").val(AzSpeicher);
@@ -2145,7 +2111,7 @@
 
 
         function augefunctionET(id) {
-            $('#exampleModalCenterAugeET').modal('show');
+            $('#PopUpETAuge').modal('show');
             locationsET.forEach(loc => {
                 if (loc[6] == id) {
                     $("#IDESAugeET").val(loc[3]);
@@ -2196,7 +2162,7 @@
 
 
         function GrafanafunctionET() {
-            $('#exampleModalCenterGrafanaET').modal('show');
+            $('#PopUpETGrafana').modal('show');
 
         }
 
@@ -2598,66 +2564,66 @@
     
     //$response = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/21');
     /*
-                                                                                                
-                                                                                                $createEnsysDashboard = Http::withHeaders([
-                                                                                                
-                                                                                                    'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
-                                                                                                    'Content-Type' => 'application/json',
-                                                                                                    'Accept' => 'application/json',
-                                                                                                    
-                                                                                                ])->post('192.168.1.5:3000/api/dashboards/db', [
-                                                                                                    "dashboard" => [
-                                                                                                         "id" => null, 
-                                                                                                         "uid" => null, 
-                                                                                                         "title" => 'tesffffft', 
-                                                                                                         "tags" => [
-                                                                                                            "templated" 
-                                                                                                         ], 
-                                                                                                         "timezone" => "browser", 
-                                                                                                         "schemaVersion" => 16, 
-                                                                                                         "version" => 0 
-                                                                                                      ], 
-                                                                                                   "folderId" => 0, 
-                                                                                                   "overwrite" => false 
-                                                                                                ]);
-                                                                                                echo($createEnsysDashboard);
-                                                                                                */
+                                                                                                                    
+                                                                                                                    $createEnsysDashboard = Http::withHeaders([
+                                                                                                                    
+                                                                                                                        'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+                                                                                                                        'Content-Type' => 'application/json',
+                                                                                                                        'Accept' => 'application/json',
+                                                                                                                        
+                                                                                                                    ])->post('192.168.1.5:3000/api/dashboards/db', [
+                                                                                                                        "dashboard" => [
+                                                                                                                             "id" => null, 
+                                                                                                                             "uid" => null, 
+                                                                                                                             "title" => 'tesffffft', 
+                                                                                                                             "tags" => [
+                                                                                                                                "templated" 
+                                                                                                                             ], 
+                                                                                                                             "timezone" => "browser", 
+                                                                                                                             "schemaVersion" => 16, 
+                                                                                                                             "version" => 0 
+                                                                                                                          ], 
+                                                                                                                       "folderId" => 0, 
+                                                                                                                       "overwrite" => false 
+                                                                                                                    ]);
+                                                                                                                    echo($createEnsysDashboard);
+                                                                                                                    */
     
     /*
-                                                                                                $id = 27;
-                                                                                                
-                                                                                                $strid = strval($id);
-                                                                                                
-                                                                                                
-                                                                                                        $url = '192.168.1.5:3000/api/dashboards/uid/';
-                                                                                                
-                                                                                                
-                                                                                                        $furl = $url . $strid;
-                                                                                                
-                                                                                                
-                                                                                                        echo($furl);
-                                                                                                        $deleteEnsysDashboard = Http::withHeaders([
-                                                                                                
-                                                                                                            'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
-                                                                                                            'Content-Type' => 'application/json',
-                                                                                                            'Accept' => 'application/json',
-                                                                                                
-                                                                                                        ])->delete($furl);
-                                                                                                
-                                                                                                
-                                                                                                
-                                                                                                        echo ($deleteEnsysDashboard);
-                                                                                                
-                                                                                                
-                                                                                                
-                                                                                                
-                                                                                                
-                                                                                                
-                                                                                                //echo($response);
-                                                                                                
-                                                                                                
-                                                                                                
-                                                                                                */
+                                                                                                                    $id = 27;
+                                                                                                                    
+                                                                                                                    $strid = strval($id);
+                                                                                                                    
+                                                                                                                    
+                                                                                                                            $url = '192.168.1.5:3000/api/dashboards/uid/';
+                                                                                                                    
+                                                                                                                    
+                                                                                                                            $furl = $url . $strid;
+                                                                                                                    
+                                                                                                                    
+                                                                                                                            echo($furl);
+                                                                                                                            $deleteEnsysDashboard = Http::withHeaders([
+                                                                                                                    
+                                                                                                                                'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+                                                                                                                                'Content-Type' => 'application/json',
+                                                                                                                                'Accept' => 'application/json',
+                                                                                                                    
+                                                                                                                            ])->delete($furl);
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    
+                                                                                                                            echo ($deleteEnsysDashboard);
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    //echo($response);
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    */
     
     ?>
 
