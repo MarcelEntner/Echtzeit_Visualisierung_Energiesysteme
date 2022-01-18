@@ -7,44 +7,39 @@
     <!-- Zeile 415 API Key eingebunden -->
     <!-- Zeile 335 Map Key eingebunden -->
 
+
+
+
     <body oncontextmenu="return false">
+        <!-- Rechtsklick auf der Web-Seite nicht möglich -->
 
 
         <div class="Energiesysteme container-fluid p-5">
             <div class="row w-100">
-
-
-
-                <div class="col-12 col-lg-7 shadow-lg rounded" id="map">
-                </div>
-
+                <div class="col-12 col-lg-7 shadow-lg rounded" id="map"></div>
                 <div class="Liste col-12 col-lg-5">
-
                     <input id="address" type="text">
                     <!--- INPUT FELD ZUM SUCHEN -->
                     <div id="find" class="btn btn-success">Suchen</div>
                     <!--- BUTTON ZUM SUCHEN -->
 
+                    <!--- Gesamte rechte Div der Liste (ohne Addresssuchfeld)  -->
                     <div class="shadow-lg rounded p-3">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
                                 <h3> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/es.png"
                                         id="Listimage"></h3>
-                                <!--<input class="form-control form-control2" placeholder="Suchen" aria-label="Search">-->
                             </div>
-
-
                         </div>
                         <br>
 
 
+                        <!-- DataTable  Th und Td gleiche Anzahl, ansonsten funktioniert er nicht-->
 
-                        <!-- DataTable -> Th und Td müssen gleiche Anzahl haben-->
-
-                        <!-- Main Liste class="table-responsive" -->
+                        <!-- Gesamte DataTable Div -->
                         <div style="height: 41vh; width:100%;">
 
-                            <!-- style="height: 30vh;" -->
+                            <!-- DataTable ES Ausgangspunkt-->
                             <div id="tableDiv">
                                 <table class="table table-borderless table-hover" id="table">
                                     <thead>
@@ -61,12 +56,14 @@
                                     <tbody>
                                         @foreach ($data as $d)
 
-                                            <tr onclick="moveToMarker({{ $d->id }})">
+                                            <tr>
 
-                                                <td>{{ $d->id }}</td>
-                                                <td>{{ $d->Bezeichnung }}</td>
-                                                <td>{{ $d->Katastralgemeinden }}</td>
-                                                <td>{{ $d->Postleitzahl }}</td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->id }}</td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Bezeichnung }}</td>
+                                                <td onclick="moveToMarker({{ $d->id }})">
+                                                    {{ $d->Katastralgemeinden }}</td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Postleitzahl }}
+                                                </td>
 
                                                 @auth
                                                     <?php
@@ -74,12 +71,9 @@
                                                     ?>
 
                                                     <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
-                                                    <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten + Admin (Rolle Admin) darf alle -->
-
-
+                                                    <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten || Admin (Rolle Admin) darf alle -->
 
                                                     @if ($userID->id == $d->user_id || $userID->role == 'Admin')
-
 
                                                         <td id="hov"> <a href="/delete/{{ $d->id }}"
                                                                 class="btn btn2"
@@ -96,8 +90,8 @@
                                                                 style="background-image: url('/images/buttons/stift.png')"></a>
                                                         </td>
 
-
                                                     @else
+                                                        <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
 
                                                         <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
@@ -111,11 +105,9 @@
 
                                                     @endif
 
-
-
                                                 @endauth
 
-
+                                                <!-- Wenn man nicht angemeldet ist-->
 
                                                 @guest
                                                     <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
@@ -135,8 +127,8 @@
                                 </table>
                             </div>
 
+                            <!-- DataTable ET -->
                             <div id="tableETDiv" style="display: none;">
-                                <!-- ET Liste style="height: 30vh;" -->
                                 <table class="table table-borderless table-hover" id="tableET">
                                     <thead>
                                         <tr>
@@ -162,10 +154,13 @@
                                                 <td>{{ $d->Bezeichnung }}</td>
                                                 <td>{{ $d->Typ }}</td>
                                                 <td>{{ $d->Ort }}</td>
+
                                                 @auth
 
+                                                    <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
+                                                    <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten || Admin (Rolle Admin) darf alle -->
                                                     @if (Auth::user()->id == $d->user_id || Auth::user()->role == 'Admin')
-                                                        <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
+
                                                         <td> <a href="/deleteET/{{ $d->id }}" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/delete.png')"></a>
                                                         </td>
@@ -180,6 +175,7 @@
                                                         </td>
 
                                                     @else
+                                                        <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
                                                         <td> <a href="javascript:GrafanafunctionET()\" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
@@ -193,6 +189,7 @@
                                                     @endif
                                                 @endauth
 
+                                                <!-- Wenn man nicht angemeldet ist-->
                                                 @guest
                                                     <td> <a href="javascript:GrafanafunctionET()" class="btn btn2"
                                                             style="background-image: url('/images/buttons/statistik.png')"></a>
@@ -213,9 +210,8 @@
 
 
 
-
+                            <!-- DataTable ES nach Aktualisierung des DataTablesES -->
                             <div id="tableESDiv" style="display: none">
-                                <!-- ES Liste style="height: 30vh; -->
                                 <table class="table table-borderless table-hover" id="tableES">
                                     <thead>
                                         <tr>
@@ -232,15 +228,19 @@
                                     <tbody>
                                         @foreach ($data as $d)
                                             <tr>
-                                                <td>{{ $d->id }}</td>
-                                                <td>{{ $d->Bezeichnung }}</td>
-                                                <td>{{ $d->Katastralgemeinden }}</td>
-                                                <td>{{ $d->Postleitzahl }}</td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->id }}</td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Bezeichnung }}
+                                                </td>
+                                                <td onclick="moveToMarker({{ $d->id }})">
+                                                    {{ $d->Katastralgemeinden }}</td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Postleitzahl }}
+                                                </td>
 
                                                 @auth
+                                                    <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
+                                                    <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten || Admin (Rolle Admin) darf alle -->
                                                     @if (Auth::user()->id == $d->user_id || Auth::user()->role == 'Admin')
 
-                                                        <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
                                                         <td> <a href="/delete/{{ $d->id }}" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/delete.png')"></a>
                                                         </td>
@@ -255,6 +255,8 @@
                                                         </td>
 
                                                     @else
+                                                        <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
+
                                                         <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
@@ -266,6 +268,7 @@
                                                         <td> </td>
                                                     @endif
                                                 @endauth
+                                                <!-- Wenn man nicht angemeldet ist-->
 
                                                 @guest
                                                     <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
@@ -284,34 +287,18 @@
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
-
-
-
-
                     </div>
                 </div>
-
             </div>
-
-
-
-
-            <!-- Button trigger modal -->
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                                style="margin-top: 6%; margin-left:35%; background-color:#3e8e41"; border:1px solid #3e8e41">
-                                Energiesystem hinzufügen
-                        </button>-->
 
 
 
             <!--Pop Up Fenster -->
 
 
-
-            <!-- Modal ES hinzufügen -->
-            <div class="modal modal2 fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            <!-- ES hinzufügen -->
+            <div class="modal modal2 fade" id="PopUpESHinzufügen" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -323,11 +310,11 @@
                             </button>
                         </div>
                         <div class="modal-body">
-
-
+                            <!--Route zu der Methode store (erstellen) im Controller EnSys -->
                             <form action="{{ route('EnSys.store') }}" method="POST">
                                 @csrf
-
+                                <!--Input Felder -->
+                                <!--Input Feld Bezeichnung -->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/name.png" style="margin-right:10px;">
@@ -335,6 +322,7 @@
                                     <input type="text" class="form-control3" id="BezeichnungES" name="BezeichnungES"
                                         aria-label="Bezeichnung" aria-describedby="basic-addon1" placeholder="MicroGridLab">
                                 </div>
+                                <!--Input Feld Katastralgemeinde -->
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
@@ -343,6 +331,7 @@
                                         name="KatastralgemeindenES" aria-label="Katastralgemeinden"
                                         aria-describedby="basic-addon1" placeholder="Wieselburg">
                                 </div>
+                                <!--Input Feld Postleitzahl -->
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
@@ -350,6 +339,7 @@
                                     <input type="text" class="form-control3" id="PostleitzahlES" name="PostleitzahlES"
                                         aria-label="Postleitzahl" aria-describedby="basic-addon1" placeholder="3250">
                                 </div>
+                                <!--Input Feld Längengrad Readonly (value wird automatisch gesetzt)-->
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
@@ -358,6 +348,7 @@
                                         aria-label="LaengengradES" aria-describedby="basic-addon1" readonly
                                         style="background-color:#e9ecef">
                                 </div>
+                                <!--Input Feld Breitengrad (value wird automatisch gesetzt)-->
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
@@ -366,10 +357,8 @@
                                         aria-label="BreitengradES" aria-describedby="basic-addon1" readonly
                                         style="background-color:#e9ecef">
                                 </div>
-
-
                                 <br>
-                                <!--  <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
+                                <!--Button Energiesystem erstellen -->
                                 <input type="submit" class="btn btn-success" style="margin-left:30%" id="ESerstellen"
                                     value="Energiesystem erstellen">
                             </form>
@@ -377,13 +366,11 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Modal ES hinzufügen aus -->
-
+            <!-- ES hinzufügen Ende -->
 
 
-            <!-- Modal ET hinzufügen -->
-            <div class="modal modal2 fade" id="exampleModalCenterET" tabindex="-1" role="dialog"
+            <!-- ET hinzufügen -->
+            <div class="modal modal2 fade" id="PopUpETHinzufügen" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -395,10 +382,12 @@
                             </button>
                         </div>
                         <div class="modal-body">
-
+                            <!--Route zu der Methode store (erstellen) im Controller EnTech -->
                             <form action="{{ route('EnTech.store') }}" id="ETerstellen" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
+                                <!--Input Felder -->
+                                <!--Input Feld ID-ES Readonly (value wird automatisch gesetzt) -->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/id.png" style="margin-right:10px;">
@@ -406,7 +395,7 @@
                                     <input type="text" class="form-control3" id="IDES" name="IDES" readonly
                                         aria-label="ID-ES" aria-describedby="basic-addon1" style="background-color:#e9ecef">
                                 </div>
-
+                                <!--Input Feld Bezeichnung -->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/name.png" style="margin-right:10px;">
@@ -414,7 +403,7 @@
                                     <input type="text" class="form-control3" id="BezeichnungET" name="Bezeichnung"
                                         placeholder="Bezeichung" aria-label="BezeichnungET" aria-describedby="basic-addon1">
                                 </div>
-
+                                <!--Input Feld Typ -->
                                 <div class="input-group mb-3" style="margin-top:2%; width:445px;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/typ.png" style="margin-right:10px;">
@@ -445,7 +434,7 @@
                                         <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
                                     </select>
                                 </div>
-
+                                <!--Input Feld Ort -->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/ort.png" style="margin-right:10px;">
@@ -453,6 +442,7 @@
                                     <input type="text" class="form-control3" id="OrtET" name="Ort" placeholder="Dach"
                                         aria-label="OrtET" aria-describedby="basic-addon1">
                                 </div>
+                                <!--Input Feld Längengrad Readonly (value wird automatisch gesetzt) -->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
@@ -461,6 +451,7 @@
                                         aria-label="LängengradET" aria-describedby="basic-addon1" readonly
                                         style="background-color:#e9ecef">
                                 </div>
+                                <!--Input Feld Breitengrad Readonly (value wird automatisch gesetzt)-->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
@@ -469,12 +460,14 @@
                                         aria-label="BreitengradET" aria-describedby="basic-addon1" readonly
                                         style="background-color:#e9ecef">
                                 </div>
+                                <!--Input Feld Bild -->
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/bild.png" style="margin-right:10px;">
                                         Bild einfügen</span>
                                     <input type="file" class="form-control3" id="imageET" name="imageET" value="">
                                 </div>
+                                <!--Input Feld Beschreibung -->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/beschreibung.png" style="margin-right:10px;">
@@ -482,29 +475,21 @@
                                     <input type="text" class="form-control3" id="BeschreibungET" name="BeschreibungET"
                                         placeholder="..." aria-label="BeschreibungET" aria-describedby="basic-addon1">
                                 </div>
-
-
-
-
-
                                 <br>
+                                <!--Button Energietechnologie erstellen  -->
                                 <input type="submit" class="btn btn-success" style="margin-left:30%" id="ETerstellen"
                                     value="Energietechnologie erstellen">
-
-
-
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- ET hinzufügen Ende -->
 
-        <!-- Modal ET hinzufügen aus -->
 
-
-        <!-- ModalEditES -->
-        <div class="modal modal2 fade" id="exampleModalCenterEdit" tabindex="-1" aria-labelledby="exampleModalCenterTitle"
+        <!-- ES Editieren -->
+        <div class="modal modal2 fade" id="PopUpESEditieren" tabindex="-1" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -517,54 +502,57 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
-
                         <form id="editForm" method="GET">
-                            <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
+                            <!-- Wird nur am Seitenaufruf gemacht und nicht zwischendurch, deswegen werden die Attribut-Daten beim Klick auf Stift neu geladen-->
                             @csrf
+                            <!--Input Felder -->
+                            <!--Input Feld Bezeichnung Änderbar -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/name.png" style="margin-right:10px;">
                                     Bezeichnung</span>
-                                <input type="text" class="form-control3" id="bezeichnung" name="Bezeichnung" value=""
+                                <input type="text" class="form-control3" id="BezeichnungESEdit" name="Bezeichnung" value=""
                                     aria-label="Bezeichnung" aria-describedby="basic-addon1">
                             </div>
-
+                            <!--Input Feld Katastralgemeinde Änderbar -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
                                     Katastralgemeinde</span>
-                                <input type="text" class="form-control3" id="katastralgemeinde" name="Katastralgemeinden"
-                                    value="" aria-label="Katastralgemeinden" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control3" id="KatastralgemeindeESEdit"
+                                    name="Katastralgemeinden" value="" aria-label="Katastralgemeinden"
+                                    aria-describedby="basic-addon1">
                             </div>
-
+                            <!--Input Feld Postleitzahl Änderbar -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
                                     Postleitzahl</span>
-                                <input type="text" class="form-control3" id="postleitzahl" name="Postleitzahl" value=""
-                                    aria-label="Postleitzahl" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control3" id="PostleitzahlESEdit" name="Postleitzahl"
+                                    value="" aria-label="Postleitzahl" aria-describedby="basic-addon1">
                             </div>
+                            <!--Input Feld Längengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
                                     Längengrad</span>
-                                <input type="text" class="form-control3" id="LaengengradEdit" name="Laengengrad" value=""
-                                    aria-label="Laengengrad" aria-describedby="basic-addon1" readonly
+                                <input type="text" class="form-control3" id="LaengengradESEdit" name="Laengengrad"
+                                    value="" aria-label="Laengengrad" aria-describedby="basic-addon1" readonly
                                     style="background-color:#e9ecef">
                             </div>
+                            <!--Input Feld Breitengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
                                     Breitengrad</span>
-                                <input type="text" class="form-control3" id="BreitengradEdit" name="Breitengrad" value=""
-                                    readonly aria-label="Breitengrad" aria-describedby="basic-addon1"
+                                <input type="text" class="form-control3" id="BreitengradESEdit" name="Breitengrad"
+                                    value="" readonly aria-label="Breitengrad" aria-describedby="basic-addon1"
                                     style="background-color:#e9ecef">
                             </div>
-
+                            <!--Option Mehr Deatils zum ES -->
                             <details closed>
                                 <summary>Mehr Details zu diesem Energiesystem</summary>
-
+                                <!--Input Feld Az-Erzeugungstechnologien Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
@@ -574,8 +562,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
-
+                                <!--Input Feld Az-Verbraucher Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
@@ -584,7 +571,7 @@
                                         aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Feld Az-Speicher Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
@@ -593,7 +580,7 @@
                                         aria-label="Az-Speicher" aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Feld Ges-Nennleistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
@@ -602,7 +589,7 @@
                                         aria-label="Ges-Nennleistung" aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Feld Ges-Energie [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/energie.png" style="margin-right:10px;">
@@ -611,7 +598,7 @@
                                         aria-label="Ges-Energie" aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Feld Ges-VerbraucherLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
@@ -621,7 +608,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Feld Ges-VerbraucherEnergie [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
@@ -631,7 +618,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Feld Ges-ErzeugerLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
@@ -641,7 +628,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Feld Ges-ErzeugerEnergie [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
@@ -651,7 +638,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Feld Ges-SpeicherKapazität [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
@@ -661,7 +648,7 @@
                                         aria-describedby="basic-addon1" value=""
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
-
+                                <!--Input Feld Aktueller Netzbezug [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
                                         <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
@@ -672,32 +659,21 @@
                                         style="width:160px; background-color:#e9ecef;" readonly>
                                 </div>
                             </details>
-
-
-
                             <br>
+                            <!--Button Energiesystem aktualisieren  -->
                             <input type="submit" class="btn  btn-success" style="margin-left:30%"
                                 value="Energiesystem aktualisieren">
-
                         </form>
-
-
-
-
-
-
                     </div>
-
-
                 </div>
             </div>
         </div>
-        <!-- ModalEditES aus -->
+        <!-- ES Editieren Ende -->
 
 
 
-        <!-- ModalEdit ET -->
-        <div class="modal modal2 fade" id="exampleModalCenterEditET" tabindex="-1" role="dialog"
+        <!-- ET  Editieren -->
+        <div class="modal modal2 fade" id="PopUpETEditieren" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -710,29 +686,29 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
-
                         <form id="editFormET" method="GET">
-                            <!-- wird nur am Seitenaufruf gemacht und nicht zwischendurch-->
+                            <!-- Wird nur am Seitenaufruf gemacht und nicht zwischendurch, deswegen werden die Attribut-Daten beim Klick auf Stift neu geladen-->
                             @csrf
+                            <!--Input Felder -->
+                            <!--Input Feld ID Energiesystem Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID Energiesystem</span>
-                                <input type="text" class="form-control3" id="idEditES" name="idEditES" value=""
+                                <input type="text" class="form-control3" id="IdEditES" name="idEditES" value=""
                                     aria-label="ID-ES" aria-describedby="basic-addon1" readonly
                                     style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Feld ID Energietechnologie Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID Energietechnologie</span>
-                                <input type="text" class="form-control3" id="idEditET" name="idEditET" value=""
+                                <input type="text" class="form-control3" id="IdEditET" name="idEditET" value=""
                                     aria-label="idEditET" aria-describedby="basic-addon1" readonly
                                     style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Feld Bezeichnung Änderbar -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/name.png" style="margin-right:10px;">
@@ -740,40 +716,16 @@
                                 <input type="text" class="form-control3" id="BezeichnungEditET" name="BezeichnungEditET"
                                     value="" aria-label="BezeichnungEditET" aria-describedby="basic-addon1">
                             </div>
-
+                            <!--Input Feld Typ Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%; width:445px;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/typ.png" style="margin-right:10px;">
                                     Typ</span>
-                                <br>
-
-                                <select name="TypEditET" class="form-select" id="TypEditET"
-                                    style="text-align:center; background-color:#e9ecef" aria-readonly="true">
-                                    <option value="PV-Anlage">PV-Anlage</option>
-                                    <option value="Stromnetzbezug">Stromnetzbezug</option>
-                                    <option value="Batteriespeicher">Batteriespeicher</option>
-                                    <option value="Wasserstoff Elektrolyse">Wasserstoff Elektrolyse</option>
-                                    <option value="Wasserstoff Brennstoffzelle"> Wasserstoff Brennstoffzelle</option>
-                                    <option value="Wasserstoff Speicher"> Wasserstoff Speicher</option>
-                                    <option value="Windkraftanlage"> Windkraftanlage</option>
-                                    <option value="E-Ladestation"> E-Ladestation</option>
-                                    <option value="Hausanschlusszähler"> Hausanschlusszähler</option>
-                                    <option value="Wärmenetzbezug"> Wärmenetzbezug</option>
-                                    <option value="Biomasseheizkraftwerk"> Biomasseheizkraftwerk (BHKW)</option>
-                                    <option value="Biomasseheizwerk"> Biomasseheizwerk </option>
-                                    <option value="Biomasseheizkessel"> Biomasseheizkessel</option>
-                                    <option value="Wärmespeicher"> Wärmespeicher</option>
-                                    <option value="Solarthermieanlage"> Solarthermieanlage</option>
-                                    <option value="Wärmepumpe"> Wärmepumpe</option>
-                                    <option value="Gebäude Wärmebedarfszähler"> Gebäude Wärmebedarfszähler</option>
-                                    <option value="Kompressionskältemaschine"> Kompressionskältemaschine</option>
-                                    <option value="Ab oder Adsorbtionskältemaschine"> Ab oder Adsorbtionskältemaschine
-                                    </option>
-                                    <option value="Kältespeicher">Kältespeicher</option>
-                                    <option value="Gebäude Kältebedarfszähler">Gebäude Kältebedarfszähler</option>
-                                </select>
+                                <input type="text" class="form-control3" id="TypEditET" name="BezeichnungEditET" value=""
+                                    aria-label="BezeichnungEditET" aria-describedby="basic-addon1" readonly
+                                    style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Feld Ort Änderbar -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/ort.png" style="margin-right:10px;">
@@ -781,7 +733,7 @@
                                 <input type="text" class="form-control3" id="OrtEditET" name="OrtEditET" value=""
                                     aria-label="OrtEditET" aria-describedby="basic-addon1">
                             </div>
-
+                            <!--Input Feld Längengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
@@ -790,7 +742,7 @@
                                     value="" readonly aria-label="LaengengradEditET" aria-describedby="basic-addon1"
                                     style="background-color:#e9ecef;">
                             </div>
-
+                            <!--Input Feld Breitgengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
@@ -799,30 +751,16 @@
                                     value="" readonly aria-label="BreitengradEditET" aria-describedby="basic-addon1"
                                     style="background-color:#e9ecef;">
                             </div>
-
-
-
                             <br>
-                            <!-- <button type="button" class="btn btn3" data-dismiss="modal">Close</button>-->
+                            <!--Button Energietechnologie aktualisieren -->
                             <input type="submit" class="btn btn-success" style="margin-left:30%"
                                 value="Energietechnologie aktualisieren">
-
-
-
                         </form>
-
-
-
-
-
-
                     </div>
-
-
                 </div>
             </div>
         </div>
-        <!-- ModalEdit ET  aus-->
+        <!-- Et Editieren Ende-->
 
 
         <!-- Grafana ES -->
@@ -841,8 +779,8 @@
 
 
                         <!--Grafana Statistik iframe
-                                    <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639334652637&to=1639507452638&panelId=2" width="800" height="1000" frameborder="0"></iframe>
-                                -->
+                                                                                                                        <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639334652637&to=1639507452638&panelId=2" width="800" height="1000" frameborder="0"></iframe>
+                                                                                                                    -->
                     </div>
 
 
@@ -1243,7 +1181,7 @@
     <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&callback=LoadMap">
-    </script>-->
+    </script>
 
 
 
@@ -1346,7 +1284,7 @@
                                 document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
                                 document.getElementById("BreitengradES").setAttribute('value', lang);
                             
-                                $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
+                                $('#PopUpESHinzufügen').modal('show'); //Pop Up ES erstellen Aufruf
                                 }
                             
                             
@@ -1370,7 +1308,7 @@
                 document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
                 document.getElementById("BreitengradES").setAttribute('value', lang);
             
-                $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
+                $('#PopUpESHinzufügen').modal('show'); //Pop Up ES erstellen Aufruf
                 }
             
             
@@ -1466,7 +1404,7 @@
 
     <script>
         function editfunction(id) {
-            $('#exampleModalCenterEdit').modal('show');
+            $('#PopUpESEditieren').modal('show');
 
             //Gesamt Variablen
             var AzErzeuger = 0;
@@ -1812,11 +1750,11 @@
 
             locations.forEach(loc => {
                 if (loc[3] == id) {
-                    $("#bezeichnung").val(loc[0]);
-                    $("#katastralgemeinde").val(loc[5]);
-                    $("#postleitzahl").val(loc[4]);
-                    $("#LaengengradEdit").val(loc[1]);
-                    $("#BreitengradEdit").val(loc[2]);
+                    $("#BezeichnungESEdit").val(loc[0]);
+                    $("#KatastralgemeindeESEdit").val(loc[5]);
+                    $("#PostleitzahlESEdit").val(loc[4]);
+                    $("#LaengengradESEdit").val(loc[1]);
+                    $("#BreitengradESEdit").val(loc[2]);
                     $("#Az-Erzeugungstechnologien").val(AzErzeuger);
                     $("#Az-Verbraucher").val(AzVerbraucher);
                     $("#Az-Speicher").val(AzSpeicher);
@@ -2225,7 +2163,7 @@
 
 
         function ETerstellen(id) {
-            $('#exampleModalCenterET').modal('show');
+            $('#PopUpETHinzufügen').modal('show');
             locationsET.forEach(loc => {
                 if (loc[3] == id) {
                     $("#IDES").val(loc[3]);
@@ -2239,11 +2177,11 @@
 
 
         function editfunctionET(id) {
-            $('#exampleModalCenterEditET').modal('show');
+            $('#PopUpETEditieren').modal('show');
             locationsET.forEach(locEt => {
                 if (locEt[6] == id) {
-                    $("#idEditES").val(locEt[3]);
-                    $("#idEditET").val(locEt[6]);
+                    $("#IdEditES").val(locEt[3]);
+                    $("#IdEditET").val(locEt[6]);
                     $("#BezeichnungEditET").val(locEt[0]);
                     $("#OrtEditET").val(locEt[5]);
                     $("#TypEditET").val(locEt[4]);
@@ -2496,7 +2434,7 @@
                         document.getElementById("BreitengradET").setAttribute('value', langET);
                         document.getElementById("IDES").setAttribute('value', id); //ID von ES einfügen
                     
-                        $('#exampleModalCenterET').modal('show'); //Pop Up ET erstellen Aufruf
+                        $('#PopUpETHinzufügen').modal('show'); //Pop Up ET erstellen Aufruf
                     
                     
                     
@@ -2520,7 +2458,7 @@
                     map.setOptions({
                         draggableCursor: 'crosshair'
                     });
-                    $('#exampleModalCenterET').modal('hide'); //Pop Up ET erstellen Aufruf                  
+                    $('#PopUpETHinzufügen').modal('hide'); //Pop Up ET erstellen Aufruf                  
                     activeMarker = false;
                     if (activeClick == true) {
                         unsetMarker(map);
@@ -2636,7 +2574,7 @@
                         lang = e.latLng.toString().substring(20, 35);
                         document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
                         document.getElementById("BreitengradES").setAttribute('value', lang);
-                        $('#exampleModalCenter').modal('show'); //Pop Up ES erstellen Aufruf
+                        $('#PopUpESHinzufügen').modal('show'); //Pop Up ES erstellen Aufruf
                         }
                     
                     
@@ -2660,66 +2598,66 @@
     
     //$response = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/21');
     /*
-            
-            $createEnsysDashboard = Http::withHeaders([
-            
-                'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-                
-            ])->post('192.168.1.5:3000/api/dashboards/db', [
-                "dashboard" => [
-                     "id" => null, 
-                     "uid" => null, 
-                     "title" => 'tesffffft', 
-                     "tags" => [
-                        "templated" 
-                     ], 
-                     "timezone" => "browser", 
-                     "schemaVersion" => 16, 
-                     "version" => 0 
-                  ], 
-               "folderId" => 0, 
-               "overwrite" => false 
-            ]);
-            echo($createEnsysDashboard);
-            */
+                                                                                                
+                                                                                                $createEnsysDashboard = Http::withHeaders([
+                                                                                                
+                                                                                                    'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+                                                                                                    'Content-Type' => 'application/json',
+                                                                                                    'Accept' => 'application/json',
+                                                                                                    
+                                                                                                ])->post('192.168.1.5:3000/api/dashboards/db', [
+                                                                                                    "dashboard" => [
+                                                                                                         "id" => null, 
+                                                                                                         "uid" => null, 
+                                                                                                         "title" => 'tesffffft', 
+                                                                                                         "tags" => [
+                                                                                                            "templated" 
+                                                                                                         ], 
+                                                                                                         "timezone" => "browser", 
+                                                                                                         "schemaVersion" => 16, 
+                                                                                                         "version" => 0 
+                                                                                                      ], 
+                                                                                                   "folderId" => 0, 
+                                                                                                   "overwrite" => false 
+                                                                                                ]);
+                                                                                                echo($createEnsysDashboard);
+                                                                                                */
     
     /*
-            $id = 27;
-            
-            $strid = strval($id);
-            
-            
-                    $url = '192.168.1.5:3000/api/dashboards/uid/';
-            
-            
-                    $furl = $url . $strid;
-            
-            
-                    echo($furl);
-                    $deleteEnsysDashboard = Http::withHeaders([
-            
-                        'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
-                        'Content-Type' => 'application/json',
-                        'Accept' => 'application/json',
-            
-                    ])->delete($furl);
-            
-            
-            
-                    echo ($deleteEnsysDashboard);
-            
-            
-            
-            
-            
-            
-            //echo($response);
-            
-            
-            
-            */
+                                                                                                $id = 27;
+                                                                                                
+                                                                                                $strid = strval($id);
+                                                                                                
+                                                                                                
+                                                                                                        $url = '192.168.1.5:3000/api/dashboards/uid/';
+                                                                                                
+                                                                                                
+                                                                                                        $furl = $url . $strid;
+                                                                                                
+                                                                                                
+                                                                                                        echo($furl);
+                                                                                                        $deleteEnsysDashboard = Http::withHeaders([
+                                                                                                
+                                                                                                            'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+                                                                                                            'Content-Type' => 'application/json',
+                                                                                                            'Accept' => 'application/json',
+                                                                                                
+                                                                                                        ])->delete($furl);
+                                                                                                
+                                                                                                
+                                                                                                
+                                                                                                        echo ($deleteEnsysDashboard);
+                                                                                                
+                                                                                                
+                                                                                                
+                                                                                                
+                                                                                                
+                                                                                                
+                                                                                                //echo($response);
+                                                                                                
+                                                                                                
+                                                                                                
+                                                                                                */
     
     ?>
 

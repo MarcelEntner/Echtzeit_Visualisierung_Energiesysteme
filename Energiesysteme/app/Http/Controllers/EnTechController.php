@@ -275,7 +275,6 @@ $suid = strval($request->IDES);
                 'Laengengrad' => $request->input('LaengengradEditET'),
                 'Breitengrad' => $request->input('BreitengradEditET'),
                 'Bezeichnung' => $request->input('BezeichnungEditET'),
-                'Typ' => $request->input('TypEditET'),
                 'Ort' => $request->input('OrtEditET'),
             ]);
 

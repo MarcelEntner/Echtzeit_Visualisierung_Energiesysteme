@@ -40,7 +40,7 @@
                            
                             <img class="card-img-top" <?php 
                             if(empty($EnTech['Bild'])){
-                                    echo 'src="/images/homepage/HomePage5 - Kopie.jpg"';
+                                    echo 'src="/images/gallerie.jpg"';
                             } else{
                                 echo 'src="data:image/jpg;base64,' . $EnTech["Bild"] . '"';  
                             } ?>
