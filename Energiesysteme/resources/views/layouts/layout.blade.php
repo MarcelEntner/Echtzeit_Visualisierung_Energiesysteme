@@ -537,7 +537,7 @@
                                     $userID = Auth::user();
                                     ?>
                                     @if ($userID->role == 'Admin')
-                                    <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }} </a>
+                                    <a class="dropdown-item" href="{{ route('login') }}">{{ __('Register') }} </a>
                                     @endif
 
                                   

@@ -15,6 +15,7 @@ class EtSth extends Migration
     {
         Schema::create('EtSth', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->bigInteger('EnTech_id')->unsigned();
             $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
             $table->double('Leistung')->default(0);
@@ -22,7 +23,6 @@ class EtSth extends Migration
             $table->double('Vorlauftemp')->nullable();
             $table->double('Ruecklauftemp')->nullable();
             $table->dateTime('TimeMeasured')->nullable();
-            $table->timestamps();
         });
     }
 

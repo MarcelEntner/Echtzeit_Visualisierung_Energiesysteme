@@ -87,7 +87,7 @@
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
 
-                                                        <td id="hov"> <a href="javascript:editfunction({{ $d->id }})"
+                                                        <td id="hov"> <a href="javascript:EditfunctionES({{ $d->id }})"
                                                                 class="btn btn2"
                                                                 style="background-image: url('/images/buttons/stift.png')"></a>
                                                         </td>
@@ -98,7 +98,7 @@
                                                         <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
-                                                        <td> <a href="javascript:augefunction({{ $d->id }})"
+                                                        <td> <a href="javascript:AugefunctionES({{ $d->id }})"
                                                                 class="btn btn2"
                                                                 style="background-image: url('/images/buttons/auge.png')"></a>
                                                         </td>
@@ -115,7 +115,7 @@
                                                     <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
                                                             style="background-image: url('/images/buttons/statistik.png')"></a>
                                                     </td>
-                                                    <td> <a href="javascript:augefunction({{ $d->id }})"
+                                                    <td> <a href="javascript:AugefunctionES({{ $d->id }})"
                                                             class="btn btn2"
                                                             style="background-image: url('/images/buttons/auge.png')"></a></td>
                                                     <td></td>
@@ -171,7 +171,7 @@
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
 
-                                                        <td> <a href="javascript:editfunctionET({{ $d->id }})"
+                                                        <td> <a href="javascript:EditfunctionET({{ $d->id }})"
                                                                 class="btn btn2"
                                                                 style="background-image: url('/images/buttons/stift.png')"></a>
                                                         </td>
@@ -182,7 +182,7 @@
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
 
-                                                        <td> <a href="javascript:augefunctionET({{ $d->id }})"
+                                                        <td> <a href="javascript:AugefunctionET({{ $d->id }})"
                                                                 class="btn btn2"
                                                                 style="background-image: url('/images/buttons/auge.png')"></a>
                                                         </td>
@@ -197,7 +197,7 @@
                                                             style="background-image: url('/images/buttons/statistik.png')"></a>
                                                     </td>
 
-                                                    <td> <a href="javascript:augefunctionET({{ $d->id }})"
+                                                    <td> <a href="javascript:AugefunctionET({{ $d->id }})"
                                                             class="btn btn2"
                                                             style="background-image: url('/images/buttons/auge.png')"></a></td>
                                                     <td></td>
@@ -251,7 +251,7 @@
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
 
-                                                        <td> <a href="javascript:editfunction({{ $d->id }})"
+                                                        <td> <a href="javascript:EditfunctionES({{ $d->id }})"
                                                                 class="btn btn2"
                                                                 style="background-image: url('/images/buttons/stift.png')"></a>
                                                         </td>
@@ -263,7 +263,7 @@
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
 
-                                                        <td> <a href="javascript:augefunction({{ $d->id }})"
+                                                        <td> <a href="javascript:AugefunctionES({{ $d->id }})"
                                                                 class="btn btn2"
                                                                 style="background-image: url('/images/buttons/auge.png')"></a>
                                                         </td>
@@ -277,7 +277,7 @@
                                                             style="background-image: url('/images/buttons/statistik.png')"></a>
                                                     </td>
 
-                                                    <td> <a href="javascript:augefunction({{ $d->id }})"
+                                                    <td> <a href="javascript:AugefunctionES({{ $d->id }})"
                                                             class="btn btn2"
                                                             style="background-image: url('/images/buttons/auge.png')"></a></td>
                                                     <td></td>
@@ -780,7 +780,7 @@
                     <div class="modal-body">
                         <!-- Grafana Statistiken-->
                         <!--Grafana Statistik iframe
-                                        <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639334652637&to=1639507452638&panelId=2" width="800" height="1000" frameborder="0"></iframe> -->
+                                                <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639334652637&to=1639507452638&panelId=2" width="800" height="1000" frameborder="0"></iframe> -->
                     </div>
                 </div>
             </div>
@@ -1126,7 +1126,8 @@
                 lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
 
                 lengthMenu: [
-                100], //Wieviele ES/ET pro Seite angezeigt werden, kann nicht 5 sein, da hier sonst nach allen ET in der DB sortiert und wir mit CSS nur die richtigen einblenden und dann stimmt die Anzeige nicht
+                    100
+                ], //Wieviele ES/ET pro Seite angezeigt werden, kann nicht 5 sein, da hier sonst nach allen ET in der DB sortiert und wir mit CSS nur die richtigen einblenden und dann stimmt die Anzeige nicht
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json" //Sprache des DataTables z.B. der Buttenbeschriftung
                 }
@@ -1167,7 +1168,8 @@
         function initAutocomplete() {
             //Hier werden die Map Optionen definiert
             let mapOptions = {
-                center: new google.maps.LatLng('48.14078077082782', '15.14955200012205'), //Ausgangspostion der Map beim Laden (Wieselburg)
+                center: new google.maps.LatLng('48.14078077082782',
+                    '15.14955200012205'), //Ausgangspostion der Map beim Laden (Wieselburg)
                 zoom: 12, //Zoom Level beim Laden der Map
                 mapTypeId: "roadmap", //Typ der Map Road Map (weitere: satellite, hybrid, terrain)
                 streetViewControl: false, // Street View Männdchen rechts unten ausblenden
@@ -1175,16 +1177,16 @@
                 draggableCursor: 'crosshair', //Curser auf der Map
                 scrollwheel: true, //dass Mausscrollen ohne Probleme funktioniert
                 fullscreenControl: false, //Vollbild Button entfernen
-                scaleControl: true,  //Maßstabselement rechts unten anzeigen
+                scaleControl: true, //Maßstabselement rechts unten anzeigen
                 zoomControl: false, //rechts unten Zoom Buttons
-                mapTypeControl: true,  // Button um zwischen Satellit und Roadmap wechseln
+                mapTypeControl: true, // Button um zwischen Satellit und Roadmap wechseln
                 mapTypeControlOptions: { //Unterfunktionen bei Satellit und Roadmap ausblenden
-                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR, 
+                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
                     mapTypeIds: [
                         google.maps.MapTypeId.ROADMAP,
                         google.maps.MapTypeId.SATELLITE
-                                ]
-                                      },
+                    ]
+                },
 
             }
             //Autocomplete für das Addresssuchfeld
@@ -1236,17 +1238,17 @@
                             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
                             //Anschließend werden alle Marker auf der Map plaziert
-                            setMarkers(map);
+                            setESMarker(map);
                             @auth //Gast darf keine ES erstellen
                                 map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick -> Um ein ES hinzufügen zu können
-                                    if(!activeMarker){ //Überprüfung ob e kein ES ausgewählt ist
-                                        breit = e.latLng.toString().substring(1, 16); //Breitengrad-Koordinaten des Klickes speichern
-                                        lang = e.latLng.toString().substring(20, 35); //Längengrad-Koordinaten des Klickes speichern
-                                        document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen (PopUpES)
-                                        document.getElementById("BreitengradES").setAttribute('value', lang); //Koordinaten den Input Feldern hinzufügen (PopUpES)
-                                    
-                                        $('#PopUpESHinzufügen').modal('show'); //PopUpESHinzufügen öffnen
-                                    }
+                                if(!activeMarker){ //Überprüfung ob e kein ES ausgewählt ist
+                                breit = e.latLng.toString().substring(1, 16); //Breitengrad-Koordinaten des Klickes speichern
+                                lang = e.latLng.toString().substring(20, 35); //Längengrad-Koordinaten des Klickes speichern
+                                document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen(PopUpES)
+                                document.getElementById("BreitengradES").setAttribute('value', lang); //Koordinaten den Input Feldern hinzufügen (PopUpES)
+                            
+                                $('#PopUpESHinzufügen').modal('show'); //PopUpESHinzufügen öffnen
+                                }
                                 });
                             @endauth
 
@@ -1259,27 +1261,25 @@
                 }
             }
 
-            //Genereller 
-            @auth //Gast darf keine ES erstellen
-                map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
-                if(!activeMarker){
-                breit = e.latLng.toString().substring(1, 16);
-                lang = e.latLng.toString().substring(20, 35);
-                document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen
-                document.getElementById("BreitengradES").setAttribute('value', lang);
+            //Generelle Map-Funktionen
+
+            @auth //Gast darf keine ES erstellen somit ist hier die Überprüfung auf Authentifizierung notwendig
+                //Map-Klick Listener
+                map.addListener("click", (e) => { //Ausgefürht bei einem Map-Klick
+                if(!activeMarker){ //Überprüfung ob kein ES ausgewählt ist, denn wenn ein ES ausgewählt ist hat man ja die Option ET hinzuzufügen
+                breit = e.latLng.toString().substring(1, 16); //Breitengrad-Koordinaten des Klickes speichern
+                lang = e.latLng.toString().substring(20, 35); //Längengrad-Koordinaten des Klickes speichern
+                document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen (PopUpES)
+                document.getElementById("BreitengradES").setAttribute('value', lang); //Koordinaten den Input Feldern hinzufügen (PopUpES)
             
-                $('#PopUpESHinzufügen').modal('show'); //Pop Up ES erstellen Aufruf
+                $('#PopUpESHinzufügen').modal('show'); //PopUpESHinzufügen öffnen
                 }
-            
-            
                 });
             @endauth
 
-            google.maps.event.addListenerOnce(map, 'idle', function() { //ausgeführt wenn map geladen
-                // do something only the first time the map is loaded
-                //DB auslesen und einfügen
-                setMarkers(map);
-
+            google.maps.event.addListenerOnce(map, 'idle', function() { //Diese Funktion wird ausgeführt wenn die Map geladen wird
+                //Hier werden die Marker auf der Karte plaziert
+                setESMarker(map); //Funktion um die Marker zu setzen
             });
 
         }
@@ -1288,78 +1288,79 @@
     <!-- Hier gehört der API Key eingebunden   -->
     <!-- Kronstana API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
     <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
-    
+
     <!-- key=.....&callback= initAutocomplete Funktion wird aufgerufen-->
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I&libraries=places&callback=initAutocomplete">
     </script>
 
 
-
+    <!-- Hier werden die Daten aus der Datenbank herausgelesen und in ein Array gespeichert, um später darauf zugreifen zu können-->
     <?php
-    
+    //Datenbank Daten
     $servername = 'localhost';
     $username = 'root';
     $password = '';
     $dbname = 'laravel';
     
-    // Create connection
+    //Connection aufbauen
     $conn = new mysqli($servername, $username, $password, $dbname);
     
-    // Check connection
+    //Connection überprüfen 
     if ($conn->connect_error) {
         die('Connection failed: ' . $conn->connect_error);
     } else {
-        $sql = 'SELECT id, Bezeichnung, Laengengrad, Breitengrad, Postleitzahl, Katastralgemeinden FROM EnSys'; // ES
-        $es_select = DB::table('EnSys')->get(); // ES Select mit Laravel
+        $es_select = 'SELECT id, Bezeichnung, Laengengrad, Breitengrad, Postleitzahl, Katastralgemeinden FROM EnSys'; // Select Statement für ES Daten
+        //$es_select = DB::table('EnSys')->get(); // ES Select mit Laravel
     
-        $sql2 = 'SELECT id, ensys_id, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad  FROM EnTech'; // ET
-        $et_select = DB::table('EnTech')->get(); //ET Select mit Laravel
+        $et_select = 'SELECT id, ensys_id, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad  FROM EnTech'; // Select Statement für ET Daten
+        //$et_select = DB::table('EnTech')->get(); //ET Select mit Laravel
     
-        //SQL für die Erzeuger, Verbraucher, Speicher Anzeige beim ES
+
+        $es_result = $conn->query($es_select); //für SQL DB Conn ES
+        $et_result = $conn->query($et_select); //für SQL DB Conn ET
     
-        $result = $conn->query($sql); //für SQL DB Conn
-        $result2 = $conn->query($sql2); //für SQL DB Conn
+        //$es_result = $es_select; //für laravel DB Conn
+        //$et_result2 = $et_select; //für laravel DB Conn
+
+        //Arrays
+        $DB_Daten_ES = [];
+        $DB_Daten_ET = [];
     
-        //  $result = $es_select; //für laravel DB Conn
-        // $result2 = $et_select; //für laravel DB Conn
-    
-        $locations = [];
-        $locationsET = [];
-    
-        // output data of each row
-        while ($row = $result->fetch_assoc()) {
-            // echo "id: " . $row["id"]. " " . $row["Bezeichnung"]." ". $row["Laengengrad"]. " ". $row["Breitengrad"]. "<br>";
-    
-            $location = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['id']}, {$row['Postleitzahl']}, '{$row['Katastralgemeinden']}']";
-            array_push($locations, $location);
-        }
-    
-        if ($result2->num_rows > 0) {
-            // output data of each row
-            while ($row = $result2->fetch_assoc()) {
-                $locationET = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['ensys_id']}, '{$row['Typ']}', '{$row['Ort']}', '{$row['id']}']";
-    
-                array_push($locationsET, $locationET);
+        //Überprüfung auf Inhalt des Ergebnisses des Select-Statements
+        if ($es_result->num_rows > 0) {
+        //Jeder Datensatz wird nach der Reihe als Array gespeichert
+            while ($row = $es_result->fetch_assoc()) { 
+              $sqlES = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['id']}, {$row['Postleitzahl']}, '{$row['Katastralgemeinden']}']";
+                array_push($DB_Daten_ES, $sqlES);
             }
-            $conn->close(); //für SQL DB Conn
+        }
+        
+        //Überprüfung auf Inhalt des Ergebnisses des Select-Statements
+        if ($et_result->num_rows > 0) {
+            //Jeder Datensatz wird nach der Reihe als Array gespeichert
+            while ($row = $et_result->fetch_assoc()) {
+                $sqlET = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['ensys_id']}, '{$row['Typ']}', '{$row['Ort']}', '{$row['id']}']";
+                array_push($DB_Daten_ET, $sqlET);
+            }
+            $conn->close(); //Datenbank Connection wieder schließen
         }
     
-        //ES
-        echo '<script>var locations = [';
+        //ES in Array übertragen
+        echo '<script>var DB_Daten_ES = ['; //in das Array DB_Daten_ES in JS die Daten übertragen 
     
-        foreach ($locations as $loc) {
-            echo $loc . ',';
-        }
+            foreach ($DB_Daten_ES as $loc) { //Jeder Datensatz wird nach der Reihe übertragen
+                echo $loc . ',';
+            } //Anschließend wird später immer auf das Array DB_Daten_ES zugegriffen um an die ES Daten aus der DB zu gelangen
     
         echo ']</script>';
     
-        //ET
-        echo '<script>var locationsET = [';
+        //ET in Array übertragen
+        echo '<script>var DB_Daten_ET = [';  //in das Array DB_Daten_ET in JS die Daten übertragen
     
-        foreach ($locationsET as $locET) {
-            echo $locET . ',';
-        }
+            foreach ($DB_Daten_ET as $et) { //Jeder Datensatz wird nach der Reihe übertragen
+                echo $et . ',';
+            } //Anschließend wird später immer auf das Array DB_Daten_ES zugegriffen um an die ET Daten aus der DB zu gelangen
     
         echo ']</script>';
     }
@@ -1367,12 +1368,13 @@
     ?>
 
 
-
+    <!-- Statistik(Grafana), Stift(Editieren) und Auge(Nur anschauen) Funktionen -->
     <script>
-        function editfunction(id) {
-            $('#PopUpESEditieren').modal('show');
+        //Stift-Funktion zum Editieren von ES
+        function EditfunctionES(id) { //Wird die ID des ES mitgegeben
+            $('#PopUpESEditieren').modal('show'); //Das PopUpESEditieren zum Editieren öffnen
 
-            //Gesamt Variablen
+            //Variablen zum Berechnen der Attribute die beim ES mehr Details zu sehen sind
             var AzErzeuger = 0;
             var AzVerbraucher = 0;
             var AzSpeicher = 0;
@@ -1383,372 +1385,373 @@
             var GesErzeugerLeistung = 0;
             var GesErzeugerEnergie = 0;
             var GesSpeicherKapazität = 0;
-            var AktuellerNetzbezug = 0; //öffentliche Stromnetz = Differenz von GesVerbraucherLeistung & GesErzeugerLeistung
+            var AktuellerNetzbezug = 0; //AktuellerNetzbezug = Differenz von GesVerbraucherLeistung & GesErzeugerLeistung 
 
 
+            //Berechnungen der Attribute
+            DB_Daten_ET.forEach(locET => { //Hier wird jede einzelne ET nacheinander durchgegangen
 
+                if (locET[3] == id) { //Überprüfung damit nur ET aus dem ausgewählten ES gezählt werden 
 
-
-
-
-
-            locationsET.forEach(locET => {
-
-
-
-                if (locET[3] == id) { //Damit nur ET aus dem ausgewählten ES gezählt werden
-
-                    switch (locET[4]) {
+                    switch (locET[4]) { //Switch Anweisung mit dem Typ der ET
+                        //Bei Typ PV-Anlage
                         case "PV-Anlage":
-                            AzErzeuger++;
-
-                            @foreach ($etpv as $pv)
-                                if ({{ $pv->EnTech_id }} == locET[6] ) //damit nur die PV von diesem ES nimmt
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
+                            @foreach ($etpv as $pv) //Zugriff auf die Echtzeitdaten der PV
+                                if ({{ $pv->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten von der richtigen PV genommen werden EnTech_id müssen übereinstimmen  
                                 {
-                                GesNennleistung += {{ $pv->Leistung }};
-                                GesEnergie += {{ $pv->Energie }};
-                                GesErzeugerLeistung += {{ $pv->Leistung }};
-                                GesErzeugerEnergie += {{ $pv->Energie }};
+                                    GesNennleistung += {{ $pv->Leistung }}; //Leistung der PV zur GesNennleistung addieren
+                                    GesEnergie += {{ $pv->Energie }}; //Energie der PV zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $pv->Leistung }}; //Leistung der PV zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $pv->Energie }}; //Energie der PV zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
-                            break;
+                            break; 
 
+                        //Bei Typ Stromnetzbezug
                         case "Stromnetzbezug":
-                            AzErzeuger++;
-
-                            @foreach ($etsnb as $s)
-                                if ({{ $s->EnTech_id }} == locET[6] )
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
+                            @foreach ($etsnb as $s) 
+                                if ({{ $s->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden 
                                 {
-                                GesNennleistung += {{ $s->Leistung }};
-                                GesEnergie += {{ $s->Energie }};
-                                AktuellerNetzbezug += {{ $s->Leistung }};
-                                GesErzeugerLeistung += {{ $s->Leistung }};
-                                GesErzeugerEnergie += {{ $s->Energie }};
+                                    GesNennleistung += {{ $s->Leistung }}; //Leistung des Stromnetzbezuges zur GesNennleistung addieren
+                                    GesEnergie += {{ $s->Energie }}; //Energie des Stromnetzbezuges zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $s->Leistung }};  //Leistung des Stromnetzbezuges GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $s->Energie }}; //Energie des Stromnetzbezuges zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Batteriespeicher
                         case "Batteriespeicher":
-                            AzSpeicher++;
+                            AzSpeicher++; //Az-Speicher um eins erhöhen
                             @foreach ($etbs as $b)
-                                if ({{ $b->EnTech_id }} == locET[6] )
-                                {
-                                GesNennleistung += {{ $b->Leistung }};
-                                GesEnergie += {{ $b->Energie }};
-                                GesSpeicherKapazität += {{ $b->Speicherkap }};
+                                if ({{ $b->EnTech_id }} == locET[6] )  //Überprüfung, damit die richtigen Echtzeidaten genommen werden
+                                { 
+                                    GesNennleistung += {{ $b->Leistung }};  //Leistung des Batteriespeichers zur GesNennleistung addieren
+                                    GesEnergie += {{ $b->Energie }};        //Energie des Batteriespeichers zur GesEnergie addieren
+                                    GesSpeicherKapazität += {{ $b->Speicherkap }}; //Speicherkapazität des Batteriespeichers zur GesSpeicherKapazität addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Wasserstoff Elektrolyse
                         case "Wasserstoff Elektrolyse":
-                            AzVerbraucher++;
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
                             @foreach ($etwe as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
+                                if ({{ $w->EnTech_id }} == locET[6] )  //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                GesVerbraucherLeistung += {{ $w->Leistung }};
-                                GesVerbraucherEnergie += {{ $w->Energie }};
+                                    GesNennleistung += {{ $w->Leistung }}; //Leistung der Wasserstoff Elektrolyse zur GesNennleistung addieren
+                                    GesEnergie += {{ $w->Energie }};        //Energie der Wasserstoff Elektrolyse zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $w->Leistung }};  //Leistung der Wasserstoff Elektrolyse zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $w->Energie }}; //Energie der Wasserstoff Elektrolyse zur GesVerbraucherEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Wasserstoff Brennstoffzelle
                         case "Wasserstoff Brennstoffzelle":
-                            AzErzeuger++;
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etbsz as $b)
-                                if ({{ $b->EnTech_id }} == locET[6] )
-                                {
-                                GesNennleistung += {{ $b->Leistung }};
-                                GesEnergie += {{ $b->Energie }};
-                                GesErzeugerLeistung += {{ $b->Leistung }};
-                                GesErzeugerEnergie += {{ $b->Energie }};
+                                if ({{ $b->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
+                                { 
+                                    GesNennleistung += {{ $b->Leistung }}; //Leistung der Wasserstoff Brennstoffzelle zur GesNennleistung addieren
+                                    GesEnergie += {{ $b->Energie }}; //Energie der Wasserstoff Brennstoffzelle zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $b->Leistung }}; //Leistung der Wasserstoff Brennstoffzelle zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $b->Energie }}; //Energie der Wasserstoff Brennstoffzelle zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Wasserstoff Speicher
                         case "Wasserstoff Speicher":
-                            AzSpeicher++;
-
+                            AzSpeicher++; //Az-Speicher um eins erhöhen
                             @foreach ($etws as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
+                                if ({{ $w->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                GesSpeicherKapazität += {{ $w->Speicherkap }};
+                                GesNennleistung += {{ $w->Leistung }}; //Leistung der Wasserstoff Speicher zur GesNennleistung addieren
+                                GesEnergie += {{ $w->Energie }}; //Energie der Wasserstoff Speicher zur GesEnergie addieren
+                                GesSpeicherKapazität += {{ $w->Speicherkap }}; //Speicherkapazität der Wasserstoff Speicher zur GesSpeicherKapazität addieren
                                 }
                             @endforeach
                             break;
-
+                        //Bei Typ Windkraftanlage
                         case "Windkraftanlage":
-                            AzErzeuger++;
-
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etwka as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
+                                if ({{ $w->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                GesErzeugerLeistung += {{ $w->Leistung }};
-                                GesErzeugerEnergie += {{ $w->Energie }};
+                                    GesNennleistung += {{ $w->Leistung }}; //Leistung der Windkraftanlage zur GesNennleistung addieren
+                                    GesEnergie += {{ $w->Energie }}; //Energie der Windkraftanlage zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $w->Leistung }}; //Leistung der Windkraftanlage zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $w->Energie }}; //Energie der Windkraftanlage zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                         //Bei Typ Ladestation
                         case "E-Ladestation":
-                            AzVerbraucher++;
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
                             @foreach ($etel as $e)
-                                if ({{ $e->EnTech_id }} == locET[6] )
+                                if ({{ $e->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $e->Leistung }};
-                                GesEnergie += {{ $e->Energie }};
-                                GesVerbraucherLeistung += {{ $e->Leistung }};
-                                GesVerbraucherEnergie += {{ $e->Energie }};
+                                    GesNennleistung += {{ $e->Leistung }}; //Leistung der E-Ladestation zur GesNennleistung addieren
+                                    GesEnergie += {{ $e->Energie }}; //Energie der E-Ladestation zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $e->Leistung }}; //Leistung der E-Ladestation zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $e->Energie }}; //Energie der E-Ladestation zur GesVerbraucherEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Hausanschlusszähler
                         case "Hausanschlusszähler":
-                            AzVerbraucher++;
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
                             @foreach ($ethaz as $h)
-                                if ({{ $h->EnTech_id }} == locET[6] )
+                                if ({{ $h->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $h->Leistung }};
-                                GesEnergie += {{ $h->Energie }};
-                                GesVerbraucherLeistung += {{ $h->Leistung }};
-                                GesVerbraucherEnergie += {{ $h->Energie }};
-                            
+                                    GesNennleistung += {{ $h->Leistung }}; //Leistung des Hausanschlusszähler zur GesNennleistung addieren
+                                    GesEnergie += {{ $h->Energie }}; //Energie des Hausanschlusszähler zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $h->Leistung }}; //Leistung des Hausanschlusszähler zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $h->Energie }}; //Energie des Hausanschlusszähler zur GesVerbraucherEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Wärmenetzbezug
                         case "Wärmenetzbezug":
-                            AzErzeuger++;
-
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etwnb as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
+                                if ({{ $w->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                GesErzeugerLeistung += {{ $w->Leistung }};
-                                GesErzeugerEnergie += {{ $w->Energie }};
+                                    GesNennleistung += {{ $w->Leistung }}; //Leistung des Wärmenetzbezuges zur GesNennleistung addieren
+                                    GesEnergie += {{ $w->Energie }}; //Energie des Wärmenetzbezuges zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $w->Leistung }}; //Leistung des Wärmenetzbezuges zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $w->Energie }}; //Energie des Wärmenetzbezuges zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Biomasseheizkraftwerk
                         case "Biomasseheizkraftwerk":
-                            AzVerbraucher++;
-                            AzErzeuger++;
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
 
                             @foreach ($etbhkw as $b)
-                                if ({{ $b->EnTech_id }} == locET[6] )
+                                if ({{ $b->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $b->Leistung }};
-                                GesEnergie += {{ $b->Energie }};
-                                GesVerbraucherLeistung += {{ $b->Leistung }};
-                                GesVerbraucherEnergie += {{ $b->Energie }};
-                                GesErzeugerLeistung += {{ $b->Leistung }};
-                                GesErzeugerEnergie += {{ $b->Energie }};
-                            
+                                    GesNennleistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkraftwerkes zur GesNennleistung addieren
+                                    GesEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkraftwerkes zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkraftwerkes zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkraftwerkes zur GesVerbraucherEnergie addieren
+                                    GesErzeugerLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkraftwerkes zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkraftwerkes zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
-
                             break;
 
+                        //Bei Typ Biomasseheizwerk
                         case "Biomasseheizwerk":
-                            AzVerbraucher++;
-                            AzErzeuger++;
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etbmhw as $b)
-                                if ({{ $b->EnTech_id }} == locET[6] )
+                                if ({{ $b->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $b->Leistung }};
-                                GesEnergie += {{ $b->Energie }};
-                                GesVerbraucherLeistung += {{ $b->Leistung }};
-                                GesVerbraucherEnergie += {{ $b->Energie }};
-                                GesErzeugerLeistung += {{ $b->Leistung }};
-                                GesErzeugerEnergie += {{ $b->Energie }};
-                            
+                                    GesNennleistung += {{ $b->Leistung }}; //Leistung des Biomasseheizwerkes zur GesNennleistung addieren
+                                    GesEnergie += {{ $b->Energie }}; //Energie des Biomasseheizwerkes zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizwerkes zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $b->Energie }}; //Energie des Biomasseheizwerkes zur GesVerbraucherEnergie addieren
+                                    GesErzeugerLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizwerkes zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $b->Energie }}; //Energie des Biomasseheizwerkes zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Biomasseheizkessel
                         case "Biomasseheizkessel":
-                            AzVerbraucher++;
-                            AzErzeuger++;
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etbmhk as $b)
-                                if ({{ $b->EnTech_id }} == locET[6] )
+                                if ({{ $b->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $b->Leistung }};
-                                GesEnergie += {{ $b->Energie }};
-                                GesVerbraucherLeistung += {{ $b->Leistung }};
-                                GesVerbraucherEnergie += {{ $b->Energie }};
-                                GesErzeugerLeistung += {{ $b->Leistung }};
-                                GesErzeugerEnergie += {{ $b->Energie }};
-                            
+                                    GesNennleistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkessels zur GesNennleistung addieren
+                                    GesEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkessels zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkessels zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkessels zur GesVerbraucherEnergie addieren
+                                    GesErzeugerLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkessels zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkessels zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Wärmespeicher
                         case "Wärmespeicher":
-                            AzSpeicher++;
-
+                            AzSpeicher++; //Az-Speicher um eins erhöhen
                             @foreach ($etwes as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
+                                if ({{ $w->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                //keine Speicherkap sondern TempUnten TempMitte TempOben
-                            
+                                    GesNennleistung += {{ $w->Leistung }}; //Leistung des Wärmespeichers zur GesNennleistung addieren
+                                    GesEnergie += {{ $w->Energie }}; //Energie des Wärmespeichers zur GesEnergie addieren
+                                    //keine Speicherkapazität sondern TempUnten TempMitte TempOben
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Solarthermieanlage
                         case "Solarthermieanlage":
-                            AzErzeuger++;
-
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etsth as $s)
-                                if ({{ $s->EnTech_id }} == locET[6] )
+                                if ({{ $s->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $s->Leistung }};
-                                GesEnergie += {{ $s->Energie }};
-                                GesErzeugerLeistung += {{ $s->Leistung }};
-                                GesErzeugerEnergie += {{ $s->Energie }};
-                            
+                                    GesNennleistung += {{ $s->Leistung }}; //Leistung der Solarthermieanlage zur GesNennleistung addieren
+                                    GesEnergie += {{ $s->Energie }}; //Energie der Solarthermieanlage zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $s->Leistung }}; //Leistung der Solarthermieanlage zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $s->Energie }}; //Energie der Solarthermieanlage zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Wärmepumpe
                         case "Wärmepumpe":
-                            AzErzeuger++;
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
 
                             @foreach ($etwp as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
+                                if ({{ $w->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                GesErzeugerLeistung += {{ $w->Leistung }};
-                                GesErzeugerEnergie += {{ $w->Energie }};
-                            
+                                    GesNennleistung += {{ $w->Leistung }}; //Leistung der Wärmepumpe zur GesNennleistung addieren
+                                    GesEnergie += {{ $w->Energie }}; //Energie der Wärmepumpe zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $w->Leistung }}; //Leistung der Wärmepumpe zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $w->Energie }}; //Energie der Wärmepumpe zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Gebäude Wärmebedarfszähler
                         case "Gebäude Wärmebedarfszähler":
-                            AzVerbraucher++;
-                            //etgwbz hat keine Leistung nur Zählerstand
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            //etgwbz hat keine Leistung oder Energie sondern nur Zählerstand
                             break;
 
+                        //Bei Typ Kompressionskältemaschine
                         case "Kompressionskältemaschine":
-                            AzVerbraucher++;
-                            AzErzeuger++;
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etkkm as $k)
-                                if ({{ $k->EnTech_id }} == locET[6] )
+                                if ({{ $k->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $k->Leistung }};
-                                GesEnergie += {{ $k->Energie }};
-                                GesVerbraucherLeistung += {{ $k->Leistung }};
-                                GesVerbraucherEnergie += {{ $k->Energie }};
-                                GesErzeugerLeistung += {{ $k->Leistung }};
-                                GesErzeugerEnergie += {{ $k->Energie }};
-                            
-                            
+                                    GesNennleistung += {{ $k->Leistung }}; //Leistung der Kompressionskältemaschine zur GesNennleistung addieren
+                                    GesEnergie += {{ $k->Energie }}; //Energie der Kompressionskältemaschine zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $k->Leistung }}; //Leistung der Kompressionskältemaschine zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $k->Energie }}; //Energie der Kompressionskältemaschine zur GesVerbraucherEnergie addieren
+                                    GesErzeugerLeistung += {{ $k->Leistung }}; //Leistung der Kompressionskältemaschine zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $k->Energie }}; //Energie der Kompressionskältemaschine zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Ab oder Adsorbtionskältemaschine
                         case "Ab oder Adsorbtionskältemaschine":
-                            AzVerbraucher++;
-                            AzErzeuger++;
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etadabkm as $e)
-                                if ({{ $e->EnTech_id }} == locET[6] )
-                                {
-                                GesNennleistung += {{ $e->Leistung }};
-                                GesEnergie += {{ $e->Energie }};
-                                GesVerbraucherLeistung += {{ $e->Leistung }};
-                                GesVerbraucherEnergie += {{ $e->Energie }};
-                                GesErzeugerLeistung += {{ $e->Leistung }};
-                                GesErzeugerEnergie += {{ $e->Energie }};
-                            
-                            
+                                if ({{ $e->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
+                                { 
+                                    GesNennleistung += {{ $e->Leistung }}; //Leistung der Ab oder Adsorbtionskältemaschine zur GesNennleistung addieren
+                                    GesEnergie += {{ $e->Energie }}; //Energie der Ab oder Adsorbtionskältemaschine zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $e->Leistung }}; //Leistung der Ab oder Adsorbtionskältemaschine zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $e->Energie }}; //Energie der Ab oder Adsorbtionskältemaschine zur GesVerbraucherEnergie addieren
+                                    GesErzeugerLeistung += {{ $e->Leistung }}; //Leistung der Ab oder Adsorbtionskältemaschine zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $e->Energie }}; //Energie der Ab oder Adsorbtionskältemaschine zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Kältespeicher
                         case "Kältespeicher":
-                            AzSpeicher++;
-
+                            AzSpeicher++; //Az-Speicher um eins erhöhen
                             @foreach ($etks as $k)
-                                if ({{ $k->EnTech_id }} == locET[6] )
+                                if ({{ $k->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $k->Leistung }};
-                                GesEnergie += {{ $k->Energie }};
-                                GesSpeicherKapazität += {{ $k->Speicherkap }};
-                            
+                                    GesNennleistung += {{ $k->Leistung }}; //Leistung des Kältespeichers zur GesNennleistung addieren
+                                    GesEnergie += {{ $k->Energie }}; //Energie des Kältespeichers zur GesEnergie addieren
+                                    GesSpeicherKapazität += {{ $k->Speicherkap }}; //Speicherkapazität des Kältespeichers zur GesSpeicherKapazität addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Gebäude Kältebedarfszähle
                         case "Gebäude Kältebedarfszähler":
-                            AzVerbraucher++;
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
                             //etgkbz hat keine Leistung nur Zählerstand
-
                             break;
-
-
                     }
-
-
                 }
+            }) //foreach für jede ET aus
 
 
-            }) //foreach aus
-
-
+            //Berechnung des aktuellen Netzbezuges
             AktuellerNetzbezug = GesVerbraucherLeistung - GesErzeugerLeistung;
-            if (AktuellerNetzbezug < 0) {
+            if (AktuellerNetzbezug < 0) { //wenn mehr Leistung erzeugt wird als verbraucht wird ist der aktuelle Netzbezug 0
                 AktuellerNetzbezug = 0;
             }
 
-
-            locations.forEach(loc => {
-                if (loc[3] == id) {
-                    $("#BezeichnungESEdit").val(loc[0]);
-                    $("#KatastralgemeindeESEdit").val(loc[5]);
-                    $("#PostleitzahlESEdit").val(loc[4]);
-                    $("#LaengengradESEdit").val(loc[1]);
-                    $("#BreitengradESEdit").val(loc[2]);
-                    $("#Az-Erzeugungstechnologien").val(AzErzeuger);
-                    $("#Az-Verbraucher").val(AzVerbraucher);
-                    $("#Az-Speicher").val(AzSpeicher);
-                    $("#Ges-Nennleistung").val(GesNennleistung);
-                    $("#Ges-Energie").val(GesEnergie);
-                    $("#Ges-VerbraucherLeistung").val(GesVerbraucherLeistung);
-                    $("#Ges-VerbraucherEnergie").val(GesVerbraucherEnergie);
-                    $("#Ges-ErzeugerLeistung").val(GesErzeugerLeistung);
-                    $("#Ges-ErzeugerEnergie").val(GesErzeugerEnergie);
-                    $("#Ges-SpeicherKapazität").val(GesSpeicherKapazität);
-                    $("#AktuellerNetzbezug").val(AktuellerNetzbezug);
+            //Hier werden die Input Felder des PopUps mit Daten befüllt 
+            DB_Daten_ES.forEach(loc => {
+                if (loc[3] == id) {  //Überprüfung ob ES ID's übereinstimmen
+                    $("#BezeichnungESEdit").val(loc[0]); //Input Feld mit der ID BezeichnungESEdit bekommt den Inhalt loc[0] = Bezeichnung
+                    $("#KatastralgemeindeESEdit").val(loc[5]); //Input Feld bekommt Inhalt
+                    $("#PostleitzahlESEdit").val(loc[4]); //Input Feld bekommt Inhalt
+                    $("#LaengengradESEdit").val(loc[1]); //Input Feld bekommt Inhalt
+                    $("#BreitengradESEdit").val(loc[2]); //Input Feld bekommt Inhalt
+                    $("#Az-Erzeugungstechnologien").val(AzErzeuger); //Input Feld bekommt Inhalt
+                    $("#Az-Verbraucher").val(AzVerbraucher); //Input Feld bekommt Inhalt
+                    $("#Az-Speicher").val(AzSpeicher); //Input Feld bekommt Inhalt
+                    $("#Ges-Nennleistung").val(GesNennleistung); //Input Feld bekommt Inhalt
+                    $("#Ges-Energie").val(GesEnergie); //Input Feld bekommt Inhalt
+                    $("#Ges-VerbraucherLeistung").val(GesVerbraucherLeistung); //Input Feld bekommt Inhalt
+                    $("#Ges-VerbraucherEnergie").val(GesVerbraucherEnergie); //Input Feld bekommt Inhalt
+                    $("#Ges-ErzeugerLeistung").val(GesErzeugerLeistung); //Input Feld bekommt Inhalt
+                    $("#Ges-ErzeugerEnergie").val(GesErzeugerEnergie); //Input Feld bekommt Inhalt
+                    $("#Ges-SpeicherKapazität").val(GesSpeicherKapazität); //Input Feld bekommt Inhalt
+                    $("#AktuellerNetzbezug").val(AktuellerNetzbezug); //Input Feld bekommt Inhalt
                     $("#editForm").attr("action", "/edit/" + id)
                 }
             })
 
         }
 
-
-        function GrafanafunctionES() {
-            $('#PopUpESGrafana').modal('show');
-
+        //Stift-Funktion zum Editieren von ET
+        function EditfunctionET(id) { //Wird die ID des ET mitgegeben
+            $('#PopUpETEditieren').modal('show'); //Das PopUpETEditieren zum Editieren öffnen
+            
+            DB_Daten_ET.forEach(locEt => { //Hier wird jede einzelne ET nacheinander durchgegangen
+                if (locEt[6] == id) {  //Überprüfung ob die EnTech_id die gleiche ist wie die übergebene/ausgewählte ID
+                    $("#IdEditES").val(locEt[3]); //Input Feld bekommt den Inhalt 
+                    $("#IdEditET").val(locEt[6]); //Input Feld bekommt den Inhalt
+                    $("#BezeichnungEditET").val(locEt[0]); //Input Feld bekommt den Inhalt
+                    $("#OrtEditET").val(locEt[5]); //Input Feld bekommt den Inhalt
+                    $("#TypEditET").val(locEt[4]); //Input Feld bekommt den Inhalt
+                    $("#LaengengradEditET").val(locEt[1]); //Input Feld bekommt den Inhalt
+                    $("#BreitengradEditET").val(locEt[2]); //Input Feld bekommt den Inhalt
+                    $("#editFormET").attr("action", "/editET/" + id)
+                }
+            })
         }
 
+        //Statistik-Funktion von ES
+        function GrafanafunctionES() {
+            $('#PopUpESGrafana').modal('show'); //Das PopUpESGrafana zum Anschauen der ES Statistiken öffnen
+        }
 
-        function augefunction(id) {
-            $('#PopUpESAuge').modal('show');
+        //Statistik-Funktion von ET
+        function GrafanafunctionET() {
+            $('#PopUpETGrafana').modal('show'); //Das PopUpETGrafana zum Anschauen der ET Statistiken öffnen
+        }
 
+        //Auge-Funktion zum Anschauen von ES
+        function AugefunctionES(id) { //Wird die ID des ES mitgegeben
+            $('#PopUpESAuge').modal('show'); //Das PopUpESAuge zum Anschauen öffnen
 
+            //Variablen zum Berechnen der Attribute die beim ES mehr Details zu sehen sind
             var AzErzeuger = 0;
             var AzVerbraucher = 0;
             var AzSpeicher = 0;
@@ -1759,313 +1762,303 @@
             var GesErzeugerLeistung = 0;
             var GesErzeugerEnergie = 0;
             var GesSpeicherKapazität = 0;
-            var AktuellerNetzbezug = 0; //öffentliche Stromnetz = Differenz von GesVerbraucherLeistung & GesErzeugerLeistung
+            var AktuellerNetzbezug = 0; //AktuellerNetzbezug = Differenz von GesVerbraucherLeistung & GesErzeugerLeistung 
 
 
-
-            locationsET.forEach(locET => {
-
-
+            //Berechnungen der Attribute
+            DB_Daten_ET.forEach(locET => { //Hier wird jede einzelne ET nacheinander durchgegangen
 
                 if (locET[3] == id) { //Damit nur ET aus dem ausgewählten ES gezählt werden
 
-                    switch (locET[4]) {
+                    switch (locET[4]) { //Switch Anweisung mit dem Typ der ET
+                        //Bei Typ PV-Anlage
                         case "PV-Anlage":
-                            AzErzeuger++;
-
-                            @foreach ($etpv as $pv)
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
+                            @foreach ($etpv as $pv) //Zugriff auf die Echtzeitdaten der PV
                                 if ({{ $pv->EnTech_id }} == locET[6] ) //damit nur die PV von diesem ES nimmt
                                 {
-                                GesNennleistung += {{ $pv->Leistung }};
-                                GesEnergie += {{ $pv->Energie }};
-                                GesErzeugerLeistung += {{ $pv->Leistung }};
-                                GesErzeugerEnergie += {{ $pv->Energie }};
+                                    GesNennleistung += {{ $pv->Leistung }}; //Leistung der PV zur GesNennleistung addieren
+                                    GesEnergie += {{ $pv->Energie }}; //Energie der PV zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $pv->Leistung }}; //Leistung der PV zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $pv->Energie }}; //Energie der PV zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Stromnetzbezug
                         case "Stromnetzbezug":
-                            AzErzeuger++;
-
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etsnb as $s)
-                                if ({{ $s->EnTech_id }} == locET[6] )
+                                if ({{ $s->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden 
                                 {
-                                GesNennleistung += {{ $s->Leistung }};
-                                GesEnergie += {{ $s->Energie }};
-                                AktuellerNetzbezug += {{ $s->Leistung }};
-                                GesErzeugerLeistung += {{ $s->Leistung }};
-                                GesErzeugerEnergie += {{ $s->Energie }};
-                            
+                                    GesNennleistung += {{ $s->Leistung }}; //Leistung des Stromnetzbezuges zur GesNennleistung addieren
+                                    GesEnergie += {{ $s->Energie }}; //Energie des Stromnetzbezuges zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $s->Leistung }}; //Leistung des Stromnetzbezuges GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $s->Energie }}; //Energie des Stromnetzbezuges zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Batteriespeicher
                         case "Batteriespeicher":
-                            AzSpeicher++;
+                            AzSpeicher++; //Az-Speicher um eins erhöhen
                             @foreach ($etbs as $b)
-                                if ({{ $b->EnTech_id }} == locET[6] )
+                                if ({{ $b->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $b->Leistung }};
-                                GesEnergie += {{ $b->Energie }};
-                                GesSpeicherKapazität += {{ $b->Speicherkap }};
+                                    GesNennleistung += {{ $b->Leistung }}; //Leistung des Batteriespeichers zur GesNennleistung addieren
+                                    GesEnergie += {{ $b->Energie }}; //Energie des Batteriespeichers zur GesEnergie addieren
+                                    GesSpeicherKapazität += {{ $b->Speicherkap }}; //Speicherkapazität des Batteriespeichers zur GesSpeicherKapazität addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Wasserstoff Elektrolyse
                         case "Wasserstoff Elektrolyse":
-                            AzVerbraucher++;
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
                             @foreach ($etwe as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
+                                if ({{ $w->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                GesVerbraucherLeistung += {{ $w->Leistung }};
-                                GesVerbraucherEnergie += {{ $w->Energie }};
+                                    GesNennleistung += {{ $w->Leistung }}; //Leistung der Wasserstoff Elektrolyse zur GesNennleistung addieren
+                                    GesEnergie += {{ $w->Energie }}; //Energie der Wasserstoff Elektrolyse zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $w->Leistung }}; //Leistung der Wasserstoff Elektrolyse zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $w->Energie }}; //Energie der Wasserstoff Elektrolyse zur GesVerbraucherEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Wasserstoff Brennstoffzelle
                         case "Wasserstoff Brennstoffzelle":
-                            AzErzeuger++;
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etbsz as $b)
-                                if ({{ $b->EnTech_id }} == locET[6] )
+                                if ({{ $b->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $b->Leistung }};
-                                GesEnergie += {{ $b->Energie }};
-                                GesErzeugerLeistung += {{ $b->Leistung }};
-                                GesErzeugerEnergie += {{ $b->Energie }};
-                            
+                                    GesNennleistung += {{ $b->Leistung }}; //Leistung der Wasserstoff Brennstoffzelle zur GesNennleistung addieren
+                                    GesEnergie += {{ $b->Energie }}; //Energie der Wasserstoff Brennstoffzelle zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $b->Leistung }}; //Leistung der Wasserstoff Brennstoffzelle zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $b->Energie }}; //Energie der Wasserstoff Brennstoffzelle zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Wasserstoff Speicher
                         case "Wasserstoff Speicher":
-                            AzSpeicher++;
-
+                            AzSpeicher++; //Az-Speicher um eins erhöhen
                             @foreach ($etws as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
-                                {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                GesSpeicherKapazität += {{ $w->Speicherkap }};
+                                if ({{ $w->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
+                                { 
+                                    GesNennleistung += {{ $w->Leistung }}; //Leistung der Wasserstoff Speicher zur GesNennleistung addieren
+                                    GesEnergie += {{ $w->Energie }}; //Energie der Wasserstoff Speicher zur GesEnergie addieren
+                                    GesSpeicherKapazität += {{ $w->Speicherkap }}; //Speicherkapazität der Wasserstoff Speicher zur GesSpeicherKapazität addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Windkraftanlage
                         case "Windkraftanlage":
-                            AzErzeuger++;
-
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etwka as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
-                                {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                GesErzeugerLeistung += {{ $w->Leistung }};
-                                GesErzeugerEnergie += {{ $w->Energie }};
-                            
+                                if ({{ $w->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
+                                { 
+                                    GesNennleistung += {{ $w->Leistung }}; //Leistung der Windkraftanlage zur GesNennleistung addieren
+                                    GesEnergie += {{ $w->Energie }}; //Energie der Windkraftanlage zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $w->Leistung }}; //Leistung der Windkraftanlage zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $w->Energie }}; //Energie der Windkraftanlage zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Ladestation
                         case "E-Ladestation":
-                            AzVerbraucher++;
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
                             @foreach ($etel as $e)
-                                if ({{ $e->EnTech_id }} == locET[6] )
+                                if ({{ $e->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $e->Leistung }};
-                                GesEnergie += {{ $e->Energie }};
-                                GesVerbraucherLeistung += {{ $e->Leistung }};
-                                GesVerbraucherEnergie += {{ $e->Energie }};
+                                    GesNennleistung += {{ $e->Leistung }}; //Leistung der E-Ladestation zur GesNennleistung addieren
+                                    GesEnergie += {{ $e->Energie }}; //Energie der E-Ladestation zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $e->Leistung }}; //Leistung der E-Ladestation zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $e->Energie }}; //Energie der E-Ladestation zur GesVerbraucherEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Hausanschlusszähler
                         case "Hausanschlusszähler":
-                            AzVerbraucher++;
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
                             @foreach ($ethaz as $h)
-                                if ({{ $h->EnTech_id }} == locET[6] )
+                                if ({{ $h->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $h->Leistung }};
-                                GesEnergie += {{ $h->Energie }};
-                                GesVerbraucherLeistung += {{ $h->Leistung }};
-                                GesVerbraucherEnergie += {{ $h->Energie }};
-                            
+                                    GesNennleistung += {{ $h->Leistung }}; //Leistung des Hausanschlusszähler zur GesNennleistung addieren
+                                    GesEnergie += {{ $h->Energie }}; //Energie des Hausanschlusszähler zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $h->Leistung }}; //Leistung des Hausanschlusszähler zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $h->Energie }}; //Energie des Hausanschlusszähler zur GesVerbraucherEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Wärmenetzbezug
                         case "Wärmenetzbezug":
-                            AzErzeuger++;
-
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etwnb as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
+                                if ({{ $w->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                GesErzeugerLeistung += {{ $w->Leistung }};
-                                GesErzeugerEnergie += {{ $w->Energie }};
+                                    GesNennleistung += {{ $w->Leistung }}; //Leistung des Wärmenetzbezuges zur GesNennleistung addieren
+                                    GesEnergie += {{ $w->Energie }};  //Energie des Wärmenetzbezuges zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $w->Leistung }}; //Leistung des Wärmenetzbezuges zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $w->Energie }}; //Energie des Wärmenetzbezuges zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Biomasseheizkraftwerk
                         case "Biomasseheizkraftwerk":
-                            AzVerbraucher++;
-                            AzErzeuger++;
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
 
                             @foreach ($etbhkw as $b)
-                                if ({{ $b->EnTech_id }} == locET[6] )
+                                if ({{ $b->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $b->Leistung }};
-                                GesEnergie += {{ $b->Energie }};
-                                GesVerbraucherLeistung += {{ $b->Leistung }};
-                                GesVerbraucherEnergie += {{ $b->Energie }};
-                                GesErzeugerLeistung += {{ $b->Leistung }};
-                                GesErzeugerEnergie += {{ $b->Energie }};
+                                    GesNennleistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkraftwerkes zur GesNennleistung addieren
+                                    GesEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkraftwerkes zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkraftwerkes zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkraftwerkes zur GesVerbraucherEnergie addieren
+                                    GesErzeugerLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkraftwerkes zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkraftwerkes zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
-
                             break;
-
+               
+                        //Bei Typ Biomasseheizwerk
                         case "Biomasseheizwerk":
-                            AzVerbraucher++;
-                            AzErzeuger++;
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etbmhw as $b)
-                                if ({{ $b->EnTech_id }} == locET[6] )
+                                if ({{ $b->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $b->Leistung }};
-                                GesEnergie += {{ $b->Energie }};
-                                GesVerbraucherLeistung += {{ $b->Leistung }};
-                                GesVerbraucherEnergie += {{ $b->Energie }};
-                                GesErzeugerLeistung += {{ $b->Leistung }};
-                                GesErzeugerEnergie += {{ $b->Energie }};
+                                    GesNennleistung += {{ $b->Leistung }}; //Leistung des Biomasseheizwerkes zur GesNennleistung addieren
+                                    GesEnergie += {{ $b->Energie }}; //Energie des Biomasseheizwerkes zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizwerkes zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $b->Energie }}; //Energie des Biomasseheizwerkes zur GesVerbraucherEnergie addieren
+                                    GesErzeugerLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizwerkes zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $b->Energie }}; //Energie des Biomasseheizwerkes zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Biomasseheizkessel
                         case "Biomasseheizkessel":
-                            AzVerbraucher++;
-                            AzErzeuger++;
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etbmhk as $b)
-                                if ({{ $b->EnTech_id }} == locET[6] )
+                                if ({{ $b->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $b->Leistung }};
-                                GesEnergie += {{ $b->Energie }};
-                                GesVerbraucherLeistung += {{ $b->Leistung }};
-                                GesVerbraucherEnergie += {{ $b->Energie }};
-                                GesErzeugerLeistung += {{ $b->Leistung }};
-                                GesErzeugerEnergie += {{ $b->Energie }};
-                            
+                                    GesNennleistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkessels zur GesNennleistung addieren
+                                    GesEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkessels zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkessels zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkessels zur GesVerbraucherEnergie addieren
+                                    GesErzeugerLeistung += {{ $b->Leistung }}; //Leistung des Biomasseheizkessels zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $b->Energie }}; //Energie des Biomasseheizkessels zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Wärmespeicher
                         case "Wärmespeicher":
-                            AzSpeicher++;
-
+                            AzSpeicher++; //Az-Speicher um eins erhöhen
                             @foreach ($etwes as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
+                                if ({{ $w->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                //keine Speicherkap sondern TempUnten TempMitte TempOben
-                            
+                                    GesNennleistung += {{ $w->Leistung }}; //Leistung des Wärmespeichers zur GesNennleistung addieren
+                                    GesEnergie += {{ $w->Energie }}; //Energie des Wärmespeichers zur GesEnergie addieren
+                                    //keine Speicherkap sondern TempUnten TempMitte TempOben
                                 }
                             @endforeach
                             break;
-
+                
+                        //Bei Typ Solarthermieanlage
                         case "Solarthermieanlage":
-                            AzErzeuger++;
-
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etsth as $s)
-                                if ({{ $s->EnTech_id }} == locET[6] )
+                                if ({{ $s->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $s->Leistung }};
-                                GesEnergie += {{ $s->Energie }};
-                                GesErzeugerLeistung += {{ $s->Leistung }};
-                                GesErzeugerEnergie += {{ $s->Energie }};
-                            
-                            
+                                    GesNennleistung += {{ $s->Leistung }}; //Leistung der Solarthermieanlage zur GesNennleistung addieren
+                                    GesEnergie += {{ $s->Energie }}; //Energie der Solarthermieanlage zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $s->Leistung }}; //Leistung der Solarthermieanlage zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $s->Energie }}; //Energie der Solarthermieanlage zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
-
+               
+                        //Bei Typ Wärmepumpe
                         case "Wärmepumpe":
-                            AzErzeuger++;
-
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etwp as $w)
-                                if ({{ $w->EnTech_id }} == locET[6] )
+                                if ({{ $w->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $w->Leistung }};
-                                GesEnergie += {{ $w->Energie }};
-                                GesErzeugerLeistung += {{ $w->Leistung }};
-                                GesErzeugerEnergie += {{ $w->Energie }};
-                            
-                            
+                                    GesNennleistung += {{ $w->Leistung }}; //Leistung der Wärmepumpe zur GesNennleistung addieren
+                                    GesEnergie += {{ $w->Energie }}; //Energie der Wärmepumpe zur GesEnergie addieren
+                                    GesErzeugerLeistung += {{ $w->Leistung }}; //Leistung der Wärmepumpe zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $w->Energie }}; //Energie der Wärmepumpe zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Gebäude Wärmebedarfszähler
                         case "Gebäude Wärmebedarfszähler":
-                            AzVerbraucher++;
-                            //etgwbz hat keine Leistung nur Zählerstand
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            //etgwbz hat keine Leistung oder Energie sondern nur Zählerstand
                             break;
-
+                
+                        //Bei Typ Kompressionskältemaschine
                         case "Kompressionskältemaschine":
-                            AzVerbraucher++;
-                            AzErzeuger++;
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etkkm as $k)
-                                if ({{ $k->EnTech_id }} == locET[6] )
+                                if ({{ $k->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $k->Leistung }};
-                                GesEnergie += {{ $k->Energie }};
-                                GesVerbraucherLeistung += {{ $k->Leistung }};
-                                GesVerbraucherEnergie += {{ $k->Energie }};
-                                GesErzeugerLeistung += {{ $k->Leistung }};
-                                GesErzeugerEnergie += {{ $k->Energie }};
+                                    GesNennleistung += {{ $k->Leistung }}; //Leistung der Kompressionskältemaschine zur GesNennleistung addieren
+                                    GesEnergie += {{ $k->Energie }}; //Energie der Kompressionskältemaschine zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $k->Leistung }}; //Leistung der Kompressionskältemaschine zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $k->Energie }}; //Energie der Kompressionskältemaschine zur GesVerbraucherEnergie addieren
+                                    GesErzeugerLeistung += {{ $k->Leistung }}; //Leistung der Kompressionskältemaschine zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $k->Energie }}; //Energie der Kompressionskältemaschine zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
-
+               
+                        //Bei Typ Ab oder Adsorbtionskältemaschine
                         case "Ab oder Adsorbtionskältemaschine":
-                            AzVerbraucher++;
-                            AzErzeuger++;
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            AzErzeuger++; //Az-Erzeuger um eins erhöhen
                             @foreach ($etadabkm as $e)
-                                if ({{ $e->EnTech_id }} == locET[6] )
+                                if ({{ $e->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $e->Leistung }};
-                                GesEnergie += {{ $e->Energie }};
-                                GesVerbraucherLeistung += {{ $e->Leistung }};
-                                GesVerbraucherEnergie += {{ $e->Energie }};
-                                GesErzeugerLeistung += {{ $e->Leistung }};
-                                GesErzeugerEnergie += {{ $e->Energie }};
+                                    GesNennleistung += {{ $e->Leistung }}; //Leistung der Ab oder Adsorbtionskältemaschine zur GesNennleistung addieren
+                                    GesEnergie += {{ $e->Energie }}; //Energie der Ab oder Adsorbtionskältemaschine zur GesEnergie addieren
+                                    GesVerbraucherLeistung += {{ $e->Leistung }}; //Leistung der Ab oder Adsorbtionskältemaschine zur GesVerbraucherLeistung addieren
+                                    GesVerbraucherEnergie += {{ $e->Energie }}; //Energie der Ab oder Adsorbtionskältemaschine zur GesVerbraucherEnergie addieren
+                                    GesErzeugerLeistung += {{ $e->Leistung }}; //Leistung der Ab oder Adsorbtionskältemaschine zur GesErzeugerLeistung addieren
+                                    GesErzeugerEnergie += {{ $e->Energie }}; //Energie der Ab oder Adsorbtionskältemaschine zur GesErzeugerEnergie addieren
                                 }
                             @endforeach
                             break;
-
+                
+                        //Bei Typ Kältespeicher
                         case "Kältespeicher":
-                            AzSpeicher++;
-
+                            AzSpeicher++; //Az-Speicher um eins erhöhen
                             @foreach ($etks as $k)
-                                if ({{ $k->EnTech_id }} == locET[6] )
+                                if ({{ $k->EnTech_id }} == locET[6] ) //Überprüfung, damit die richtigen Echtzeidaten genommen werden
                                 {
-                                GesNennleistung += {{ $k->Leistung }};
-                                GesEnergie += {{ $k->Energie }};
-                                GesSpeicherKapazität += {{ $k->Speicherkap }};
-                            
+                                    GesNennleistung += {{ $k->Leistung }}; //Leistung des Kältespeichers zur GesNennleistung addieren
+                                    GesEnergie += {{ $k->Energie }}; //Energie des Kältespeichers zur GesEnergie addieren
+                                    GesSpeicherKapazität += {{ $k->Speicherkap }}; //Speicherkapazität des Kältespeichers zur GesSpeicherKapazität addieren
                                 }
                             @endforeach
                             break;
 
+                        //Bei Typ Gebäude Kältebedarfszähle
                         case "Gebäude Kältebedarfszähler":
-                            AzVerbraucher++;
-                            //etgkbz hat keine Leistung nur Zählerstand
-
+                            AzVerbraucher++; //Az-Verbraucher um eins erhöhen
+                            //etgkbz hat keine Leistung oder Energie sondern nur Zählerstand
                             break;
 
 
@@ -2075,66 +2068,64 @@
                 }
 
 
-            }) //foreach aus
+            }) //foreach für jede ET aus
 
-
+            //Berechnung des aktuellen Netzbezuges
             AktuellerNetzbezug = GesVerbraucherLeistung - GesErzeugerLeistung;
-            if (AktuellerNetzbezug < 0) {
+            if (AktuellerNetzbezug < 0) { //wenn mehr Leistung erzeugt wird als verbraucht wird ist der aktuelle Netzbezug 0
                 AktuellerNetzbezug = 0;
             }
 
 
-
-            locations.forEach(loc => {
-                if (loc[3] == id) {
-                    $("#BezeichnungAuge").val(loc[0]);
-                    $("#KatastralgemeindeAuge").val(loc[5]);
-                    $("#PostleitzahlAuge").val(loc[4]);
-                    $("#LaengengradAuge").val(loc[1]);
-                    $("#BreitengradAuge").val(loc[2]);
-                    $("#Az-ErzeugungstechnologienAuge").val(AzErzeuger);
-                    $("#Az-VerbraucherAuge").val(AzVerbraucher);
-                    $("#Az-SpeicherAuge").val(AzSpeicher);
-                    $("#Ges-NennleistungAuge").val(GesNennleistung);
-                    $("#Ges-EnergieAuge").val(GesEnergie);
-                    $("#Ges-VerbraucherLeistungAuge").val(GesVerbraucherLeistung);
-                    $("#Ges-VerbraucherEnergieAuge").val(GesVerbraucherEnergie);
-                    $("#Ges-ErzeugerLeistungAuge").val(GesErzeugerLeistung);
-                    $("#Ges-ErzeugerEnergieAuge").val(GesErzeugerEnergie);
-                    $("#Ges-SpeicherKapazitätAuge").val(GesSpeicherKapazität);
-                    $("#AktuellerNetzbezugAuge").val(AktuellerNetzbezug);
+            //Hier werden die Input Felder des PopUps mit Daten befüllt 
+            DB_Daten_ES.forEach(loc => {
+                if (loc[3] == id) { //Überprüfung ob ES ID's übereinstimmen
+                    $("#BezeichnungAuge").val(loc[0]); //Input Feld mit der ID BezeichnungESEdit bekommt den Inhalt loc[0] = Bezeichnung
+                    $("#KatastralgemeindeAuge").val(loc[5]); //Input Feld bekommt Inhalt
+                    $("#PostleitzahlAuge").val(loc[4]); //Input Feld bekommt Inhalt
+                    $("#LaengengradAuge").val(loc[1]); //Input Feld bekommt Inhalt
+                    $("#BreitengradAuge").val(loc[2]); //Input Feld bekommt Inhalt
+                    $("#Az-ErzeugungstechnologienAuge").val(AzErzeuger); //Input Feld bekommt Inhalt
+                    $("#Az-VerbraucherAuge").val(AzVerbraucher); //Input Feld bekommt Inhalt
+                    $("#Az-SpeicherAuge").val(AzSpeicher); //Input Feld bekommt Inhalt
+                    $("#Ges-NennleistungAuge").val(GesNennleistung); //Input Feld bekommt Inhalt
+                    $("#Ges-EnergieAuge").val(GesEnergie); //Input Feld bekommt Inhalt
+                    $("#Ges-VerbraucherLeistungAuge").val(GesVerbraucherLeistung); //Input Feld bekommt Inhalt 
+                    $("#Ges-VerbraucherEnergieAuge").val(GesVerbraucherEnergie); //Input Feld bekommt Inhalt
+                    $("#Ges-ErzeugerLeistungAuge").val(GesErzeugerLeistung); //Input Feld bekommt Inhalt
+                    $("#Ges-ErzeugerEnergieAuge").val(GesErzeugerEnergie); //Input Feld bekommt Inhalt
+                    $("#Ges-SpeicherKapazitätAuge").val(GesSpeicherKapazität); //Input Feld bekommt Inhalt
+                    $("#AktuellerNetzbezugAuge").val(AktuellerNetzbezug); //Input Feld bekommt Inhalt
                     $("#augeForm")
                 }
             })
-
         }
 
-
-        function augefunctionET(id) {
-            $('#PopUpETAuge').modal('show');
-            locationsET.forEach(loc => {
-                if (loc[6] == id) {
-                    $("#IDESAugeET").val(loc[3]);
-                    $("#IDETAugeET").val(loc[6]);
-                    $("#BezeichnungAugeET").val(loc[0]);
-                    $("#TypAugeET").val(loc[4]);
-                    $("#OrtAugeET").val(loc[5]);
-                    $("#LaengengradAugeET").val(loc[1]);
-                    $("#BreitengradAugeET").val(loc[2]);
+        //Auge-Funktion zum Anschauen von ET
+        function AugefunctionET(id) { //Wird die ID des ET mitgegeben
+            $('#PopUpETAuge').modal('show'); //Das PopUpETAuge zum Anschauen öffnen
+            DB_Daten_ET.forEach(loc => { //Hier wird jede einzelne ET nacheinander durchgegangen
+                if (loc[6] == id) { //Überprüfung ob die ID von ET gleich ist wie die mitgegebene
+                    $("#IDESAugeET").val(loc[3]); //Input Feld bekommt Inhalt
+                    $("#IDETAugeET").val(loc[6]); //Input Feld bekommt Inhalt
+                    $("#BezeichnungAugeET").val(loc[0]); //Input Feld bekommt Inhalt
+                    $("#TypAugeET").val(loc[4]); //Input Feld bekommt Inhalt
+                    $("#OrtAugeET").val(loc[5]); //Input Feld bekommt Inhalt
+                    $("#LaengengradAugeET").val(loc[1]); //Input Feld bekommt Inhalt
+                    $("#BreitengradAugeET").val(loc[2]); //Input Feld bekommt Inhalt
                     $("#augeFormET")
                 }
             })
         }
 
-
-
-        function ETerstellen(id) {
-            $('#PopUpETHinzufügen').modal('show');
-            locationsET.forEach(loc => {
-                if (loc[3] == id) {
-                    $("#IDES").val(loc[3]);
-                    $("#LaengengradEdit").val(loc[1]);
-                    $("#BreitengradEdit").val(loc[2]);
+        //Funktion zum Erstellen von ET
+        function ETerstellen(id) { //Wird die ID des ET mitgegeben
+            $('#PopUpETHinzufügen').modal('show'); //Das PopUpETHinzufügen zum Erstellen einer ET öffnen
+            DB_Daten_ET.forEach(loc => { //Hier wird jede einzelne ET nacheinander durchgegangen
+                if (loc[3] == id) { //Überprüfung ob die EnsysID die gleiche ist wie die mitgegebene ID
+                    $("#IDES").val(loc[3]); //Input Feld bekommt Inhalt
+                    $("#LaengengradEdit").val(loc[1]); //Input Feld bekommt Inhalt
+                    $("#BreitengradEdit").val(loc[2]); //Input Feld bekommt Inhalt
                     $("#ETerstellen").attr("action", "/store/" + id)
 
                 }
@@ -2142,37 +2133,12 @@
         }
 
 
-        function editfunctionET(id) {
-            $('#PopUpETEditieren').modal('show');
-            locationsET.forEach(locEt => {
-                if (locEt[6] == id) {
-                    $("#IdEditES").val(locEt[3]);
-                    $("#IdEditET").val(locEt[6]);
-                    $("#BezeichnungEditET").val(locEt[0]);
-                    $("#OrtEditET").val(locEt[5]);
-                    $("#TypEditET").val(locEt[4]);
-                    $("#LaengengradEditET").val(locEt[1]);
-                    $("#BreitengradEditET").val(locEt[2]);
-                    $("#editFormET").attr("action", "/editET/" + id)
-                }
-            })
-
-
-        }
-
-
-        function GrafanafunctionET() {
-            $('#PopUpETGrafana').modal('show');
-
-        }
-
-
-
-
+     
+        
         function setETMarker(map, id) {
 
-            for (let i = 0; i < locationsET.length; i++) {
-                const energietechnologie = locationsET[i];
+            for (let i = 0; i < DB_Daten_ET.length; i++) {
+                const energietechnologie = DB_Daten_ET[i];
 
                 let sysID = energietechnologie[3];
                 if (sysID != id) {
@@ -2308,21 +2274,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-        function setMarkers(map) {
+        function setESMarker(map) {
 
             // ES Marker
-            for (let i = 0; i < locations.length; i++) {
-                const beach = locations[i];
+            for (let i = 0; i < DB_Daten_ES.length; i++) {
+                const beach = DB_Daten_ES[i];
 
                 const marker = new google.maps.Marker({
                     position: {
@@ -2364,7 +2320,7 @@
                     breit = parseFloat(latLng.substring(1, latLng.indexOf(","))).toFixed(9);
                     lang = parseFloat(latLng.substring(latLng.indexOf(",") + 1, latLng.length)).toFixed(9);
                     let id;
-                    locations.forEach((loc) => {
+                    DB_Daten_ES.forEach((loc) => {
                         if (loc[1].toFixed(9) == breit && loc[2].toFixed(9) == lang) {
                             id = loc[3];
                         }
@@ -2519,7 +2475,7 @@
 
             }
 
-            locations.forEach(loc => {
+            DB_Daten_ES.forEach(loc => {
                 if (loc[3] == id) {
 
                     var searchLatLng = {
@@ -2532,7 +2488,7 @@
                     mapOptions.zoom = 12
                     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-                    setMarkers(map);
+                    setESMarker(map);
                     @auth //Gast darf keine ES erstellen
                         map.addListener("click", (e) => { //Ausgefürht wenn Map-Klick
                         if(!activeMarker){
@@ -2564,66 +2520,66 @@
     
     //$response = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/21');
     /*
-                                                                                                                    
-                                                                                                                    $createEnsysDashboard = Http::withHeaders([
-                                                                                                                    
-                                                                                                                        'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
-                                                                                                                        'Content-Type' => 'application/json',
-                                                                                                                        'Accept' => 'application/json',
-                                                                                                                        
-                                                                                                                    ])->post('192.168.1.5:3000/api/dashboards/db', [
-                                                                                                                        "dashboard" => [
-                                                                                                                             "id" => null, 
-                                                                                                                             "uid" => null, 
-                                                                                                                             "title" => 'tesffffft', 
-                                                                                                                             "tags" => [
-                                                                                                                                "templated" 
-                                                                                                                             ], 
-                                                                                                                             "timezone" => "browser", 
-                                                                                                                             "schemaVersion" => 16, 
-                                                                                                                             "version" => 0 
-                                                                                                                          ], 
-                                                                                                                       "folderId" => 0, 
-                                                                                                                       "overwrite" => false 
-                                                                                                                    ]);
-                                                                                                                    echo($createEnsysDashboard);
-                                                                                                                    */
-    
-    /*
-                                                                                                                    $id = 27;
-                                                                                                                    
-                                                                                                                    $strid = strval($id);
-                                                                                                                    
-                                                                                                                    
-                                                                                                                            $url = '192.168.1.5:3000/api/dashboards/uid/';
-                                                                                                                    
-                                                                                                                    
-                                                                                                                            $furl = $url . $strid;
-                                                                                                                    
-                                                                                                                    
-                                                                                                                            echo($furl);
-                                                                                                                            $deleteEnsysDashboard = Http::withHeaders([
-                                                                                                                    
+                                                                                                                            
+                                                                                                                            $createEnsysDashboard = Http::withHeaders([
+                                                                                                                            
                                                                                                                                 'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
                                                                                                                                 'Content-Type' => 'application/json',
                                                                                                                                 'Accept' => 'application/json',
-                                                                                                                    
-                                                                                                                            ])->delete($furl);
-                                                                                                                    
-                                                                                                                    
-                                                                                                                    
-                                                                                                                            echo ($deleteEnsysDashboard);
-                                                                                                                    
-                                                                                                                    
-                                                                                                                    
-                                                                                                                    
-                                                                                                                    
-                                                                                                                    
-                                                                                                                    //echo($response);
-                                                                                                                    
-                                                                                                                    
-                                                                                                                    
-                                                                                                                    */
+                                                                                                                                
+                                                                                                                            ])->post('192.168.1.5:3000/api/dashboards/db', [
+                                                                                                                                "dashboard" => [
+                                                                                                                                     "id" => null, 
+                                                                                                                                     "uid" => null, 
+                                                                                                                                     "title" => 'tesffffft', 
+                                                                                                                                     "tags" => [
+                                                                                                                                        "templated" 
+                                                                                                                                     ], 
+                                                                                                                                     "timezone" => "browser", 
+                                                                                                                                     "schemaVersion" => 16, 
+                                                                                                                                     "version" => 0 
+                                                                                                                                  ], 
+                                                                                                                               "folderId" => 0, 
+                                                                                                                               "overwrite" => false 
+                                                                                                                            ]);
+                                                                                                                            echo($createEnsysDashboard);
+                                                                                                                            */
+    
+    /*
+                                                                                                                            $id = 27;
+                                                                                                                            
+                                                                                                                            $strid = strval($id);
+                                                                                                                            
+                                                                                                                            
+                                                                                                                                    $url = '192.168.1.5:3000/api/dashboards/uid/';
+                                                                                                                            
+                                                                                                                            
+                                                                                                                                    $furl = $url . $strid;
+                                                                                                                            
+                                                                                                                            
+                                                                                                                                    echo($furl);
+                                                                                                                                    $deleteEnsysDashboard = Http::withHeaders([
+                                                                                                                            
+                                                                                                                                        'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+                                                                                                                                        'Content-Type' => 'application/json',
+                                                                                                                                        'Accept' => 'application/json',
+                                                                                                                            
+                                                                                                                                    ])->delete($furl);
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                                    echo ($deleteEnsysDashboard);
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            //echo($response);
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            */
     
     ?>
 

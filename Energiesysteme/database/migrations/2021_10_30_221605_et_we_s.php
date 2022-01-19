@@ -15,6 +15,7 @@ class EtWeS extends Migration
     {
         Schema::create('EtWes', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->bigInteger('EnTech_id')->unsigned();
             $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
             $table->double('Leistung')->default(0);
@@ -23,7 +24,6 @@ class EtWeS extends Migration
             $table->double('TempMitte')->nullable();
             $table->double('TempOben')->nullable();
             $table->dateTime('TimeMeasured')->nullable();
-            $table->timestamps();
         });
     }
 

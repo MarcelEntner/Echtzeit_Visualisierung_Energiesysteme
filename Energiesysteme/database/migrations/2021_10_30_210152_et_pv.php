@@ -15,6 +15,7 @@ class EtPv extends Migration
     {
         Schema::create('EtPv', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->bigInteger('EnTech_id')->unsigned();
             $table->double('Leistung')->default(0);
             $table->double('Energie')->default(0);
@@ -40,7 +41,6 @@ class EtPv extends Migration
             $table->double('FreuqenzL2')->nullable();
             $table->double('FreuqenzL3')->nullable();
             $table->dateTime('TimeMeasured')->nullable();
-            $table->timestamps();
             $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
         
         });

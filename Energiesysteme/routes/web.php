@@ -125,19 +125,23 @@ Route::get('/mapsLocation',function(Request $request)
 
 
 Route::get('/home', function () {
-	//if (Auth::user()->role == "Admin") {
-		return view('home');
-	//} else {
-//		return view('HomePage');
-	//}
+	if(empty(Auth::user()->role)){
+		return redirect('/');
+	}
+		else{
+			if (Auth::user()->role == "Admin") {
+				return view('home');
+			} else {
+				return view('HomePage');
+			}
+		}
+
+	
 });
 
 
-
-
-
 //Route::redirect('/login', '/');
-//Route::redirect('/register', '/');
+Route::redirect('/register', '/');
 
 
 

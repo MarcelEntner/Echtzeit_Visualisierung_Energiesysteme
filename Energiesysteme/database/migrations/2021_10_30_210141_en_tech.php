@@ -15,6 +15,7 @@ class EnTech extends Migration
     {
         Schema::create('EnTech', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->bigInteger('ensys_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -26,7 +27,6 @@ class EnTech extends Migration
             $table->double('Laengengrad');
             $table->double('Breitengrad');
             $table->binary('Bild')->nullable();
-            $table->timestamps();
         });
     }
 

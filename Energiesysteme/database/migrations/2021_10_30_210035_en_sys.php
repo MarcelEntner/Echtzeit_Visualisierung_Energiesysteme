@@ -15,6 +15,7 @@ class EnSys extends Migration
     {
         Schema::create('EnSys', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->bigInteger('user_id')->unsigned();
             $table->string('Bezeichnung');
             $table->string('Laengengrad')->nullable();;
@@ -31,7 +32,6 @@ class EnSys extends Migration
             $table->double('GesSpeicherKap')->nullable();;
             $table->double('AktuellerNetzbezug')->nullable();;
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
