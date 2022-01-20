@@ -7,13 +7,8 @@
     <!-- Google Maps API Informationen -->
     <!-- ca. Zeile 1300 : API Key einbinden -->
     <!-- ca. Zeile 1175 : Eigene designte Map einbinden -->
-    <!-- ca. Zeile : Map Key einbinden -->
 
-
-
-
-    <body oncontextmenu="return false">
-        <!-- Rechtsklick auf der Web-Seite nicht möglich -->
+    <body oncontextmenu="return false"> <!-- Rechtsklick auf der Web-Seite nicht möglich -->
 
 
         <div class="Energiesysteme container-fluid p-5">
@@ -2158,7 +2153,7 @@
                         text: energietechnologie[0], //Bezeichnung
                         color: 'black', //Farbe
                         fontSize: '15px', //Schriftgröße
-                        className: 'marker-position', //Definiert die Position 
+                        className: 'marker-position', //Definiert die Position CSS
                     },
                     animation: google.maps.Animation.DROP //Wenn die Marker geladen werden haben sie die Animation das sie von oben herunter fallen
                                                         //verschiedene Moduse: DROP, BOUNCE                        
@@ -2286,7 +2281,7 @@
                         color: 'red', //Farbe der Schrift
                         fontWeight: "bold", //Schriftart Fett
                         fontSize: '17px', //Schriftgröße
-                        className: 'marker-position', //Damit die Schrift unter dem Icon steht
+                        className: 'marker-position', //Damit die Schrift unter dem Icon steht CSS
                     },
                     animation: google.maps.Animation.DROP, //Wenn die Marker geladen werden haben sie die Animation das sie von oben herunter fallen
                                                             //verschiedene Moduse: DROP, BOUNCE

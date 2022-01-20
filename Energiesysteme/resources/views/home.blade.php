@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<body oncontextmenu="return false">  <!-- Rechtsklick auf der Web-Seite nicht möglich -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -20,4 +21,5 @@
             </div>
         </div>
     </div>
+</body>
 @endsection

@@ -19,13 +19,18 @@
 
     <title>@yield('title')</title> <!-- Platzhalter für den Title , Title steht in der Variable title-->
     <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
         body {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-
+        /* Footer */
         .footercontext {
             color: #21A500;
             padding-right: 10%;
@@ -35,16 +40,15 @@
             color: green;
         }
 
+        /* Div auf HomePage mit Text */
         .Beitrag {
-
-            /*border: 1px solid #21A500;
-            border-radius: 15px;*/
             padding: 1%;
             margin-top: 30px;
             margin-left: 5%;
             margin-right: 5%;
         }
 
+        /*  Text des Div Beitrag auf HomePage  */
         .text {
             text-align: center;
             padding-top: 20px;
@@ -52,45 +56,37 @@
             padding-right: 100px;
         }
 
+        /*  Bilder auf HomePage der Bilder-Show  */
         .picture {
             height: 300px;
             width: 100%;
             border-radius: 15px;
         }
 
+        /*  Bilder-Show  */
         #carouselExampleControls {
-            /* border: 1px solid black;
-            border-radius: 15px;*/
             margin: 30px;
         }
 
-
-
-
         .carousel-control-prev-icon {
-
             height: 75px;
             width: 75px;
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
-
         }
 
         .carousel-control-next-icon {
             height: 75px;
             width: 75px;
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
-
         }
 
-
+        /*  Header */
         a:hover {
             text-decoration: underline;
         }
 
         .Impressum {
             font-size: 15px;
-            /*border: 1px solid #21A500;
-            border-radius: 15px;*/
             width: 50%;
             margin: auto;
             text-align: center;
@@ -100,18 +96,14 @@
         .ImpressumUberschrieft {
             text-align: center;
             color: #21A500;
-
         }
 
         .Dsgvo {
             font-size: 15px;
-            /*border: 1px solid #21A500;
-            border-radius: 15px;*/
             width: 50%;
             margin: auto;
             text-align: center;
             padding-top: 3%;
-
         }
 
         .DsgvoUberschrieft {
@@ -119,100 +111,18 @@
             color: #21A500;
         }
 
+        /*  Best Logo auf der HomePage  */
         .logo {
             padding-top: 5%;
         }
 
-
-        .Karte {
-            /*border: 1px solid green;*/
-            height: 100%;
-            width: 60%;
-            margin-left: 1%;
-            border-radius: 50px;
-        }
-
-        .GoogleMaps {
-            border-radius: 50px;
-        }
-
+        /*  Google-Map auf der Energiesysteme Seite  */
         #map {
             min-height: 400px;
             height: 64vh;
-            /*border: 2px black solid;
-          height: 100%;
-          width: 60%;
-          margin-left:1%;
-          border-radius: 50px; */
         }
 
-
-        .esbutton {
-            height: 30px;
-            width: 40px;
-            background-color: white;
-            border: none;
-            background-repeat: no-repeat;
-
-        }
-
-        .table:hover a {
-            background-color: rgba(33, 165, 0, 0.0001);
-        }
-
-
-
-
-        .Searchbutton {
-            display: inline-block;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #212529;
-            text-align: center;
-            text-decoration: none;
-            vertical-align: middle;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-            background-color: transparent;
-            border: 1px solid transparent;
-            padding: 0.375rem 0.75rem;
-            font-size: 1rem;
-            border-radius: 0.25rem;
-            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-                border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-
-
-
-        .GrafanaBtn {
-            height: 50px;
-            width: 50px;
-            background: url(/images/statistik.png) no-repeat;
-            border: none;
-        }
-
-        .EditBtn {
-            height: 50px;
-            width: 50px;
-            background: url(/images/delete.png) no-repeat;
-            border: none;
-        }
-
-        .DeleteBtn {
-            height: 50px;
-            width: 50px;
-            background: url(/images/stift.png) no-repeat;
-            border: none;
-        }
-
-        .ListeHeader {
-            font-size: 20px;
-
-        }
-
-
+        /*  Drop-Down Liste Button bei der Galerie  */
         .dropbtngalerie {
             background-color: #04AA6D;
             color: white;
@@ -221,8 +131,6 @@
             border: none;
             width: 100%;
         }
-
-
 
         .dropdowngalerie {
             position: relative;
@@ -262,9 +170,8 @@
             background-color: #3e8e41;
         }
 
+        /*  Div wo die Bilder angezeigt werden  */
         .GalerieAnzeige {
-            /*border: 3px solid #21A500;
-            border-radius: 15px;*/
             padding: 1%;
             margin-top: 30px;
             margin-left: 5%;
@@ -272,27 +179,13 @@
             min-height: 64vh;
         }
 
+        /*  Rahmen/Card-Aufbau der Bildergalerie  */
         .card {
             text-align: center;
             float: left;
             margin-top: 2%;
             margin-left: 7%;
-            /*border: 1px solid #21A500;
-            border-radius: 5px;*/
         }
-
-
-
-        * {
-            padding: 0px;
-            margin: 0px;
-        }
-
-
-
-
-
-        /* Flip Chart */
 
         /* Überschreibung des Bootstrap CSS */
         .btn2 {
@@ -312,8 +205,9 @@
             padding: 0.375rem 0.75rem;
             font-size: 1rem;
             border-radius: 0.25rem;
-            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-                border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+            border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out;
 
             /* Selbst eingefügt */
             height: 30px;
@@ -340,8 +234,9 @@
             padding: 0.375rem 0.75rem;
             font-size: 1rem;
             border-radius: 0.25rem;
-            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-                border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+            border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out;
 
             /* Selbst eingefügt */
             margin-left: 27%;
@@ -352,23 +247,8 @@
             background-repeat: no-repeat;
         }
 
-        .form-control2 {
-            width: 27%;
-            padding: 0.375rem 0.75rem;
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #21A500;
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid #21A500;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            border-radius: 0.25rem;
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
 
+        /* Pop-Ups */
         .modal2 {
             position: fixed;
             z-index: 1055;
@@ -383,17 +263,15 @@
             position: relative;
             margin: auto;
             pointer-events: none;
-
         }
 
         .modal2-title {
             margin-bottom: 0;
             line-height: 1.5;
             margin-left: 170px;
-
         }
 
-
+        /* Input-Felder bei den Pop-Ups */
         .form-control3 {
             display: block;
             width: 250px;
@@ -414,12 +292,14 @@
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
+        /* Label/Text unter den Icons */
         .marker-position {
             bottom: -30px;
             left: 0;
             position: relative;
         }
 
+        /* Addresssuchfeld */
         #find {
             width: 20%;
             margin-bottom: 1%;
@@ -427,24 +307,23 @@
             text-align: center;
         }
 
+        /* Addresssuchfeld */
         #address {
             width: 50%;
             margin-bottom: 3%;
             height: 40px;
-
-
         }
 
+        /* Falls Scrollbalken hier sind, sind sie nicht zu sehen */
         body::-webkit-scrollbar {
-
             display: none;
         }
 
         .modal2::-webkit-scrollbar {
-
             display: none;
         }
 
+        /* Bildergalerie: Hover beim Bild */
         #card {
             transition: transform 0.7s;
         }
@@ -452,9 +331,6 @@
         #card:hover {
             transform: scale(1.1, 1.1);
         }
-
-
-        
 
     </style>
 </head>
@@ -516,18 +392,10 @@
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                               document.getElementById('logout-form').submit();">
+                                                                                               document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
-
-
-                                    <!-- TODO: Register Controller Ändern sodass neue User angelegt werden können -->
-                                    
-                                     
-                                  
-                               
-
+                             
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">
                                         @csrf
@@ -537,10 +405,10 @@
                                     $userID = Auth::user();
                                     ?>
                                     @if ($userID->role == 'Admin')
-                                    <a class="dropdown-item" href="{{ route('login') }}">{{ __('Register') }} </a>
+                                        <a class="dropdown-item" href="{{ route('login') }}">{{ __('Register') }} </a>
                                     @endif
 
-                                  
+
 
                                 </div>
 
