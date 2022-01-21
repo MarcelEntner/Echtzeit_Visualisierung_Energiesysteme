@@ -74,7 +74,28 @@
             </p>
         </div>
     </body>
+<?php
+ /*
+$uid = 15;
+
+$suid = strval($uid);
 
 
+
+    $json = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/'. $suid);
+
+
+    echo($json);
+
+
+    echo("</br>");
+    echo("</br>");
+    echo("</br>");
+
+
+    var_dump(json_decode($json));
+//var_dump(json_decode($json, true));
+*/
+    ?>
 @endsection
 @section('foooter')

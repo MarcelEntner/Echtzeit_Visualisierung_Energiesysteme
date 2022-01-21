@@ -776,6 +776,8 @@
                         <!-- Grafana Statistiken-->
                         <!--Grafana Statistik iframe
                                                 <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639334652637&to=1639507452638&panelId=2" width="800" height="1000" frameborder="0"></iframe> -->
+
+                                                <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&refresh=5s&from=1642763132000&to=1642784732001&panelId=2" width="450" height="200" frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -798,6 +800,9 @@
                     </div>
                     <div class="modal-body">
                         <!-- Grafana Statistiken-->
+
+
+                        <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&refresh=5s&from=1642763132000&to=1642784732001&panelId=2" width="450" height="200" frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -1294,9 +1299,9 @@
     <?php
     //Datenbank Daten
     $servername = 'localhost';
-    $username = 'root';
-    $password = '';
-    $dbname = 'laravel';
+    $username = 'dev';
+    $password = 'Oi24Spc5';
+    $dbname = 'EnsysAlpha';
     
     //Connection aufbauen
     $conn = new mysqli($servername, $username, $password, $dbname);

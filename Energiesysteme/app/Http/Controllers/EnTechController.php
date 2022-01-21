@@ -84,7 +84,7 @@ $suid = strval($request->IDES);
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
 
-        ])->post('192.168.1.5:3000/api/dashboards/db', [
+        ])->put('192.168.1.5:3000/api/dashboards/db', [
             "dashboard" => [
                 "id" => null,
                 "uid" => null,
@@ -100,6 +100,7 @@ $suid = strval($request->IDES);
             "overwrite" => false
         ]);
 
+       
         echo($updateDashboardToAddPanel);
        echo($getExistingDashboard);
 

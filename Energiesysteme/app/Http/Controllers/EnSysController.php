@@ -84,12 +84,16 @@ class EnSysController extends Controller
         ])->post('192.168.1.5:3000/api/dashboards/db', [
             "dashboard" => [
                 "id" => null,
+                "panels" => [
+                    
+                ],
                 "uid" => $uid,
                 "title" => $request->BezeichnungES,
                 //  "tags" => [
                 //   "templated" 
                 //   ], 
                 "timezone" => "browser",
+                
                 "schemaVersion" => 16,
                 "version" => 0
             ],
@@ -100,8 +104,8 @@ class EnSysController extends Controller
         echo ($createEnsysDashboard);
 
 
-        
-*/
+        */
+
         // Grafana Ende
 
 
@@ -181,7 +185,6 @@ class EnSysController extends Controller
 
 
         // Hier beginnt der Grafana Zugriff für Dashboard löschen
-/*
         
         $strid = strval($id);
 
@@ -203,7 +206,7 @@ class EnSysController extends Controller
 
         echo ($deleteEnsysDashboard);
 
-*/
+
         //Grafana Ende 
 
          
