@@ -77,7 +77,7 @@
                                                                 style="background-image: url('/images/buttons/delete.png')"></a>
                                                         </td>
 
-                                                        <td id="hov"> <a href="javascript:GrafanafunctionES()"
+                                                        <td id="hov"> <a href="javascript:GrafanafunctionES({{ $d->id }})"
                                                                 class="btn btn2"
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
@@ -90,7 +90,7 @@
                                                     @else
                                                         <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
 
-                                                        <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
+                                                        <td> <a href="javascript:GrafanafunctionES({{ $d->id }})" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
                                                         <td> <a href="javascript:AugefunctionES({{ $d->id }})"
@@ -107,7 +107,7 @@
                                                 <!-- Wenn man nicht angemeldet ist-->
 
                                                 @guest
-                                                    <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
+                                                    <td> <a href="javascript:GrafanafunctionES({{ $d->id }})" class="btn btn2"
                                                             style="background-image: url('/images/buttons/statistik.png')"></a>
                                                     </td>
                                                     <td> <a href="javascript:AugefunctionES({{ $d->id }})"
@@ -162,7 +162,7 @@
                                                                 style="background-image: url('/images/buttons/delete.png')"></a>
                                                         </td>
 
-                                                        <td> <a href="javascript:GrafanafunctionET()" class="btn btn2"
+                                                        <td> <a href="javascript:GrafanafunctionET({{ $d->id }})" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
 
@@ -173,7 +173,7 @@
 
                                                     @else
                                                         <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
-                                                        <td> <a href="javascript:GrafanafunctionET()\" class="btn btn2"
+                                                        <td> <a href="javascript:GrafanafunctionET({{ $d->id }})" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
 
@@ -188,7 +188,7 @@
 
                                                 <!-- Wenn man nicht angemeldet ist-->
                                                 @guest
-                                                    <td> <a href="javascript:GrafanafunctionET()" class="btn btn2"
+                                                    <td> <a href="javascript:GrafanafunctionET({{ $d->id }})" class="btn btn2"
                                                             style="background-image: url('/images/buttons/statistik.png')"></a>
                                                     </td>
 
@@ -242,7 +242,7 @@
                                                                 style="background-image: url('/images/buttons/delete.png')"></a>
                                                         </td>
 
-                                                        <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
+                                                        <td> <a href="javascript:GrafanafunctionES({{ $d->id }})" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
 
@@ -254,7 +254,7 @@
                                                     @else
                                                         <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
 
-                                                        <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
+                                                        <td> <a href="javascript:GrafanafunctionES({{ $d->id }})" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/statistik.png')"></a>
                                                         </td>
 
@@ -268,7 +268,7 @@
                                                 <!-- Wenn man nicht angemeldet ist-->
 
                                                 @guest
-                                                    <td> <a href="javascript:GrafanafunctionES()" class="btn btn2"
+                                                    <td> <a href="javascript:GrafanafunctionES({{ $d->id }})" class="btn btn2"
                                                             style="background-image: url('/images/buttons/statistik.png')"></a>
                                                     </td>
 
@@ -762,28 +762,147 @@
 
         <!-- ES Grafana -->
         <div class="modal modal2 fade" id="PopUpESGrafana" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Grafana-Statistiken Energiesysteme
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Grafana Statistiken-->
-                        <!--Grafana Statistik iframe
-                                                <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&from=1639334652637&to=1639507452638&panelId=2" width="800" height="1000" frameborder="0"></iframe> -->
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document" >
+            
+ <!---->      <div class="modal-content" style="background-color:white;">
+               
+ <!---->       <div class="modal-header" style="width: 700px; background-color:white; ">
 
-                                                <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&refresh=5s&from=1642763132000&to=1642784732001&panelId=2" width="450" height="200" frameborder="0"></iframe>
-                    </div>
+                    <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Statistiken - Energiesysteme</h5>
+               </div>
+                
+<!---->       <div class="modal-body"  style="left: -20vw; height:700px;   background-color:white; width: 1500px;">
+                    <!-- Statistiken Anfang
+                        <input type="text" id="StatistikIDES" name="StatistikIDES" value="" >
+                        <p>ID:</p>
+                    -->
+
+                    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+                    <script type="text/javascript">
+                    
+                    window.onload = function () {
+                       
+                        //Anzahl der ET 
+                        var chartAzET = new CanvasJS.Chart("AzET", {
+                            title:{
+                                text: "Anzahl der Energietechnologien"              
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie
+                                type: "pie",
+                                dataPoints: [
+                                    { label: "PV-Anlage",  y: 3  },
+                                    { label: "E-Ladestation", y: 2  },
+                                    { label: "Windkraftanlage", y: 1  },
+                                    { label: "Batteriespeicher",  y: 1  },
+                                    { label: "Wärmespeicher",  y: 1  }
+                                ]
+                            }
+                            ]
+                        });
+                        
+                        //
+                        var chart2 = new CanvasJS.Chart("chart2", {
+                            title:{
+                                text: "2"              
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie
+                                type: "pie",
+                                dataPoints: [
+                                    { label: "PV-Anlage",  y: 3  },
+                                    { label: "E-Ladestation", y: 2  },
+                                    { label: "Windkraftanlage", y: 1  },
+                                    { label: "Batteriespeicher",  y: 1  },
+                                    { label: "Wärmespeicher",  y: 1  }
+                                ]
+                            }
+                            ]
+                        });
+
+                        //
+                        var chart3 = new CanvasJS.Chart("chart3", {
+                            title:{
+                                text: "3"              
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie
+                                type: "pie",
+                                dataPoints: [
+                                    { label: "PV-Anlage",  y: 3  },
+                                    { label: "E-Ladestation", y: 2  },
+                                    { label: "Windkraftanlage", y: 1  },
+                                    { label: "Batteriespeicher",  y: 1  },
+                                    { label: "Wärmespeicher",  y: 1  }
+                                ]
+                            }
+                            ]
+                        });
+
+                        //
+                        var chart4 = new CanvasJS.Chart("chart4", {
+                            title:{
+                                text: "4"              
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie
+                                type: "pie",
+                                dataPoints: [
+                                    { label: "PV-Anlage",  y: 3  },
+                                    { label: "E-Ladestation", y: 2  },
+                                    { label: "Windkraftanlage", y: 1  },
+                                    { label: "Batteriespeicher",  y: 1  },
+                                    { label: "Wärmespeicher",  y: 1  }
+                                ]
+                            }
+                            ]
+                        });
+                        
+
+
+                        chartAzET.render();
+                        chart2.render();
+                        chart3.render();
+                        chart4.render();
+                    }
+
+                    </script>
+                    
+                 
+                    <div id="AzET" style="height: 300px; width: 100%; float:left;padding-top:2%;"></div>
+                    <div id="chart2" style="height: 300px; width: 100%; padding-top:2%;"></div>
+                    <div id="chart3" style="height: 300px; width: 100%; float:left; padding-top:3%;"></div>
+                    <div id="chart4" style="height: 300px; width: 100%; padding-top:3%; padding-left:5%;"></div>
+                 
+                    
+                    <!-- Statistiken Ende-->
                 </div>
-            </div>
-        </div>
-        <!-- ES Grafana Ende -->
-
+             </div>
+         </div>
+         </div>
+         <!-- ES Grafana Ende -->
 
 
         <!-- ET Grafana -->
@@ -799,10 +918,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- Grafana Statistiken-->
-
-
-                        <iframe src="http://192.168.1.5:3000/d-solo/zlzP3wmgk/raumklimav2?orgId=1&refresh=5s&from=1642763132000&to=1642784732001&panelId=2" width="450" height="200" frameborder="0"></iframe>
+                        <!-- Statistiken Anfang-->
+                        <!-- Statistiken Ende-->
                     </div>
                 </div>
             </div>
@@ -1299,9 +1416,9 @@
     <?php
     //Datenbank Daten
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     //Connection aufbauen
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -1738,8 +1855,10 @@
         }
 
         //Statistik-Funktion von ES
-        function GrafanafunctionES() {
+        function GrafanafunctionES(id) {
             $('#PopUpESGrafana').modal('show'); //Das PopUpESGrafana zum Anschauen der ES Statistiken öffnen
+           // document.getElementById("StatistikIDES").value = id;
+   
         }
 
         //Statistik-Funktion von ET

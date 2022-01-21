@@ -84,6 +84,10 @@
         a:hover {
             text-decoration: underline;
         }
+         /*  Für die Icons in der Liste */
+        .table:hover a {
+            background-color: rgba(33, 165, 0, 0.0001);
+        }
 
         .Impressum {
             font-size: 15px;
