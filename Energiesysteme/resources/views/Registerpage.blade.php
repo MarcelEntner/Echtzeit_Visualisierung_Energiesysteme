@@ -6,7 +6,7 @@
 
 <body oncontextmenu="return false">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="padding-left:15%;">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Register') }}</div>
@@ -18,7 +18,7 @@
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
+                                
                                 <div class="col-md-6">
                                     <input id="name" type="text" class=""
                                         name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -91,8 +91,8 @@
     <br>
     <br>
     
-
-    <table class="table table-borderless table-hover" id="tableUsers">
+    <div style="width:40%; margin-left:30%; border: 2px green solid; margin-top: -50px; margin-bottom: -50px; padding: 5px; border-radius: 10px; ">
+    <table class="table table-borderless table-hover" id="tableUsers" style="height:300px; width:100%;">
         <thead>
             <tr>
                 <th scope="col"></th>
@@ -101,7 +101,6 @@
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
                 <th scope="col"></th>
-          
             </tr>
         </thead>
 
@@ -116,32 +115,30 @@
                         if($u->role == '' ){ 
                                 echo 'Mitarbeiter';
                         } else{ 
-                            echo  $u->role;  
-                        } ?> </td>
-
-                   
-                    
-                     
-
-                            <td> <a href="/deleteuser/{{ $u->id }}" class="btn btn2"
-                                    style="background-image: url('/images/buttons/delete.png')"></a>
-                            </td>
+                            echo '<b>'.  $u->role .'</b>';  
+                        } 
+                        ?> 
+                    </td>
+                    <td> <a href="/deleteuser/{{ $u->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a> </td>
                 </tr>
 
             @endforeach
         </tbody>
     </table>
+    </div>
+
     <script>
         $('#tableUsers').DataTable({
                     "columnDefs": [{
                             "orderable": false,
-                            "targets": 4 //Auf 4 kommt man weil man beim zählen bei 0 beginnt ( 0 = ID, 1 = Bezeichnung, 2 = Katastralgemeinde, 3 = Postleitzahl 4 = Mülleimer )
+                            "targets": 5
                         }, //Um die Sortierfunktion bei den Icon  zu deaktivieren
+                        
                         
                     ],
                     lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
     
-                    lengthMenu: [5], //Wieviele ES/ET pro Seite angezeigt werden 
+                    lengthMenu: [5], //Wieviele User pro Seite angezeigt werden
                     language: {
                         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json" //Sprache des DataTables z.B. der Buttenbeschriftung
                     }

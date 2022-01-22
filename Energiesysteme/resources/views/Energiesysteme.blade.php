@@ -1201,7 +1201,7 @@
 
         <!-- DataTable Definitionen -->
         <script>
-            //DataTanble ES Ausgangslage
+            //DataTable ES Ausgangslage
             $('#table').DataTable({
                 "columnDefs": [{
                         "orderable": false,
@@ -1225,7 +1225,7 @@
 
             });
 
-            //DataTanble ET
+            //DataTable ET
             $('#tableET').DataTable({
                 "columnDefs": [{
                         "orderable": false,
@@ -1250,7 +1250,7 @@
                 }
             });
 
-            //DataTanble ES, bei aktualisierung des ES DataTables
+            //DataTable ES, bei aktualisierung des ES DataTables
             $('#tableES').DataTable({
                 "columnDefs": [{
                         "orderable": false,
