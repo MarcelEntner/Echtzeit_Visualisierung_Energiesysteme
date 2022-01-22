@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\CreateUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\EnSysController;
 use App\Http\Controllers\EnTechController;
@@ -25,6 +27,7 @@ use App\Http\Controllers\EtWpController;
 use App\Http\Controllers\EtWsController;
 use App\Http\Controllers\FrontEndController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,6 +123,26 @@ Route::get('/mapsLocation',function(Request $request)
 });
 
 
+Route::post('createnewuser',[CreateUser::class, 'createUser'])->name('createnewuser');
+Route::get('/deleteuser/{id}',[CreateUser::class, 'destroy'])->name('destroyuser');
+
+
+
+Route::get('/Registerpage', function () {
+
+			if(empty(Auth::user()->role)){
+				return view('HomePage');
+			}
+				else{
+					if (Auth::user()->role == "Admin") {
+						$users = DB::table('users')->get();
+						return view('Registerpage', compact('users'));
+					}
+				}
+		})->name('Registerpage');
+
+	
+
 
 
 
@@ -135,13 +158,12 @@ Route::get('/home', function () {
 				return view('HomePage');
 			}
 		}
-
-	
 });
 
 
 //Route::redirect('/login', '/');
 Route::redirect('/register', '/');
+
 
 
 

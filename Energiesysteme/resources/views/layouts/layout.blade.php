@@ -336,6 +336,13 @@
             transform: scale(1.1, 1.1);
         }
 
+        #tableUsers{
+
+            width: 70%;
+            height: 500px;
+            margin: auto;
+        }
+
     </style>
 </head>
 
@@ -409,7 +416,7 @@
                                     $userID = Auth::user();
                                     ?>
                                     @if ($userID->role == 'Admin')
-                                        <a class="dropdown-item" href="{{ route('login') }}">{{ __('Register') }} </a>
+                                        <a class="dropdown-item" href="{{ route('Registerpage') }}">Register </a>
                                     @endif
 
 
