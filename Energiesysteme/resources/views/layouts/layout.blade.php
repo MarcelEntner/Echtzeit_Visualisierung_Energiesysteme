@@ -15,6 +15,7 @@
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
 
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
     <title>@yield('title')</title> <!-- Platzhalter für den Title , Title steht in der Variable title-->

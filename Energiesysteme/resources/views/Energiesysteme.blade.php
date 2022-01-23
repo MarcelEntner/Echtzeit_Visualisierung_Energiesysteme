@@ -771,134 +771,188 @@
 
                     <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Statistiken - Energiesysteme</h5>
                </div>
+              
+
+
+               <div class="modal-body" style="left: -20vw; height:700px;   background-color:white; width: 1800px;" >
+                <!-- Statistiken Anfang
+                    <input type="text" id="StatistikIDES" name="StatistikIDES" value="" >
+                    <p>ID:</p>
+                -->
+
                 
-<!---->       <div class="modal-body"  style="left: -20vw; height:700px;   background-color:white; width: 1500px;">
-                    <!-- Statistiken Anfang
-                        <input type="text" id="StatistikIDES" name="StatistikIDES" value="" >
-                        <p>ID:</p>
-                    -->
 
-                    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-                    <script type="text/javascript">
+                <script type="text/javascript">
+                
+                window.onload = function () {
+                   
+                    //Anzahl der ET 
+                    var chartAzET1 = new CanvasJS.Chart("AzET1", {
+                        title:{
+                            text: "Anzahl der Energietechnologien"              
+                        },
+                        theme: "light", //light1 dark1 light2 dark2
+                        backgroundColor: '#c9c9c9',
+                        width: 700,
+                        height: 300,
+                        data: [              
+                        {
+                            // type, line, pie
+                            type: "pie",
+                            dataPoints: [
+                                { label: "PV-Anlage",  y: 3  },
+                                { label: "E-Ladestation", y: 2  },
+                                { label: "Windkraftanlage", y: 1  },
+                                { label: "Batteriespeicher",  y: 1  },
+                                { label: "Wärmespeicher",  y: 1  }
+                            ]
+                        }
+                        ]
+                    });
                     
-                    window.onload = function () {
-                       
-                        //Anzahl der ET 
-                        var chartAzET = new CanvasJS.Chart("AzET", {
-                            title:{
-                                text: "Anzahl der Energietechnologien"              
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie
-                                type: "pie",
-                                dataPoints: [
-                                    { label: "PV-Anlage",  y: 3  },
-                                    { label: "E-Ladestation", y: 2  },
-                                    { label: "Windkraftanlage", y: 1  },
-                                    { label: "Batteriespeicher",  y: 1  },
-                                    { label: "Wärmespeicher",  y: 1  }
-                                ]
-                            }
+                    //
+                    var chart21 = new CanvasJS.Chart("chart21", {
+                        title:{
+                            text: "2"              
+                        },
+                        theme: "light", //light1 dark1 light2 dark2
+                        backgroundColor: '#c9c9c9',
+                        width: 700,
+                        height: 300,
+                        data: [              
+                        {
+                            // type, line, pie
+                            type: "pie",
+                            dataPoints: [
+                                { label: "PV-Anlage",  y: 3  },
+                                { label: "E-Ladestation", y: 2  },
+                                { label: "Windkraftanlage", y: 1  },
+                                { label: "Batteriespeicher",  y: 1  },
+                                { label: "Wärmespeicher",  y: 1  }
                             ]
-                        });
-                        
-                        //
-                        var chart2 = new CanvasJS.Chart("chart2", {
-                            title:{
-                                text: "2"              
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie
-                                type: "pie",
-                                dataPoints: [
-                                    { label: "PV-Anlage",  y: 3  },
-                                    { label: "E-Ladestation", y: 2  },
-                                    { label: "Windkraftanlage", y: 1  },
-                                    { label: "Batteriespeicher",  y: 1  },
-                                    { label: "Wärmespeicher",  y: 1  }
-                                ]
-                            }
+                        }
+                        ]
+                    });
+
+                    //
+                    var chart31 = new CanvasJS.Chart("chart31", {
+                        title:{
+                            text: "3"              
+                        },
+                        theme: "light", //light1 dark1 light2 dark2
+                        backgroundColor: '#c9c9c9',
+                        width: 700,
+                        height: 300,
+                        data: [              
+                        {
+                            // type, line, pie
+                            type: "pie",
+                            dataPoints: [
+                                { label: "PV-Anlage",  y: 3  },
+                                { label: "E-Ladestation", y: 2  },
+                                { label: "Windkraftanlage", y: 1  },
+                                { label: "Batteriespeicher",  y: 1  },
+                                { label: "Wärmespeicher",  y: 1  }
                             ]
-                        });
+                        }
+                        ]
+                    });
 
-                        //
-                        var chart3 = new CanvasJS.Chart("chart3", {
-                            title:{
-                                text: "3"              
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie
-                                type: "pie",
-                                dataPoints: [
-                                    { label: "PV-Anlage",  y: 3  },
-                                    { label: "E-Ladestation", y: 2  },
-                                    { label: "Windkraftanlage", y: 1  },
-                                    { label: "Batteriespeicher",  y: 1  },
-                                    { label: "Wärmespeicher",  y: 1  }
-                                ]
-                            }
+                    //
+                    var chart41 = new CanvasJS.Chart("chart41", {
+                        title:{
+                            text: "4"              
+                        },
+                        theme: "light", //light1 dark1 light2 dark2
+                        backgroundColor: '#c9c9c9',
+                        width: 700,
+                        height: 300,
+                        data: [              
+                        {
+                            // type, line, pie
+                            type: "pie",
+                            dataPoints: [
+                                { label: "PV-Anlage",  y: 3  },
+                                { label: "E-Ladestation", y: 2  },
+                                { label: "Windkraftanlage", y: 1  },
+                                { label: "Batteriespeicher",  y: 1  },
+                                { label: "Wärmespeicher",  y: 1  }
                             ]
-                        });
-
-                        //
-                        var chart4 = new CanvasJS.Chart("chart4", {
-                            title:{
-                                text: "4"              
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie
-                                type: "pie",
-                                dataPoints: [
-                                    { label: "PV-Anlage",  y: 3  },
-                                    { label: "E-Ladestation", y: 2  },
-                                    { label: "Windkraftanlage", y: 1  },
-                                    { label: "Batteriespeicher",  y: 1  },
-                                    { label: "Wärmespeicher",  y: 1  }
-                                ]
-                            }
-                            ]
-                        });
-                        
-
-
-                        chartAzET.render();
-                        chart2.render();
-                        chart3.render();
-                        chart4.render();
-                    }
-
-                    </script>
+                        }
+                        ]
+                    });
                     
-                 
-                    <div id="AzET" style="height: 300px; width: 100%; float:left;padding-top:2%;"></div>
-                    <div id="chart2" style="height: 300px; width: 100%; padding-top:2%;"></div>
-                    <div id="chart3" style="height: 300px; width: 100%; float:left; padding-top:3%;"></div>
-                    <div id="chart4" style="height: 300px; width: 100%; padding-top:3%; padding-left:5%;"></div>
-                 
-                    
-                    <!-- Statistiken Ende-->
-                </div>
+
+
+                    chartAzET1.render();
+                    chart21.render();
+                    chart31.render();
+                    chart41.render();
+                }
+
+                </script>
+                <!--
+             <div class="container">
+                 <div class="row">
+style="height: 300px; width: 100%; float:left;padding-top:2%;"
+                <div class="col-md" id="AzET" ></div>
+             style="height: 300px; width: 100%; padding-top:2%; padding-right: 50px;"
+                <div class="col-md" id="chart2" ></div>
+           
+
+
+         
+                 style="height: 300px; width: 100%; float:left; padding-top:3%;"
+                <div class="col-md"id="chart3" ></div>
+style="height: 300px; width: 100%; padding-top:3%; padding-left:5%;"
+              <div class="col-md" id="chart4" ></div>
+            </div>
+            </div>
+        -->
+
+
+
+        <div class="container" >
+            <div class="row">
+              <div class="col-xl " id="AzET1"></div>
+
+              <div class="col-xl offset-sm-1" id="chart21"></div>
+              <div class="w-100"></div>
+
+              <br>
+              <br>
+              <br>
+              <br>
+
+
+              <br>
+              <br>
+              <br>
+              <br>
+
+
+              <br>
+              <br>
+
+              <br>
+              <br>
+
+              <br>
+
+              
+
+
+              <div class="col-xl" id="chart31"></div>
+              <div class="col-xl offset-sm-1" id="chart41"></div>
+            </div>
+          </div>
+
+
+                <!-- Statistiken Ende-->
+            </div>
+
+
+
              </div>
          </div>
          </div>
@@ -1416,9 +1470,9 @@
     <?php
     //Datenbank Daten
     $servername = 'localhost';
-    $username = 'root';
-    $password = '';
-    $dbname = 'laravel';
+    $username = 'dev';
+    $password = 'Oi24Spc5';
+    $dbname = 'EnsysAlpha';
     
     //Connection aufbauen
     $conn = new mysqli($servername, $username, $password, $dbname);
