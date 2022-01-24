@@ -776,18 +776,15 @@
 
 
                 <div class="modal-body" style=" height:700px;   background-color:white; width: 1600px;" >
-                    <!-- Statistiken Anfang
-                        <input type="text" id="StatistikIDES" name="StatistikIDES" value="" >
-                        <p>ID:</p>
-                    -->
-
-                    
 
                     <script type="text/javascript">
                     
                   
-                    window.onload = function () {
-                    
+                    function GrafanafunctionES(id)  {
+                        $('#PopUpESGrafana').modal('show');
+
+                        console.log(id);
+
                         //Anzahl der ET 
                         var chartAzET1 = new CanvasJS.Chart("AzET1", {
                             title:{
@@ -933,21 +930,6 @@
 
                     </script>
 
-                    <!--
-                <div class="container">
-                    <div class="row">
-            style="height: 300px; width: 100%; float:left;padding-top:2%;"
-                    <div class="col-md" id="AzET" ></div>
-                style="height: 300px; width: 100%; padding-top:2%; padding-right: 50px;"
-                    <div class="col-md" id="chart2" ></div>
-            
-                    style="height: 300px; width: 100%; float:left; padding-top:3%;"
-                    <div class="col-md"id="chart3" ></div>
-                style="height: 300px; width: 100%; padding-top:3%; padding-left:5%;"
-                <div class="col-md" id="chart4" ></div>
-                </div>
-                </div>
-            -->
 
             <div  id="AzET1" style="padding-left: 50px; padding-top:30px;" ></div>
             <div  id="chart21" style="padding-left: 800px;"></div>
@@ -989,8 +971,8 @@
 
                             <script type="text/javascript">
                     
-                           //window.onload = function () {
-
+                           function GrafanafunctionET(id) {
+                            $('#PopUpETGrafana').modal('show');
                             //Zeitlicher Verlauf-Leistung (Produktion) 24h
                             var chartZeitVerlaufLeistung = new CanvasJS.Chart("chartZeitVerlaufLeistung", {
                             title:{
@@ -1132,7 +1114,7 @@
                             chartAktuelleEnergie.render();
                             chartAktuelleLeistung.render();
                             chartMinMaxLeistung.render();
-                            //}
+                            }
                             </script>
 
 
@@ -2079,16 +2061,16 @@
         }
 
         //Statistik-Funktion von ES
-        function GrafanafunctionES(id) {
-            $('#PopUpESGrafana').modal('show'); //Das PopUpESGrafana zum Anschauen der ES Statistiken öffnen
+        //function GrafanafunctionES(id) {
+           // $('#PopUpESGrafana').modal('show'); //Das PopUpESGrafana zum Anschauen der ES Statistiken öffnen
            // document.getElementById("StatistikIDES").value = id;
    
-        }
+       // }
 
         //Statistik-Funktion von ET
-        function GrafanafunctionET() {
-            $('#PopUpETGrafana').modal('show'); //Das PopUpETGrafana zum Anschauen der ET Statistiken öffnen
-        }
+       // function GrafanafunctionET(id) {
+           // $('#PopUpETGrafana').modal('show'); //Das PopUpETGrafana zum Anschauen der ET Statistiken öffnen
+       // }
 
         //Auge-Funktion zum Anschauen von ES
         function AugefunctionES(id) { //Wird die ID des ES mitgegeben
