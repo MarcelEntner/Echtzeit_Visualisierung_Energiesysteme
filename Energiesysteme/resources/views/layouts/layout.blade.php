@@ -129,7 +129,7 @@
 
         /*  Drop-Down Liste Button bei der Galerie  */
         .dropbtngalerie {
-            background-color: #04AA6D;
+            background-color: #21A500;
             color: white;
             padding: 16px;
             font-size: 16px;

@@ -1,17 +1,17 @@
 @extends('layouts.layout')
-@section('title', 'Galerie')
+@section('title', 'Registerpage')
 @section('head')
 @endsection
 @section('content')
 
 <body oncontextmenu="return false">
-    <div class="container">
+    <div style="height:350px;width:1000px;margin-left:500px;margin-top:0px;">
         <div class="row justify-content-center" style="padding-left:15%;">
-            <div class="col-md-8">
+            <div class="col-md-13">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header">{{ __('Neuen Benutzer anlegen') }}</div>
 
-                    <div class="card-body">
+                    <div class="card-body" style="width:500px; border: 1px #21A500 solid;" >
                         <form action="{{ route('createnewuser') }}" method="POST" id="usererstellen"
                         enctype="multipart/form-data">
                             @csrf
@@ -73,12 +73,27 @@
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="password-confirm"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Rolle') }}</label>
+
+                                <div class="col-md-6">
+                                
+                                <label for="css">Mitarbeiter</label>
+                                <input type="radio" id="Mitarbeiter" name="roleueberpruefung" value="Mitarbeiter" checked><br>
+                                <label for="html">Admin</label>
+                                <input type="radio" id="Admin" name="roleueberpruefung" value="Admin">
+                                </div>
+                            </div>
+                            <br>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary" id="usererstellen">
-                                        {{ __('Register') }} 
+                                    <button type="submit" class="btn btn-primary" id="usererstellen" style="background-color:#21A500;"> 
+                                        {{ __('Neuen Benutzer erstellen') }} 
                                     </button>
+
+                                    
                                 </div>
                             </div>
                         </form>
@@ -91,8 +106,8 @@
     <br>
     <br>
     
-    <div style="width:40%; margin-left:30%; border: 2px green solid; margin-top: -50px; margin-bottom: -50px; padding: 5px; border-radius: 10px; ">
-    <table class="table table-borderless table-hover" id="tableUsers" style="height:300px; width:100%;">
+    <div style="width:40%; margin-left:30%; border: 1px #21A500 solid; margin-top: -50px; margin-bottom: -50px; padding: 5px; border-radius: 10px; ">
+    <table class="table table-borderless table-hover" id="tableUsers" style="height:270px; width:100%;">
         <thead>
             <tr>
                 <th scope="col"></th>

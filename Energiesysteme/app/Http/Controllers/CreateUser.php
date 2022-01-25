@@ -22,8 +22,9 @@ class CreateUser extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'role' => $request['roleueberpruefung'],
         ]);
-        return redirect('/Registerpage');
+        return $request;
 
     }
 

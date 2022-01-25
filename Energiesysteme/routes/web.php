@@ -146,7 +146,7 @@ Route::get('/Registerpage', function () {
 
 
 
-
+/* Noch nicht sicher ob wir das brachen
 Route::get('/home', function () {
 	if(empty(Auth::user()->role)){
 		return redirect('/');
@@ -159,11 +159,12 @@ Route::get('/home', function () {
 			}
 		}
 });
-
+*/
 
 //Route::redirect('/login', '/');
 Route::redirect('/register', '/');
-
+//Route::redirect('/home', '/');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 
 
