@@ -41,7 +41,7 @@ class EnTechController extends Controller
     public function store(Request $request)
     {
 
-/*
+        /*
 
         
 */
@@ -65,166 +65,145 @@ class EnTechController extends Controller
             $enTech->Bild = $image;
         }
 
-
-
- define("APIKEY", "eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ=='");
-
-//Grafana Anfang
 /*
-//get Dashboard with coresbonding ID
-$suid = strval($request->IDES);
 
- $getExistingDashboard = Http::withToken(APIKEY)->get('192.168.1.5:3000/api/dashboards/'. $suid);
+        define("APIKEY", "eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ=='");
 
- 
-        $uid = strval($request->IDES+1);
-       
-        $updateDashboardToAddPanel = Http::withHeaders([
-            'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
+        //Grafana Anfang
 
-        ])->put('192.168.1.5:3000/api/dashboards/db', [
-            "dashboard" => [
-                "id" => null,
-                "uid" => null,
-                "title" => $request->Bezeichnung,
-                  "tags" => [
-                 "templated" 
-                   ], 
-                "timezone" => "browser",
-                "schemaVersion" => 16,
-                "version" => 0
-            ],
-            "folderId" => 0,
-            "overwrite" => false
-        ]);
+        //get Dashboard with coresbonding ID
+        $suid = strval($request->IDES);
+
+        $getExistingDashboard = Http::withToken(APIKEY)->get('192.168.1.5:3000/api/dashboards/uid/' . $suid);
+
+
+        $uid = strval($request->IDES + 1);
 
        
-        echo($updateDashboardToAddPanel);
-       echo($getExistingDashboard);
+      //  echo ($updateDashboardToAddPanel);
+        echo ($getExistingDashboard);
 
-// Um dashboard zu updaten -> vorhandenes Dashboard laden -> gesammten inhalt speichern 
-//-> vorhandenes dashboard updaten / überschreiben -> gespeichertes einfügen --> update mit post methode posten --> PROFIT
-        
+        // Um dashboard zu updaten -> vorhandenes Dashboard laden -> gesammten inhalt speichern 
+        //-> vorhandenes dashboard updaten / überschreiben -> gespeichertes einfügen --> update mit post methode posten --> PROFIT
+
         //Grafana ende
-*/
+        */
+
         $enTech->save();
         $data = DB::table('EnTech')->get();
 
 
 
         //Tabellen-Eintrag im richtigen Typ für Echtzeitdaten
-        switch ($request->Typ){
-                case "PV-Anlage":
-                    $Controller = new EtPvController();
-                    $Controller->store($enTech->id);
+        switch ($request->Typ) {
+            case "PV-Anlage":
+                $Controller = new EtPvController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Stromnetzbezug":
-                    $Controller = new EtSnBController();
-                    $Controller->store($enTech->id);    
+            case "Stromnetzbezug":
+                $Controller = new EtSnBController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Batteriespeicher":
-                    $Controller = new EtBsController();
-                    $Controller->store($enTech->id);    
+            case "Batteriespeicher":
+                $Controller = new EtBsController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Wasserstoff Elektrolyse":
-                    $Controller = new EtWeController();
-                    $Controller->store($enTech->id);     
+            case "Wasserstoff Elektrolyse":
+                $Controller = new EtWeController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Wasserstoff Brennstoffzelle":
-                    $Controller = new EtBsZController();
-                    $Controller->store($enTech->id);    
+            case "Wasserstoff Brennstoffzelle":
+                $Controller = new EtBsZController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Wasserstoff Speicher":
-                    $Controller = new EtWsController();
-                    $Controller->store($enTech->id);    
+            case "Wasserstoff Speicher":
+                $Controller = new EtWsController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Windkraftanlage":
-                    $Controller = new EtWkAController();
-                    $Controller->store($enTech->id);    
+            case "Windkraftanlage":
+                $Controller = new EtWkAController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "E-Ladestation":
-                    $Controller = new EtElController();
-                    $Controller->store($enTech->id);    
+            case "E-Ladestation":
+                $Controller = new EtElController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Hausanschlusszähler":
-                    $Controller = new EtHaZController();
-                    $Controller->store($enTech->id);    
+            case "Hausanschlusszähler":
+                $Controller = new EtHaZController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Wärmenetzbezug":
-                    $Controller = new EtWnBController();
-                    $Controller->store($enTech->id);    
+            case "Wärmenetzbezug":
+                $Controller = new EtWnBController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Biomasseheizkraftwerk":
-                    $Controller = new EtBhKwController();
-                    $Controller->store($enTech->id);    
+            case "Biomasseheizkraftwerk":
+                $Controller = new EtBhKwController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Biomasseheizwerk":
-                    $Controller = new EtBmHwController();
-                    $Controller->store($enTech->id);    
+            case "Biomasseheizwerk":
+                $Controller = new EtBmHwController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Biomasseheizkessel":
-                    $Controller = new EtBmHkController();
-                    $Controller->store($enTech->id);    
+            case "Biomasseheizkessel":
+                $Controller = new EtBmHkController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Wärmespeicher":
-                    $Controller = new EtWesController();
-                    $Controller->store($enTech->id);    
+            case "Wärmespeicher":
+                $Controller = new EtWesController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Solarthermieanlage":
-                    $Controller = new EtSthController();
-                    $Controller->store($enTech->id); 
+            case "Solarthermieanlage":
+                $Controller = new EtSthController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Wärmepumpe":
-                    $Controller = new EtWpController();
-                    $Controller->store($enTech->id); 
+            case "Wärmepumpe":
+                $Controller = new EtWpController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Gebäude Wärmebedarfszähler":
-                    $Controller = new EtGWbZController();
-                    $Controller->store($enTech->id); 
+            case "Gebäude Wärmebedarfszähler":
+                $Controller = new EtGWbZController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Kompressionskältemaschine":
-                    $Controller = new EtKkMController();
-                    $Controller->store($enTech->id); 
+            case "Kompressionskältemaschine":
+                $Controller = new EtKkMController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Ab oder Adsorbtionskältemaschine":
-                    $Controller = new EtAdAbKmController();
-                    $Controller->store($enTech->id); 
+            case "Ab oder Adsorbtionskältemaschine":
+                $Controller = new EtAdAbKmController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Kältespeicher":
-                    $Controller = new EtKsController();
-                    $Controller->store($enTech->id); 
+            case "Kältespeicher":
+                $Controller = new EtKsController();
+                $Controller->store($enTech->id);
                 break;
 
-                case "Gebäude Kältebedarfszähler":
-                    $Controller = new EtGKbZController();
-                    $Controller->store($enTech->id); 
-                 break;
-
+            case "Gebäude Kältebedarfszähler":
+                $Controller = new EtGKbZController();
+                $Controller->store($enTech->id);
+                break;
         }
 
 
- 
+
 
 
 
@@ -273,11 +252,11 @@ $suid = strval($request->IDES);
         $EnTech = EnTech::find($id);
 
         $EnTech = EnTech::where('id', $id)->update([
-                'Laengengrad' => $request->input('LaengengradEditET'),
-                'Breitengrad' => $request->input('BreitengradEditET'),
-                'Bezeichnung' => $request->input('BezeichnungEditET'),
-                'Ort' => $request->input('OrtEditET'),
-            ]);
+            'Laengengrad' => $request->input('LaengengradEditET'),
+            'Breitengrad' => $request->input('BreitengradEditET'),
+            'Bezeichnung' => $request->input('BezeichnungEditET'),
+            'Ort' => $request->input('OrtEditET'),
+        ]);
 
 
         return redirect('/energiesysteme');

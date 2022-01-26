@@ -65,16 +65,12 @@ class EnSysController extends Controller
 
 
         // Hier beginnt der Grafana Zugriff für Dashboard Erstellen
-/*
-        
 
+        
+/*
         $uid = strval($enSys->id);
 
         $createEnsysDashboard = Http::withHeaders([
-
-
-
-
 
 
             'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
@@ -82,30 +78,148 @@ class EnSysController extends Controller
             'Accept' => 'application/json',
 
         ])->post('192.168.1.5:3000/api/dashboards/db', [
+
+
             "dashboard" => [
-                "id" => null,
-                "panels" => [
-                    
+
+
+                'annotations' => [
+                    'list' => [
+                        [
+                            'builtIn' => 1,
+                            'datasource' => '-- Grafana --',
+                            'enable' => true,
+                            'hide' => true,
+                            'iconColor' => 'rgba(0, 211, 255, 1)',
+                            'name' => 'Annotations & Alerts',
+                            'target' => [
+                                'limit' => 100,
+                                'matchAny' => false,
+                                'tags' => [],
+                                'type' => 'dashboard',
+                            ],
+                            'type' => 'dashboard',
+                        ],
+                    ],
                 ],
-                "uid" => $uid,
-                "title" => $request->BezeichnungES,
-                //  "tags" => [
-                //   "templated" 
-                //   ], 
-                "timezone" => "browser",
-                
-                "schemaVersion" => 16,
-                "version" => 0
-            ],
-            "folderId" => 0,
-            "overwrite" => false
+                'editable' => true,
+                'fiscalYearStartMonth' => 0,
+                'graphTooltip' => 0,
+                'id' => null,
+                'links' => [],
+                'liveNow' => false,
+                'panels' => [
+                    [
+                        'datasource' => [
+                            'type' => 'datasource',
+                            'uid' => 'grafana',
+                        ],
+                        'fieldConfig' => [
+                            'defaults' => [
+                                'color' => [
+                                    'mode' => 'palette-classic',
+                                ],
+                                'custom' => [
+                                    'axisLabel' => '',
+                                    'axisPlacement' => 'auto',
+                                    'barAlignment' => 0,
+                                    'drawStyle' => 'line',
+                                    'fillOpacity' => 0,
+                                    'gradientMode' => 'none',
+                                    'hideFrom' => [
+                                        'legend' => false,
+                                        'tooltip' => false,
+                                        'viz' => false,
+                                    ],
+                                    'lineInterpolation' => 'linear',
+                                    'lineWidth' => 1,
+                                    'pointSize' => 5,
+                                    'scaleDistribution' => [
+                                        'type' => 'linear',
+                                    ],
+                                    'showPoints' => 'auto',
+                                    'spanNulls' => false,
+                                    'stacking' => [
+                                        'group' => 'A',
+                                        'mode' => 'none',
+                                    ],
+                                    'thresholdsStyle' => [
+                                        'mode' => 'off',
+                                    ],
+                                ],
+                                'mappings' => [],
+                                'thresholds' => [
+                                    'mode' => 'absolute',
+                                    'steps' => [
+                                        [
+                                            'color' => 'green',
+                                            'value' => null,
+                                        ],
+                                        [
+                                            'color' => 'red',
+                                            'value' => 80,
+                                        ],
+                                    ],
+                                ],
+                            ],
+                            'overrides' => [],
+                        ],
+                        'gridPos' => [
+                            'h' => 9,
+                            'w' => 12,
+                            'x' => 0,
+                            'y' => 0,
+                        ],
+                        'id' => 2,
+                        'options' => [
+                            'legend' => [
+                                'calcs' => [],
+                                'displayMode' => 'list',
+                                'placement' => 'bottom',
+                            ],
+                            'tooltip' => [
+                                'mode' => 'single',
+                            ],
+                        ],
+                        'targets' => [
+                            [
+                                'datasource' => [
+                                    'type' => 'datasource',
+                                    'uid' => 'grafana',
+                                ],
+                                'queryType' => 'randomWalk',
+                                'refId' => 'A',
+                            ],
+                        ],
+                        'title' => 'paneltest',
+                        'type' => 'timeseries',
+                    ],
+                ],
+                'refresh' => '',
+                'schemaVersion' => 16,
+                'style' => 'dark',
+                'tags' => [],
+                'templating' => [
+                    'list' => [],
+                ],
+                'time' => [
+                    'from' => 'now-6h',
+                    'to' => 'now',
+                ],
+                'timepicker' => [],
+                'timezone' => 'browser',
+                'title' => $request->BezeichnungES,
+                'uid' => $uid,
+                'version' => 0,
+               
+        
+                ]
         ]);
 
         echo ($createEnsysDashboard);
+*/
 
-
-        */
-
+        
         // Grafana Ende
 
 
