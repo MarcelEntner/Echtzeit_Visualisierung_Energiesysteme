@@ -141,65 +141,7 @@
                                     </thead>
 
                                     <tbody>
-                                        <!-- Überprüfen ob ET zu ES gehört -->
-                                        @foreach ($dataEnTech as $d)
-                                            
-                                            <tr class="enTechTR-{{ $d->ensys_id }}" style='display:none;'>
-
-                                                <td>{{ $d->ensys_id }}</td>
-                                                <td>{{ $d->id }}</td>
-                                                <td>{{ $d->Bezeichnung }}</td>
-                                                <td>{{ $d->Typ }}</td>
-                                                <td>{{ $d->Ort }}</td>
-
-                                                @auth
-
-                                                    <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
-                                                    <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten || Admin (Rolle Admin) darf alle -->
-                                                    @if (Auth::user()->id == $d->user_id || Auth::user()->role == 'Admin')
-
-                                                        <td> <a href="/deleteET/{{ $d->id }}" class="btn btn2"
-                                                                style="background-image: url('/images/buttons/delete.png')"></a>
-                                                        </td>
-
-                                                        <td> <a href="javascript:GrafanafunctionET({{ $d->id }})" class="btn btn2"
-                                                                style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                        </td>
-
-                                                        <td> <a href="javascript:EditfunctionET({{ $d->id }})"
-                                                                class="btn btn2"
-                                                                style="background-image: url('/images/buttons/stift.png')"></a>
-                                                        </td>
-
-                                                    @else
-                                                        <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
-                                                        <td> <a href="javascript:GrafanafunctionET({{ $d->id }})" class="btn btn2"
-                                                                style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                        </td>
-
-                                                        <td> <a href="javascript:AugefunctionET({{ $d->id }})"
-                                                                class="btn btn2"
-                                                                style="background-image: url('/images/buttons/auge.png')"></a>
-                                                        </td>
-
-                                                        <td> </td>
-                                                    @endif
-                                                @endauth
-
-                                                <!-- Wenn man nicht angemeldet ist-->
-                                                @guest
-                                                    <td> <a href="javascript:GrafanafunctionET({{ $d->id }})" class="btn btn2"
-                                                            style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                    </td>
-
-                                                    <td> <a href="javascript:AugefunctionET({{ $d->id }})"
-                                                            class="btn btn2"
-                                                            style="background-image: url('/images/buttons/auge.png')"></a></td>
-                                                    <td></td>
-                                                @endguest
-
-                                            </tr>
-                                        @endforeach
+                                        
                                     </tbody>
 
                                 </table>
@@ -226,12 +168,9 @@
                                         @foreach ($data as $d)
                                             <tr>
                                                 <td onclick="moveToMarker({{ $d->id }})">{{ $d->id }}</td>
-                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Bezeichnung }}
-                                                </td>
-                                                <td onclick="moveToMarker({{ $d->id }})">
-                                                    {{ $d->Katastralgemeinden }}</td>
-                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Postleitzahl }}
-                                                </td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Bezeichnung }} </td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Katastralgemeinden }}</td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Postleitzahl }}</td>
 
                                                 @auth
                                                     <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
@@ -1432,7 +1371,7 @@
             });
 
             //DataTable ET
-            $('#tableET').DataTable({
+            var tableET = $('#tableET').DataTable({
                 "columnDefs": [{
                         "orderable": false,
                         "targets": 5
@@ -1447,10 +1386,7 @@
                     } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
                 ],
                 lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
-
-                lengthMenu: [
-                    100
-                ], //Wieviele ES/ET pro Seite angezeigt werden, kann nicht 5 sein, da hier sonst nach allen ET in der DB sortiert und wir mit CSS nur die richtigen einblenden und dann stimmt die Anzeige nicht
+                lengthMenu: [5], //Wieviele ES/ET pro Seite angezeigt werden 
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json" //Sprache des DataTables z.B. der Buttenbeschriftung
                 }
@@ -1622,9 +1558,9 @@
     <?php
     //Datenbank Daten
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     //Connection aufbauen
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -2702,14 +2638,47 @@
             tableESDiv = Table mit ES (gleich wie der Table tableDiv)
             */
 
-            //Problem mit max. 5 zu Lösen  Überprüfen ob ET zum ES gehört wenn ja in neues Array speicher und das neue Array ausgeben
-
             document.getElementById("tableDiv").style.display = "none"; //tableDiv wird ausgeblendet
             document.getElementById("tableETDiv").style.display = "block"; //tableETDiv wird angezeigt
             document.getElementById("tableESDiv").style.display = "none"; //tableESDiv wird ausgeblendet
 
-            $("#tableETDiv tbody tr").css("display", "none"); //Alle ET werden nicht angezeigt
-            $(".enTechTR-" + id).css("display", "table-row"); //Hier werden die ET die zu dem ausgewählten ES gehören eingeblendet
+        
+            
+            var ETvonES = [];
+            let dataForTable = []
+
+            @foreach ($dataEnTech as $d)
+
+            dataForTable = [{{ $d->ensys_id }}, {{ $d->id }}, "{{ $d->Bezeichnung }}", "{{ $d->Typ }}", "{{  $d->Ort}}"];
+            
+                    @auth
+                        @if (Auth::user()->id == $d->user_id || Auth::user()->role == 'Admin')
+                    
+                        dataForTable.push("<a href=\"/deleteET/{{ $d->id }}\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/delete.png')\"></a>");
+                        dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
+                        dataForTable.push("<a href=\"javascript:EditfunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/stift.png')\"></a>");
+                
+                        @else
+                            dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
+                            dataForTable.push("<a href=\"javascript:AugefunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/auge.png')\"></a>");
+                            dataForTable.push("");
+                        @endif
+                    @endauth
+            
+                    @guest
+                    dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
+                        dataForTable.push("<a href=\"javascript:AugefunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/auge.png')\"></a>");
+                        dataForTable.push("");
+                    @endguest
+            
+                ETvonES.push(dataForTable);
+            @endforeach
+
+            ETvonESFiltered = ETvonES.filter((dt) => {
+                return dt[0] == id;
+            })
+
+            tableET.clear().rows.add(ETvonESFiltered).draw();
 
             document.getElementById("Listuberschrieft").innerHTML = "Energietechnologien"; //Die Überschrift wird auf Energietechnologien geändert 
             document.getElementById("Listimage").src = "/images/icons/etgrün.png"; //Das Image/Icon wird auf das Energietechnologien-Icon geändert
