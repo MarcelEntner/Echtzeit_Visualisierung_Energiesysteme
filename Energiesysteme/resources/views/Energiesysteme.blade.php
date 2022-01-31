@@ -28,23 +28,21 @@
                                         id="Listimage"></h3>
                             </div>
                         </div>
-                        <br>
-
+                        
 
                         <!-- DataTable  Th und Td gleiche Anzahl, ansonsten funktioniert er nicht-->
 
                         <!-- Gesamte DataTable Div -->
-                        <div style="height: 41vh; width:100%;">
+                        <div style="height: 48vh; width:100%; margin-top:-7%;">
 
                             <!-- DataTable ES Ausgangspunkt-->
-                            <div id="tableDiv">
+                            <div id="tableDiv"> 
                                 <table class="table table-borderless table-hover" id="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
                                             <th scope="col">Bezeichnung</th>
                                             <th scope="col">Katastralgemeinde</th>
-                                            <th scope="col">Postleitzahl</th>
+                                            <th scope="col">PLZ</th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
@@ -54,8 +52,6 @@
                                         @foreach ($data as $d)
 
                                             <tr>
-
-                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->id }}</td>
                                                 <td onclick="moveToMarker({{ $d->id }})">{{ $d->Bezeichnung }}</td>
                                                 <td onclick="moveToMarker({{ $d->id }})">
                                                     {{ $d->Katastralgemeinden }}</td>
@@ -129,10 +125,8 @@
                                 <table class="table table-borderless table-hover" id="tableET">
                                     <thead>
                                         <tr>
-                                            <th scope="col">IDES</th>
-                                            <th scope="col">IDET</th>
                                             <th scope="col">Bezeichnung</th>
-                                            <th scope="col">Typ</th>
+                                            <th scope="col">Typ </th>
                                             <th scope="col">Ort</th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
@@ -154,10 +148,9 @@
                                 <table class="table table-borderless table-hover" id="tableES">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
                                             <th scope="col">Bezeichnung</th>
                                             <th scope="col">Katastralgemeinde</th>
-                                            <th scope="col">Postleitzahl</th>
+                                            <th scope="col">PLZ</th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
@@ -167,7 +160,6 @@
                                     <tbody>
                                         @foreach ($data as $d)
                                             <tr>
-                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->id }}</td>
                                                 <td onclick="moveToMarker({{ $d->id }})">{{ $d->Bezeichnung }} </td>
                                                 <td onclick="moveToMarker({{ $d->id }})">{{ $d->Katastralgemeinden }}</td>
                                                 <td onclick="moveToMarker({{ $d->id }})">{{ $d->Postleitzahl }}</td>
@@ -655,8 +647,8 @@
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/typ.png" style="margin-right:10px;">
                                     Typ</span>
-                                <input type="text" class="form-control3" id="TypEditET" name="BezeichnungEditET" value=""
-                                    aria-label="BezeichnungEditET" aria-describedby="basic-addon1" readonly
+                                <input type="text" class="form-control3" id="TypEditET" name="TypEditET" value=""
+                                    aria-label="TypEditET" aria-describedby="basic-addon1" readonly
                                     style="background-color:#e9ecef;">
                             </div>
                             <!--Input Feld Ort Änderbar -->
@@ -1348,17 +1340,18 @@
         <script>
             //DataTable ES Ausgangslage
             $('#table').DataTable({
-                "columnDefs": [{
+                "columnDefs": [
+                    {
                         "orderable": false,
-                        "targets": 4 //Auf 4 kommt man weil man beim zählen bei 0 beginnt ( 0 = ID, 1 = Bezeichnung, 2 = Katastralgemeinde, 3 = Postleitzahl 4 = Mülleimer )
+                        "targets": 3 //Auf 4 kommt man weil man beim zählen bei 0 beginnt ( 0 = ID, 1 = Bezeichnung, 2 = Katastralgemeinde, 3 = Postleitzahl 4 = Mülleimer )
                     }, //Um die Sortierfunktion bei den Icon  zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 5
+                        "targets": 4
                     }, //Um die Sortierfunktion bei den Icon Statistiken zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 6
+                        "targets": 5
                     } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
                 ],
                 lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
@@ -1371,18 +1364,19 @@
             });
 
             //DataTable ET
-            var tableET = $('#tableET').DataTable({
-                "columnDefs": [{
+            var tableET = $('#tableET').DataTable({  
+                "columnDefs": [
+                    {
                         "orderable": false,
-                        "targets": 5
+                        "targets": 3
                     }, //Um die Sortierfunktion bei den Icon Mülleimer zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 6
+                        "targets": 4
                     }, //Um die Sortierfunktion bei den Icon Statistiken zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 7
+                        "targets": 5
                     } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
                 ],
                 lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
@@ -1396,15 +1390,15 @@
             $('#tableES').DataTable({
                 "columnDefs": [{
                         "orderable": false,
-                        "targets": 4
+                        "targets": 3
                     }, //Um die Sortierfunktion bei den Icon Mülleimer zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 5
+                        "targets": 4
                     }, //Um die Sortierfunktion bei den Icon Statistiken zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 6
+                        "targets": 5
                     } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
                 ],
                 lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
@@ -2677,6 +2671,9 @@
             ETvonESFiltered = ETvonES.filter((dt) => {
                 return dt[0] == id;
             })
+
+            ETvonESFiltered.every(dt => dt.shift());
+            ETvonESFiltered.every(dt => dt.shift());
 
             tableET.clear().rows.add(ETvonESFiltered).draw();
 

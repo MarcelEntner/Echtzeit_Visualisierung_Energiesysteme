@@ -89,6 +89,7 @@
         .table:hover a {
             background-color: rgba(33, 165, 0, 0.0001);
         }
+     
 
         .Impressum {
             font-size: 15px;
@@ -343,6 +344,9 @@
             height: 500px;
             margin: auto;
         }
+
+
+
 
     </style>
 </head>

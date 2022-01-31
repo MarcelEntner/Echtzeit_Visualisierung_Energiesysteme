@@ -299,7 +299,7 @@ class EnSysController extends Controller
 
 
         // Hier beginnt der Grafana Zugriff für Dashboard löschen
-        
+        /*
         $strid = strval($id);
 
 
@@ -319,7 +319,7 @@ class EnSysController extends Controller
 
 
         echo ($deleteEnsysDashboard);
-
+*/
 
         //Grafana Ende 
 
