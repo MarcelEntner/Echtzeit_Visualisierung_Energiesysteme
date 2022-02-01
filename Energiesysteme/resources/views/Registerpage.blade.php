@@ -5,13 +5,12 @@
 @section('content')
 
 <body oncontextmenu="return false">
-    <div style="height:350px;width:1000px;margin-left:500px;margin-top:0px;">
-        <div class="row justify-content-center" style="padding-left:15%;">
+        <div class="row justify-content-center" style="margin-left:30%; margin-top:-3%;">
             <div class="col-md-13">
                 <div class="card">
                     <div class="card-header">{{ __('Neuen Benutzer anlegen') }}</div>
 
-                    <div class="card-body" style="width:500px; border: 1px #21A500 solid;" >
+                    <div class="card-body" style="width:500px;" >
                         <form action="{{ route('createnewuser') }}" method="POST" id="usererstellen"
                         enctype="multipart/form-data">
                             @csrf
@@ -33,7 +32,7 @@
 
                             <div class="form-group row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Adresse') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class=""
@@ -49,7 +48,7 @@
 
                             <div class="form-group row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Passwort') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -64,15 +63,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class=""
-                                        name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                            </div>
+                         
                             <div class="form-group row">
                                 <label for="password-confirm"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Rolle') }}</label>
@@ -89,7 +80,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary" id="usererstellen" style="background-color:#21A500;"> 
+                                    <button type="submit" class="btn btn-success" id="usererstellen"> 
                                         {{ __('Neuen Benutzer erstellen') }} 
                                     </button>
 
@@ -101,12 +92,11 @@
                 </div>
             </div>
         </div>
-    </div>
     <br>
     <br>
     <br>
     
-    <div style="width:40%; margin-left:30%; border: 1px #21A500 solid; margin-top: -50px; margin-bottom: -50px; padding: 5px; border-radius: 10px; ">
+    <div style="width:40%; border: 1px lightgrey solid; margin-left:32%;margin-top:-60px; padding: 5px; border-radius: 10px; ">
     <table class="table table-borderless table-hover" id="tableUsers" style="height:270px; width:100%;">
         <thead>
             <tr>

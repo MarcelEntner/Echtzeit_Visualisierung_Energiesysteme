@@ -316,7 +316,7 @@
                                 @csrf
                                 <!--Input Felder -->
                                 <!--Input Feld ID-ES Readonly (value wird automatisch gesetzt) -->
-                                <div class="input-group mb-3" style="margin-top:2%">
+                                <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                         ID-ES</span>
@@ -1379,6 +1379,7 @@
                         "targets": 5
                     } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
                 ],
+                fixedColumns: true,
                 lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
                 lengthMenu: [5], //Wieviele ES/ET pro Seite angezeigt werden 
                 language: {
