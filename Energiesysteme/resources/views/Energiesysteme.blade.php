@@ -1377,7 +1377,10 @@
                     {
                         "orderable": false,
                         "targets": 5
-                    } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
+                    }, //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
+                    {"width": "50%" , "targets": 2}
+                
+                
                 ],
                 fixedColumns: true,
                 lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden

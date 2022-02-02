@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
+
 
 class CreateUsersTable extends Migration
 {
@@ -23,6 +25,13 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->string('role')->nullable();
         });
+
+        User::create([
+            'name' => 'Administrator',
+            'email' => 'Admin@123.com',
+            'password' => Hash::make('Admin123'),
+            'role' => 'Admin',
+        ]);
     }
 
     /**
@@ -32,6 +41,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-       // Schema::dropIfExists('users');
+       Schema::dropIfExists('users');
     }
 }

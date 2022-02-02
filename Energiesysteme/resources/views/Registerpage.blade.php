@@ -97,7 +97,7 @@
     <br>
     
     <div style="width:40%; border: 1px lightgrey solid; margin-left:32%;margin-top:-60px; padding: 5px; border-radius: 10px; ">
-    <table class="table table-borderless table-hover" id="tableUsers" style="height:270px; width:100%;">
+    <table class="table table-borderless table-hover" id="tableUsers" style="height:70px; width:100%;">
         <thead>
             <tr>
                 <th scope="col"></th>
@@ -117,14 +117,23 @@
                     <td >{{ $u->name }} </td>
                     <td>{{ $u->email }}</td>
                     <td><?php 
-                        if($u->role == '' ){ 
-                                echo 'Mitarbeiter';
+                        if($u->role == 'Mitarbeiter' ){ 
+                                echo $u->role;
                         } else{ 
                             echo '<b>'.  $u->role .'</b>';  
                         } 
                         ?> 
                     </td>
-                    <td> <a href="/deleteuser/{{ $u->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a> </td>
+
+                    <?php
+                    $users = DB::table('users')->where('role', '=' , 'Admin')->count();                  
+                    ?>
+
+                    @if($users > 1)
+                        <td> <a href="/deleteuser/{{ $u->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a> </td>
+                    @else 
+                        <td> </td>
+                    @endif
                 </tr>
 
             @endforeach
