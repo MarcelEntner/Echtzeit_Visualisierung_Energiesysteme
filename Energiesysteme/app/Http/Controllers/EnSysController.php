@@ -67,7 +67,7 @@ class EnSysController extends Controller
         // Hier beginnt der Grafana Zugriff für Dashboard Erstellen
 
         
-
+/*
         $uid = strval($enSys->id);
 
         $createEnsysDashboard = Http::withHeaders([
@@ -108,15 +108,93 @@ class EnSysController extends Controller
                 'id' => null,
                 'links' => [],
                 'liveNow' => false,
-
-               
-               /*Hier beginnt der Panels Teil*/  'panels' => [
-
-
-  
-                    
-                /*Hier endet der Panels teil*/ ],
-
+                'panels' => [
+                    [
+                        'datasource' => [
+                            'type' => 'datasource',
+                            'uid' => 'grafana',
+                        ],
+                        'fieldConfig' => [
+                            'defaults' => [
+                                'color' => [
+                                    'mode' => 'palette-classic',
+                                ],
+                                'custom' => [
+                                    'axisLabel' => '',
+                                    'axisPlacement' => 'auto',
+                                    'barAlignment' => 0,
+                                    'drawStyle' => 'line',
+                                    'fillOpacity' => 0,
+                                    'gradientMode' => 'none',
+                                    'hideFrom' => [
+                                        'legend' => false,
+                                        'tooltip' => false,
+                                        'viz' => false,
+                                    ],
+                                    'lineInterpolation' => 'linear',
+                                    'lineWidth' => 1,
+                                    'pointSize' => 5,
+                                    'scaleDistribution' => [
+                                        'type' => 'linear',
+                                    ],
+                                    'showPoints' => 'auto',
+                                    'spanNulls' => false,
+                                    'stacking' => [
+                                        'group' => 'A',
+                                        'mode' => 'none',
+                                    ],
+                                    'thresholdsStyle' => [
+                                        'mode' => 'off',
+                                    ],
+                                ],
+                                'mappings' => [],
+                                'thresholds' => [
+                                    'mode' => 'absolute',
+                                    'steps' => [
+                                        [
+                                            'color' => 'green',
+                                            'value' => null,
+                                        ],
+                                        [
+                                            'color' => 'red',
+                                            'value' => 80,
+                                        ],
+                                    ],
+                                ],
+                            ],
+                            'overrides' => [],
+                        ],
+                        'gridPos' => [
+                            'h' => 9,
+                            'w' => 12,
+                            'x' => 0,
+                            'y' => 0,
+                        ],
+                        'id' => 2,
+                        'options' => [
+                            'legend' => [
+                                'calcs' => [],
+                                'displayMode' => 'list',
+                                'placement' => 'bottom',
+                            ],
+                            'tooltip' => [
+                                'mode' => 'single',
+                            ],
+                        ],
+                        'targets' => [
+                            [
+                                'datasource' => [
+                                    'type' => 'datasource',
+                                    'uid' => 'grafana',
+                                ],
+                                'queryType' => 'randomWalk',
+                                'refId' => 'A',
+                            ],
+                        ],
+                        'title' => 'paneltest',
+                        'type' => 'timeseries',
+                    ],
+                ],
                 'refresh' => '',
                 'schemaVersion' => 16,
                 'style' => 'dark',
@@ -139,7 +217,7 @@ class EnSysController extends Controller
         ]);
 
         echo ($createEnsysDashboard);
-
+*/
 
         
         // Grafana Ende
@@ -221,7 +299,7 @@ class EnSysController extends Controller
 
 
         // Hier beginnt der Grafana Zugriff für Dashboard löschen
-        
+        /*
         $strid = strval($id);
 
 
@@ -241,7 +319,7 @@ class EnSysController extends Controller
 
 
         echo ($deleteEnsysDashboard);
-
+*/
 
         //Grafana Ende 
 

@@ -65,140 +65,32 @@ class EnTechController extends Controller
             $enTech->Bild = $image;
         }
 
-        $enTech->save();
-        $data = DB::table('EnTech')->get();
-//Grafana Panel Erstellen Anfang
-
 /*
 
-$uid = strval($request->IDES);
+        define("APIKEY", "eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ=='");
 
-$panelId = $enTech->id;
+        //Grafana Anfang
 
-$getCurrentDashboard = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/'. $uid);
+        //get Dashboard with coresbonding ID
+        $suid = strval($request->IDES);
 
-$oldDashboard = json_decode($getCurrentDashboard,true);
-
-
-
-
-    $paneldef =      [
-
-        'datasource' => [
-            'type' => 'datasource',
-            'uid' => 'grafana',
-        ],
-        'fieldConfig' => [
-            'defaults' => [
-                'color' => [
-                    'mode' => 'palette-classic',
-                ],
-                'custom' => [
-                    'axisLabel' => '',
-                    'axisPlacement' => 'auto',
-                    'barAlignment' => 0,
-                    'drawStyle' => 'line',
-                    'fillOpacity' => 0,
-                    'gradientMode' => 'none',
-                    'hideFrom' => [
-                        'legend' => false,
-                        'tooltip' => false,
-                        'viz' => false,
-                    ],
-                    'lineInterpolation' => 'linear',
-                    'lineWidth' => 1,
-                    'pointSize' => 5,
-                    'scaleDistribution' => [
-                        'type' => 'linear',
-                    ],
-                    'showPoints' => 'auto',
-                    'spanNulls' => false,
-                    'stacking' => [
-                        'group' => 'A',
-                        'mode' => 'none',
-                    ],
-                    'thresholdsStyle' => [
-                        'mode' => 'off',
-                    ],
-                ],
-                'mappings' => [],
-                'thresholds' => [
-                    'mode' => 'absolute',
-                    'steps' => [
-                        [
-                            'color' => 'green',
-                            'value' => null,
-                        ],
-                        [
-                            'color' => 'red',
-                            'value' => 80,
-                        ],
-                    ],
-                ],
-            ],
-            'overrides' => [],
-        ],
-        'gridPos' => [
-            'h' => 9,
-            'w' => 12,
-            'x' => 0,
-            'y' => 0,
-        ],
-        'id' => $panelId,
-        'options' => [
-            'legend' => [
-                'calcs' => [],
-                'displayMode' => 'list',
-                'placement' => 'bottom',
-            ],
-            'tooltip' => [
-                'mode' => 'single',
-            ],
-        ],
-        'targets' => [
-            [
-                'datasource' => [
-                    'type' => 'datasource',
-                    'uid' => 'grafana',
-                ],
-                'queryType' => 'randomWalk',
-                'refId' => 'A',
-            ],
-        ],
-        'title' => $request->Bezeichnung,
-        'type' => 'timeseries',
-        ];
+        $getExistingDashboard = Http::withToken(APIKEY)->get('192.168.1.5:3000/api/dashboards/uid/' . $suid);
 
 
-        $oldPanels = $oldDashboard['dashboard']['panels'];
+        $uid = strval($request->IDES + 1);
 
-        array_push($oldPanels, $paneldef);
        
-        $oldDashboard['dashboard']['panels'] = $oldPanels;
+      //  echo ($updateDashboardToAddPanel);
+        echo ($getExistingDashboard);
 
- 
+        // Um dashboard zu updaten -> vorhandenes Dashboard laden -> gesammten inhalt speichern 
+        //-> vorhandenes dashboard updaten / überschreiben -> gespeichertes einfügen --> update mit post methode posten --> PROFIT
 
-  
-    
-$createEnsysDashboard = Http::withHeaders([
+        //Grafana ende
+        */
 
-        
-
-    'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
-    'Content-Type' => 'application/json',
-    'Accept' => 'application/json',
-    
-    
-    
-    
-    ])->post('192.168.1.5:3000/api/dashboards/db', $oldDashboard );
-    echo($createEnsysDashboard);
-
-*/
-
-//Grafana Panel Erstellen Ende
-
-        
+        $enTech->save();
+        $data = DB::table('EnTech')->get();
 
 
 
@@ -393,71 +285,11 @@ $createEnsysDashboard = Http::withHeaders([
         $EnTech = EnTech::find($id);
 
 
-        
-    
-
-//Grafana Panel Löschen Anfang
-
-/*
-$Entech = DB::table('EnTech')->where('id', $id)->first();
-
-$uid = strval($Entech->ensys_id);
-
-$getCurrentDashboard = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/'. $uid);
-
-$oldDashboard = json_decode($getCurrentDashboard,true);
-
-
-$oldPanels = $oldDashboard['dashboard']['panels'];
-       
-    
-$index = 0;
-
-        foreach($oldPanels as $key => $value)
-        {
-            if($value['id'] == $id)
-            {
-                
-                break;
-            }
-
-            $index++;
+        if ($EnTech == null) {
+            dd("Konnte nicht gelöscht werden");
+        } else {
+            $EnTech->delete();
+            return redirect('/energiesysteme');
         }
-
-
-
-
-unset($oldPanels[$index]);
-
-$oldDashboard['dashboard']['panels'] = $oldPanels;
-
-
-$deletePanel = Http::withHeaders([
-
-        
-
-    'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
-    'Content-Type' => 'application/json',
-    'Accept' => 'application/json',
-    
-    
-    
-    
-    ])->post('192.168.1.5:3000/api/dashboards/db', $oldDashboard );
-
-    echo($deletePanel);
-
-*/
-
-//Grafana Panel Löschen Ende
-
-
-if ($EnTech == null) {
-    dd("Konnte nicht gelöscht werden");
-} else {
-    $EnTech->delete();
-    return redirect('/energiesysteme');
-}
     }
-
 }

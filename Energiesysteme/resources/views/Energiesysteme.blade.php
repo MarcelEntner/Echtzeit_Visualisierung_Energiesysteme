@@ -28,23 +28,21 @@
                                         id="Listimage"></h3>
                             </div>
                         </div>
-                        <br>
-
+                        
 
                         <!-- DataTable  Th und Td gleiche Anzahl, ansonsten funktioniert er nicht-->
 
                         <!-- Gesamte DataTable Div -->
-                        <div style="height: 41vh; width:100%;">
+                        <div style="height: 48vh; width:100%; margin-top:-7%;">
 
                             <!-- DataTable ES Ausgangspunkt-->
-                            <div id="tableDiv">
+                            <div id="tableDiv"> 
                                 <table class="table table-borderless table-hover" id="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
                                             <th scope="col">Bezeichnung</th>
                                             <th scope="col">Katastralgemeinde</th>
-                                            <th scope="col">Postleitzahl</th>
+                                            <th scope="col">PLZ</th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
@@ -54,8 +52,6 @@
                                         @foreach ($data as $d)
 
                                             <tr>
-
-                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->id }}</td>
                                                 <td onclick="moveToMarker({{ $d->id }})">{{ $d->Bezeichnung }}</td>
                                                 <td onclick="moveToMarker({{ $d->id }})">
                                                     {{ $d->Katastralgemeinden }}</td>
@@ -129,10 +125,8 @@
                                 <table class="table table-borderless table-hover" id="tableET">
                                     <thead>
                                         <tr>
-                                            <th scope="col">IDES</th>
-                                            <th scope="col">IDET</th>
                                             <th scope="col">Bezeichnung</th>
-                                            <th scope="col">Typ</th>
+                                            <th scope="col">Typ </th>
                                             <th scope="col">Ort</th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
@@ -141,65 +135,7 @@
                                     </thead>
 
                                     <tbody>
-                                        <!-- Überprüfen ob ET zu ES gehört -->
-                                        @foreach ($dataEnTech as $da)
-                                            
-                                            <tr class="enTechTR-{{ $da->ensys_id }}" style='display:none;'>
-
-                                                <td>{{ $da->ensys_id }}</td>
-                                                <td>{{ $da->id }}</td>
-                                                <td>{{ $da->Bezeichnung }}</td>
-                                                <td>{{ $da->Typ }}</td>
-                                                <td>{{ $da->Ort }}</td>
-
-                                                @auth
-
-                                                    <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
-                                                    <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten || Admin (Rolle Admin) darf alle -->
-                                                    @if (Auth::user()->id == $d->user_id || Auth::user()->role == 'Admin')
-
-                                                        <td> <a href="/deleteET/{{ $da->id }}" class="btn btn2"
-                                                                style="background-image: url('/images/buttons/delete.png')"></a>
-                                                        </td>
-
-                                                        <td> <a href="javascript:GrafanafunctionET({{ $da->id }})" class="btn btn2"
-                                                                style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                        </td>
-
-                                                        <td> <a href="javascript:EditfunctionET({{ $da->id }})"
-                                                                class="btn btn2"
-                                                                style="background-image: url('/images/buttons/stift.png')"></a>
-                                                        </td>
-
-                                                    @else
-                                                        <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
-                                                        <td> <a href="javascript:GrafanafunctionET({{ $da->id }})" class="btn btn2"
-                                                                style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                        </td>
-
-                                                        <td> <a href="javascript:AugefunctionET({{ $da->id }})"
-                                                                class="btn btn2"
-                                                                style="background-image: url('/images/buttons/auge.png')"></a>
-                                                        </td>
-
-                                                        <td> </td>
-                                                    @endif
-                                                @endauth
-
-                                                <!-- Wenn man nicht angemeldet ist-->
-                                                @guest
-                                                    <td> <a href="javascript:GrafanafunctionET({{ $da->id }})" class="btn btn2"
-                                                            style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                    </td>
-
-                                                    <td> <a href="javascript:AugefunctionET({{ $da->id }})"
-                                                            class="btn btn2"
-                                                            style="background-image: url('/images/buttons/auge.png')"></a></td>
-                                                    <td></td>
-                                                @endguest
-
-                                            </tr>
-                                        @endforeach
+                                        
                                     </tbody>
 
                                 </table>
@@ -212,10 +148,9 @@
                                 <table class="table table-borderless table-hover" id="tableES">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
                                             <th scope="col">Bezeichnung</th>
                                             <th scope="col">Katastralgemeinde</th>
-                                            <th scope="col">Postleitzahl</th>
+                                            <th scope="col">PLZ</th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
@@ -225,13 +160,9 @@
                                     <tbody>
                                         @foreach ($data as $d)
                                             <tr>
-                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->id }}</td>
-                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Bezeichnung }}
-                                                </td>
-                                                <td onclick="moveToMarker({{ $d->id }})">
-                                                    {{ $d->Katastralgemeinden }}</td>
-                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Postleitzahl }}
-                                                </td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Bezeichnung }} </td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Katastralgemeinden }}</td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Postleitzahl }}</td>
 
                                                 @auth
                                                     <!-- Wenn man nicht angemeldet ist darf man die ES nicht verwalten-->
@@ -385,7 +316,7 @@
                                 @csrf
                                 <!--Input Felder -->
                                 <!--Input Feld ID-ES Readonly (value wird automatisch gesetzt) -->
-                                <div class="input-group mb-3" style="margin-top:2%">
+                                <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                         ID-ES</span>
@@ -716,8 +647,8 @@
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/typ.png" style="margin-right:10px;">
                                     Typ</span>
-                                <input type="text" class="form-control3" id="TypEditET" name="BezeichnungEditET" value=""
-                                    aria-label="BezeichnungEditET" aria-describedby="basic-addon1" readonly
+                                <input type="text" class="form-control3" id="TypEditET" name="TypEditET" value=""
+                                    aria-label="TypEditET" aria-describedby="basic-addon1" readonly
                                     style="background-color:#e9ecef;">
                             </div>
                             <!--Input Feld Ort Änderbar -->
@@ -782,21 +713,162 @@
                   
                     function GrafanafunctionES(id)  {
                         $('#PopUpESGrafana').modal('show');
+
                         console.log(id);
-                     
+
+                        //Anzahl der ET 
+                        var chartAzET1 = new CanvasJS.Chart("AzET1", {
+                            title:{
+                                text: "Anzahl der Energietechnologien"              
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie, doughnut
+                                type: "pie",
+                                dataPoints: [
+                                    { label: "PV-Anlage",  y: 3  },
+                                    { label: "E-Ladestation", y: 2  },
+                                    { label: "Windkraftanlage", y: 1  },
+                                    { label: "Batteriespeicher",  y: 1  },
+                                    { label: "Wärmespeicher",  y: 1  }
+                                ]
+                            }
+                            ]
+                        });
+
+                        
+                        //21 Ges-Nennleistung
+                        var dataGesNenn = [10,13,18,20,17,10,13,18,20,17,20,17,10,13,18,10,13,18,27,13,18,27,20,17,15,19,29,31,25,10,7];
+                        var GesNenn = [];   //dataPoints. 
+
+                        var chart21 = new CanvasJS.Chart("chart21", {
+                            title:{
+                                text: "Ges-Nennleistung"              
+                            },
+                            axisX: {						
+                                title: "Zeit"
+                            },
+                            axisY: {						
+                                title: "Ges-Nennleistung [kW]"
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie
+                                type: "line",
+                                dataPoints : GesNenn
+                            }
+                            ]
+                        });
+
+                        //31 Ges-ErzeugerLeistung [kW]
+                        var dataGesErzLeis = [17,20,17,10,13,18,10,13,18,27,1,15,19,29,31,25,10,7];
+                        var GesErzLeis = [];   //dataPoints. 
+
+                        var chart31 = new CanvasJS.Chart("chart31", {
+                            title:{
+                                text: "Ges-ErzeugerLeistung"              
+                            },
+                            axisX: {						
+                                title: "Zeit"
+                            },
+                            axisY: {						
+                                title: "Ges-ErzeugerLeistung [kW]"
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie
+                                type: "line",
+                                dataPoints : GesErzLeis
+                            }
+                            ]
+                        });
+
+                        //41 Ges-ErzeugerEnergie [kW/h]
+                        var dataGesErzEnerg = [23,17,20,17,10,13,18,10,13,27,1,15,19,9,31,25,10,7];
+                        var GesErzEnerg = [];   //dataPoints.
+                        var chart41 = new CanvasJS.Chart("chart41", {
+                            title:{
+                                text: "Ges-ErzeugerEnergie"              
+                            },
+                            axisX: {						
+                                title: "Zeit"
+                            },
+                            axisY: {						
+                                title: "Ges-ErzeugerEnergie [kW/h]"
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie
+                                type: "line",
+                                dataPoints : GesErzEnerg
+                            }
+                            ]
+                        });
+                        
+
+                        //GesNennleistung
+                        function parseDataPointsGesNennLeistung () {
+                            for (var i = 0; i <= dataGesNenn.length; i++)
+                            GesNenn.push({label: "Uhrzeit", y: dataGesNenn[i]});     
+                        };
+
+                        //GesErzLeistung
+                        function parseDataPointsGesErzLeistung () {
+                            for (var i = 0; i <= dataGesErzLeis.length; i++)
+                            GesErzLeis.push({label: "Uhrzeit", y: dataGesErzLeis[i]});     
+                        };
+
+                        //GesErzLeistung
+                        function parseDataPointsGesErzEnerg () {
+                        for (var i = 0; i <= dataGesErzEnerg.length; i++)
+                        GesErzEnerg.push({label: "Uhrzeit", y: dataGesErzEnerg[i]});     
+                        };
+
+
+
+                        parseDataPointsGesNennLeistung();
+                        chart21.options.data[0].dataPoints = GesNenn;
+
+                        parseDataPointsGesErzLeistung();
+                        chart31.options.data[0].dataPoints = GesErzLeis;
+
+                        parseDataPointsGesErzEnerg();
+                        chart41.options.data[0].dataPoints = GesErzEnerg;
+
+
+                        //Alle Charts rendern
+                        chartAzET1.render();
+                        chart21.render();
+                        chart31.render();
+                        chart41.render();
                     }
-
-                   
-
-
-
 
                     </script>
 
 
+            <div  id="AzET1" style="padding-left: 50px; padding-top:30px;" ></div>
+            <div  id="chart21" style="padding-left: 800px;"></div>
+            <div  id="chart31" style=" padding-left: 50px;padding-top:330px;"></div>
+            <div  id="chart41" style="padding-left: 800px;"></div>
 
+          
 
-            
 
                     <!-- Statistiken Ende-->
                 </div>
@@ -828,29 +900,159 @@
                     <div class="modal-body" style=" height:700px;   background-color:white; width: 1600px;" >
                             <!-- Statistiken Anfang-->
 
-                      
                             <script type="text/javascript">
                     
                            function GrafanafunctionET(id) {
                             $('#PopUpETGrafana').modal('show');
-                            console.log(id);
+                            //Zeitlicher Verlauf-Leistung (Produktion) 24h
+                            var chartZeitVerlaufLeistung = new CanvasJS.Chart("chartZeitVerlaufLeistung", {
+                            title:{
+                                text: "Zeitlicher Verlauf-Leistung (Produktion) 24h"              
+                            },
+                            axisX: {						
+                                title: "Zeit"
+                            },
+                            axisY: {						
+                                title: "Zeitlicher Verlauf-Leistung"
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie
+                                type: "line",
+                                dataPoints: [
+                                    { label: "00:00",  y: 3  },
+                                    { label: "01:00", y: 2  },
+                                    { label: "02:00", y: 1  },
+                                    { label: "03:00",  y: 1  },
+                                    { label: "04:00",  y: 1  },
+                                    { label: "05:00",  y: 1  },
+                                    { label: "06:00",  y: 1  },
+                                    { label: "07:00",  y: 1  },
+                                    { label: "08:00",  y: 1  },
+                                    { label: "09:00",  y: 1  },
+                                    { label: "10:00",  y: 1  },
+                                    { label: "11:00",  y: 7  },
+                                    { label: "12:00",  y: 8  },
+                                    { label: "13:00",  y: 3  },
+                                    { label: "14:00",  y: 4  },
+                                    { label: "15:00",  y: 1  },
+                                    { label: "16:00",  y: 5  },
+                                    { label: "17:00",  y: 1  },
+                                    { label: "18:00",  y: 1  },
+                                    { label: "19:00",  y: 5  },
+                                    { label: "20:00",  y: 6  },
+                                    { label: "21:00",  y: 4  },
+                                    { label: "22:00",  y: 6  },
+                                    { label: "23:00",  y: 2  },
+                                    { label: "24:00",  y: 4  }
+                            
+                                ]
+                            }
+                            ]
+                            });
 
-          
- 
-    }
+
+                            //Aktueller Wert-Energiezähler (Produktion/Verbrauch)
+                            var chartAktuelleEnergie = new CanvasJS.Chart("chartAktuelleEnergie", {
+                            title:{
+                                text: "Aktueller Wert-Energiezähler (Produktion)"              
+                            },
+                            axisX: {						
+                                title: "Zeit"
+                            },
+                            axisY: {						
+                                title: "Aktueller Wert-Energiezähler"
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie
+                                type: "column",
+                                dataPoints: [
+                                    { label: "Uhrzeit",  y: 3  },
+                                ]
+                            }
+                            ]
+                            });
 
 
+                            //Aktuelle Werte (Leistung)
+                            var chartAktuelleLeistung = new CanvasJS.Chart("chartAktuelleLeistung", {
+                            title:{
+                                text: "Aktueller Wert-Leistung (Produktion)"              
+                            },
+                            axisX: {						
+                                title: "Zeit"
+                            },
+                            axisY: {						
+                                title: "Aktueller Wert-Leistung"
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie
+                                type: "column",
+                                dataPoints: [
+                                    { label: "Uhrzeit",  y: 8  },
+                                ]
+                            }
+                            ]
+                            });
+
+                            //Min, Max (Leistung) 24h
+                            var chartMinMaxLeistung = new CanvasJS.Chart("chartMinMaxLeistung", {
+                            title:{
+                                text: "Min, Max (Leistung) 24h "              
+                            },
+                            axisX: {						
+                                title: "Zeit"
+                            },
+                            axisY: {						
+                                title: "Min, Max (Leistung)"
+                            },
+                            theme: "light", //light1 dark1 light2 dark2
+                            backgroundColor: '#c9c9c9',
+                            width: 700,
+                            height: 300,
+                            data: [              
+                            {
+                                // type, line, pie
+                                type: "column",
+                                dataPoints: [
+                                    { label: "Uhrzeit",  y: 4  },
+                                    { label: "Uhrzeit",  y: 10  },
+                                ]
+                            }
+                            ]
+                            });
+
+
+
+
+
+                            //Alle Charts rendern
+                            chartZeitVerlaufLeistung.render();
+                            chartAktuelleEnergie.render();
+                            chartAktuelleLeistung.render();
+                            chartMinMaxLeistung.render();
+                            }
                             </script>
 
-@isset($d)
-@isset($da)
-<iframe src="http://192.168.1.5:3000/d-solo/{{ $d->id }}/{{ $d->Bezeichnung }}?orgId=1&panelId={{ $da->id }}" width="100%" height="100%" frameborder="0"></iframe>
-  @endisset
-@endisset
 
-
-    
-
+                            <div  id="chartZeitVerlaufLeistung" style="padding-left: 50px; padding-top:30px;" ></div>
+                            <div  id="chartAktuelleEnergie" style="padding-left: 800px;"></div>
+                            <div  id="chartAktuelleLeistung" style=" padding-left: 50px;padding-top:330px;"></div>
+                            <div  id="chartMinMaxLeistung" style="padding-left: 800px;"></div>
 
 
 
@@ -1138,17 +1340,18 @@
         <script>
             //DataTable ES Ausgangslage
             $('#table').DataTable({
-                "columnDefs": [{
+                "columnDefs": [
+                    {
                         "orderable": false,
-                        "targets": 4 //Auf 4 kommt man weil man beim zählen bei 0 beginnt ( 0 = ID, 1 = Bezeichnung, 2 = Katastralgemeinde, 3 = Postleitzahl 4 = Mülleimer )
+                        "targets": 3 //Auf 4 kommt man weil man beim zählen bei 0 beginnt ( 0 = ID, 1 = Bezeichnung, 2 = Katastralgemeinde, 3 = Postleitzahl 4 = Mülleimer )
                     }, //Um die Sortierfunktion bei den Icon  zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 5
+                        "targets": 4
                     }, //Um die Sortierfunktion bei den Icon Statistiken zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 6
+                        "targets": 5
                     } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
                 ],
                 lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
@@ -1161,25 +1364,24 @@
             });
 
             //DataTable ET
-            $('#tableET').DataTable({
-                "columnDefs": [{
+            var tableET = $('#tableET').DataTable({  
+                "columnDefs": [
+                    {
                         "orderable": false,
-                        "targets": 5
+                        "targets": 3
                     }, //Um die Sortierfunktion bei den Icon Mülleimer zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 6
+                        "targets": 4
                     }, //Um die Sortierfunktion bei den Icon Statistiken zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 7
+                        "targets": 5
                     } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
                 ],
+                fixedColumns: true,
                 lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
-
-                lengthMenu: [
-                    100
-                ], //Wieviele ES/ET pro Seite angezeigt werden, kann nicht 5 sein, da hier sonst nach allen ET in der DB sortiert und wir mit CSS nur die richtigen einblenden und dann stimmt die Anzeige nicht
+                lengthMenu: [5], //Wieviele ES/ET pro Seite angezeigt werden 
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/German.json" //Sprache des DataTables z.B. der Buttenbeschriftung
                 }
@@ -1189,15 +1391,15 @@
             $('#tableES').DataTable({
                 "columnDefs": [{
                         "orderable": false,
-                        "targets": 4
+                        "targets": 3
                     }, //Um die Sortierfunktion bei den Icon Mülleimer zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 5
+                        "targets": 4
                     }, //Um die Sortierfunktion bei den Icon Statistiken zu deaktivieren
                     {
                         "orderable": false,
-                        "targets": 6
+                        "targets": 5
                     } //Um die Sortierfunktion bei den Icon Stift/Auge zu deaktivieren
                 ],
                 lengthChange: false, //Auswahl wieviele Pro Seite man sehen möchte, False da immer max. 5 angezeigt werden
@@ -1351,9 +1553,9 @@
     <?php
     //Datenbank Daten
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     //Connection aufbauen
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -2431,14 +2633,50 @@
             tableESDiv = Table mit ES (gleich wie der Table tableDiv)
             */
 
-            //Problem mit max. 5 zu Lösen  Überprüfen ob ET zum ES gehört wenn ja in neues Array speicher und das neue Array ausgeben
-
             document.getElementById("tableDiv").style.display = "none"; //tableDiv wird ausgeblendet
             document.getElementById("tableETDiv").style.display = "block"; //tableETDiv wird angezeigt
             document.getElementById("tableESDiv").style.display = "none"; //tableESDiv wird ausgeblendet
 
-            $("#tableETDiv tbody tr").css("display", "none"); //Alle ET werden nicht angezeigt
-            $(".enTechTR-" + id).css("display", "table-row"); //Hier werden die ET die zu dem ausgewählten ES gehören eingeblendet
+        
+            
+            var ETvonES = [];
+            let dataForTable = []
+
+            @foreach ($dataEnTech as $d)
+
+            dataForTable = [{{ $d->ensys_id }}, {{ $d->id }}, "{{ $d->Bezeichnung }}", "{{ $d->Typ }}", "{{  $d->Ort}}"];
+            
+                    @auth
+                        @if (Auth::user()->id == $d->user_id || Auth::user()->role == 'Admin')
+                    
+                        dataForTable.push("<a href=\"/deleteET/{{ $d->id }}\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/delete.png')\"></a>");
+                        dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
+                        dataForTable.push("<a href=\"javascript:EditfunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/stift.png')\"></a>");
+                
+                        @else
+                            dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
+                            dataForTable.push("<a href=\"javascript:AugefunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/auge.png')\"></a>");
+                            dataForTable.push("");
+                        @endif
+                    @endauth
+            
+                    @guest
+                    dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
+                        dataForTable.push("<a href=\"javascript:AugefunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/auge.png')\"></a>");
+                        dataForTable.push("");
+                    @endguest
+            
+                ETvonES.push(dataForTable);
+            @endforeach
+
+            ETvonESFiltered = ETvonES.filter((dt) => {
+                return dt[0] == id;
+            })
+
+            ETvonESFiltered.every(dt => dt.shift());
+            ETvonESFiltered.every(dt => dt.shift());
+
+            tableET.clear().rows.add(ETvonESFiltered).draw();
 
             document.getElementById("Listuberschrieft").innerHTML = "Energietechnologien"; //Die Überschrift wird auf Energietechnologien geändert 
             document.getElementById("Listimage").src = "/images/icons/etgrün.png"; //Das Image/Icon wird auf das Energietechnologien-Icon geändert
@@ -2522,7 +2760,75 @@
 
 
 
-   
+    <?php
+    
+    use Illuminate\Support\Facades\Http;
+    
+    //$response = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/21');
+    /*
+                                                                                                                            
+                                                                                                                            $createEnsysDashboard = Http::withHeaders([
+                                                                                                                            
+                                                                                                                                'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+                                                                                                                                'Content-Type' => 'application/json',
+                                                                                                                                'Accept' => 'application/json',
+                                                                                                                                
+                                                                                                                            ])->post('192.168.1.5:3000/api/dashboards/db', [
+                                                                                                                                "dashboard" => [
+                                                                                                                                     "id" => null, 
+                                                                                                                                     "uid" => null, 
+                                                                                                                                     "title" => 'tesffffft', 
+                                                                                                                                     "tags" => [
+                                                                                                                                        "templated" 
+                                                                                                                                     ], 
+                                                                                                                                     "timezone" => "browser", 
+                                                                                                                                     "schemaVersion" => 16, 
+                                                                                                                                     "version" => 0 
+                                                                                                                                  ], 
+                                                                                                                               "folderId" => 0, 
+                                                                                                                               "overwrite" => false 
+                                                                                                                            ]);
+                                                                                                                            echo($createEnsysDashboard);
+                                                                                                                            */
+    
+    /*
+                                                                                                                            $id = 27;
+                                                                                                                            
+                                                                                                                            $strid = strval($id);
+                                                                                                                            
+                                                                                                                            
+                                                                                                                                    $url = '192.168.1.5:3000/api/dashboards/uid/';
+                                                                                                                            
+                                                                                                                            
+                                                                                                                                    $furl = $url . $strid;
+                                                                                                                            
+                                                                                                                            
+                                                                                                                                    echo($furl);
+                                                                                                                                    $deleteEnsysDashboard = Http::withHeaders([
+                                                                                                                            
+                                                                                                                                        'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+                                                                                                                                        'Content-Type' => 'application/json',
+                                                                                                                                        'Accept' => 'application/json',
+                                                                                                                            
+                                                                                                                                    ])->delete($furl);
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                                    echo ($deleteEnsysDashboard);
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            //echo($response);
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            
+                                                                                                                            */
+    
+    ?>
+
 
 
 
