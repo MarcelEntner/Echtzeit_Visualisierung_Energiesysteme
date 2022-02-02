@@ -65,34 +65,132 @@ class EnTechController extends Controller
             $enTech->Bild = $image;
         }
 
-/*
-
-        define("APIKEY", "eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ=='");
-
-        //Grafana Anfang
-
-        //get Dashboard with coresbonding ID
-        $suid = strval($request->IDES);
-
-        $getExistingDashboard = Http::withToken(APIKEY)->get('192.168.1.5:3000/api/dashboards/uid/' . $suid);
-
-
-        $uid = strval($request->IDES + 1);
-
-       
-      //  echo ($updateDashboardToAddPanel);
-        echo ($getExistingDashboard);
-
-        // Um dashboard zu updaten -> vorhandenes Dashboard laden -> gesammten inhalt speichern 
-        //-> vorhandenes dashboard updaten / überschreiben -> gespeichertes einfügen --> update mit post methode posten --> PROFIT
-
-        //Grafana ende
-        */
-
         $enTech->save();
         $data = DB::table('EnTech')->get();
 
+        /*
 
+$uid = strval($request->IDES);
+
+$panelId = $enTech->id;
+
+$getCurrentDashboard = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/'. $uid);
+
+$oldDashboard = json_decode($getCurrentDashboard,true);
+
+    $paneldef =      [
+
+        'datasource' => [
+            'type' => 'datasource',
+            'uid' => 'grafana',
+        ],
+        'fieldConfig' => [
+            'defaults' => [
+                'color' => [
+                    'mode' => 'palette-classic',
+                ],
+                'custom' => [
+                    'axisLabel' => '',
+                    'axisPlacement' => 'auto',
+                    'barAlignment' => 0,
+                    'drawStyle' => 'line',
+                    'fillOpacity' => 0,
+                    'gradientMode' => 'none',
+                    'hideFrom' => [
+                        'legend' => false,
+                        'tooltip' => false,
+                        'viz' => false,
+                    ],
+                    'lineInterpolation' => 'linear',
+                    'lineWidth' => 1,
+                    'pointSize' => 5,
+                    'scaleDistribution' => [
+                        'type' => 'linear',
+                    ],
+                    'showPoints' => 'auto',
+                    'spanNulls' => false,
+                    'stacking' => [
+                        'group' => 'A',
+                        'mode' => 'none',
+                    ],
+                    'thresholdsStyle' => [
+                        'mode' => 'off',
+                    ],
+                ],
+                'mappings' => [],
+                'thresholds' => [
+                    'mode' => 'absolute',
+                    'steps' => [
+                        [
+                            'color' => 'green',
+                            'value' => null,
+                        ],
+                        [
+                            'color' => 'red',
+                            'value' => 80,
+                        ],
+                    ],
+                ],
+            ],
+            'overrides' => [],
+        ],
+        'gridPos' => [
+            'h' => 9,
+            'w' => 12,
+            'x' => 0,
+            'y' => 0,
+        ],
+        'id' => $panelId,
+        'options' => [
+            'legend' => [
+                'calcs' => [],
+                'displayMode' => 'list',
+                'placement' => 'bottom',
+            ],
+            'tooltip' => [
+                'mode' => 'single',
+            ],
+        ],
+        'targets' => [
+            [
+                'datasource' => [
+                    'type' => 'datasource',
+                    'uid' => 'grafana',
+                ],
+                'queryType' => 'randomWalk',
+                'refId' => 'A',
+            ],
+        ],
+        'title' => $request->Bezeichnung,
+        'type' => 'timeseries',
+        ];
+
+
+        $oldPanels = $oldDashboard['dashboard']['panels'];
+
+        array_push($oldPanels, $paneldef);
+       
+        $oldDashboard['dashboard']['panels'] = $oldPanels;
+
+ 
+
+  
+    
+$createEnsysDashboard = Http::withHeaders([
+
+        
+
+    'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+    
+    
+    
+    
+    ])->post('192.168.1.5:3000/api/dashboards/db', $oldDashboard );
+    echo($createEnsysDashboard);
+
+    */
 
         //Tabellen-Eintrag im richtigen Typ für Echtzeitdaten
         switch ($request->Typ) {
@@ -284,6 +382,57 @@ class EnTechController extends Controller
     {
         $EnTech = EnTech::find($id);
 
+        //Grafana Löschen ET Anfang
+/*
+
+$Entech = DB::table('EnTech')->where('id', $id)->first();
+
+$uid = strval($Entech->ensys_id);
+
+$getCurrentDashboard = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/'. $uid);
+
+$oldDashboard = json_decode($getCurrentDashboard,true);
+
+$oldPanels = $oldDashboard['dashboard']['panels'];
+    
+        $index = 0;
+
+        foreach($oldPanels as $key => $value)
+        {
+            if($value['id'] == $id)
+            {
+                
+                break;
+            }
+
+            $index++;
+        }
+
+
+unset($oldPanels[$index]);
+
+$oldDashboard['dashboard']['panels'] = $oldPanels;
+
+
+
+$deletePanel = Http::withHeaders([
+
+        
+
+    'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+    
+    
+    
+    
+    ])->post('192.168.1.5:3000/api/dashboards/db', $oldDashboard );
+
+    echo($deletePanel);
+
+*/
+
+//Grafana Ende
 
         if ($EnTech == null) {
             dd("Konnte nicht gelöscht werden");

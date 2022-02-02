@@ -715,159 +715,8 @@
                         $('#PopUpESGrafana').modal('show');
 
                         console.log(id);
-
-                        //Anzahl der ET 
-                        var chartAzET1 = new CanvasJS.Chart("AzET1", {
-                            title:{
-                                text: "Anzahl der Energietechnologien"              
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie, doughnut
-                                type: "pie",
-                                dataPoints: [
-                                    { label: "PV-Anlage",  y: 3  },
-                                    { label: "E-Ladestation", y: 2  },
-                                    { label: "Windkraftanlage", y: 1  },
-                                    { label: "Batteriespeicher",  y: 1  },
-                                    { label: "Wärmespeicher",  y: 1  }
-                                ]
-                            }
-                            ]
-                        });
-
-                        
-                        //21 Ges-Nennleistung
-                        var dataGesNenn = [10,13,18,20,17,10,13,18,20,17,20,17,10,13,18,10,13,18,27,13,18,27,20,17,15,19,29,31,25,10,7];
-                        var GesNenn = [];   //dataPoints. 
-
-                        var chart21 = new CanvasJS.Chart("chart21", {
-                            title:{
-                                text: "Ges-Nennleistung"              
-                            },
-                            axisX: {						
-                                title: "Zeit"
-                            },
-                            axisY: {						
-                                title: "Ges-Nennleistung [kW]"
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie
-                                type: "line",
-                                dataPoints : GesNenn
-                            }
-                            ]
-                        });
-
-                        //31 Ges-ErzeugerLeistung [kW]
-                        var dataGesErzLeis = [17,20,17,10,13,18,10,13,18,27,1,15,19,29,31,25,10,7];
-                        var GesErzLeis = [];   //dataPoints. 
-
-                        var chart31 = new CanvasJS.Chart("chart31", {
-                            title:{
-                                text: "Ges-ErzeugerLeistung"              
-                            },
-                            axisX: {						
-                                title: "Zeit"
-                            },
-                            axisY: {						
-                                title: "Ges-ErzeugerLeistung [kW]"
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie
-                                type: "line",
-                                dataPoints : GesErzLeis
-                            }
-                            ]
-                        });
-
-                        //41 Ges-ErzeugerEnergie [kW/h]
-                        var dataGesErzEnerg = [23,17,20,17,10,13,18,10,13,27,1,15,19,9,31,25,10,7];
-                        var GesErzEnerg = [];   //dataPoints.
-                        var chart41 = new CanvasJS.Chart("chart41", {
-                            title:{
-                                text: "Ges-ErzeugerEnergie"              
-                            },
-                            axisX: {						
-                                title: "Zeit"
-                            },
-                            axisY: {						
-                                title: "Ges-ErzeugerEnergie [kW/h]"
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie
-                                type: "line",
-                                dataPoints : GesErzEnerg
-                            }
-                            ]
-                        });
-                        
-
-                        //GesNennleistung
-                        function parseDataPointsGesNennLeistung () {
-                            for (var i = 0; i <= dataGesNenn.length; i++)
-                            GesNenn.push({label: "Uhrzeit", y: dataGesNenn[i]});     
-                        };
-
-                        //GesErzLeistung
-                        function parseDataPointsGesErzLeistung () {
-                            for (var i = 0; i <= dataGesErzLeis.length; i++)
-                            GesErzLeis.push({label: "Uhrzeit", y: dataGesErzLeis[i]});     
-                        };
-
-                        //GesErzLeistung
-                        function parseDataPointsGesErzEnerg () {
-                        for (var i = 0; i <= dataGesErzEnerg.length; i++)
-                        GesErzEnerg.push({label: "Uhrzeit", y: dataGesErzEnerg[i]});     
-                        };
-
-
-
-                        parseDataPointsGesNennLeistung();
-                        chart21.options.data[0].dataPoints = GesNenn;
-
-                        parseDataPointsGesErzLeistung();
-                        chart31.options.data[0].dataPoints = GesErzLeis;
-
-                        parseDataPointsGesErzEnerg();
-                        chart41.options.data[0].dataPoints = GesErzEnerg;
-
-
-                        //Alle Charts rendern
-                        chartAzET1.render();
-                        chart21.render();
-                        chart31.render();
-                        chart41.render();
                     }
-
-                    </script>
-
-
-            <div  id="AzET1" style="padding-left: 50px; padding-top:30px;" ></div>
-            <div  id="chart21" style="padding-left: 800px;"></div>
-            <div  id="chart31" style=" padding-left: 50px;padding-top:330px;"></div>
-            <div  id="chart41" style="padding-left: 800px;"></div>
-
-          
+                     </script>
 
 
                     <!-- Statistiken Ende-->
@@ -904,156 +753,19 @@
                     
                            function GrafanafunctionET(id) {
                             $('#PopUpETGrafana').modal('show');
-                            //Zeitlicher Verlauf-Leistung (Produktion) 24h
-                            var chartZeitVerlaufLeistung = new CanvasJS.Chart("chartZeitVerlaufLeistung", {
-                            title:{
-                                text: "Zeitlicher Verlauf-Leistung (Produktion) 24h"              
-                            },
-                            axisX: {						
-                                title: "Zeit"
-                            },
-                            axisY: {						
-                                title: "Zeitlicher Verlauf-Leistung"
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie
-                                type: "line",
-                                dataPoints: [
-                                    { label: "00:00",  y: 3  },
-                                    { label: "01:00", y: 2  },
-                                    { label: "02:00", y: 1  },
-                                    { label: "03:00",  y: 1  },
-                                    { label: "04:00",  y: 1  },
-                                    { label: "05:00",  y: 1  },
-                                    { label: "06:00",  y: 1  },
-                                    { label: "07:00",  y: 1  },
-                                    { label: "08:00",  y: 1  },
-                                    { label: "09:00",  y: 1  },
-                                    { label: "10:00",  y: 1  },
-                                    { label: "11:00",  y: 7  },
-                                    { label: "12:00",  y: 8  },
-                                    { label: "13:00",  y: 3  },
-                                    { label: "14:00",  y: 4  },
-                                    { label: "15:00",  y: 1  },
-                                    { label: "16:00",  y: 5  },
-                                    { label: "17:00",  y: 1  },
-                                    { label: "18:00",  y: 1  },
-                                    { label: "19:00",  y: 5  },
-                                    { label: "20:00",  y: 6  },
-                                    { label: "21:00",  y: 4  },
-                                    { label: "22:00",  y: 6  },
-                                    { label: "23:00",  y: 2  },
-                                    { label: "24:00",  y: 4  }
-                            
-                                ]
-                            }
-                            ]
-                            });
 
+                           }
 
-                            //Aktueller Wert-Energiezähler (Produktion/Verbrauch)
-                            var chartAktuelleEnergie = new CanvasJS.Chart("chartAktuelleEnergie", {
-                            title:{
-                                text: "Aktueller Wert-Energiezähler (Produktion)"              
-                            },
-                            axisX: {						
-                                title: "Zeit"
-                            },
-                            axisY: {						
-                                title: "Aktueller Wert-Energiezähler"
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie
-                                type: "column",
-                                dataPoints: [
-                                    { label: "Uhrzeit",  y: 3  },
-                                ]
-                            }
-                            ]
-                            });
-
-
-                            //Aktuelle Werte (Leistung)
-                            var chartAktuelleLeistung = new CanvasJS.Chart("chartAktuelleLeistung", {
-                            title:{
-                                text: "Aktueller Wert-Leistung (Produktion)"              
-                            },
-                            axisX: {						
-                                title: "Zeit"
-                            },
-                            axisY: {						
-                                title: "Aktueller Wert-Leistung"
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie
-                                type: "column",
-                                dataPoints: [
-                                    { label: "Uhrzeit",  y: 8  },
-                                ]
-                            }
-                            ]
-                            });
-
-                            //Min, Max (Leistung) 24h
-                            var chartMinMaxLeistung = new CanvasJS.Chart("chartMinMaxLeistung", {
-                            title:{
-                                text: "Min, Max (Leistung) 24h "              
-                            },
-                            axisX: {						
-                                title: "Zeit"
-                            },
-                            axisY: {						
-                                title: "Min, Max (Leistung)"
-                            },
-                            theme: "light", //light1 dark1 light2 dark2
-                            backgroundColor: '#c9c9c9',
-                            width: 700,
-                            height: 300,
-                            data: [              
-                            {
-                                // type, line, pie
-                                type: "column",
-                                dataPoints: [
-                                    { label: "Uhrzeit",  y: 4  },
-                                    { label: "Uhrzeit",  y: 10  },
-                                ]
-                            }
-                            ]
-                            });
-
-
-
-
-
-                            //Alle Charts rendern
-                            chartZeitVerlaufLeistung.render();
-                            chartAktuelleEnergie.render();
-                            chartAktuelleLeistung.render();
-                            chartMinMaxLeistung.render();
-                            }
+                          
                             </script>
 
 
-                            <div  id="chartZeitVerlaufLeistung" style="padding-left: 50px; padding-top:30px;" ></div>
-                            <div  id="chartAktuelleEnergie" style="padding-left: 800px;"></div>
-                            <div  id="chartAktuelleLeistung" style=" padding-left: 50px;padding-top:330px;"></div>
-                            <div  id="chartMinMaxLeistung" style="padding-left: 800px;"></div>
-
+                       
+@isset($d)
+@isset($da)
+ <!-- <iframe src="http://192.168.1.5:3000/d-solo/{{ $d->id }}/{{ $d->Bezeichnung }}?orgId=1&panelId={{ $da->id }}" width="100%" height="100%" frameborder="0"></iframe> -->
+  @endisset
+@endisset
 
 
                             <!-- Statistiken Ende-->
@@ -1556,9 +1268,9 @@
     <?php
     //Datenbank Daten
     $servername = 'localhost';
-    $username = 'root';
-    $password = '';
-    $dbname = 'laravel';
+    $username = 'dev';
+    $password = 'Oi24Spc5';
+    $dbname = 'EnsysAlpha';
     
     //Connection aufbauen
     $conn = new mysqli($servername, $username, $password, $dbname);
