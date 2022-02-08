@@ -36,7 +36,7 @@ class EtKsController extends Controller
     public function store(int $id)
     {
         $EtKs = new EtKs();
-        $EtKs->EnTech_id = $id;
+        $EtKs->enTech_idEnTech = $id;
         $EtKs->save();
     }
 

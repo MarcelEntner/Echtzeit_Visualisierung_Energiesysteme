@@ -36,7 +36,7 @@ class EtAdAbKmController extends Controller
     public function store(int $id)
     {
         $EtAdABKm = new EtAdAbKm();
-        $EtAdABKm->EnTech_id = $id;
+        $EtAdABKm->enTech_idEnTech = $id;
         $EtAdABKm->save();
     }
 

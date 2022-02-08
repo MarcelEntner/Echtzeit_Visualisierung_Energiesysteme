@@ -36,7 +36,7 @@ class EtElController extends Controller
     public function store(int $id)
     {
         $EtEl = new EtEl();
-        $EtEl->EnTech_id = $id;
+        $EtEl->enTech_idEnTech = $id;
         $EtEl->save();
     }
 

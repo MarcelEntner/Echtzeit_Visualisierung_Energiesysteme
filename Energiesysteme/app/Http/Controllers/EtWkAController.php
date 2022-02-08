@@ -36,7 +36,7 @@ class EtWkAController extends Controller
     public function store(int $id)
     {
         $EtWkA = new EtWkA();
-        $EtWkA->EnTech_id = $id;
+        $EtWkA->enTech_idEnTech = $id;
         $EtWkA->save();
     }
 

@@ -5,7 +5,7 @@
 @section('content')
 
 <body oncontextmenu="return false">
-        <div class="row justify-content-center" style="margin-left:30%; margin-top:-3%;">
+        <div class="row justify-content-center" style="margin-left:30%; margin-top:-1%;">
             <div class="col-md-13">
                 <div class="card">
                     <div class="card-header">{{ __('Neuen Benutzer anlegen') }}</div>
@@ -100,8 +100,8 @@
     <table class="table table-borderless table-hover" id="tableUsers" style="height:70px; width:100%;">
         <thead>
             <tr>
+                <th scope="col" style="width:20px;"></th>
                 <th scope="col"></th>
-                <th scope="col">Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
@@ -113,7 +113,7 @@
             @foreach ($users as $u)
                 <tr>
                     <td style="background-image: url('/images/Users/user.png');background-repeat: no-repeat;"></td>
-                    <td >{{ $u->id }}</td>
+                    <td ></td>
                     <td >{{ $u->name }} </td>
                     <td>{{ $u->email }}</td>
                     <td><?php 
@@ -145,8 +145,17 @@
         $('#tableUsers').DataTable({
                     "columnDefs": [{
                             "orderable": false,
+                            "targets": 0
+                        }, //Um die Sortierfunktion bei dem Mülleimer-Icon  zu deaktivieren
+                        {
+                            "orderable": false,
+                            "targets": 1
+                        }, //Um die Sortierfunktion bei dem Mülleimer-Icon  zu deaktivieren
+                        {
+                            "orderable": false,
                             "targets": 5
-                        }, //Um die Sortierfunktion bei den Icon  zu deaktivieren
+                        }, //Um die Sortierfunktion bei dem Mülleimer-Icon  zu deaktivieren
+                       
                         
                         
                     ],

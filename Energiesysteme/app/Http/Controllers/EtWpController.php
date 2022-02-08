@@ -36,7 +36,7 @@ class EtWpController extends Controller
     public function store(int $id)
     {
         $EtWp = new EtWp();
-        $EtWp->EnTech_id = $id;
+        $EtWp->enTech_idEnTech = $id;
         $EtWp->save();
     }
 

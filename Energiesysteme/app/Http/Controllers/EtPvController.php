@@ -37,7 +37,7 @@ class EtPvController extends Controller
     public function store(int $id)
     {
         $EtPv = new EtPv();
-        $EtPv->EnTech_id = $id;
+        $EtPv->enTech_idEnTech = $id;
         $EtPv->save();
     }
 

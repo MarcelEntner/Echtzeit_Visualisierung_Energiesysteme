@@ -36,7 +36,7 @@ class EtGKbZController extends Controller
     public function store(int $id)
     {
         $EtGKbZ = new EtGkbZ();
-        $EtGKbZ->EnTech_id = $id;
+        $EtGKbZ->enTech_idEnTech = $id;
         $EtGKbZ->save();
     }
 

@@ -14,14 +14,14 @@ class EtKs extends Migration
     public function up()
     {
         Schema::create('EtKs', function (Blueprint $table) {
-            $table->id();
+            $table->id('idEtKs');
+            $table->dateTime('timestamp')->nullable();
+            $table->double('power')->default(0);
+            $table->double('energy')->default(0);
+            $table->double('storageTemp')->default(0);
             $table->timestamps();
-            $table->bigInteger('EnTech_id')->unsigned();
-            $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
-            $table->double('Leistung')->default(0);
-            $table->double('Energie')->default(0);
-            $table->double('Speicherkap')->default(0);
-            $table->dateTime('TimeMeasured')->nullable();
+            $table->bigInteger('enTech_idEnTech')->unsigned();
+            $table->foreign('enTech_idEnTech')->references('id')->on('EnTech')->onDelete('cascade');
         });
     }
 

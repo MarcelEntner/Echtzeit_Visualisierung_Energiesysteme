@@ -14,12 +14,12 @@ class EtGWbZ extends Migration
     public function up()
     {
         Schema::create('EtGWbZ', function (Blueprint $table) {
-            $table->id();
+            $table->id('idEtGWbZ');
+            $table->dateTime('timestamp')->nullable();
+            $table->double('energy')->nullable();
             $table->timestamps();
-            $table->bigInteger('EnTech_id')->unsigned();
-            $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
-            $table->double('Zaelerstand')->nullable();
-            $table->dateTime('TimeMeasured')->nullable();
+            $table->bigInteger('enTech_idEnTech')->unsigned();
+            $table->foreign('enTech_idEnTech')->references('id')->on('EnTech')->onDelete('cascade');
         });
     }
 

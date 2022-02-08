@@ -16,7 +16,7 @@
                 <!-- Wird der Inhalt gesetzt -->
                 @foreach ($data as $d)
                     <!-- Jedes ES aus der DB wird einzeln in die Liste gespeichert -->
-                    <a href="{{ route('EnSys.show', $d->id) }}">{{ $d->Bezeichnung }}</a>
+                    <a href="{{ route('EnSys.show', $d->id) }}">{{ $d->designation }}</a>
                 @endforeach
             </div>
         </div>
@@ -24,7 +24,7 @@
 
         <!-- Anzeige darunter -->
         <div class="GalerieAnzeige shadow-lg rounded">
-            <h3 style="padding:10px; margin-left: 35%;"> <b>Bitte wählen Sie ein Energiesystem aus </b></h3>
+            <h3 style="padding:10px; margin-left: 30%;"> <b>Bitte wählen Sie ein Energiesystem aus </b></h3>
         </div>
     </body>
 

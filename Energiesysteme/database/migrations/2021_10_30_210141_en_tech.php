@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
+
 class EnTech extends Migration
 {
     /**
@@ -15,19 +17,21 @@ class EnTech extends Migration
     {
         Schema::create('EnTech', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->bigInteger('ensys_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ensys_id')->references('id')->on('EnSys')->onDelete('cascade');
-            $table->string('Typ');
-            $table->string('Bezeichnung');
-            $table->string('Beschreibung');
-            $table->string('Ort');
-            $table->double('Laengengrad');
-            $table->double('Breitengrad');
-            $table->binary('Bild')->nullable();
+            $table->string('type');
+            $table->string('designation');
+            $table->string('description');
+            $table->string('location');
+            $table->double('longitude');
+            $table->double('latitude');
+            $table->binary('picture')->nullable();
+            $table->double('capacity')->nullable();
+            $table->bigInteger('enSys_idEnSys')->unsigned(); //ensys_id
+            $table->bigInteger('enSys_users_idusers')->unsigned();  //user_id
+            $table->timestamps();  
+            $table->foreign('enSys_users_idusers')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('enSys_idEnSys')->references('id')->on('EnSys')->onDelete('cascade');
         });
+
     }
 
     /**

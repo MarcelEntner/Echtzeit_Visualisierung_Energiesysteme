@@ -40,29 +40,22 @@ class EnTechController extends Controller
      */
     public function store(Request $request)
     {
-
-        /*
-
-        
-*/
-
-
         $user = Auth::user();
 
         $enTech = new EnTech();
 
-        $enTech->ensys_id = $request->IDES;
-        $enTech->Bezeichnung = $request->Bezeichnung;
-        $enTech->Laengengrad = $request->Laengengrad;
-        $enTech->Breitengrad = $request->Breitengrad;
-        $enTech->Beschreibung = $request->BeschreibungET;
-        $enTech->Typ = $request->Typ;
-        $enTech->Ort = $request->Ort;
-        $enTech->user_id = $user->id;
+        $enTech->enSys_idEnSys = $request->IDES;
+        $enTech->designation = $request->Bezeichnung;
+        $enTech->longitude = $request->Laengengrad;
+        $enTech->latitude = $request->Breitengrad;
+        $enTech->description = $request->BeschreibungET;
+        $enTech->type = $request->Typ;
+        $enTech->location = $request->Ort;
+        $enTech->enSys_users_idusers = $user->id;
 
         if ($request->file("imageET")) {
             $image = base64_encode(file_get_contents($request->file('imageET')));
-            $enTech->Bild = $image;
+            $enTech->picture = $image;
         }
 
         $enTech->save();
@@ -352,11 +345,11 @@ $createEnsysDashboard = Http::withHeaders([
     
 
         $EnTech = EnTech::where('id', $id)->update([
-            'Laengengrad' => $request->input('LaengengradEditET'),
-            'Breitengrad' => $request->input('BreitengradEditET'),
-            'Bezeichnung' => $request->input('BezeichnungEditET'),
-            'Ort' => $request->input('OrtEditET'),
-            'Beschreibung' => $request->input('BeschreibungEditET'),
+            'longitude' => $request->input('LaengengradEditET'),
+            'latitude' => $request->input('BreitengradEditET'),
+            'designation' => $request->input('BezeichnungEditET'),
+            'location' => $request->input('OrtEditET'),
+            'description' => $request->input('BeschreibungEditET'),
         ],
     
     );

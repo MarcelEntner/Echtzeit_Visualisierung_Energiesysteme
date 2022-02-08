@@ -14,15 +14,15 @@ class EtBmHw extends Migration
     public function up()
     {
         Schema::create('EtBmHw', function (Blueprint $table) {
-            $table->id();
+            $table->id('idEtBmHw');
+            $table->dateTime('timestamp')->nullable();
+            $table->double('power')->default(0);
+            $table->double('energy')->default(0);
+            $table->double('flowTemp')->nullable();
+            $table->double('returnTemp')->nullable();
             $table->timestamps();
-            $table->bigInteger('EnTech_id')->unsigned();
-            $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
-            $table->double('Leistung')->default(0);
-            $table->double('Energie')->default(0);
-            $table->double('Vorlauftemp')->nullable();
-            $table->double('Ruecklauftemp')->nullable();
-            $table->dateTime('TimeMeasured')->nullable();
+            $table->bigInteger('enTech_idEnTech')->unsigned();
+            $table->foreign('enTech_idEnTech')->references('id')->on('EnTech')->onDelete('cascade');
         });
     }
 

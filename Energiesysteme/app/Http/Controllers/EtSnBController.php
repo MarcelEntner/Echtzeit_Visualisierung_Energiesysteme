@@ -36,7 +36,7 @@ class EtSnBController extends Controller
     public function store(int $id)
     {
         $EtSnB = new EtSnB();
-        $EtSnB->EnTech_id = $id;
+        $EtSnB->enTech_idEnTech = $id;
         $EtSnB->save();
     }
 

@@ -36,7 +36,7 @@ class EtHaZController extends Controller
     public function store(int $id)
     {
         $EtHaZ = new EtHaZ();
-        $EtHaZ->EnTech_id = $id;
+        $EtHaZ->enTech_idEnTech = $id;
         $EtHaZ->save();
     }
 

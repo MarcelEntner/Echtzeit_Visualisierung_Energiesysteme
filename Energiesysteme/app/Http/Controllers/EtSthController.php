@@ -36,7 +36,7 @@ class EtSthController extends Controller
     public function store(int $id)
     {
         $EtSth = new EtSth();
-        $EtSth->EnTech_id = $id;
+        $EtSth->enTech_idEnTech = $id;
         $EtSth->save();
     }
 

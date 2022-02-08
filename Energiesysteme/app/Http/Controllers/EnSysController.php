@@ -49,17 +49,15 @@ class EnSysController extends Controller
     public function store(Request $request)
     {
 
-
-
         $user = Auth::user();
 
         $enSys = new EnSys();
-        $enSys->Bezeichnung = $request->BezeichnungES;
-        $enSys->Laengengrad = $request->LaengengradES;
-        $enSys->Breitengrad = $request->BreitengradES;
-        $enSys->Katastralgemeinden = $request->KatastralgemeindenES;
-        $enSys->Postleitzahl = $request->PostleitzahlES;
-        $enSys->user_id = $user->id;
+        $enSys->designation = $request->BezeichnungES;
+        $enSys->longitude = $request->LaengengradES;
+        $enSys->latitude = $request->BreitengradES;
+        $enSys->localPart = $request->KatastralgemeindenES;
+        $enSys->postalCode = $request->PostleitzahlES;
+        $enSys->users_idusers = $user->id;
         $enSys->save();
         $data = DB::table('EnSys')->get();
 
@@ -158,7 +156,7 @@ class EnSysController extends Controller
         $EnSys = EnSys::find($id);
         $data = DB::table('EnSys')->get();
         //$EnTech = DB::table('EnTech')->get();
-        $EnTech = EnTech::where('ensys_id', $id)->get();
+        $EnTech = EnTech::where('enSys_idEnSys', $id)->get();
 
 
 
@@ -182,11 +180,11 @@ class EnSysController extends Controller
         $EnSys = EnSys::find($id);
 
         $EnSys = EnSys::where('id', $id)->update([
-            'Laengengrad' => $request->input('Laengengrad'),
-            'Breitengrad' => $request->input('Breitengrad'),
-            'Bezeichnung' => $request->input('Bezeichnung'),
-            'Katastralgemeinden' => $request->input('Katastralgemeinden'),
-            'Postleitzahl' => $request->input('Postleitzahl'),
+            'longitude' => $request->input('Laengengrad'),
+            'latitude' => $request->input('Breitengrad'),
+            'designation' => $request->input('Bezeichnung'),
+            'localPart' => $request->input('Katastralgemeinden'),
+            'postalCode' => $request->input('Postleitzahl'),
         ]);
 
 
@@ -249,7 +247,7 @@ class EnSysController extends Controller
             dd("Konnte nicht gelöscht werden");
         } else {
             $EnSys->delete();
-            $EnTech = EnTech::where('ensys_id', $id)->delete();
+            $EnTech = EnTech::where('enSys_idEnSys', $id)->delete();
             return redirect('/energiesysteme');
         }
 

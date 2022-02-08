@@ -36,7 +36,7 @@ class EtBmHkController extends Controller
     public function store(int $id)
     {
         $EtBmHk = new EtBmHk();
-        $EtBmHk->EnTech_id = $id;
+        $EtBmHk->enTech_idEnTech = $id;
         $EtBmHk->save();
     }
 

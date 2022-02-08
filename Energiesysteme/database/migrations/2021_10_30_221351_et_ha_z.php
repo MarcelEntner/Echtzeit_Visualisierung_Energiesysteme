@@ -14,34 +14,34 @@ class EtHaZ extends Migration
     public function up()
     {
         Schema::create('EtHaZ', function (Blueprint $table) {
-            $table->id();
+            $table->id('idEtHaZ');
+            $table->dateTime('timestamp')->nullable();
+            $table->double('power')->default(0);
+            $table->double('energy')->default(0);
+            $table->double('voltagePh1')->nullable();
+            $table->double('voltagePh2')->nullable();
+            $table->double('voltagePh3')->nullable();
+            $table->double('currentPh1')->nullable();
+            $table->double('currentPh2')->nullable();
+            $table->double('currentPh3')->nullable();
+            $table->double('activePowerPh1')->nullable();
+            $table->double('activePowerPh2')->nullable();
+            $table->double('activePowerPh3')->nullable();
+            $table->double('reactivePowerPh1')->nullable();
+            $table->double('reactivePowerPh2')->nullable();
+            $table->double('reactivePowerPh3')->nullable();
+            $table->double('apperentPowerPh1')->nullable();
+            $table->double('apperentPowerPh2')->nullable();
+            $table->double('apperentPowerPh3')->nullable();
+            $table->double('powerFactorPh1')->nullable();
+            $table->double('powerFactorPh2')->nullable();
+            $table->double('powerFactorPh3')->nullable();
+            $table->double('frequencyPh1')->nullable();
+            $table->double('frequencyPh2')->nullable();
+            $table->double('frequencyPh3')->nullable();
             $table->timestamps();
-            $table->bigInteger('EnTech_id')->unsigned();
-            $table->foreign('EnTech_id')->references('id')->on('EnTech')->onDelete('cascade');
-            $table->double('Leistung')->default(0);
-            $table->double('Energie')->default(0);
-            $table->double('SpannungL1')->nullable();
-            $table->double('SpannungL2')->nullable();
-            $table->double('SpannungL3')->nullable();
-            $table->double('StromstaerkeL1')->nullable();
-            $table->double('StromstaerkeL2')->nullable();
-            $table->double('StromstaerkeL3')->nullable();
-            $table->double('WirkleistungL1')->nullable();
-            $table->double('WirkleistungL2')->nullable();
-            $table->double('WirkleistungL3')->nullable();
-            $table->double('BlindleistungL1')->nullable();
-            $table->double('BlindleistungL2')->nullable();
-            $table->double('BlindleistungL3')->nullable();
-            $table->double('ScheinleistungL1')->nullable();
-            $table->double('ScheinleistungL2')->nullable();
-            $table->double('ScheinleistungL3')->nullable();
-            $table->double('LeistungsfaktorL1')->nullable();
-            $table->double('LeistungsfaktorL2')->nullable();
-            $table->double('LeistungsfaktorL3')->nullable();
-            $table->double('FreuqenzL1')->nullable();
-            $table->double('FreuqenzL2')->nullable();
-            $table->double('FreuqenzL3')->nullable();
-            $table->dateTime('TimeMeasured')->nullable();
+            $table->bigInteger('enTech_idEnTech')->unsigned();
+            $table->foreign('enTech_idEnTech')->references('id')->on('EnTech')->onDelete('cascade');
         });
     }
 
