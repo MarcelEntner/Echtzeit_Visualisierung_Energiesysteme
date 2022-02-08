@@ -53,10 +53,8 @@
 
                                             <tr>
                                                 <td onclick="moveToMarker({{ $d->id }})">{{ $d->Bezeichnung }}</td>
-                                                <td onclick="moveToMarker({{ $d->id }})">
-                                                    {{ $d->Katastralgemeinden }}</td>
-                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Postleitzahl }}
-                                                </td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Katastralgemeinden }}</td>
+                                                <td onclick="moveToMarker({{ $d->id }})">{{ $d->Postleitzahl }} </td>
 
                                                 @auth
                                                     <?php
@@ -68,9 +66,7 @@
 
                                                     @if ($userID->id == $d->user_id || $userID->role == 'Admin')
 
-                                                        <td id="hov"> <a href="/delete/{{ $d->id }}"
-                                                                class="btn btn2"
-                                                                style="background-image: url('/images/buttons/delete.png')"></a>
+                                                        <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a>
                                                         </td>
 
                                                         <td id="hov"> <a href="javascript:GrafanafunctionES({{ $d->id }})"
@@ -248,7 +244,7 @@
                                         <img src="/images/pop-up/name.png" style="margin-right:10px;">
                                         Bezeichnung</span>
                                     <input type="text" class="form-control3" id="BezeichnungES" name="BezeichnungES"
-                                        aria-label="Bezeichnung" aria-describedby="basic-addon1" placeholder="MicroGridLab">
+                                        aria-label="Bezeichnung" aria-describedby="basic-addon1" placeholder="MicroGridLab" required>
                                 </div>
                                 <!--Input Feld Katastralgemeinde -->
                                 <div class="input-group mb-3" style="margin-top:5%">
@@ -257,15 +253,15 @@
                                         Katastralgemeinde</span>
                                     <input type="text" class="form-control3" id="KatastralgemeindenES"
                                         name="KatastralgemeindenES" aria-label="Katastralgemeinden"
-                                        aria-describedby="basic-addon1" placeholder="Wieselburg">
+                                        aria-describedby="basic-addon1" placeholder="Wieselburg" required>
                                 </div>
                                 <!--Input Feld Postleitzahl -->
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
                                         Postleitzahl</span>
-                                    <input type="text" class="form-control3" id="PostleitzahlES" name="PostleitzahlES"
-                                        aria-label="Postleitzahl" aria-describedby="basic-addon1" placeholder="3250">
+                                    <input type="number" class="form-control3" id="PostleitzahlES" name="PostleitzahlES"
+                                        aria-label="Postleitzahl" aria-describedby="basic-addon1" placeholder="3250" required>
                                 </div>
                                 <!--Input Feld Längengrad Readonly (value wird automatisch gesetzt)-->
                                 <div class="input-group mb-3" style="margin-top:5%">
@@ -329,7 +325,7 @@
                                         <img src="/images/pop-up/name.png" style="margin-right:10px;">
                                         Bezeichnung</span>
                                     <input type="text" class="form-control3" id="BezeichnungET" name="Bezeichnung"
-                                        placeholder="Bezeichung" aria-label="BezeichnungET" aria-describedby="basic-addon1">
+                                        placeholder="Bezeichung" aria-label="BezeichnungET" aria-describedby="basic-addon1" required> 
                                 </div>
                                 <!--Input Feld Typ -->
                                 <div class="input-group mb-3" style="margin-top:2%; width:445px;">
@@ -368,7 +364,7 @@
                                         <img src="/images/pop-up/ort.png" style="margin-right:10px;">
                                         Ort</span>
                                     <input type="text" class="form-control3" id="OrtET" name="Ort" placeholder="Dach"
-                                        aria-label="OrtET" aria-describedby="basic-addon1">
+                                        aria-label="OrtET" aria-describedby="basic-addon1" required>
                                 </div>
                                 <!--Input Feld Längengrad Readonly (value wird automatisch gesetzt) -->
                                 <div class="input-group mb-3" style="margin-top:2%">
@@ -401,7 +397,7 @@
                                         <img src="/images/pop-up/beschreibung.png" style="margin-right:10px;">
                                         Beschreibung</span>
                                     <input type="text" class="form-control3" id="BeschreibungET" name="BeschreibungET"
-                                        placeholder="..." aria-label="BeschreibungET" aria-describedby="basic-addon1">
+                                        placeholder="..." aria-label="BeschreibungET" aria-describedby="basic-addon1" required>
                                 </div>
                                 <br>
                                 <!--Button Energietechnologie erstellen  -->
@@ -440,7 +436,7 @@
                                     <img src="/images/pop-up/name.png" style="margin-right:10px;">
                                     Bezeichnung</span>
                                 <input type="text" class="form-control3" id="BezeichnungESEdit" name="Bezeichnung" value=""
-                                    aria-label="Bezeichnung" aria-describedby="basic-addon1">
+                                    aria-label="Bezeichnung" aria-describedby="basic-addon1" required>
                             </div>
                             <!--Input Feld Katastralgemeinde Änderbar -->
                             <div class="input-group mb-3" style="margin-top:5%">
@@ -449,15 +445,15 @@
                                     Katastralgemeinde</span>
                                 <input type="text" class="form-control3" id="KatastralgemeindeESEdit"
                                     name="Katastralgemeinden" value="" aria-label="Katastralgemeinden"
-                                    aria-describedby="basic-addon1">
+                                    aria-describedby="basic-addon1" required>
                             </div>
                             <!--Input Feld Postleitzahl Änderbar -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
                                     Postleitzahl</span>
-                                <input type="text" class="form-control3" id="PostleitzahlESEdit" name="Postleitzahl"
-                                    value="" aria-label="Postleitzahl" aria-describedby="basic-addon1">
+                                <input type="number" class="form-control3" id="PostleitzahlESEdit" name="Postleitzahl"
+                                    value="" aria-label="Postleitzahl" aria-describedby="basic-addon1" required>
                             </div>
                             <!--Input Feld Längengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
@@ -617,7 +613,7 @@
                             @csrf
                             <!--Input Felder -->
                             <!--Input Feld ID Energiesystem Readonly -->
-                            <div class="input-group mb-3" style="margin-top:2%">
+                            <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID Energiesystem</span>
@@ -626,7 +622,7 @@
                                     style="background-color:#e9ecef;">
                             </div>
                             <!--Input Feld ID Energietechnologie Readonly -->
-                            <div class="input-group mb-3" style="margin-top:2%">
+                            <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID Energietechnologie</span>
@@ -640,7 +636,7 @@
                                     <img src="/images/pop-up/name.png" style="margin-right:10px;">
                                     Bezeichnung</span>
                                 <input type="text" class="form-control3" id="BezeichnungEditET" name="BezeichnungEditET"
-                                    value="" aria-label="BezeichnungEditET" aria-describedby="basic-addon1">
+                                    value="" aria-label="BezeichnungEditET" aria-describedby="basic-addon1" required>
                             </div>
                             <!--Input Feld Typ Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%; width:445px;">
@@ -657,7 +653,7 @@
                                     <img src="/images/pop-up/ort.png" style="margin-right:10px;">
                                     Ort </span>
                                 <input type="text" class="form-control3" id="OrtEditET" name="OrtEditET" value=""
-                                    aria-label="OrtEditET" aria-describedby="basic-addon1">
+                                    aria-label="OrtEditET" aria-describedby="basic-addon1" required>
                             </div>
                             <!--Input Feld Längengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
@@ -676,6 +672,21 @@
                                 <input type="text" class="form-control3" id="BreitengradEditET" name="BreitengradEditET"
                                     value="" readonly aria-label="BreitengradEditET" aria-describedby="basic-addon1"
                                     style="background-color:#e9ecef;">
+                            </div>
+                              <!--Input Feld Bild -->
+                              <div class="input-group mb-3" style="margin-top:5%">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                    <img src="/images/pop-up/bild.png" style="margin-right:10px;">
+                                    Bild einfügen</span>
+                                <input type="file" class="form-control3" id="imageEditET" name="imageEditET" value="">
+                            </div>
+                            <!--Input Feld Beschreibung -->
+                            <div class="input-group mb-3" style="margin-top:2%">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                    <img src="/images/pop-up/beschreibung.png" style="margin-right:10px;">
+                                    Beschreibung</span>
+                                <input type="text" class="form-control3" id="BeschreibungEditET" name="BeschreibungEditET"
+                                    placeholder="..." aria-label="BeschreibungET" aria-describedby="basic-addon1" required>
                             </div>
                             <br>
                             <!--Button Energietechnologie aktualisieren -->
@@ -1255,7 +1266,7 @@
     </script>
 
     <!-- Hier gehört der API Key eingebunden   -->
-    <!-- Kronstana API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
+    <!-- Tovias API Key: AIzaSyDiSVawVLzIwn_GksL2Mc6HjoEqWhBfXvs-->
     <!-- Entner API Key: AIzaSyDboUvk9ElphosPEFC-Am9XzHFsmnOZR7I-->
 
     <!-- key=.....&callback= initAutocomplete Funktion wird aufgerufen-->
@@ -1268,9 +1279,9 @@
     <?php
     //Datenbank Daten
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     //Connection aufbauen
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -1282,7 +1293,7 @@
         $es_select = 'SELECT id, Bezeichnung, Laengengrad, Breitengrad, Postleitzahl, Katastralgemeinden FROM EnSys'; // Select Statement für ES Daten
         //$es_select = DB::table('EnSys')->get(); // ES Select mit Laravel
     
-        $et_select = 'SELECT id, ensys_id, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad  FROM EnTech'; // Select Statement für ET Daten
+        $et_select = 'SELECT id, ensys_id, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad, Beschreibung, Bild  FROM EnTech'; // Select Statement für ET Daten
         //$et_select = DB::table('EnTech')->get(); //ET Select mit Laravel
     
 
@@ -1309,7 +1320,7 @@
         if ($et_result->num_rows > 0) {
             //Jeder Datensatz wird nach der Reihe als Array gespeichert
             while ($row = $et_result->fetch_assoc()) {
-                $sqlET = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['ensys_id']}, '{$row['Typ']}', '{$row['Ort']}', '{$row['id']}']";
+                $sqlET = "['{$row['Bezeichnung']}', {$row['Laengengrad']}, {$row['Breitengrad']}, {$row['ensys_id']}, '{$row['Typ']}', '{$row['Ort']}', '{$row['id']}','{$row['Beschreibung']}','{$row['Bild']}']";
                 array_push($DB_Daten_ET, $sqlET);
             }
             $conn->close(); //Datenbank Connection wieder schließen
@@ -1691,6 +1702,7 @@
         //Stift-Funktion zum Editieren von ET
         function EditfunctionET(id) { //Wird die ID des ET mitgegeben
             $('#PopUpETEditieren').modal('show'); //Das PopUpETEditieren zum Editieren öffnen
+        
             
             DB_Daten_ET.forEach(locEt => { //Hier wird jede einzelne ET nacheinander durchgegangen
                 if (locEt[6] == id) {  //Überprüfung ob die EnTech_id die gleiche ist wie die übergebene/ausgewählte ID
@@ -1701,6 +1713,7 @@
                     $("#TypEditET").val(locEt[4]); //Input Feld bekommt den Inhalt
                     $("#LaengengradEditET").val(locEt[1]); //Input Feld bekommt den Inhalt
                     $("#BreitengradEditET").val(locEt[2]); //Input Feld bekommt den Inhalt
+                    $("#BeschreibungEditET").val(locEt[7]); //Input Feld bekommt den Inhalt
                     $("#editFormET").attr("action", "/editET/" + id)
                 }
             })
@@ -2449,7 +2462,7 @@
 
                     //Neue Position auf der Map festlegen
                     mapOptions.center = searchLatLng //Map Zentrum festlegen
-                    mapOptions.zoom = 12 //Zoom festlegen
+                    mapOptions.zoom = 14 //Zoom festlegen
                     var map = new google.maps.Map(document.getElementById('map'), mapOptions); //Übertragen der MapOptions 
 
               

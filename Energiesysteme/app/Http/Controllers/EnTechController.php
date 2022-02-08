@@ -348,13 +348,18 @@ $createEnsysDashboard = Http::withHeaders([
     {
 
         $EnTech = EnTech::find($id);
+                
+    
 
         $EnTech = EnTech::where('id', $id)->update([
             'Laengengrad' => $request->input('LaengengradEditET'),
             'Breitengrad' => $request->input('BreitengradEditET'),
             'Bezeichnung' => $request->input('BezeichnungEditET'),
             'Ort' => $request->input('OrtEditET'),
-        ]);
+            'Beschreibung' => $request->input('BeschreibungEditET'),
+        ],
+    
+    );
 
 
         return redirect('/energiesysteme');
