@@ -33,7 +33,7 @@
                         <!-- DataTable  Th und Td gleiche Anzahl, ansonsten funktioniert er nicht-->
 
                         <!-- Gesamte DataTable Div -->
-                        <div style="height: 48vh; width:100%; margin-top:-7%;">
+                        <div style="height: 50vh; width:100%; margin-top:-7%;">
 
                             <!-- DataTable ES Ausgangspunkt-->
                             <div id="tableDiv" style="padding-top:5%;"> 
