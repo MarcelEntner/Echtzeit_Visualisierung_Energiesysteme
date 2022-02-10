@@ -24,7 +24,7 @@
                     <div class="shadow-lg rounded p-3">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
-                                <h3> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/es.png"
+                                <h3> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/esrot.png"
                                         id="Listimage"></h3>
                             </div>
                         </div>
@@ -66,18 +66,11 @@
 
                                                     @if ($userID->id == $d->users_idusers || $userID->role == 'Admin')
 
-                                                        <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a>
-                                                        </td>
+                                                        <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a></td>
 
-                                                        <td id="hov"> <a href="javascript:GrafanafunctionES({{ $d->id }})"
-                                                                class="btn btn2"
-                                                                style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                        </td>
+                                                        <td id="hov"> <a href="javascript:GrafanafunctionES({{ $d->id }})"class="btn btn2" style="background-image: url('/images/buttons/statistik.png')"></a></td>
 
-                                                        <td id="hov"> <a href="javascript:EditfunctionES({{ $d->id }})"
-                                                                class="btn btn2"
-                                                                style="background-image: url('/images/buttons/stift.png')"></a>
-                                                        </td>
+                                                        <td id="hov"> <a href="javascript:EditfunctionES({{ $d->id }})" class="btn btn2" style="background-image: url('/images/buttons/stift.png')"></a></td>
 
                                                     @else
                                                         <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
@@ -228,7 +221,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img
-                                    src="/images/icons/es2.png"></h5>
+                                    src="/images/icons/esrot.png"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -241,7 +234,7 @@
                                 <!--Input Feld Bezeichnung -->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/BezeichnungES.png" style="margin-right:10px;">
                                         Bezeichnung</span>
                                     <input type="text" class="form-control3" id="BezeichnungES" name="BezeichnungES"
                                         aria-label="Bezeichnung" aria-describedby="basic-addon1" placeholder="MicroGridLab" required>
@@ -249,7 +242,7 @@
                                 <!--Input Feld Katastralgemeinde -->
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/KatastralgemeindeES.png" style="margin-right:10px;">
                                         Katastralgemeinde</span>
                                     <input type="text" class="form-control3" id="KatastralgemeindenES"
                                         name="KatastralgemeindenES" aria-label="Katastralgemeinden"
@@ -258,7 +251,7 @@
                                 <!--Input Feld Postleitzahl -->
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/PostleitzahlES.png" style="margin-right:10px;">
                                         Postleitzahl</span>
                                     <input type="number" class="form-control3" id="PostleitzahlES" name="PostleitzahlES"
                                         aria-label="Postleitzahl" aria-describedby="basic-addon1" placeholder="3250" required>
@@ -266,7 +259,7 @@
                                 <!--Input Feld Längengrad Readonly (value wird automatisch gesetzt)-->
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/LängengradES.png" style="margin-right:10px;">
                                         Längengrad</span>
                                     <input type="text" class="form-control3" id="LaengengradES" name="LaengengradES"
                                         aria-label="LaengengradES" aria-describedby="basic-addon1" readonly
@@ -275,7 +268,7 @@
                                 <!--Input Feld Breitengrad (value wird automatisch gesetzt)-->
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/BreitengradES.png" style="margin-right:10px;">
                                         Breitengrad</span>
                                     <input type="text" class="form-control3" id="BreitengradES" name="BreitengradES"
                                         aria-label="BreitengradES" aria-describedby="basic-addon1" readonly
@@ -300,7 +293,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie <img
-                                    src="/images/icons/etgrün2.png"></h5>
+                                    src="/images/icons/etrot.png"></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -314,7 +307,6 @@
                                 <!--Input Feld ID-ES Readonly (value wird automatisch gesetzt) -->
                                 <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                         ID-ES</span>
                                     <input type="text" class="form-control3" id="IDES" name="IDES" readonly
                                         aria-label="ID-ES" aria-describedby="basic-addon1" style="background-color:#e9ecef">
@@ -322,7 +314,7 @@
                                 <!--Input Feld Bezeichnung -->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/BezeichnungET.png" style="margin-right:10px;">
                                         Bezeichnung</span>
                                     <input type="text" class="form-control3" id="BezeichnungET" name="Bezeichnung"
                                         placeholder="Bezeichung" aria-label="BezeichnungET" aria-describedby="basic-addon1" required> 
@@ -330,7 +322,7 @@
                                 <!--Input Feld Typ -->
                                 <div class="input-group mb-3" style="margin-top:2%; width:445px;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/typ.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/TypET.png" style="margin-right:10px;">
                                         Typ</span>
                                     <br>
                                     <select class="form-select" name="Typ" id="Typ" style="text-align:center">
@@ -361,7 +353,7 @@
                                 <!--Input Feld Ort -->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/ort.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/OrtET.png" style="margin-right:10px;">
                                         Ort</span>
                                     <input type="text" class="form-control3" id="OrtET" name="Ort" placeholder="Dach"
                                         aria-label="OrtET" aria-describedby="basic-addon1" required>
@@ -369,7 +361,7 @@
                                 <!--Input Feld Längengrad Readonly (value wird automatisch gesetzt) -->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/LängengradET.png" style="margin-right:10px;">
                                         Längengrad</span>
                                     <input type="text" class="form-control3" id="LaengengradET" name="Laengengrad"
                                         aria-label="LängengradET" aria-describedby="basic-addon1" readonly
@@ -378,7 +370,7 @@
                                 <!--Input Feld Breitengrad Readonly (value wird automatisch gesetzt)-->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/BreitengradET.png" style="margin-right:10px;">
                                         Breitengrad</span>
                                     <input type="text" class="form-control3" id="BreitengradET" name="Breitengrad"
                                         aria-label="BreitengradET" aria-describedby="basic-addon1" readonly
@@ -387,14 +379,14 @@
                                 <!--Input Feld Bild -->
                                 <div class="input-group mb-3" style="margin-top:5%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/bild.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/BildET.png" style="margin-right:10px;">
                                         Bild einfügen</span>
                                     <input type="file" class="form-control3" id="imageET" name="imageET" value="">
                                 </div>
                                 <!--Input Feld Beschreibung -->
                                 <div class="input-group mb-3" style="margin-top:2%">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                        <img src="/images/pop-up/beschreibung.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/BeschreibungET.png" style="margin-right:10px;">
                                         Beschreibung</span>
                                     <input type="text" class="form-control3" id="BeschreibungET" name="BeschreibungET"
                                         placeholder="..." aria-label="BeschreibungET" aria-describedby="basic-addon1" required>
@@ -419,7 +411,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img
-                                src="/images/icons/esgrün2.png"></h5>
+                                src="/images/icons/esrot.png"></h5>
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -433,7 +425,7 @@
                             <!--Input Feld Bezeichnung Änderbar -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/BezeichnungES.png" style="margin-right:10px;">
                                     Bezeichnung</span>
                                 <input type="text" class="form-control3" id="BezeichnungESEdit" name="Bezeichnung" value=""
                                     aria-label="Bezeichnung" aria-describedby="basic-addon1" required>
@@ -441,7 +433,7 @@
                             <!--Input Feld Katastralgemeinde Änderbar -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/KatastralgemeindeES.png" style="margin-right:10px;">
                                     Katastralgemeinde</span>
                                 <input type="text" class="form-control3" id="KatastralgemeindeESEdit"
                                     name="Katastralgemeinden" value="" aria-label="Katastralgemeinden"
@@ -450,7 +442,7 @@
                             <!--Input Feld Postleitzahl Änderbar -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/PostleitzahlES.png" style="margin-right:10px;">
                                     Postleitzahl</span>
                                 <input type="number" class="form-control3" id="PostleitzahlESEdit" name="Postleitzahl"
                                     value="" aria-label="Postleitzahl" aria-describedby="basic-addon1" required>
@@ -458,7 +450,7 @@
                             <!--Input Feld Längengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/LängengradES.png" style="margin-right:10px;">
                                     Längengrad</span>
                                 <input type="text" class="form-control3" id="LaengengradESEdit" name="Laengengrad"
                                     value="" aria-label="Laengengrad" aria-describedby="basic-addon1" readonly
@@ -467,7 +459,7 @@
                             <!--Input Feld Breitengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/BreitengradES.png" style="margin-right:10px;">
                                     Breitengrad</span>
                                 <input type="text" class="form-control3" id="BreitengradESEdit" name="Breitengrad"
                                     value="" readonly aria-label="Breitengrad" aria-describedby="basic-addon1"
@@ -479,7 +471,7 @@
                                 <!--Input Feld Az-Erzeugungstechnologien Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/AzETES.png" style="margin-right:10px;">
                                         Az-Erzeugungstechnologien</span>
                                     <input type="text" class="form-control3" id="Az-Erzeugungstechnologien"
                                         name="Az-Erzeugungstechnologien" aria-label="Az-Erzeugungstechnologien"
@@ -489,7 +481,7 @@
                                 <!--Input Feld Az-Verbraucher Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/AzVerbraucherES.png" style="margin-right:10px;">
                                         Az-Verbraucher</span>
                                     <input type="text" class="form-control3" id="Az-Verbraucher" name="Az-Verbraucher"
                                         aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value=""
@@ -498,7 +490,7 @@
                                 <!--Input Feld Az-Speicher Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/AzSpeicherES.png" style="margin-right:10px;">
                                         Az-Speicher</span>
                                     <input type="text" class="form-control3" id="Az-Speicher" name="Az-Speicher"
                                         aria-label="Az-Speicher" aria-describedby="basic-addon1" value=""
@@ -507,7 +499,7 @@
                                 <!--Input Feld Ges-Nennleistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/Ges-NennleistungES.png" style="margin-right:10px;">
                                         Ges-Nennleistung [kW]</span>
                                     <input type="text" class="form-control3" id="Ges-Nennleistung" name="Ges-Nennleistung"
                                         aria-label="Ges-Nennleistung" aria-describedby="basic-addon1" value=""
@@ -516,7 +508,7 @@
                                 <!--Input Feld Ges-Energie [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/energie.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/Ges-EnergieES.png" style="margin-right:10px;">
                                         Ges-Energie [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-Energie" name="Ges-Energie"
                                         aria-label="Ges-Energie" aria-describedby="basic-addon1" value=""
@@ -525,7 +517,7 @@
                                 <!--Input Feld Ges-VerbraucherLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/Ges-Verbraucher-LeistungES.png" style="margin-right:10px;">
                                         Ges-VerbraucherLeistung [kW]</span>
                                     <input type="text" class="form-control3" id="Ges-VerbraucherLeistung"
                                         name="Ges-VerbraucherLeistung" aria-label="Ges-VerbraucherLeistung"
@@ -535,7 +527,7 @@
                                 <!--Input Feld Ges-VerbraucherEnergie [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
+                                        <img src="/images/pop-up/Ges-Verbraucher-EnergieES.png" style="margin-right:5px;">
                                         Ges-VerbraucherEnergie [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-VerbraucherEnergie"
                                         name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
@@ -545,7 +537,7 @@
                                 <!--Input Feld Ges-ErzeugerLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
+                                        <img src="/images/pop-up/Ges-Erzeuger-LeistungES.png" style="margin-right:5px;">
                                         Ges-ErzeugerLeistung [kW]</span>
                                     <input type="text" class="form-control3" id="Ges-ErzeugerLeistung"
                                         name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
@@ -555,7 +547,7 @@
                                 <!--Input Feld Ges-ErzeugerEnergie [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
+                                        <img src="/images/pop-up/Ges-Erzeuger-EnergieES.png" style="margin-right:5px;">
                                         Ges-ErzeugerEnergie [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-ErzeugerEnergie"
                                         name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
@@ -565,7 +557,7 @@
                                 <!--Input Feld Ges-SpeicherKapazität [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/Ges-SpeicherkapazitätES.png" style="margin-right:10px;">
                                         Ges-SpeicherKapazität [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-SpeicherKapazität"
                                         name="Ges-SpeicherKapazität" aria-label="Ges-SpeicherKapazität"
@@ -575,7 +567,7 @@
                                 <!--Input Feld Aktueller Netzbezug [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/AktuellerNetzbezugES.png" style="margin-right:10px;">
                                         Aktueller Netzbezug [kW]</span>
                                     <input type="text" class="form-control3" id="AktuellerNetzbezug"
                                         name="Aktueller Netzbezug" aria-label="Aktueller Netzbezug"
@@ -602,7 +594,7 @@
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie <img src="/images/icons/etgrün2.png"></h5>
+                        <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie <img src="/images/icons/etrot.png"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -615,7 +607,6 @@
                             <!--Input Feld ID Energiesystem Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID Energiesystem</span>
                                 <input type="text" class="form-control3" id="IdEditES" name="idEditES" value=""
                                     aria-label="ID-ES" aria-describedby="basic-addon1" readonly
@@ -624,7 +615,6 @@
                             <!--Input Feld ID Energietechnologie Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/id.png" style="margin-right:10px;">
                                     ID Energietechnologie</span>
                                 <input type="text" class="form-control3" id="IdEditET" name="idEditET" value=""
                                     aria-label="idEditET" aria-describedby="basic-addon1" readonly
@@ -633,7 +623,7 @@
                             <!--Input Feld Bezeichnung Änderbar -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/BezeichnungET.png" style="margin-right:10px;">
                                     Bezeichnung</span>
                                 <input type="text" class="form-control3" id="BezeichnungEditET" name="BezeichnungEditET"
                                     value="" aria-label="BezeichnungEditET" aria-describedby="basic-addon1" required>
@@ -641,7 +631,7 @@
                             <!--Input Feld Typ Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%; width:445px;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/typ.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/TypET.png" style="margin-right:10px;">
                                     Typ</span>
                                 <input type="text" class="form-control3" id="TypEditET" name="TypEditET" value=""
                                     aria-label="TypEditET" aria-describedby="basic-addon1" readonly
@@ -650,7 +640,7 @@
                             <!--Input Feld Ort Änderbar -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/ort.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/OrtET.png" style="margin-right:10px;">
                                     Ort </span>
                                 <input type="text" class="form-control3" id="OrtEditET" name="OrtEditET" value=""
                                     aria-label="OrtEditET" aria-describedby="basic-addon1" required>
@@ -658,7 +648,7 @@
                             <!--Input Feld Längengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/LängengradET.png" style="margin-right:10px;">
                                     Längengrad</span>
                                 <input type="text" class="form-control3" id="LaengengradEditET" name="LaengengradEditET"
                                     value="" readonly aria-label="LaengengradEditET" aria-describedby="basic-addon1"
@@ -667,7 +657,7 @@
                             <!--Input Feld Breitgengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/BreitengradET.png" style="margin-right:10px;">
                                     Breitgengrad</span>
                                 <input type="text" class="form-control3" id="BreitengradEditET" name="BreitengradEditET"
                                     value="" readonly aria-label="BreitengradEditET" aria-describedby="basic-addon1"
@@ -676,14 +666,14 @@
                               <!--Input Feld Bild -->
                               <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/bild.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/BildET.png" style="margin-right:10px;">
                                     Bild einfügen</span>
                                 <input type="file" class="form-control3" id="imageEditET" name="imageEditET" value="">
                             </div>
                             <!--Input Feld Beschreibung -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/beschreibung.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/BeschreibungET.png" style="margin-right:10px;">
                                     Beschreibung</span>
                                 <input type="text" class="form-control3" id="BeschreibungEditET" name="BeschreibungEditET"
                                     placeholder="..." aria-label="BeschreibungET" aria-describedby="basic-addon1" required>
@@ -795,7 +785,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energiesystem <img
-                                src="/images/icons/esgrün2.png"></h5>
+                                src="/images/icons/esrot.png"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -810,7 +800,7 @@
                             <!--Input Bezeichnung  Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/BezeichnungES.png" style="margin-right:10px;">
                                     Bezeichnung</span>
                                 <input type="text" class="form-control3" id="BezeichnungAuge" name="Bezeichnung"
                                     aria-label="Bezeichnung" aria-describedby="basic-addon1" value="" readonly
@@ -819,7 +809,7 @@
                             <!--Input Katastralgemeinde  Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/katastralgemeinde.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/KatastralgemeindeES.png" style="margin-right:10px;">
                                     Katastralgemeinde</span>
                                 <input type="text" class="form-control3" id="KatastralgemeindeAuge"
                                     name="Katastralgemeinden" value="" aria-label="Katastralgemeinde"
@@ -828,7 +818,7 @@
                             <!--Input Postleitzahl  Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/postleitzahl.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/PostleitzahlES.png" style="margin-right:10px;">
                                     Postleitzahl</span>
                                 <input type="text" class="form-control3" id="PostleitzahlAuge" name="Postleitzahl"
                                     value="" aria-label="Postleitzahl" aria-describedby="basic-addon1" readonly
@@ -837,7 +827,7 @@
                             <!--Input Längengrad  Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/LängengradES.png" style="margin-right:10px;">
                                     Längengrad</span>
                                 <input type="text" class="form-control3" id="LaengengradAuge" name="Laengengrad"
                                     aria-label="Laengengrad" aria-describedby="basic-addon1" value="" readonly
@@ -846,7 +836,7 @@
                             <!--Input Breitengrad  Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/BreitengradES.png" style="margin-right:10px;">
                                     Breitengrad</span>
                                 <input type="text" class="form-control3" id="BreitengradAuge" name="Breitengrad"
                                     aria-label="Breitengrad" aria-describedby="basic-addon1" value="" readonly
@@ -858,7 +848,7 @@
                                 <!--Input Az-Erzeugungstechnologien  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/erzeugertechnologien.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/AzETES.png" style="margin-right:10px;">
                                         Az-Erzeugungstechnologien</span>
                                     <input type="text" class="form-control3" id="Az-ErzeugungstechnologienAuge"
                                         name="Az-Erzeugungstechnologien" aria-label="Az-Erzeugungstechnologien"
@@ -868,7 +858,7 @@
                                 <!--Input Az-Verbraucher  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/verbraucher.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/AzVerbraucherES.png" style="margin-right:10px;">
                                         Az-Verbraucher</span>
                                     <input type="text" class="form-control3" id="Az-VerbraucherAuge" name="Az-Verbraucher"
                                         aria-label="Az-Verbraucher" aria-describedby="basic-addon1" value=""
@@ -877,7 +867,7 @@
                                 <!--Input Az-Speicher  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/azspeicher.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/AzSpeicherES.png" style="margin-right:10px;">
                                         Az-Speicher</span>
                                     <input type="text" class="form-control3" id="Az-SpeicherAuge" name="Az-Speicher"
                                         aria-label="Az-Speicher" aria-describedby="basic-addon1" value=""
@@ -886,7 +876,7 @@
                                 <!--Input Ges-Nennleistung [kW]  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/leistung.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/Ges-NennleistungES.png" style="margin-right:10px;">
                                         Ges-Nennleistung [kW]</span>
                                     <input type="text" class="form-control3" id="Ges-NennleistungAuge"
                                         name="Ges-Nennleistung" aria-label="Ges-Nennleistung"
@@ -896,7 +886,7 @@
                                 <!--Input Ges-Energie [kW/h]  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/energie.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/Ges-EnergieES.png" style="margin-right:10px;">
                                         Ges-Energie [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-EnergieAuge" name="Ges-Energie"
                                         aria-label="Ges-Energie" aria-describedby="basic-addon1" value=""
@@ -905,7 +895,7 @@
                                 <!--Input Ges-VerbraucherLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/gesamtverleistung.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/Ges-Verbraucher-LeistungES.png" style="margin-right:10px;">
                                         Ges-VerbraucherLeistung [kW]</span>
                                     <input type="text" class="form-control3" id="Ges-VerbraucherLeistungAuge"
                                         name="Ges-VerbraucherLeistung" aria-label="Ges-VerbraucherLeistung"
@@ -915,7 +905,7 @@
                                 <!--Input Ges-VerbraucherEnergie [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/Ges-Verbraucher-EnergieES.png" style="margin-right:10px;">
                                         Ges-VerbraucherEnergie [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-VerbraucherEnergieAuge"
                                         name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
@@ -925,7 +915,7 @@
                                 <!--Input Ges-ErzeugerLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
+                                        <img src="/images/pop-up/Ges-Erzeuger-LeistungES.png" style="margin-right:5px;">
                                         Ges-ErzeugerLeistung [kW]</span>
                                     <input type="text" class="form-control3" id="Ges-ErzeugerLeistungAuge"
                                         name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
@@ -935,7 +925,7 @@
                                 <!--Input Ges-ErzeugerEnergie [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/gesverenergie.png" style="margin-right:5px;">
+                                        <img src="/images/pop-up/Ges-Erzeuger-EnergieES.png" style="margin-right:5px;">
                                         Ges-ErzeugerEnergie [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-ErzeugerEnergieAuge"
                                         name="Ges-VerbraucherEnergie" aria-label="Ges-VerbraucherEnergie"
@@ -945,7 +935,7 @@
                                 <!--Input Ges-SpeicherKapazität [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/gesspeicherkap.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/Ges-SpeicherkapazitätES.png" style="margin-right:10px;">
                                         Ges-SpeicherKapazität [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-SpeicherKapazitätAuge"
                                         name="Ges-SpeicherKapazität" aria-label="Ges-SpeicherKapazität"
@@ -955,7 +945,7 @@
                                 <!--Input  Aktueller Netzbezug [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
-                                        <img src="/images/pop-up/netzbezug.png" style="margin-right:10px;">
+                                        <img src="/images/pop-up/AktuellerNetzbezugES.png" style="margin-right:10px;">
                                         Aktueller Netzbezug [kW]</span>
                                     <input type="text" class="form-control3" id="AktuellerNetzbezugAuge"
                                         name="Aktueller Netzbezug" aria-label="Aktueller Netzbezug"
@@ -979,7 +969,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title modal2-title" id="exampleModalLongTitle">Energietechnologie <img
-                                src="/images/icons/etgrün2.png"></h5>
+                                src="/images/icons/etrot.png"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -994,7 +984,7 @@
                             <!--Input ID-ES  Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/id.png" style="margin-right:10px;">
+                                   
                                     ID-ES</span>
                                 <input type="text" class="form-control3" id="IDESAugeET" name="IDESAugeET"
                                     aria-label="IDESAugeET" aria-describedby="basic-addon1" value="" readonly
@@ -1003,7 +993,7 @@
                             <!--Input ID-ET  Readonly -->
                             <div class="input-group mb-3" style="margin-top:2% ; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/id.png" style="margin-right:10px;">
+                                 
                                     ID-ET</span>
                                 <input type="text" class="form-control3" id="IDETAugeET" aria-label="IDETAugeET"
                                     aria-describedby="basic-addon1" name="IDETAugeET" value="" readonly
@@ -1012,7 +1002,7 @@
                             <!--Input Bezeichnung Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/name.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/BezeichnungET.png" style="margin-right:10px;">
                                     Bezeichnung</span>
                                 <input type="text" class="form-control3" id="BezeichnungAugeET"
                                     aria-label="BezeichnungAugeET" aria-describedby="basic-addon1" name="Postleitzahl"
@@ -1021,7 +1011,7 @@
                             <!--Input Typ Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/typ.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/TypET.png" style="margin-right:10px;">
                                     Typ</span>
                                 <input type="text" class="form-control3" id="TypAugeET" name="Laengengrad" value=""
                                     readonly style="background-color:#e9ecef;">
@@ -1029,7 +1019,7 @@
                             <!--Input Ort Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/ort.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/OrtET.png" style="margin-right:10px;">
                                     Ort</span>
                                 <input type="text" class="form-control3" id="OrtAugeET" name="Breitengrad" value=""
                                     readonly style="background-color:#e9ecef;">
@@ -1037,7 +1027,7 @@
                             <!--Input Längengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/längengrad.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/LängengradET.png" style="margin-right:10px;">
                                     Längengrad</span>
                                 <input type="text" class="form-control3" id="LaengengradAugeET" name="Breitengrad"
                                     value="" readonly style="background-color:#e9ecef;">
@@ -1045,7 +1035,7 @@
                             <!--Input Breitengrad Readonly -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/breitengrad.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/BreitengradET.png" style="margin-right:10px;">
                                     Breitengrad</span>
                                 <input type="text" class="form-control3" id="BreitengradAugeET" name="Breitengrad"
                                     value="" readonly style="background-color:#e9ecef;">
@@ -1053,7 +1043,7 @@
                             <!--Input Feld Beschreibung -->
                             <div class="input-group mb-3" style="margin-top:2%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
-                                    <img src="/images/pop-up/beschreibung.png" style="margin-right:10px;">
+                                    <img src="/images/pop-up/BeschreibungET.png" style="margin-right:10px;">
                                     Beschreibung</span>
                                 <input type="text" class="form-control3" id="BeschreibungAugeET" name="BeschreibungEditET"
                                     placeholder="..." aria-label="BeschreibungET" aria-describedby="basic-addon1" readonly style="background-color:#e9ecef;">
@@ -2252,7 +2242,7 @@
                         break;
 
                     default:
-                        options.icon = "/images/icons/etgrün.png"
+                        options.icon = "/images/icons/etrot.png"
                         break;
                 }
                 //
@@ -2280,7 +2270,7 @@
                         lng: energiesysteme[2]  //Längengrad-Koordinaten festlegen
                     },
                     map, //Die mitgegebene Map auswählen
-                    icon: '/images/icons/esrotneu.png', //Da alle ES das gleiche Icon haben kann diese einfach hier eingebunden werden
+                    icon: '/images/icons/esrot.png', //Da alle ES das gleiche Icon haben kann diese einfach hier eingebunden werden
                     title: energiesysteme[0], //Bezeichnung des ES (Ist ersichtlich wenn man mit der Maus drüber fährt (Hover-Effekt))
                     label: { //Text der unter dem Icon Steht
                         text: energiesysteme[0], //Bezeichnung
@@ -2318,7 +2308,7 @@
 
                     map.setZoom(17); //Wird an das ausgewählte ES gezoomt
                     map.setCenter(markerES.getPosition()); //Die Position des ES wird als Mitte festgelegt
-                    markerES.setIcon("/images/icons/esrotneuausgewählt.png"); //Das Icon wird geändert
+                    markerES.setIcon("/images/icons/esrotused.png"); //Das Icon wird geändert
                     markerES.setAnimation(google.maps.Animation.BOUNCE); //Die Animation des Icons auf BOUNCE ändern, damit man sieht dass es ausgewählt ist
                     print_List_Energietechnologie(id); //Bei Auswahl eines ES wird die Liste rechts auf die dazugehörigen ET geändert
 
@@ -2329,7 +2319,7 @@
 
                     //Bei entsprechender Berechtigung darf man ET hinzufügen
                     @auth //Mann muss angemeldet sein
-                        map.setOptions({ draggableCursor: 'url(/images/icons/etgrün.png), move' }); //Der Curser ändert sich auf das Icon grüne ET
+                        map.setOptions({ draggableCursor: 'url(/images/icons/etrot.png), move' }); //Der Curser ändert sich auf das Icon grüne ET
                     
                         map.addListener("click", (e1) => { //Ausgefürht wenn Map-Klick um eine ET hinzuzufügen
                             if(activeMarker){ //activeMarker muss true sein,also ein ES muss ausgewählt sein 
@@ -2350,7 +2340,7 @@
                 markerES.addListener("click", () => { //Klick auf Icon
                     map.setZoom(15); //Herauszoomen
                     map.setCenter(markerES.getPosition()); //Die Position des ES wird als Mitte festgelegt
-                    markerES.setIcon("/images/icons/esrotneu.png"); //Icon wieder auf das nicht ausgewählte ES ändern
+                    markerES.setIcon("/images/icons/esrot.png"); //Icon wieder auf das nicht ausgewählte ES ändern
                     markerES.setAnimation(google.maps.Animation.DROP); //Bounce Animation auf DROP ändern
                     print_List_Energiesysteme(); //Rechts in der Liste wieder die ES anzeigen anstatt den ET
                     map.setOptions({draggableCursor: 'crosshair'}); //Curser von ET wieder auf den normalen ändern
@@ -2424,7 +2414,7 @@
             tableET.clear().rows.add(ETvonESFiltered).draw();
 
             document.getElementById("Listuberschrieft").innerHTML = "Energietechnologien"; //Die Überschrift wird auf Energietechnologien geändert 
-            document.getElementById("Listimage").src = "/images/icons/etgrün.png"; //Das Image/Icon wird auf das Energietechnologien-Icon geändert
+            document.getElementById("Listimage").src = "/images/icons/etrot.png"; //Das Image/Icon wird auf das Energietechnologien-Icon geändert
         }
 
 
@@ -2438,7 +2428,7 @@
             //Es werden alle ES angezeigt somit muss hier nichts ausgeblendet werden
 
             document.getElementById("Listuberschrieft").innerHTML = "Energiesysteme"; //Die Überschrift wird auf Energiesysteme geändert 
-            document.getElementById("Listimage").src = "/images/icons/es.png"; //Das Image/Icon wird auf das Energiesysteme-Icon geändert
+            document.getElementById("Listimage").src = "/images/icons/esrot.png"; //Das Image/Icon wird auf das Energiesysteme-Icon geändert
         }
 
 
