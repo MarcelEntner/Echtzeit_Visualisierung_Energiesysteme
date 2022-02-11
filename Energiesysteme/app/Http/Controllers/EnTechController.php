@@ -61,8 +61,10 @@ class EnTechController extends Controller
         $enTech->save();
         $data = DB::table('EnTech')->get();
 
-        /*
 
+          //Grafana ET (Panel) erstellen anfang
+        
+/*
 $uid = strval($request->IDES);
 
 $panelId = $enTech->id;
@@ -148,7 +150,7 @@ $oldDashboard = json_decode($getCurrentDashboard,true);
             [
                 'datasource' => [
                     'type' => 'datasource',
-                    'uid' => 'grafana',
+                    'uid' => 'ensys_production',
                 ],
                 'queryType' => 'randomWalk',
                 'refId' => 'A',
@@ -182,8 +184,9 @@ $createEnsysDashboard = Http::withHeaders([
     
     ])->post('192.168.1.5:3000/api/dashboards/db', $oldDashboard );
     echo($createEnsysDashboard);
-
-    */
+*/
+    //Grafana ET (Panel) erstellen ende
+    
 
         //Tabellen-Eintrag im richtigen Typ für Echtzeitdaten
         switch ($request->Typ) {
@@ -382,10 +385,9 @@ $createEnsysDashboard = Http::withHeaders([
 
         //Grafana Löschen ET Anfang
 /*
-
 $Entech = DB::table('EnTech')->where('id', $id)->first();
 
-$uid = strval($Entech->ensys_id);
+$uid = strval($Entech->enSys_idEnSys);
 
 $getCurrentDashboard = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/'. $uid);
 

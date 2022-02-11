@@ -138,7 +138,7 @@ class EnSysController extends Controller
 
         echo ($createEnsysDashboard);
 
-*/
+        */
 //Grafana Dashboard Erstellen Ende
 
         return redirect("/energiesysteme")->with(['data' => $data]);
@@ -211,8 +211,10 @@ class EnSysController extends Controller
     public function destroy($id)
     {
 
-    //Grafana Dashboar Löschen anfang
-/*
+    //Grafana Dashboard Löschen anfang
+
+    /*
+
         $strid = strval($id);
 
 
