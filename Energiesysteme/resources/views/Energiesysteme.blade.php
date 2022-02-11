@@ -1277,9 +1277,9 @@
     <?php
     //Datenbank Daten
     $servername = 'localhost';
-    $username = 'dev';
-    $password = 'Oi24Spc5';
-    $dbname = 'EnsysAlpha';
+    $username = 'root';
+    $password = '';
+    $dbname = 'laravel';
     
     //Connection aufbauen
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -1456,7 +1456,9 @@
                                 {
                                 GesNennleistung += {{ $w->power }}; //Leistung der Wasserstoff Speicher zur GesNennleistung addieren
                                 GesEnergie += {{ $w->energy }}; //Energie der Wasserstoff Speicher zur GesEnergie addieren
-                                GesSpeicherKapazität += {{ $w->storageCapacity }}; //Speicherkapazität der Wasserstoff Speicher zur GesSpeicherKapazität addieren
+                                GesSpeicherKapazität += {{ $w->storageTempBottom }}; //Speicherkapazität der Wasserstoff Speicher zur GesSpeicherKapazität addieren
+                                GesSpeicherKapazität += {{ $w->storageTempMiddle }}; //Speicherkapazität der Wasserstoff Speicher zur GesSpeicherKapazität addieren
+                                GesSpeicherKapazität += {{ $w->storageTempTop }}; //Speicherkapazität der Wasserstoff Speicher zur GesSpeicherKapazität addieren
                                 }
                             @endforeach
                             break;
@@ -1659,7 +1661,7 @@
                                 {
                                     GesNennleistung += {{ $k->power }}; //Leistung des Kältespeichers zur GesNennleistung addieren
                                     GesEnergie += {{ $k->energy }}; //Energie des Kältespeichers zur GesEnergie addieren
-                                    GesSpeicherKapazität += {{ $k->storageCapacity }}; //Speicherkapazität des Kältespeichers zur GesSpeicherKapazität addieren
+                                    GesSpeicherKapazität += {{ $k->storageTemp }}; //Speicherkapazität des Kältespeichers zur GesSpeicherKapazität addieren
                                 }
                             @endforeach
                             break;
@@ -1838,7 +1840,9 @@
                                 { 
                                     GesNennleistung += {{ $w->power }}; //Leistung der Wasserstoff Speicher zur GesNennleistung addieren
                                     GesEnergie += {{ $w->energy }}; //Energie der Wasserstoff Speicher zur GesEnergie addieren
-                                    GesSpeicherKapazität += {{ $w->storageCapacity }}; //Speicherkapazität der Wasserstoff Speicher zur GesSpeicherKapazität addieren
+                                    GesSpeicherKapazität += {{ $w->storageTempBottom }}; //Speicherkapazität der Wasserstoff Speicher zur GesSpeicherKapazität addieren
+                                    GesSpeicherKapazität += {{ $w->storageTempMiddle }}; //Speicherkapazität der Wasserstoff Speicher zur GesSpeicherKapazität addieren
+                                    GesSpeicherKapazität += {{ $w->storageTempTop }}; //Speicherkapazität der Wasserstoff Speicher zur GesSpeicherKapazität addiere
                                 }
                             @endforeach
                             break;
@@ -2040,7 +2044,7 @@
                                 {
                                     GesNennleistung += {{ $k->power }}; //Leistung des Kältespeichers zur GesNennleistung addieren
                                     GesEnergie += {{ $k->energy }}; //Energie des Kältespeichers zur GesEnergie addieren
-                                    GesSpeicherKapazität += {{ $k->storageCapacity }}; //Speicherkapazität des Kältespeichers zur GesSpeicherKapazität addieren
+                                    GesSpeicherKapazität += {{ $k->storageTemp }}; //Speicherkapazität des Kältespeichers zur GesSpeicherKapazität addieren
                                 }
                             @endforeach
                             break;
