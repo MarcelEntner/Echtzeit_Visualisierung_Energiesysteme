@@ -1276,10 +1276,19 @@
     <!-- Hier werden die Daten aus der Datenbank herausgelesen und in ein Array gespeichert, um später darauf zugreifen zu können-->
     <?php
     //Datenbank Daten
-    $servername = 'localhost';
-    $username = 'root';
-    $password = '';
-    $dbname = 'laravel';
+
+
+    $ENV_username = env('DB_USERNAME');
+    $ENV_pw =  env('DB_PASSWORD') ;
+    $ENV_db = env('DB_DATABASE');
+
+    
+    $servername = 'localhost'; 
+    $username = $ENV_username; 
+    $password = $ENV_pw;
+    $dbname = $ENV_db; 
+
+        
     
     //Connection aufbauen
     $conn = new mysqli($servername, $username, $password, $dbname);
