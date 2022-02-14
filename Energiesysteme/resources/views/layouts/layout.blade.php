@@ -23,22 +23,26 @@
         * {
             padding: 0px;
             margin: 0px;
+            font-family: Arial, sans-serif;
         }
 
         body {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            font-family: Arial, sans-serif;
+            
         }
 
         /* Footer */
         .footercontext {
-            color: #21A500;
+            color: #1b8836;
             padding-right: 10%;
+            font-family: Arial, sans-serif;
         }
 
         .footercontext:hover {
-            color: green;
+            color: lightgreen;
         }
 
         /* Div auf HomePage mit Text */
@@ -47,6 +51,7 @@
             margin-top: 30px;
             margin-left: 5%;
             margin-right: 5%;
+            font-family: Arial, sans-serif;
         }
 
         /*  Text des Div Beitrag auf HomePage  */
@@ -55,6 +60,7 @@
             padding-top: 20px;
             padding-left: 100px;
             padding-right: 100px;
+            font-family: Arial, sans-serif;
         }
 
         /*  Bilder auf HomePage der Bilder-Show  */
@@ -97,11 +103,13 @@
             margin: auto;
             text-align: center;
             padding-top: 3%;
+            font-family: Arial, sans-serif;
+            
         }
 
         .ImpressumUberschrieft {
             text-align: center;
-            color: #21A500;
+            color: #1b8836;
         }
 
         .Dsgvo {
@@ -110,11 +118,13 @@
             margin: auto;
             text-align: center;
             padding-top: 3%;
+            font-family: Arial, sans-serif;
         }
 
         .DsgvoUberschrieft {
             text-align: center;
-            color: #21A500;
+            color: #1b8836;
+            font-family: Arial, sans-serif;
         }
 
         /*  Best Logo auf der HomePage  */
@@ -130,7 +140,7 @@
 
         /*  Drop-Down Liste Button bei der Galerie  */
         .dropbtngalerie {
-            background-color: #21A500;
+            background-color: #1b8836;
             color: white;
             padding: 16px;
             font-size: 16px;
@@ -173,7 +183,7 @@
         }
 
         .dropdowngalerie:hover .dropbtngalerie {
-            background-color: #3e8e41;
+            background-color: #1b8836;
         }
 
         /*  Div wo die Bilder angezeigt werden  */
@@ -198,7 +208,7 @@
             display: inline-block;
             font-weight: 400;
             line-height: 1.5;
-            color: #212529;
+            color: #1b8836;
             text-align: center;
             text-decoration: none;
             vertical-align: middle;
@@ -218,7 +228,7 @@
             /* Selbst eingefügt */
             height: 30px;
             width: 40px;
-            background-color: white;
+            background-color:white;
             border: none;
             background-repeat: no-repeat;
         }
@@ -227,7 +237,7 @@
             display: inline-block;
             font-weight: 400;
             line-height: 1.5;
-            color: #212529;
+            color: #1b8836;
             text-align: center;
             text-decoration: none;
             vertical-align: middle;
@@ -248,7 +258,7 @@
             margin-left: 27%;
             height: 40px;
             width: 220px;
-            background-color: #21A500;
+            background-color: #1b8836;
             border: none;
             background-repeat: no-repeat;
         }
@@ -275,6 +285,7 @@
             margin-bottom: 0;
             line-height: 1.5;
             margin-left: 170px;
+            font-family: Arial, sans-serif;
         }
 
         /* Input-Felder bei den Pop-Ups */
@@ -311,6 +322,7 @@
             margin-bottom: 1%;
             height: 40px;
             text-align: center;
+            font-family: Arial, sans-serif;
         }
 
         /* Addresssuchfeld */
@@ -361,15 +373,15 @@
                             <img class="logo mr-2" src="{{ URL::to('/images/logo2.png') }}" height="60px"
                                 width="160px" alt="Best GmbHLogo" loading="lazy" />
                         </a>
-                        <p class="px-2 mt-3 fs-3 lh-lg text-primary">MicroGridLab</p> <!-- public/css/app.css-->
+                        <p class="px-2 mt-3 fs-3 lh-lg text-primary" >MicroGridLab</p> <!-- public/css/app.css-->
                     </div>
 
 
-                    <ul class="nav col-lg-auto">
+                    <ul class="nav col-lg-auto" >
                         @if (\Request::is('/'))
                             <li><b><a href="{{ route('hp') }}" class="nav-link px-2 text-primary fs-4">Home</a></b></li>
                         @else
-                            <li><a href="{{ route('hp') }}" class="nav-link px-2 text-primary fs-4">Home</a></li>
+                            <li ><a  href="{{ route('hp') }}" class="nav-link px-2 text-primary fs-4">Home</a></li>
                         @endif
 
                         @if (\Request::is('energiesysteme') or \Request::is('EnSys'))

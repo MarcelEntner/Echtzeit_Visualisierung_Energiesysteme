@@ -17,14 +17,14 @@
                 <div class="Liste col-12 col-lg-5">
                     <input id="address" type="text">
                     <!--- INPUT FELD ZUM SUCHEN -->
-                    <div id="find" class="btn btn-success">Suchen</div>
+                    <div id="find" class="btn btn-success" style="font-family: Arial, sans-serif;">Suchen</div>
                     <!--- BUTTON ZUM SUCHEN -->
 
                     <!--- Gesamte rechte Div der Liste (ohne Addresssuchfeld)  -->
                     <div class="shadow-lg rounded p-3">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
-                                <h3> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/esrot.png"
+                                <h3 style="font-family: Arial, sans-serif;"> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/esrot.png"
                                         id="Listimage"></h3>
                             </div>
                         </div>

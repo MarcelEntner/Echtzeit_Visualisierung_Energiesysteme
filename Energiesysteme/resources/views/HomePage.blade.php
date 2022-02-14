@@ -47,7 +47,7 @@
         <!-- Beitrag -->
         <div class="Beitrag shadow-lg rounded-3">
 
-            <h3 style="padding:10px" class="text-center"> <b> Über uns</b></h3> <!-- Überschrift -->
+            <h3 style="padding:10px;font-family: Arial, sans-serif;" class="text-center"> <b> Über uns</b></h3> <!-- Überschrift -->
 
             <!-- Text -->
             <p class="text">
