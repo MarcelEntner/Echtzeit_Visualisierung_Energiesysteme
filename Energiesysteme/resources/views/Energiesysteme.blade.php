@@ -695,11 +695,11 @@
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document" >
                 
-            <div class="modal-content" style=" left: -29vw;  background-color:white;">
+            <div class="modal-content" style=" left: -60%;  background-color:white;">
                 
-            <div class="modal-header" style=" left: -29vw; width: 1600px; background-color:white; ">
+            <div class="modal-header" style=" left: -60%; width: 1200px; background-color:white; ">
 
-            <h5 class="modal-title modal2-title" id="exampleModalLongTitle" style="padding-left:32%;">Statistiken - Energiesysteme</h5>
+            <h5 class="modal-title modal2-title" id="exampleModalLongTitle" style="padding-left:25%;">Statistiken - Energiesysteme</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -707,7 +707,7 @@
                 
 
 
-                <div class="modal-body" style=" height:700px;   background-color:white; width: 1600px;" >
+                <div class="modal-body" style=" height:500px;   background-color:white; width: 1200px;" >
 
                     <script type="text/javascript">
                     
@@ -738,16 +738,16 @@
         <div class="modal modal2 fade" id="PopUpETGrafana" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content" style=" left: -29vw;  background-color:white;">
+                    <div class="modal-content" style=" left: -60%;  background-color:white;">
 
-                        <div class="modal-header" style=" left: -29vw; width: 1600px; background-color:white; ">
-                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle" style="padding-left:32%;">Statistiken Energietechnologie</h5>
+                        <div class="modal-header" style=" left: -60%; width: 1200px; background-color:white; ">
+                            <h5 class="modal-title modal2-title" id="exampleModalLongTitle" style="padding-left:25%;">Statistiken Energietechnologie</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
-                    <div class="modal-body" style=" height:700px;   background-color:white; width: 1600px;" >
+                    <div class="modal-body" style=" height:500px;   background-color:white; width: 1200px;" >
                             <!-- Statistiken Anfang-->
 
                             <script type="text/javascript">
@@ -1277,16 +1277,10 @@
     <?php
     //Datenbank Daten
 
-
-    $ENV_username = env('DB_USERNAME');
-    $ENV_pw =  env('DB_PASSWORD') ;
-    $ENV_db = env('DB_DATABASE');
-
-    
     $servername = 'localhost'; 
-    $username = $ENV_username; 
-    $password = $ENV_pw;
-    $dbname = $ENV_db; 
+    $username = env('DB_USERNAME'); 
+    $password = env('DB_PASSWORD');
+    $dbname = env('DB_DATABASE'); 
 
         
     
