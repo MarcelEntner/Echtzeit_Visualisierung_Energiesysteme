@@ -81,7 +81,11 @@
     </body>
     
 
+  
+
+
+
 
 
 @endsection
-@section('foooter')
+@section('footer')

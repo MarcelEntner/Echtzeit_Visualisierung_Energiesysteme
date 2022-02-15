@@ -64,18 +64,18 @@ class EnSysController extends Controller
 
 //Grafana Dashboard Erstellen anfang
 
-/*
+
        
         $uid = strval($enSys->id);
 
         $createEnsysDashboard = Http::withHeaders([
 
 
-            'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+            'Authorization' => 'Bearer eyJrIjoiQjFpUjQyZnF6U2xFM0hLb1djbjNLaWlLSVBNYXFxelMiLCJuIjoiTWljcm9ncmlkIFZpc3UiLCJpZCI6NH0=',
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
 
-        ])->post('192.168.1.5:3000/api/dashboards/db', [
+        ])->post('https://show.microgrid-lab.eu/api/dashboards/db', [
 
 
             "dashboard" => [
@@ -138,7 +138,7 @@ class EnSysController extends Controller
 
         echo ($createEnsysDashboard);
 
-        */
+        
 //Grafana Dashboard Erstellen Ende
 
         return redirect("/energiesysteme")->with(['data' => $data]);
@@ -213,19 +213,19 @@ class EnSysController extends Controller
 
     //Grafana Dashboard Löschen anfang
 
-    /*
+    
 
         $strid = strval($id);
 
 
-        $address = '192.168.1.5:3000/api/dashboards/uid/';
+        $address = 'https://show.microgrid-lab.eu/api/dashboards/uid/';
 
 
         $url = $address . $strid;
 
         $deleteEnsysDashboard = Http::withHeaders([
 
-            'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+            'Authorization' => 'Bearer eyJrIjoiQjFpUjQyZnF6U2xFM0hLb1djbjNLaWlLSVBNYXFxelMiLCJuIjoiTWljcm9ncmlkIFZpc3UiLCJpZCI6NH0=',
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
 
@@ -234,7 +234,7 @@ class EnSysController extends Controller
 
 
         echo ($deleteEnsysDashboard);
-*/
+
          //Grafana Dashboard löschen ende
 
 

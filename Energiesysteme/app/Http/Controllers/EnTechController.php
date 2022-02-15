@@ -64,12 +64,12 @@ class EnTechController extends Controller
 
           //Grafana ET (Panel) erstellen anfang
         
-/*
+
 $uid = strval($request->IDES);
 
 $panelId = $enTech->id;
 
-$getCurrentDashboard = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/'. $uid);
+$getCurrentDashboard = Http::withToken('eyJrIjoiQjFpUjQyZnF6U2xFM0hLb1djbjNLaWlLSVBNYXFxelMiLCJuIjoiTWljcm9ncmlkIFZpc3UiLCJpZCI6NH0=')->get('https://show.microgrid-lab.eu/api/dashboards/uid/'. $uid);
 
 $oldDashboard = json_decode($getCurrentDashboard,true);
 
@@ -175,16 +175,16 @@ $createEnsysDashboard = Http::withHeaders([
 
         
 
-    'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+    'Authorization' => 'Bearer eyJrIjoiQjFpUjQyZnF6U2xFM0hLb1djbjNLaWlLSVBNYXFxelMiLCJuIjoiTWljcm9ncmlkIFZpc3UiLCJpZCI6NH0=',
     'Content-Type' => 'application/json',
     'Accept' => 'application/json',
     
     
     
     
-    ])->post('192.168.1.5:3000/api/dashboards/db', $oldDashboard );
+    ])->post('https://show.microgrid-lab.eu/api/dashboards/db', $oldDashboard );
     echo($createEnsysDashboard);
-*/
+
     //Grafana ET (Panel) erstellen ende
     
 
@@ -384,12 +384,12 @@ $createEnsysDashboard = Http::withHeaders([
         $EnTech = EnTech::find($id);
 
         //Grafana Löschen ET Anfang
-/*
+
 $Entech = DB::table('EnTech')->where('id', $id)->first();
 
 $uid = strval($Entech->enSys_idEnSys);
 
-$getCurrentDashboard = Http::withToken('eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==')->get('192.168.1.5:3000/api/dashboards/uid/'. $uid);
+$getCurrentDashboard = Http::withToken('eyJrIjoiQjFpUjQyZnF6U2xFM0hLb1djbjNLaWlLSVBNYXFxelMiLCJuIjoiTWljcm9ncmlkIFZpc3UiLCJpZCI6NH0=')->get('https://show.microgrid-lab.eu/api/dashboards/uid/'. $uid);
 
 $oldDashboard = json_decode($getCurrentDashboard,true);
 
@@ -419,18 +419,18 @@ $deletePanel = Http::withHeaders([
 
         
 
-    'Authorization' => 'Bearer eyJrIjoiM2dTZlU5bTM2SzJPaEt3OExnUUE5eDlFR1NEdjVjSVkiLCJuIjoiVGVzdEtleSIsImlkIjoxfQ==',
+    'Authorization' => 'Bearer eyJrIjoiQjFpUjQyZnF6U2xFM0hLb1djbjNLaWlLSVBNYXFxelMiLCJuIjoiTWljcm9ncmlkIFZpc3UiLCJpZCI6NH0=',
     'Content-Type' => 'application/json',
     'Accept' => 'application/json',
     
     
     
     
-    ])->post('192.168.1.5:3000/api/dashboards/db', $oldDashboard );
+    ])->post('https://show.microgrid-lab.eu/api/dashboards/db', $oldDashboard );
 
     echo($deletePanel);
 
-*/
+
 
 //Grafana Ende
 
