@@ -15,16 +15,28 @@ class CreateUser extends Controller
 
     public function createUser(Request $request){
 
-        
-       
 
-        User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'role' => $request['roleueberpruefung'],
-        ]);
-        return redirect('/Registerpage');
+        $User= User::where('email', $request['email'])->get();
+      
+        // dd($User);
+        
+        if (count($User) == 0){
+            User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+                'role' => $request['roleueberpruefung'],
+            ]);
+            return redirect('/Registerpage');
+        } else {
+          
+            return redirect('/Registerpage');
+        }
+      
+            
+        
+
+        
 
     }
 
