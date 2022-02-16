@@ -299,8 +299,6 @@ $createEnsysDashboard = Http::withHeaders([
 
 
 
-
-
         return redirect("/energiesysteme")->with(['data' => $data]);
 
 
@@ -346,6 +344,14 @@ $createEnsysDashboard = Http::withHeaders([
         $EnTech = EnTech::find($id);
                 
     
+        //Input ID imageEditET
+        
+        //Code von ET hinzufügen Bild
+        $image = "";
+        if ($request->file("imageEditET")) {
+            $image = base64_encode(file_get_contents($request->file('imageEditET')));
+        }
+        
 
         $EnTech = EnTech::where('id', $id)->update([
             'longitude' => $request->input('LaengengradEditET'),
@@ -353,9 +359,13 @@ $createEnsysDashboard = Http::withHeaders([
             'designation' => $request->input('BezeichnungEditET'),
             'location' => $request->input('OrtEditET'),
             'description' => $request->input('BeschreibungEditET'),
+            'picture' => $image,
+
         ],
     
     );
+
+
 
 
         return redirect('/energiesysteme');

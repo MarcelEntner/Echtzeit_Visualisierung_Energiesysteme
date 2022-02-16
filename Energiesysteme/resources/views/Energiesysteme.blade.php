@@ -21,7 +21,7 @@
                     <!--- BUTTON ZUM SUCHEN -->
 
                     <!--- Gesamte rechte Div der Liste (ohne Addresssuchfeld)  -->
-                    <div class="shadow-lg rounded p-3">
+                    <div class="shadow-lg rounded p-3" style="width:105%">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
                                 <h3 style="font-family: Arial, sans-serif;"> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/esrot.png"
@@ -600,7 +600,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="editFormET" method="GET">
+                        <form id="editFormET" method="POST" enctype="multipart/form-data">
                             <!-- Wird nur am Seitenaufruf gemacht und nicht zwischendurch, deswegen werden die Attribut-Daten beim Klick auf Stift neu geladen-->
                             @csrf
                             <!--Input Felder -->
@@ -669,9 +669,10 @@
                                     <img src="/images/pop-up/BildET.png" style="margin-right:10px;">
                                     Bild einfügen</span>
                                 <input type="file" class="form-control3" id="imageEditET" name="imageEditET" value="">
+                                <p id="PEditET" style="padding-left:45%;"> </p>
                             </div>
                             <!--Input Feld Beschreibung -->
-                            <div class="input-group mb-3" style="margin-top:2%">
+                            <div class="input-group mb-3" style="margin-top:-5%">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/BeschreibungET.png" style="margin-right:10px;">
                                     Beschreibung</span>
@@ -1725,6 +1726,12 @@
                     $("#LaengengradEditET").val(locEt[1]); //Input Feld bekommt den Inhalt
                     $("#BreitengradEditET").val(locEt[2]); //Input Feld bekommt den Inhalt
                     $("#BeschreibungEditET").val(locEt[7]); //Input Feld bekommt den Inhalt
+                    if(locEt[8] != ""){
+                        $("#PEditET").html("Es ist ein Bild vorhanden"); //Input Feld bekommt den Inhalt
+                    }
+                    else {
+                        $("#PEditET").html("Es ist noch kein Bild vorhanden"); //Input Feld bekommt den Inhalt
+                    }
                     $("#editFormET").attr("action", "/editET/" + id)
                 }
             })
