@@ -754,7 +754,19 @@
                             <script type="text/javascript">
                     
                            function GrafanafunctionET(id) {
+                           
+
+                           
+
+
+
+
+
                             $('#PopUpETGrafana').modal('show');
+                        
+
+
+
 
                            }
 
@@ -762,12 +774,29 @@
                             </script>
 
 
+
+
+@foreach ($dataEnTech as $daa)
+
+@endforeach
                        
 @isset($d)
-@isset($da)
- <!-- <iframe src="http://192.168.1.5:3000/d-solo/{{ $d->id }}/{{ $d->designation }}?orgId=1&panelId={{ $da->id }}" width="100%" height="100%" frameborder="0"></iframe> -->
-  @endisset
+
+@isset($daa)
+
+  <!-- {{ $daa->id }} -->
+
+
+ <!-- <iframe src="https://show.microgrid-lab.eu/d-solo/{{ $d->id }}/{{ $d->designation }}?orgId=4&panelId=11" width="100%" height="100%" frameborder="0"></iframe> -->
+
+
+
 @endisset
+
+@endisset
+
+
+
 
 
                             <!-- Statistiken Ende-->
@@ -2391,27 +2420,27 @@
             var ETvonES = [];
             let dataForTable = []
 
-            @foreach ($dataEnTech as $d)
+            @foreach ($dataEnTech as $da)
 
-            dataForTable = [{{ $d->enSys_idEnSys }}, {{ $d->id }}, "{{ $d->designation }}", "{{ $d->type }}", "{{  $d->location}}"];
+            dataForTable = [{{ $da->enSys_idEnSys }}, {{ $da->id }}, "{{ $da->designation }}", "{{ $da->type }}", "{{  $da->location}}"];
             
                     @auth
-                        @if (Auth::user()->id == $d->enSys_users_idusers || Auth::user()->role == 'Admin')
+                        @if (Auth::user()->id == $da->enSys_users_idusers || Auth::user()->role == 'Admin')
                     
-                        dataForTable.push("<a href=\"/deleteET/{{ $d->id }}\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/delete.png')\"></a>");
-                        dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
-                        dataForTable.push("<a href=\"javascript:EditfunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/stift.png')\"></a>");
+                        dataForTable.push("<a href=\"/deleteET/{{ $da->id }}\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/delete.png')\"></a>");
+                        dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
+                        dataForTable.push("<a href=\"javascript:EditfunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/stift.png')\"></a>");
                 
                         @else
-                            dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
-                            dataForTable.push("<a href=\"javascript:AugefunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/auge.png')\"></a>");
+                            dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
+                            dataForTable.push("<a href=\"javascript:AugefunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/auge.png')\"></a>");
                             dataForTable.push("");
                         @endif
                     @endauth
             
                     @guest
-                    dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
-                        dataForTable.push("<a href=\"javascript:AugefunctionET({{ $d->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/auge.png')\"></a>");
+                    dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
+                        dataForTable.push("<a href=\"javascript:AugefunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/auge.png')\"></a>");
                         dataForTable.push("");
                     @endguest
             
