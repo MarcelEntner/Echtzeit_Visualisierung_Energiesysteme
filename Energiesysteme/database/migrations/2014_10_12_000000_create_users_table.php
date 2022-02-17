@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
 
         User::create([
             'name' => 'Administrator',
-            'email' => 'admin@adminmail.com',
+            'email' => 'admin@admin.com',
             'password' => Hash::make('J3j3wVR%P'),
             'role' => 'Admin',
         ]);
