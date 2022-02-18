@@ -768,8 +768,9 @@
                             $('#PopUpETGrafana').modal('show');
                         
 
-
+                            @isset($d)
 var srcc = "https://show.microgrid-lab.eu/d-solo/{{ $d->id }}/{{ $d->designation }}?orgId=4&panelId="+id;
+@endisset
 
 
 document.getElementById("iframe1").src = srcc;
@@ -788,8 +789,9 @@ document.getElementById("iframe1").src = srcc;
 
 
   
+@isset($d)
 <iframe id="iframe1" width='100%' height='100%' frameborder='0'></iframe> 
-
+@endisset
 
 
 
