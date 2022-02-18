@@ -752,48 +752,48 @@
                             <!-- Statistiken Anfang-->
 
                             <script type="text/javascript">
+
+
+
                     
                            function GrafanafunctionET(id) {
-                           
 
                            
 
+                           
 
+                            
 
-
-
+    
                             $('#PopUpETGrafana').modal('show');
                         
 
 
+var srcc = "https://show.microgrid-lab.eu/d-solo/{{ $d->id }}/{{ $d->designation }}?orgId=4&panelId="+id;
 
 
+document.getElementById("iframe1").src = srcc;
                            }
 
+
                           
-                            </script>
+
+                      </script>
 
 
 
 
-@foreach ($dataEnTech as $daa)
-
-@endforeach
-                       
-@isset($d)
-
-@isset($daa)
-
-  <!-- {{ $daa->id }} -->
-
-
- <!-- <iframe src="https://show.microgrid-lab.eu/d-solo/{{ $d->id }}/{{ $d->designation }}?orgId=4&panelId=11" width="100%" height="100%" frameborder="0"></iframe> -->
 
 
 
-@endisset
 
-@endisset
+  
+<iframe id="iframe1" width='100%' height='100%' frameborder='0'></iframe> 
+
+
+
+
+
 
 
 
@@ -2535,3 +2535,5 @@
     </script>
 @endsection
 @section('foooter')
+
+
