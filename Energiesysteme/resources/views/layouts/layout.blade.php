@@ -65,15 +65,20 @@
 
         /*  Bilder auf HomePage der Bilder-Show  */
         .picture {
-            height: 300px;
+            height: 100%;
             width: 100%;
-            border-radius: 15px;
+            border-radius: 30px;
         }
 
         /*  Bilder-Show  */
         #carouselExampleControls {
-            margin: 30px;
+            height: 70%;
+            width:85%;
+            margin-left:7%;
+            border-radius: 40px;
+
         }
+      
 
         .carousel-control-prev-icon {
             height: 75px;
@@ -373,7 +378,7 @@
                             <img class="logo mr-2" src="{{ URL::to('/images/logo2.png') }}" height="60px"
                                 width="160px" alt="Best GmbHLogo" loading="lazy" />
                         </a>
-                        <p class="px-2 mt-3 fs-3 lh-lg text-primary" >MicroGridLab</p> <!-- public/css/app.css-->
+                        <p class="px-2 mt-3 fs-3 lh-lg text-primary" style="margin-left:20%;" >MicroGridLab</p> <!-- public/css/app.css-->
                     </div>
 
 
@@ -473,11 +478,37 @@
     @section('footer')
 
 
-        <div class="footer mt-auto">
+        <div class="footer mt-auto" >
             <footer class="mt-5 d-flex flex-wrap justify-content-around align-items-center py-3 border border-success">
-                <p class="col-md-4 mb-0 text-primary">&copy; 2022 Best GmbH</p>
+            <!-- Sponsoren -->
+            <div id="FooterBilder"  style="margin-left:1%;">
+            <p class="col-md-4 mb-0 text-primary" > Sponsoren und Förderer</p> 
+             <a href="https://www.ffg.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/ffg_logo_de.png') }}"  alt="FFG"/></a>
+             <a href="https://www.bmdw.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/Bundesministerium.png') }}"  alt="Bundesministerium"  /></a>
+             <a href="https://www.bmk.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/Bundesministerium2.png') }}"  alt="Bundesministerium2"  /></a>
+             <a href="https://wirtschaftsagentur.at/"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/wirtschaftsagentur_stadt_wien.png') }}"  alt="Wirtschaftsagentur Wien"  /></a>
+             <a href="https://www.noe.gv.at/noe/index.html"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/landNiederösterreich.png') }}"  alt="Land Niederösterreich"  /></a>
+             <a href="https://www.verwaltung.steiermark.at/cms/ziel/74835381/DE"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/landSteiermark.jpg') }}"  alt="Land Steiermark"  /></a>
+             <a href="https://www.sfg.at/"><img style="margin-top: -5%;"   class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/SFG.jpg') }}"  alt="SFG"  /></a>
+            </div>
+            <!-- Forschungspartner -->
+            <div id="FooterBilder" style="margin-left:1%;">
+            <p class="col-md-4 mb-0 text-primary" style="margin-left:-1.5%;">Forschungspartner</p> 
+            <a href="https://www.fhwn.ac.at/"><img style="margin-top: -3%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/Wiener_Neustadt.jpg') }}"  alt="Wiener Neustadt"/></a>
+            <a href="https://www.efre.gv.at/allgemeines/iwbefre_oesterreich"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/EFRE_Wieselburg.jpg') }}"  alt="EFRE"/></a>
+            <a href="https://www.wieselburg-land.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/Logo_Gemeinde Wieselburg-Land_klein.jpg') }}"  alt="Gemeinde Wieselburg"/></a>
+            <a href="https://www.wieselburg.gv.at/home"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/Logo_Stadtgemeinde Wieselburg_klein.jpg') }}"  alt="Stadtgemeinde Wieselburg"/></a>
+            <a href="https://www.noe.gv.at/noe/Wissenschaft-Forschung/Wissenschaft_Forschung.html"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/NOEK_W.jpg') }}"  alt="NOEK"/></a>
+            </div>
+              
 
-                <ul class="nav col-md-4 justify-content-end">
+              <!-- Unterhalb der Bilder -->
+                <p class="col-md-4 mb-0 text-primary" style="margin-top:2%;">&copy; 2022 Best GmbH
+                <a style="color:#1b8836; padding-left:5%; text-decoration: none;" href="//www.best-research.eu/de/kompetenzbereiche/microgrids/allgemeine_informationen"> Area 5.2 </a>
+                </p>
+
+
+                <ul class="nav col-md-4 justify-content-end" style="margin-top:2%;">
                     <li class="nav-item"><a href="{{ route('impressum') }}"
                             class="nav-link px-2 fs-5 text-primary">Impressum</a></li>
                     <li class="nav-item"><a href="{{ route('dsgvo') }}"

@@ -36,7 +36,7 @@
                 <br>
                 Datenschutzerklärung<br>
                 <br>
-                www.best-research.eu<br>
+                <a href="www.best-research.eu">www.best-research.eu </a><br>
             </p>
 
            
