@@ -9,21 +9,27 @@
         <!-- Rechtsklick auf der Web-Seite nicht möglich -->
 
         <!-- Bilder-Show oben auf der Seite -->
-        <div id="carouselExampleControls" class="carousel slide shadow-lg rounded">
+        <div id="carouselExampleControls" class="carousel slide">
             <div class="carousel-inner">
                 <!-- 1.Bild -->
                 <div class="carousel-item active">
-                    <img class="picture" src="/images/homepage/HomePage2 - Kopie.jpg" alt="First slide">
+                    <img class="picture" src="/images/homepage/PV-Anlage.jpg" alt="First slide">
                 </div>
                 <!-- 2.Bild -->
                 <div class="carousel-item">
-                    <img class="picture" src="/images/homepage/HomePage4 - Kopie.jpg" alt="Second slide">
+                    <img class="picture" src="/images/homepage/Luftaufnahme.jpg" alt="Second slide">
                 </div>
                 <!-- 3.Bild -->
                 <div class="carousel-item">
-                    <img class="picture" src="/images/homepage/HomePage5 - Kopie.jpg" alt="Third slide">
+                    <img class="picture" src="/images/homepage/Smartheating.jpg" alt="Third slide">
                 </div>
                 <!-- n.Bild .... -->
+                <div class="carousel-item">
+                    <img class="picture" src="/images/homepage/Smartheating2.jpg" alt="Fourth slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="picture" src="/images/homepage/HomePage.png" alt="Fifth slide">
+                </div>
             </div>
 
             <!-- Controll-Pfeil Zurück links -->
