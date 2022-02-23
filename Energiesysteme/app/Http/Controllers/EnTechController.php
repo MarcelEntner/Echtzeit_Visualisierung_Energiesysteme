@@ -67,18 +67,19 @@ class EnTechController extends Controller
 
 $uid = strval($request->IDES);
 
+$sqlstring = "SELECT datum AS \"time\",temp FROM temps WHERE \$__timeFilter(datum) AND room_id = 1 ORDER BY datum";
+
 $panelId = $enTech->id;
 
 $getCurrentDashboard = Http::withToken('eyJrIjoiQjFpUjQyZnF6U2xFM0hLb1djbjNLaWlLSVBNYXFxelMiLCJuIjoiTWljcm9ncmlkIFZpc3UiLCJpZCI6NH0=')->get('https://show.microgrid-lab.eu/api/dashboards/uid/'. $uid);
 
 $oldDashboard = json_decode($getCurrentDashboard,true);
 
+
+
     $paneldef =      [
 
-        'datasource' => [
-            'type' => 'datasource',
-            'uid' => 'grafana',
-        ],
+       
         'fieldConfig' => [
             'defaults' => [
                 'color' => [
@@ -146,19 +147,1280 @@ $oldDashboard = json_decode($getCurrentDashboard,true);
                 'mode' => 'single',
             ],
         ],
-        'targets' => [
-            [
-                'datasource' => [
-                    'type' => 'datasource',
-                    'uid' => 'ensys_production',
-                ],
-                'queryType' => 'randomWalk',
-                'refId' => 'A',
-            ],
+        "targets" => [
+      
+            
+
         ],
         'title' => $request->Bezeichnung,
         'type' => 'timeseries',
+        
+    ];
+
+
+
+
+
+
+
+$panelTarget_PV = [
+    [
+        "datasource" => [
+           "type" => "Ensys Visu", 
+           "uid" => "nHHCjxBnk" 
+        ], 
+        "format" => "time_series", 
+        "group" => [
+           ], 
+        "metricColumn" => "none", 
+        "rawQuery" => false, 
+
+        "rawSql" => "SELECT timestamp AS \"time\",power FROM EtPV WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+
+        "refId" => "A", 
+        "select" => [
+                 [
+                    [
+                       "params" => [
+                          "power" 
+                       ], 
+                       "type" => "column" 
+                    ] 
+                 ] 
+              ], 
+        "table" => "EtPv", 
+        "timeColumn" => "timestamp", 
+        "timeColumnType" => "timestamp", 
+        "where" => [
+                             [
+                                "name" => "\$__timeFilter", 
+                                "params" => [
+                                ], 
+                                "type" => "macro" 
+                             ]
+                          ] 
+     ], 
+    ];
+
+    $panelTarget_Stromnetzbezug = [
+        [
+            "datasource" => [
+               "type" => "Ensys Visu", 
+               "uid" => "nHHCjxBnk" 
+            ], 
+            "format" => "time_series", 
+            "group" => [
+               ], 
+            "metricColumn" => "none", 
+            "rawQuery" => false, 
+    
+            "rawSql" => "SELECT timestamp AS \"time\",power FROM EtSnB WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+    
+            "refId" => "A", 
+            "select" => [
+                     [
+                        [
+                           "params" => [
+                              "power" 
+                           ], 
+                           "type" => "column" 
+                        ] 
+                     ] 
+                  ], 
+            "table" => "EtSnB", 
+            "timeColumn" => "timestamp", 
+            "timeColumnType" => "timestamp", 
+            "where" => [
+                                 [
+                                    "name" => "\$__timeFilter", 
+                                    "params" => [
+                                    ], 
+                                    "type" => "macro" 
+                                 ]
+                                 
+                            
+                              ] 
+         ], 
         ];
+        $panelTarget_Batteriespeicher = [
+            [
+                "datasource" => [
+                   "type" => "Ensys Visu", 
+                   "uid" => "nHHCjxBnk" 
+                ], 
+                "format" => "time_series", 
+                "group" => [
+                   ], 
+                "metricColumn" => "none", 
+                "rawQuery" => false, 
+        
+                "rawSql" => "SELECT timestamp AS \"time\", storageCapacity FROM EtBs WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+        
+                "refId" => "A", 
+                "select" => [
+                         [
+                            [
+                               "params" => [
+                                  "storageCapacity" 
+                               ], 
+                               "type" => "column" 
+                            ] 
+                         ] 
+                      ], 
+                "table" => "EtBs", 
+                "timeColumn" => "timestamp", 
+                "timeColumnType" => "timestamp", 
+                "where" => [
+                                     [
+                                        "name" => "\$__timeFilter", 
+                                        "params" => [
+                                        ], 
+                                        "type" => "macro" 
+                                     ], 
+                                   
+                                  ] 
+             ], 
+            ];
+        
+            $panelTarget_WasserstoffElektrolyse = [
+                [
+                    "datasource" => [
+                       "type" => "Ensys Visu", 
+                       "uid" => "nHHCjxBnk" 
+                    ], 
+                    "format" => "time_series", 
+                    "group" => [
+                       ], 
+                    "metricColumn" => "none", 
+                    "rawQuery" => false, 
+            
+                    "rawSql" => "SELECT timestamp AS \"time\", power FROM EtWe WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+            
+                    "refId" => "A", 
+                    "select" => [
+                             [
+                                [
+                                   "params" => [
+                                      "power" 
+                                   ], 
+                                   "type" => "column" 
+                                ] 
+                             ] 
+                          ], 
+                    "table" => "EtWe", 
+                    "timeColumn" => "timestamp", 
+                    "timeColumnType" => "timestamp", 
+                    "where" => [
+                                         [
+                                            "name" => "\$__timeFilter", 
+                                            "params" => [
+                                            ], 
+                                            "type" => "macro" 
+                                         ]
+                                         
+                                     
+                                      ] 
+                 ], 
+                ];
+
+                $panelTarget_WasserstoffBrennstoffzelle = [
+                    [
+                        "datasource" => [
+                           "type" => "Ensys Visu", 
+                           "uid" => "nHHCjxBnk" 
+                        ], 
+                        "format" => "time_series", 
+                        "group" => [
+                           ], 
+                        "metricColumn" => "none", 
+                        "rawQuery" => false, 
+                
+                        "rawSql" => "SELECT timestamp AS \"time\",power FROM EtBsZ WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                
+                        "refId" => "A", 
+                        "select" => [
+                                 [
+                                    [
+                                       "params" => [
+                                          "power" 
+                                       ], 
+                                       "type" => "column" 
+                                    ] 
+                                 ] 
+                              ], 
+                        "table" => "EtBsZ", 
+                        "timeColumn" => "timestamp", 
+                        "timeColumnType" => "timestamp", 
+                        "where" => [
+                                             [
+                                                "name" => "\$__timeFilter", 
+                                                "params" => [
+                                                ], 
+                                                "type" => "macro" 
+                                             ]
+                                            
+                                          ] 
+                     ], 
+                    ];
+                $panelTarget_WasserstoffSpeicher = [
+                    [
+                        "datasource" => [
+                           "type" => "Ensys Visu", 
+                           "uid" => "nHHCjxBnk" 
+                        ], 
+                        "format" => "time_series", 
+                        "group" => [
+                           ], 
+                        "metricColumn" => "none", 
+                        "rawQuery" => false, 
+                
+                        "rawSql" => "SELECT timestamp AS \"time\", storageTempBottom FROM EtWs WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                
+                        "refId" => "A", 
+                        "select" => [
+                                 [
+                                    [
+                                       "params" => [
+                                          "storageTempBottom" 
+                                       ], 
+                                       "type" => "column" 
+                                    ] 
+                                 ] 
+                              ], 
+                        "table" => "EtWs", 
+                        "timeColumn" => "timestamp", 
+                        "timeColumnType" => "timestamp", 
+                        "where" => [
+                                             [
+                                                "name" => "\$__timeFilter", 
+                                                "params" => [
+                                                ], 
+                                                "type" => "macro" 
+                                             ]
+                                          
+                                          ] 
+                     ], 
+                     [
+                        "datasource" => [
+                           "type" => "Ensys Visu", 
+                           "uid" => "nHHCjxBnk" 
+                        ], 
+                        "format" => "time_series", 
+                        "group" => [
+                           ], 
+                        "metricColumn" => "none", 
+                        "rawQuery" => false, 
+                
+                        "rawSql" => "SELECT timestamp AS \"time\", storageTempMiddle FROM EtWs WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                
+                        "refId" => "B", 
+                        "select" => [
+                                 [
+                                    [
+                                       "params" => [
+                                          "storageTempMiddle" 
+                                       ], 
+                                       "type" => "column" 
+                                    ] 
+                                 ] 
+                              ], 
+                        "table" => "EtWs", 
+                        "timeColumn" => "timestamp", 
+                        "timeColumnType" => "timestamp", 
+                        "where" => [
+                                             [
+                                                "name" => "\$__timeFilter", 
+                                                "params" => [
+                                                ], 
+                                                "type" => "macro" 
+                                             ]
+                                          
+                                          ] 
+                     ], 
+                     [
+                        "datasource" => [
+                           "type" => "Ensys Visu", 
+                           "uid" => "nHHCjxBnk" 
+                        ], 
+                        "format" => "time_series", 
+                        "group" => [
+                           ], 
+                        "metricColumn" => "none", 
+                        "rawQuery" => false, 
+                
+                        "rawSql" => "SELECT timestamp AS \"time\", storageTempTop FROM EtWs WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                
+                        "refId" => "C", 
+                        "select" => [
+                                 [
+                                    [
+                                       "params" => [
+                                          "storageTempTop" 
+                                       ], 
+                                       "type" => "column" 
+                                    ] 
+                                 ] 
+                              ], 
+                        "table" => "EtWs", 
+                        "timeColumn" => "timestamp", 
+                        "timeColumnType" => "timestamp", 
+                        "where" => [
+                                             [
+                                                "name" => "\$__timeFilter", 
+                                                "params" => [
+                                                ], 
+                                                "type" => "macro" 
+                                             ]
+                                          
+                                          ] 
+                     ]
+
+                     
+                    ];
+                    $panelTarget_WindkraftAnlage = [
+                        [
+                            "datasource" => [
+                               "type" => "Ensys Visu", 
+                               "uid" => "nHHCjxBnk" 
+                            ], 
+                            "format" => "time_series", 
+                            "group" => [
+                               ], 
+                            "metricColumn" => "none", 
+                            "rawQuery" => false, 
+                    
+                            "rawSql" => "SELECT timestamp AS \"time\",power FROM EtWkA WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                    
+                            "refId" => "A", 
+                            "select" => [
+                                     [
+                                        [
+                                           "params" => [
+                                              "power" 
+                                           ], 
+                                           "type" => "column" 
+                                        ] 
+                                     ] 
+                                  ], 
+                            "table" => "EtWkA", 
+                            "timeColumn" => "timestamp", 
+                            "timeColumnType" => "timestamp", 
+                            "where" => [
+                                                 [
+                                                    "name" => "\$__timeFilter", 
+                                                    "params" => [
+                                                    ], 
+                                                    "type" => "macro" 
+                                                 ]
+                                               
+                                              ] 
+                         ], 
+                        ];
+                        $panelTarget_ELadestation = [
+                            [
+                                "datasource" => [
+                                   "type" => "Ensys Visu", 
+                                   "uid" => "nHHCjxBnk" 
+                                ], 
+                                "format" => "time_series", 
+                                "group" => [
+                                   ], 
+                                "metricColumn" => "none", 
+                                "rawQuery" => false, 
+                        
+                                "rawSql" => "SELECT timestamp AS \"time\",power FROM EtEl WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                        
+                                "refId" => "A", 
+                                "select" => [
+                                         [
+                                            [
+                                               "params" => [
+                                                  "power" 
+                                               ], 
+                                               "type" => "column" 
+                                            ] 
+                                         ] 
+                                      ], 
+                                "table" => "EtEl", 
+                                "timeColumn" => "timestamp", 
+                                "timeColumnType" => "timestamp", 
+                                "where" => [
+                                                     [
+                                                        "name" => "\$__timeFilter", 
+                                                        "params" => [
+                                                        ], 
+                                                        "type" => "macro" 
+                                                     ]
+                                                    
+                                                  ] 
+                             ], 
+                            ];
+                        
+                            $panelTarget_HausanschlussZaehler = [
+                                [
+                                    "datasource" => [
+                                       "type" => "Ensys Visu", 
+                                       "uid" => "nHHCjxBnk" 
+                                    ], 
+                                    "format" => "time_series", 
+                                    "group" => [
+                                       ], 
+                                    "metricColumn" => "none", 
+                                    "rawQuery" => false, 
+                            
+                                    "rawSql" => "SELECT timestamp AS \"time\",power FROM EtHaZ WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                            
+                                    "refId" => "A", 
+                                    "select" => [
+                                             [
+                                                [
+                                                   "params" => [
+                                                      "power" 
+                                                   ], 
+                                                   "type" => "column" 
+                                                ] 
+                                             ] 
+                                          ], 
+                                    "table" => "EtHaZ", 
+                                    "timeColumn" => "timestamp", 
+                                    "timeColumnType" => "timestamp", 
+                                    "where" => [
+                                                         [
+                                                            "name" => "\$__timeFilter", 
+                                                            "params" => [
+                                                            ], 
+                                                            "type" => "macro" 
+                                                         ]
+                                                        
+                                                      ] 
+                                 ], 
+                                ];
+
+                                $panelTarget_WaermenetzBezug = [
+                                    [
+                                        "datasource" => [
+                                           "type" => "Ensys Visu", 
+                                           "uid" => "nHHCjxBnk" 
+                                        ], 
+                                        "format" => "time_series", 
+                                        "group" => [
+                                           ], 
+                                        "metricColumn" => "none", 
+                                        "rawQuery" => false, 
+                                
+                                        "rawSql" => "SELECT timestamp AS \"time\",power FROM EtWnB WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                
+                                        "refId" => "A", 
+                                        "select" => [
+                                                 [
+                                                    [
+                                                       "params" => [
+                                                          "power" 
+                                                       ], 
+                                                       "type" => "column" 
+                                                    ] 
+                                                 ] 
+                                              ], 
+                                        "table" => "EtWnB", 
+                                        "timeColumn" => "timestamp", 
+                                        "timeColumnType" => "timestamp", 
+                                        "where" => [
+                                                             [
+                                                                "name" => "\$__timeFilter", 
+                                                                "params" => [
+                                                                ], 
+                                                                "type" => "macro" 
+                                                             ]
+                                                            
+                                                          ] 
+                                     ], 
+                                    ];
+                                
+                                    $panelTarget_Biomasseheizkraftwerk = [
+                                        [
+                                            "datasource" => [
+                                               "type" => "Ensys Visu", 
+                                               "uid" => "nHHCjxBnk" 
+                                            ], 
+                                            "format" => "time_series", 
+                                            "group" => [
+                                               ], 
+                                            "metricColumn" => "none", 
+                                            "rawQuery" => false, 
+                                    
+                                            "rawSql" => "SELECT timestamp AS \"time\",power FROM EtBhKw WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                    
+                                            "refId" => "A", 
+                                            "select" => [
+                                                     [
+                                                        [
+                                                           "params" => [
+                                                              "power" 
+                                                           ], 
+                                                           "type" => "column" 
+                                                        ] 
+                                                     ] 
+                                                  ], 
+                                            "table" => "EtBhKw", 
+                                            "timeColumn" => "timestamp", 
+                                            "timeColumnType" => "timestamp", 
+                                            "where" => [
+                                                                 [
+                                                                    "name" => "\$__timeFilter", 
+                                                                    "params" => [
+                                                                    ], 
+                                                                    "type" => "macro" 
+                                                                 ]
+                                                                
+                                                              ] 
+                                         ], 
+                                         [
+                                            "datasource" => [
+                                               "type" => "Ensys Visu", 
+                                               "uid" => "nHHCjxBnk" 
+                                            ], 
+                                            "format" => "time_series", 
+                                            "group" => [
+                                               ], 
+                                            "metricColumn" => "none", 
+                                            "rawQuery" => false, 
+                                    
+                                            "rawSql" => "SELECT timestamp AS \"time\", flowTemp FROM EtBhKw WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                    
+                                            "refId" => "B", 
+                                            "select" => [
+                                                     [
+                                                        [
+                                                           "params" => [
+                                                              "flowTemp" 
+                                                           ], 
+                                                           "type" => "column" 
+                                                        ] 
+                                                     ] 
+                                                  ], 
+                                            "table" => "EtBhKw", 
+                                            "timeColumn" => "timestamp", 
+                                            "timeColumnType" => "timestamp", 
+                                            "where" => [
+                                                                 [
+                                                                    "name" => "\$__timeFilter", 
+                                                                    "params" => [
+                                                                    ], 
+                                                                    "type" => "macro" 
+                                                                 ]
+                                                                
+                                                              ] 
+                                         ], 
+                                        ];
+                                    
+                                        $panelTarget_Biomasseheizwerk = [
+                                            [
+                                                "datasource" => [
+                                                   "type" => "Ensys Visu", 
+                                                   "uid" => "nHHCjxBnk" 
+                                                ], 
+                                                "format" => "time_series", 
+                                                "group" => [
+                                                   ], 
+                                                "metricColumn" => "none", 
+                                                "rawQuery" => false, 
+                                        
+                                                "rawSql" => "SELECT timestamp AS \"time\",power FROM EtBmHw WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                        
+                                                "refId" => "A", 
+                                                "select" => [
+                                                         [
+                                                            [
+                                                               "params" => [
+                                                                  "power" 
+                                                               ], 
+                                                               "type" => "column" 
+                                                            ] 
+                                                         ] 
+                                                      ], 
+                                                "table" => "EtBmHw", 
+                                                "timeColumn" => "timestamp", 
+                                                "timeColumnType" => "timestamp", 
+                                                "where" => [
+                                                                     [
+                                                                        "name" => "\$__timeFilter", 
+                                                                        "params" => [
+                                                                        ], 
+                                                                        "type" => "macro" 
+                                                                     ]
+                                                                     
+                                                                  ] 
+                                             ], 
+
+                                             [
+                                                "datasource" => [
+                                                   "type" => "Ensys Visu", 
+                                                   "uid" => "nHHCjxBnk" 
+                                                ], 
+                                                "format" => "time_series", 
+                                                "group" => [
+                                                   ], 
+                                                "metricColumn" => "none", 
+                                                "rawQuery" => false, 
+                                        
+                                                "rawSql" => "SELECT timestamp AS \"time\",flowTemp FROM EtBmHw WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                        
+                                                "refId" => "B", 
+                                                "select" => [
+                                                         [
+                                                            [
+                                                               "params" => [
+                                                                  "flowTemp" 
+                                                               ], 
+                                                               "type" => "column" 
+                                                            ] 
+                                                         ] 
+                                                      ], 
+                                                "table" => "EtBmHw", 
+                                                "timeColumn" => "timestamp", 
+                                                "timeColumnType" => "timestamp", 
+                                                "where" => [
+                                                                     [
+                                                                        "name" => "\$__timeFilter", 
+                                                                        "params" => [
+                                                                        ], 
+                                                                        "type" => "macro" 
+                                                                     ]
+                                                                     
+                                                                  ] 
+                                             ], 
+                                            ];
+                                        
+                                            $panelTarget_Biomasseheizkessel = [
+                                                [
+                                                    "datasource" => [
+                                                       "type" => "Ensys Visu", 
+                                                       "uid" => "nHHCjxBnk" 
+                                                    ], 
+                                                    "format" => "time_series", 
+                                                    "group" => [
+                                                       ], 
+                                                    "metricColumn" => "none", 
+                                                    "rawQuery" => false, 
+                                            
+                                                    "rawSql" => "SELECT timestamp AS \"time\",power FROM EtBmHk WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                            
+                                                    "refId" => "A", 
+                                                    "select" => [
+                                                             [
+                                                                [
+                                                                   "params" => [
+                                                                      "power" 
+                                                                   ], 
+                                                                   "type" => "column" 
+                                                                ] 
+                                                             ] 
+                                                          ], 
+                                                    "table" => "EtBmHk", 
+                                                    "timeColumn" => "timestamp", 
+                                                    "timeColumnType" => "timestamp", 
+                                                    "where" => [
+                                                                         [
+                                                                            "name" => "\$__timeFilter", 
+                                                                            "params" => [
+                                                                            ], 
+                                                                            "type" => "macro" 
+                                                                         ] 
+                                                                         
+                                                                      ] 
+                                                 ], 
+
+                                                 [
+                                                    "datasource" => [
+                                                       "type" => "Ensys Visu", 
+                                                       "uid" => "nHHCjxBnk" 
+                                                    ], 
+                                                    "format" => "time_series", 
+                                                    "group" => [
+                                                       ], 
+                                                    "metricColumn" => "none", 
+                                                    "rawQuery" => false, 
+                                            
+                                                    "rawSql" => "SELECT timestamp AS \"time\", flowTemp FROM EtBmHk WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                            
+                                                    "refId" => "B", 
+                                                    "select" => [
+                                                             [
+                                                                [
+                                                                   "params" => [
+                                                                      "flowTemp" 
+                                                                   ], 
+                                                                   "type" => "column" 
+                                                                ] 
+                                                             ] 
+                                                          ], 
+                                                    "table" => "EtBmHk", 
+                                                    "timeColumn" => "timestamp", 
+                                                    "timeColumnType" => "timestamp", 
+                                                    "where" => [
+                                                                         [
+                                                                            "name" => "\$__timeFilter", 
+                                                                            "params" => [
+                                                                            ], 
+                                                                            "type" => "macro" 
+                                                                         ] 
+                                                                         
+                                                                      ] 
+                                                 ], 
+                                                ];
+
+                                                $panelTarget_Waermespeicher = [
+                                                    [
+                                                        "datasource" => [
+                                                           "type" => "Ensys Visu", 
+                                                           "uid" => "nHHCjxBnk" 
+                                                        ], 
+                                                        "format" => "time_series", 
+                                                        "group" => [
+                                                           ], 
+                                                        "metricColumn" => "none", 
+                                                        "rawQuery" => false, 
+                                                
+                                                        "rawSql" => "SELECT timestamp AS \"time\", storageTempBottom FROM EtWes WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                
+                                                        "refId" => "A", 
+                                                        "select" => [
+                                                                 [
+                                                                    [
+                                                                       "params" => [
+                                                                          "storageTempBottom" 
+                                                                       ], 
+                                                                       "type" => "column" 
+                                                                    ] 
+                                                                 ] 
+                                                              ], 
+                                                        "table" => "EtWes", 
+                                                        "timeColumn" => "timestamp", 
+                                                        "timeColumnType" => "timestamp", 
+                                                        "where" => [
+                                                                             [
+                                                                                "name" => "\$__timeFilter", 
+                                                                                "params" => [
+                                                                                ], 
+                                                                                "type" => "macro" 
+                                                                             ]
+                                                                           
+                                                                            ] 
+                                                                            ],
+                                                                            [
+                                                                                "datasource" => [
+                                                                                   "type" => "Ensys Visu", 
+                                                                                   "uid" => "nHHCjxBnk" 
+                                                                                ], 
+                                                                                "format" => "time_series", 
+                                                                                "group" => [
+                                                                                   ], 
+                                                                                "metricColumn" => "none", 
+                                                                                "rawQuery" => false, 
+                                                                        
+                                                                                "rawSql" => "SELECT timestamp AS \"time\", storageTempMiddle FROM EtWes WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                                        
+                                                                                "refId" => "B", 
+                                                                                "select" => [
+                                                                                         [
+                                                                                            [
+                                                                                               "params" => [
+                                                                                                  "storageTempMiddle" 
+                                                                                               ], 
+                                                                                               "type" => "column" 
+                                                                                            ] 
+                                                                                         ] 
+                                                                                      ], 
+                                                                                "table" => "EtWes", 
+                                                                                "timeColumn" => "timestamp", 
+                                                                                "timeColumnType" => "timestamp", 
+                                                                                "where" => [
+                                                                                                     [
+                                                                                                        "name" => "\$__timeFilter", 
+                                                                                                        "params" => [
+                                                                                                        ], 
+                                                                                                        "type" => "macro" 
+                                                                                                     ]
+                                                                                                   
+                                                                                                    ] 
+                                                                                                    ],
+                                                                                                    [
+                                                                                                        "datasource" => [
+                                                                                                           "type" => "Ensys Visu", 
+                                                                                                           "uid" => "nHHCjxBnk" 
+                                                                                                        ], 
+                                                                                                        "format" => "time_series", 
+                                                                                                        "group" => [
+                                                                                                           ], 
+                                                                                                        "metricColumn" => "none", 
+                                                                                                        "rawQuery" => false, 
+                                                                                                
+                                                                                                        "rawSql" => "SELECT timestamp AS \"time\", storageTempTop FROM EtWes WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                                                                
+                                                                                                        "refId" => "C", 
+                                                                                                        "select" => [
+                                                                                                                 [
+                                                                                                                    [
+                                                                                                                       "params" => [
+                                                                                                                          "storageTempTop" 
+                                                                                                                       ], 
+                                                                                                                       "type" => "column" 
+                                                                                                                    ] 
+                                                                                                                 ] 
+                                                                                                              ], 
+                                                                                                        "table" => "EtWes", 
+                                                                                                        "timeColumn" => "timestamp", 
+                                                                                                        "timeColumnType" => "timestamp", 
+                                                                                                        "where" => [
+                                                                                                                             [
+                                                                                                                                "name" => "\$__timeFilter", 
+                                                                                                                                "params" => [
+                                                                                                                                ], 
+                                                                                                                                "type" => "macro" 
+                                                                                                                             ]
+                                                                                                                           
+                                                                                                                            ] 
+                                                                                                                            ]
+
+                                
+                                                    ];
+                                                    $panelTarget_Solarthermieanlage = [
+                                                        [
+                                                            "datasource" => [
+                                                               "type" => "Ensys Visu", 
+                                                               "uid" => "nHHCjxBnk" 
+                                                            ], 
+                                                            "format" => "time_series", 
+                                                            "group" => [
+                                                               ], 
+                                                            "metricColumn" => "none", 
+                                                            "rawQuery" => false, 
+                                                    
+                                                            "rawSql" => "SELECT timestamp AS \"time\",power FROM EtSth WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                    
+                                                            "refId" => "A", 
+                                                            "select" => [
+                                                                     [
+                                                                        [
+                                                                           "params" => [
+                                                                              "power" 
+                                                                           ], 
+                                                                           "type" => "column" 
+                                                                        ] 
+                                                                     ] 
+                                                                  ], 
+                                                            "table" => "EtSth", 
+                                                            "timeColumn" => "timestamp", 
+                                                            "timeColumnType" => "timestamp", 
+                                                            "where" => [
+                                                                                 [
+                                                                                    "name" => "\$__timeFilter", 
+                                                                                    "params" => [
+                                                                                    ], 
+                                                                                    "type" => "macro" 
+                                                                                 ] 
+                                                                              
+                                                                              ] 
+                                                         ], 
+                                                        ];
+                                                        $panelTarget_Waermepumpe = [
+                                                            [
+                                                                "datasource" => [
+                                                                   "type" => "Ensys Visu", 
+                                                                   "uid" => "nHHCjxBnk" 
+                                                                ], 
+                                                                "format" => "time_series", 
+                                                                "group" => [
+                                                                   ], 
+                                                                "metricColumn" => "none", 
+                                                                "rawQuery" => false, 
+                                                        
+                                                                "rawSql" => "SELECT timestamp AS \"time\",power FROM EtWp WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                        
+                                                                "refId" => "A", 
+                                                                "select" => [
+                                                                         [
+                                                                            [
+                                                                               "params" => [
+                                                                                  "power" 
+                                                                               ], 
+                                                                               "type" => "column" 
+                                                                            ] 
+                                                                         ] 
+                                                                      ], 
+                                                                "table" => "EtWp", 
+                                                                "timeColumn" => "timestamp", 
+                                                                "timeColumnType" => "timestamp", 
+                                                                "where" => [
+                                                                                     [
+                                                                                        "name" => "\$__timeFilter", 
+                                                                                        "params" => [
+                                                                                        ], 
+                                                                                        "type" => "macro" 
+                                                                                     ]
+                                                                                    
+                                                                                  ] 
+                                                             ], 
+                                                            ];
+                                                        $panelTarget_GebaeudeWaermebedarfszaehler = [
+                                                            [
+                                                                "datasource" => [
+                                                                   "type" => "Ensys Visu", 
+                                                                   "uid" => "nHHCjxBnk" 
+                                                                ], 
+                                                                "format" => "time_series", 
+                                                                "group" => [
+                                                                   ], 
+                                                                "metricColumn" => "none", 
+                                                                "rawQuery" => false, 
+                                                        
+                                                                "rawSql" => "SELECT timestamp AS \"time\", energy FROM EtGWbZ WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                        
+                                                                "refId" => "A", 
+                                                                "select" => [
+                                                                         [
+                                                                            [
+                                                                               "params" => [
+                                                                                  "energy" 
+                                                                               ], 
+                                                                               "type" => "column" 
+                                                                            ] 
+                                                                         ] 
+                                                                      ], 
+                                                                "table" => "EtGWbZ", 
+                                                                "timeColumn" => "timestamp", 
+                                                                "timeColumnType" => "timestamp", 
+                                                                "where" => [
+                                                                                     [
+                                                                                        "name" => "\$__timeFilter", 
+                                                                                        "params" => [
+                                                                                        ], 
+                                                                                        "type" => "macro" 
+                                                                                     ] 
+                                                                                     
+                                                                                  ] 
+                                                             ], 
+                                                            ];
+                                                            $panelTarget_Kompresskaeltemasch = [
+                                                                [
+                                                                    "datasource" => [
+                                                                       "type" => "Ensys Visu", 
+                                                                       "uid" => "nHHCjxBnk" 
+                                                                    ], 
+                                                                    "format" => "time_series", 
+                                                                    "group" => [
+                                                                       ], 
+                                                                    "metricColumn" => "none", 
+                                                                    "rawQuery" => false, 
+                                                            
+                                                                    "rawSql" => "SELECT timestamp AS \"time\",power FROM EtKkM WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                            
+                                                                    "refId" => "A", 
+                                                                    "select" => [
+                                                                             [
+                                                                                [
+                                                                                   "params" => [
+                                                                                      "power" 
+                                                                                   ], 
+                                                                                   "type" => "column" 
+                                                                                ] 
+                                                                             ] 
+                                                                          ], 
+                                                                    "table" => "EtKkM", 
+                                                                    "timeColumn" => "timestamp", 
+                                                                    "timeColumnType" => "timestamp", 
+                                                                    "where" => [
+                                                                                         [
+                                                                                            "name" => "\$__timeFilter", 
+                                                                                            "params" => [
+                                                                                            ], 
+                                                                                            "type" => "macro" 
+                                                                                         ]
+                                                                                        
+                                                                                      ] 
+                                                                 ], 
+                                                                 [
+                                                                    "datasource" => [
+                                                                       "type" => "Ensys Visu", 
+                                                                       "uid" => "nHHCjxBnk" 
+                                                                    ], 
+                                                                    "format" => "time_series", 
+                                                                    "group" => [
+                                                                       ], 
+                                                                    "metricColumn" => "none", 
+                                                                    "rawQuery" => false, 
+                                                            
+                                                                    "rawSql" => "SELECT timestamp AS \"time\", flowTemp FROM EtKkM WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                            
+                                                                    "refId" => "B", 
+                                                                    "select" => [
+                                                                             [
+                                                                                [
+                                                                                   "params" => [
+                                                                                      "flowTemp" 
+                                                                                   ], 
+                                                                                   "type" => "column" 
+                                                                                ] 
+                                                                             ] 
+                                                                          ], 
+                                                                    "table" => "EtKkM", 
+                                                                    "timeColumn" => "timestamp", 
+                                                                    "timeColumnType" => "timestamp", 
+                                                                    "where" => [
+                                                                                         [
+                                                                                            "name" => "\$__timeFilter", 
+                                                                                            "params" => [
+                                                                                            ], 
+                                                                                            "type" => "macro" 
+                                                                                         ]
+                                                                                        
+                                                                                      ] 
+                                                                 ], 
+                                                                ];
+                                                                $panelTarget_aboderadkm = [
+                                                                    [
+                                                                        "datasource" => [
+                                                                           "type" => "Ensys Visu", 
+                                                                           "uid" => "nHHCjxBnk" 
+                                                                        ], 
+                                                                        "format" => "time_series", 
+                                                                        "group" => [
+                                                                           ], 
+                                                                        "metricColumn" => "none", 
+                                                                        "rawQuery" => false, 
+                                                                
+                                                                        "rawSql" => "SELECT timestamp AS \"time\",power FROM EtAdAbKm WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                                
+                                                                        "refId" => "A", 
+                                                                        "select" => [
+                                                                                 [
+                                                                                    [
+                                                                                       "params" => [
+                                                                                          "power" 
+                                                                                       ], 
+                                                                                       "type" => "column" 
+                                                                                    ] 
+                                                                                 ] 
+                                                                              ], 
+                                                                        "table" => "EtAdAbKm", 
+                                                                        "timeColumn" => "timestamp", 
+                                                                        "timeColumnType" => "timestamp", 
+                                                                        "where" => [
+                                                                                             [
+                                                                                                "name" => "\$__timeFilter", 
+                                                                                                "params" => [
+                                                                                                ], 
+                                                                                                "type" => "macro" 
+                                                                                             ] 
+                                                                                            
+                                                                                          ] 
+                                                                     ], 
+
+                                                                     [
+                                                                        "datasource" => [
+                                                                           "type" => "Ensys Visu", 
+                                                                           "uid" => "nHHCjxBnk" 
+                                                                        ], 
+                                                                        "format" => "time_series", 
+                                                                        "group" => [
+                                                                           ], 
+                                                                        "metricColumn" => "none", 
+                                                                        "rawQuery" => false, 
+                                                                
+                                                                        "rawSql" => "SELECT timestamp AS \"time\", flowTemp FROM EtAdAbKm WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                                
+                                                                        "refId" => "B", 
+                                                                        "select" => [
+                                                                                 [
+                                                                                    [
+                                                                                       "params" => [
+                                                                                          "flowTemp" 
+                                                                                       ], 
+                                                                                       "type" => "column" 
+                                                                                    ] 
+                                                                                 ] 
+                                                                              ], 
+                                                                        "table" => "EtAdAbKm", 
+                                                                        "timeColumn" => "timestamp", 
+                                                                        "timeColumnType" => "timestamp", 
+                                                                        "where" => [
+                                                                                             [
+                                                                                                "name" => "\$__timeFilter", 
+                                                                                                "params" => [
+                                                                                                ], 
+                                                                                                "type" => "macro" 
+                                                                                             ] 
+                                                                                            
+                                                                                          ] 
+                                                                     ], 
+                                                                    ];
+                                                                    $panelTarget_kaeltespeicher = [
+                                                                        [
+                                                                            "datasource" => [
+                                                                               "type" => "Ensys Visu", 
+                                                                               "uid" => "nHHCjxBnk" 
+                                                                            ], 
+                                                                            "format" => "time_series", 
+                                                                            "group" => [
+                                                                               ], 
+                                                                            "metricColumn" => "none", 
+                                                                            "rawQuery" => false, 
+                                                                    
+                                                                            "rawSql" => "SELECT timestamp AS \"time\", storageTemp FROM EtKs WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                                    
+                                                                            "refId" => "A", 
+                                                                            "select" => [
+                                                                                     [
+                                                                                        [
+                                                                                           "params" => [
+                                                                                              "storageTemp" 
+                                                                                           ], 
+                                                                                           "type" => "column" 
+                                                                                        ] 
+                                                                                     ] 
+                                                                                  ], 
+                                                                            "table" => "EtKs", 
+                                                                            "timeColumn" => "timestamp", 
+                                                                            "timeColumnType" => "timestamp", 
+                                                                            "where" => [
+                                                                                                 [
+                                                                                                    "name" => "\$__timeFilter", 
+                                                                                                    "params" => [
+                                                                                                    ], 
+                                                                                                    "type" => "macro" 
+                                                                                                 ]
+                                                                                               
+                                                                                              ] 
+                                                                         ], 
+                                                                        ];
+                                                                        $panelTarget_Gebaeudekaeltezaehler = [
+                                                                            [
+                                                                                "datasource" => [
+                                                                                   "type" => "Ensys Visu", 
+                                                                                   "uid" => "nHHCjxBnk" 
+                                                                                ], 
+                                                                                "format" => "time_series", 
+                                                                                "group" => [
+                                                                                   ], 
+                                                                                "metricColumn" => "none", 
+                                                                                "rawQuery" => false, 
+                                                                        
+                                                                                "rawSql" => "SELECT timestamp AS \"time\",power FROM EtGKbZ WHERE \$__timeFilter(timestamp) ORDER BY timestamp",
+                                                                        
+                                                                                "refId" => "A", 
+                                                                                "select" => [
+                                                                                         [
+                                                                                            [
+                                                                                               "params" => [
+                                                                                                  "power" 
+                                                                                               ], 
+                                                                                               "type" => "column" 
+                                                                                            ] 
+                                                                                         ] 
+                                                                                      ], 
+                                                                                "table" => "EtGKbZ", 
+                                                                                "timeColumn" => "timestamp", 
+                                                                                "timeColumnType" => "timestamp", 
+                                                                                "where" => [
+                                                                                                     [
+                                                                                                        "name" => "\$__timeFilter", 
+                                                                                                        "params" => [
+                                                                                                        ], 
+                                                                                                        "type" => "macro" 
+                                                                                                     ]
+                                                                                                    
+                                                                                                  ] 
+                                                                             ], 
+                                                                            ];
+                                                                            $panelTarget_defaultcase = [
+                                                                                
+                                                                             
+                                                                                ];
+                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
+
+
+switch($request->Typ)
+{
+    case "PV-Anlage":
+        $paneldef['targets'] = $panelTarget_PV;
+        break;
+
+    case "Stromnetzbezug":
+        $paneldef['targets'] = $panelTarget_Stromnetzbezug;
+        break;
+
+    case "Batteriespeicher":
+        $paneldef['targets'] = $panelTarget_Batteriespeicher;
+        break;
+    case "Wasserstoff Elektrolyse":
+        $paneldef['targets'] = $panelTarget_WasserstoffElektrolyse;
+        break;
+    case "Wasserstoff Brennstoffzelle":
+        $paneldef['targets'] = $panelTarget_WasserstoffBrennstoffzelle;
+        break;
+    case "Wasserstoff Speicher":
+        $paneldef['targets'] = $panelTarget_WasserstoffSpeicher;
+        break;
+    case "Windkraftanlage":
+        $paneldef['targets'] = $panelTarget_WindkraftAnlage;
+        break;
+    case "E-Ladestation":
+        $paneldef['targets'] = $panelTarget_ELadestation;
+        break;
+    case "Hausanschlusszähler":
+        $paneldef['targets'] = $panelTarget_HausanschlussZaehler;
+        break;
+    case "Wärmenetzbezug":
+        $paneldef['targets'] = $panelTarget_WaermenetzBezug;
+        break;
+    case "Biomasseheizkraftwerk":
+        $paneldef['targets'] = $panelTarget_Biomasseheizkraftwerk;
+        break;
+    case "Biomasseheizwerk":
+        $paneldef['targets'] = $panelTarget_Biomasseheizwerk;
+        break;
+    case "Biomasseheizkessel":
+        $paneldef['targets'] = $panelTarget_Biomasseheizkessel;
+        break;
+    case "Wärmespeicher":
+        $paneldef['targets'] = $panelTarget_Waermespeicher;
+        break;
+    case "Solarthermieanlage":
+        $paneldef['targets'] = $panelTarget_Solarthermieanlage;
+        break;
+    case "Wärmepumpe":
+        $paneldef['targets'] = $panelTarget_Waermepumpe;
+        break;
+    case "Gebäude Wärmebedarfszähler":
+        $paneldef['targets'] = $panelTarget_GebaeudeWaermebedarfszaehler;
+        break;
+    case "Kompressionskältemaschine":
+        $paneldef['targets'] = $panelTarget_Kompresskaeltemasch;
+        break;
+    case "Ab oder Adsorbtionskältemaschine":
+        $paneldef['targets'] = $panelTarget_aboderadkm;
+        break;
+    case "Kältespeicher":
+        $paneldef['targets'] = $panelTarget_kaeltespeicher;
+        break;
+    case "Gebäude Kältebedarfszähler":
+        $paneldef['targets'] = $panelTarget_Gebaeudekaeltezaehler;
+        break;
+
+    default:
+    $paneldef['targets'] = $panelTarget_defaultcase;
+    break;
+ 
+
+
+
+}
+    
+
+
+
 
 
         $oldPanels = $oldDashboard['dashboard']['panels'];

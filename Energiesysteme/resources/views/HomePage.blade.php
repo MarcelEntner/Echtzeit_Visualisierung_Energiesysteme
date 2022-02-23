@@ -85,6 +85,5 @@ Das Hauptziel besteht darin, den Grad der Autonomie der Systeme auf allen hierar
 
 
 
-
 @endsection
 @section('footer')

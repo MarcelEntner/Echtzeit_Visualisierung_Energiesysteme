@@ -9,7 +9,7 @@ class EtWe extends Model
 {
     use HasFactory;
 
-    protected $table = 'Etwe';
+    protected $table = 'EtWe';
     public function EnTechGem()
     {
         return $this->hasOne(EnTech::class);
