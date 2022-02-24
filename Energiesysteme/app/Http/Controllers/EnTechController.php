@@ -1327,7 +1327,21 @@ $panelTarget_PV = [
                                                                                                         "params" => [
                                                                                                         ], 
                                                                                                         "type" => "macro" 
-                                                                                                     ]
+                                                                                                      ],
+
+                                                                                                      
+
+
+                                                                                                      [
+                                                                                                         "datatype" => "int", 
+                                                                                                         "name" => "", 
+                                                                                                         "params" => [
+                                                                                                               "enTech_idEnTech", 
+                                                                                                               "=", 
+                                                                                                               $panelId
+                                                                                                            ], 
+                                                                                                         "type" => "expression" 
+                                                                                                      ]
                                                                                                     
                                                                                                   ] 
                                                                              ], 
