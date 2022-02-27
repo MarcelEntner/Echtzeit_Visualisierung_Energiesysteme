@@ -74,15 +74,11 @@
 
                                                     @else
                                                         <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
-
-                                                        <td> <a href="javascript:GrafanafunctionES({{ $d->id }})" class="btn btn2"
-                                                                style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                        </td>
                                                         <td> <a href="javascript:AugefunctionES({{ $d->id }})"
                                                                 class="btn btn2"
                                                                 style="background-image: url('/images/buttons/auge.png')"></a>
                                                         </td>
-
+                                                        <td> </td>
                                                         <td> </td>
 
                                                     @endif
@@ -92,13 +88,11 @@
                                                 <!-- Wenn man nicht angemeldet ist-->
 
                                                 @guest
-                                                    <td> <a href="javascript:GrafanafunctionES({{ $d->id }})" class="btn btn2"
-                                                            style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                    </td>
                                                     <td> <a href="javascript:AugefunctionES({{ $d->id }})"
                                                             class="btn btn2"
                                                             style="background-image: url('/images/buttons/auge.png')"></a></td>
                                                     <td></td>
+                                                    <td> </td>
                                                 @endguest
 
                                             </tr>
@@ -173,29 +167,22 @@
 
                                                     @else
                                                         <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
-
-                                                        <td> <a href="javascript:GrafanafunctionES({{ $d->id }})" class="btn btn2"
-                                                                style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                        </td>
-
                                                         <td> <a href="javascript:AugefunctionES({{ $d->id }})"
                                                                 class="btn btn2"
                                                                 style="background-image: url('/images/buttons/auge.png')"></a>
                                                         </td>
+                                                        <td> </td>
                                                         <td> </td>
                                                     @endif
                                                 @endauth
                                                 <!-- Wenn man nicht angemeldet ist-->
 
                                                 @guest
-                                                    <td> <a href="javascript:GrafanafunctionES({{ $d->id }})" class="btn btn2"
-                                                            style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                    </td>
-
                                                     <td> <a href="javascript:AugefunctionES({{ $d->id }})"
                                                             class="btn btn2"
                                                             style="background-image: url('/images/buttons/auge.png')"></a></td>
                                                     <td></td>
+                                                    <td> </td>
                                                 @endguest
 
                                             </tr>
@@ -257,7 +244,7 @@
                                         aria-label="Postleitzahl" aria-describedby="basic-addon1" placeholder="3250" required>
                                 </div>
                                 <!--Input Feld Längengrad Readonly (value wird automatisch gesetzt)-->
-                                <div class="input-group mb-3" style="margin-top:5%">
+                                <div class="input-group mb-3" style="margin-top:5%; display:none;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/LängengradES.png" style="margin-right:10px;">
                                         Längengrad</span>
@@ -266,7 +253,7 @@
                                         style="background-color:#e9ecef">
                                 </div>
                                 <!--Input Feld Breitengrad (value wird automatisch gesetzt)-->
-                                <div class="input-group mb-3" style="margin-top:5%">
+                                <div class="input-group mb-3" style="margin-top:5%; display:none;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/BreitengradES.png" style="margin-right:10px;">
                                         Breitengrad</span>
@@ -359,7 +346,7 @@
                                         aria-label="OrtET" aria-describedby="basic-addon1" required>
                                 </div>
                                 <!--Input Feld Längengrad Readonly (value wird automatisch gesetzt) -->
-                                <div class="input-group mb-3" style="margin-top:2%">
+                                <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/LängengradET.png" style="margin-right:10px;">
                                         Längengrad</span>
@@ -368,7 +355,7 @@
                                         style="background-color:#e9ecef">
                                 </div>
                                 <!--Input Feld Breitengrad Readonly (value wird automatisch gesetzt)-->
-                                <div class="input-group mb-3" style="margin-top:2%">
+                                <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                     <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                         <img src="/images/pop-up/BreitengradET.png" style="margin-right:10px;">
                                         Breitengrad</span>
@@ -448,7 +435,7 @@
                                     value="" aria-label="Postleitzahl" aria-describedby="basic-addon1" required>
                             </div>
                             <!--Input Feld Längengrad Readonly -->
-                            <div class="input-group mb-3" style="margin-top:5%">
+                            <div class="input-group mb-3" style="margin-top:5%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/LängengradES.png" style="margin-right:10px;">
                                     Längengrad</span>
@@ -457,7 +444,7 @@
                                     style="background-color:#e9ecef">
                             </div>
                             <!--Input Feld Breitengrad Readonly -->
-                            <div class="input-group mb-3" style="margin-top:5%">
+                            <div class="input-group mb-3" style="margin-top:5%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/BreitengradES.png" style="margin-right:10px;">
                                     Breitengrad</span>
@@ -646,7 +633,7 @@
                                     aria-label="OrtEditET" aria-describedby="basic-addon1" required>
                             </div>
                             <!--Input Feld Längengrad Readonly -->
-                            <div class="input-group mb-3" style="margin-top:2%">
+                            <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/LängengradET.png" style="margin-right:10px;">
                                     Längengrad</span>
@@ -655,7 +642,7 @@
                                     style="background-color:#e9ecef;">
                             </div>
                             <!--Input Feld Breitgengrad Readonly -->
-                            <div class="input-group mb-3" style="margin-top:2%">
+                            <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/BreitengradET.png" style="margin-right:10px;">
                                     Breitgengrad</span>
@@ -758,11 +745,6 @@
                     
                            function GrafanafunctionET(id) {
 
-                           
-
-                           
-
-                            
 
     
                             $('#PopUpETGrafana').modal('show');
@@ -2434,15 +2416,15 @@ document.getElementById("iframe1").src = srcc;
                         dataForTable.push("<a href=\"javascript:EditfunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/stift.png')\"></a>");
                 
                         @else
-                            dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
                             dataForTable.push("<a href=\"javascript:AugefunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/auge.png')\"></a>");
+                            dataForTable.push("");
                             dataForTable.push("");
                         @endif
                     @endauth
             
                     @guest
-                    dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
                         dataForTable.push("<a href=\"javascript:AugefunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/auge.png')\"></a>");
+                        dataForTable.push("");
                         dataForTable.push("");
                     @endguest
             

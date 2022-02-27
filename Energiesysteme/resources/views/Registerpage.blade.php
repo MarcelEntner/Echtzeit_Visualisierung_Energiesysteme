@@ -5,7 +5,7 @@
 @section('content')
 
 <body oncontextmenu="return false">
-        <div class="row justify-content-center" style="margin-left:30%; margin-top:-1%;">
+        <div class="row justify-content-center" style="margin:auto; margin-top:-1%;">
             <div class="col-md-13">
                 <div class="card">
                     <div class="card-header">{{ __('Neuen Benutzer anlegen') }}</div>

@@ -483,36 +483,36 @@
             <!-- Sponsoren -->
             <div id="FooterBilder"  style="margin-left:1%;">
             <p class="col-md-4 mb-0 text-primary" > Sponsoren und Förderer</p> 
-             <a href="https://www.ffg.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/ffg_logo_de.png') }}"  alt="FFG"/></a>
-             <a href="https://www.bmdw.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/Bundesministerium.png') }}"  alt="Bundesministerium"  /></a>
-             <a href="https://www.bmk.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/Bundesministerium2.png') }}"  alt="Bundesministerium2"  /></a>
-             <a href="https://wirtschaftsagentur.at/"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/wirtschaftsagentur_stadt_wien.png') }}"  alt="Wirtschaftsagentur Wien"  /></a>
-             <a href="https://www.noe.gv.at/noe/index.html"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/landNiederösterreich.png') }}"  alt="Land Niederösterreich"  /></a>
-             <a href="https://www.verwaltung.steiermark.at/cms/ziel/74835381/DE"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/landSteiermark.jpg') }}"  alt="Land Steiermark"  /></a>
-             <a href="https://www.sfg.at/"><img style="margin-top: -5%;"   class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/SFG.jpg') }}"  alt="SFG"  /></a>
+             <a href="https://www.ffg.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/ffg.png') }}"  alt="FFG"/></a>
+             <a href="https://www.bmdw.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/BM.png') }}"  alt="Bundesministerium"  /></a>
+             <a href="https://www.bmk.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/BM2.png') }}"  alt="Bundesministerium2"  /></a>
+             <a href="https://wirtschaftsagentur.at/"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/WAW.png') }}"  alt="Wirtschaftsagentur Wien"  /></a>
+             <a href="https://www.noe.gv.at/noe/index.html"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/Noe.png') }}"  alt="Land Niederösterreich"  /></a>
+             <a href="https://www.verwaltung.steiermark.at/cms/ziel/74835381/DE"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/Stk.jpg') }}"  alt="Land Steiermark"  /></a>
+             <a href="https://www.sfg.at/"><img style="margin-top: -5%;"   class="logo mr-2" src="{{ URL::to('/images/Sponsoren/SFG.jpg') }}"  alt="SFG"  /></a>
             </div>
             <!-- Forschungspartner -->
             <div id="FooterBilder" style="margin-left:1%;">
-            <p class="col-md-4 mb-0 text-primary" style="margin-left:-1.5%;">Forschungspartner</p> 
-            <a href="https://www.fhwn.ac.at/"><img style="margin-top: -3%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/Wiener_Neustadt.jpg') }}"  alt="Wiener Neustadt"/></a>
-            <a href="https://www.efre.gv.at/allgemeines/iwbefre_oesterreich"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/EFRE_Wieselburg.jpg') }}"  alt="EFRE"/></a>
-            <a href="https://www.wieselburg-land.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/Logo_Gemeinde Wieselburg-Land_klein.jpg') }}"  alt="Gemeinde Wieselburg"/></a>
-            <a href="https://www.wieselburg.gv.at/home"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/Logo_Stadtgemeinde Wieselburg_klein.jpg') }}"  alt="Stadtgemeinde Wieselburg"/></a>
-            <a href="https://www.noe.gv.at/noe/Wissenschaft-Forschung/Wissenschaft_Forschung.html"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/SponsorenFörderer/NOEK_W.jpg') }}"  alt="NOEK"/></a>
+            <p class="col-md-4 mb-0 text-primary" >Forschungspartner</p>
+            <a href="https://www.fhwn.ac.at/"><img style="margin-top: -3%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/WN.jpg') }}"  alt="Wiener Neustadt"/></a>
+            <a href="https://www.efre.gv.at/allgemeines/iwbefre_oesterreich"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/EFRE.jpg') }}"  alt="EFRE"/></a>
+            <a href="https://www.wieselburg-land.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/GWBG.jpg') }}"  alt="Gemeinde Wieselburg"/></a>
+            <a href="https://www.wieselburg.gv.at/home"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/SGWBG.jpg') }}"  alt="Stadtgemeinde Wieselburg"/></a>
+            <a href="https://www.noe.gv.at/noe/Wissenschaft-Forschung/Wissenschaft_Forschung.html"><img style="margin-top: -8%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/NOEWK2.png') }}"  alt="NOEK"/></a>
             </div>
               
 
               <!-- Unterhalb der Bilder -->
-                <p class="col-md-4 mb-0 text-primary" style="margin-top:2%;">&copy; 2022 Best GmbH
+                <p class="col-md-4 mb-0 text-primary" style="margin-top:1%;">&copy; 2022 Best GmbH
                 <a style="color:#1b8836; padding-left:5%; text-decoration: none;" href="//www.best-research.eu/de/kompetenzbereiche/microgrids/allgemeine_informationen"> Area 5.2 </a>
                 </p>
 
 
-                <ul class="nav col-md-4 justify-content-end" style="margin-top:2%;">
+                <ul class="nav col-md-4 justify-content-end" style="margin-top:1%;">
                     <li class="nav-item"><a href="{{ route('impressum') }}"
                             class="nav-link px-2 fs-5 text-primary">Impressum</a></li>
                     <li class="nav-item"><a href="{{ route('dsgvo') }}"
-                            class="nav-link px-2 fs-5 text-primary">DSGVO</a></li>
+                            class="nav-link px-2 fs-5 text-primary">Datenschutz</a></li>
                 </ul>
             </footer>
         </div>
