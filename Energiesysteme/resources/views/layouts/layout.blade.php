@@ -18,19 +18,34 @@
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
+    <!-- Schriftart -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@700&display=swap" rel="stylesheet">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
+
+
     <title>@yield('title')</title> <!-- Platzhalter für den Title , Title steht in der Variable title-->
     <style>
+        
         * {
             padding: 0px;
             margin: 0px;
-            font-family: Arial, sans-serif;
+            font-family: Hubballi, cursive;
+            font-weight: 500;
+            font-size:20px;
         }
+
 
         body {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            font-family: Arial, sans-serif;
+            font-family: Hubballi, cursive;
             
         }
 
@@ -38,7 +53,6 @@
         .footercontext {
             color: #1b8836;
             padding-right: 10%;
-            font-family: Arial, sans-serif;
         }
 
         .footercontext:hover {
@@ -51,7 +65,6 @@
             margin-top: 30px;
             margin-left: 5%;
             margin-right: 5%;
-            font-family: Arial, sans-serif;
         }
 
         /*  Text des Div Beitrag auf HomePage  */
@@ -60,7 +73,6 @@
             padding-top: 20px;
             padding-left: 100px;
             padding-right: 100px;
-            font-family: Arial, sans-serif;
         }
 
         /*  Bilder auf HomePage der Bilder-Show  */
@@ -72,7 +84,7 @@
 
         /*  Bilder-Show  */
         #carouselExampleControls {
-            height: 70%;
+            height:50%;
             width:85%;
             margin-left:7%;
             border-radius: 40px;
@@ -108,7 +120,6 @@
             margin: auto;
             text-align: center;
             padding-top: 3%;
-            font-family: Arial, sans-serif;
             
         }
 
@@ -123,13 +134,11 @@
             margin: auto;
             text-align: center;
             padding-top: 3%;
-            font-family: Arial, sans-serif;
         }
 
         .DsgvoUberschrieft {
             text-align: center;
             color: #1b8836;
-            font-family: Arial, sans-serif;
         }
 
         /*  Best Logo auf der HomePage  */
@@ -290,7 +299,6 @@
             margin-bottom: 0;
             line-height: 1.5;
             margin-left: 170px;
-            font-family: Arial, sans-serif;
         }
 
         /* Input-Felder bei den Pop-Ups */
@@ -327,7 +335,6 @@
             margin-bottom: 1%;
             height: 40px;
             text-align: center;
-            font-family: Arial, sans-serif;
         }
 
         /* Addresssuchfeld */
@@ -364,6 +371,8 @@
 
 
 
+   
+
 
     </style>
 </head>
@@ -384,22 +393,20 @@
 
                     <ul class="nav col-lg-auto" >
                         @if (\Request::is('/'))
-                            <li><b><a href="{{ route('hp') }}" class="nav-link px-2 text-primary fs-4">Home</a></b></li>
+                            <li><a href="{{ route('hp') }}" class="nav-linkused px-2 text-primary fs-4 ">Home</a></li>
                         @else
                             <li ><a  href="{{ route('hp') }}" class="nav-link px-2 text-primary fs-4">Home</a></li>
                         @endif
 
                         @if (\Request::is('energiesysteme') or \Request::is('EnSys'))
-                            <li><b><a href="{{ route('es') }}"
-                                        class="nav-link px-2 text-primary fs-4">Energiesysteme</a></b></li>
+                            <li><a href="{{ route('es') }}" class="nav-linkused px-2 text-primary fs-4">Energiesysteme</a></li>
                         @else
                             <li><a href="{{ route('es') }}" class="nav-link px-2 text-primary fs-4">Energiesysteme</a>
                             </li>
                         @endif
 
                         @if (\Request::is('galerie') or \Request::is('EnSys/*'))
-                            <li><b><a href="{{ route('gal') }}" class="nav-link px-2 text-primary fs-4">Galerie</a></b>
-                            </li>
+                            <li><a href="{{ route('gal') }}" class="nav-linkused px-2 text-primary fs-4">Galerie</a></li>
                         @else
                             <li><a href="{{ route('gal') }}" class="nav-link px-2 text-primary fs-4">Galerie</a></li>
                         @endif
@@ -416,7 +423,7 @@
                             @endif
                         @else
                             <div class="nav-item dropdown text-primary">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-primary" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-primary fs-4" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>

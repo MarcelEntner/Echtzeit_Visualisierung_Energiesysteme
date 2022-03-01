@@ -17,14 +17,14 @@
                 <div class="Liste col-12 col-lg-5">
                     <input id="address" type="text">
                     <!--- INPUT FELD ZUM SUCHEN -->
-                    <div id="find" class="btn btn-success" style="font-family: Arial, sans-serif;">Suchen</div>
+                    <div id="find" class="btn btn-success">Suchen</div>
                     <!--- BUTTON ZUM SUCHEN -->
 
                     <!--- Gesamte rechte Div der Liste (ohne Addresssuchfeld)  -->
                     <div class="shadow-lg rounded p-3" style="width:105%">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
-                                <h3 style="font-family: Arial, sans-serif;"> <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/esrot.png"
+                                <h3 > <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/esrot.png"
                                         id="Listimage"></h3>
                             </div>
                         </div>
@@ -40,9 +40,9 @@
                                 <table class="table table-borderless table-hover" id="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Bezeichnung</th>
-                                            <th scope="col">Katastralgemeinde</th>
-                                            <th scope="col">PLZ</th>
+                                            <th scope="col"><b>Bezeichnung<b></th>
+                                            <th scope="col"><b>Katastralgemeinde</b></th>
+                                            <th scope="col"><b>PLZ</b></th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
@@ -68,10 +68,10 @@
 
                                                         <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a></td>
 
-                                                        <td id="hov"> <a href="javascript:GrafanafunctionES({{ $d->id }})"class="btn btn2" style="background-image: url('/images/buttons/statistik.png')"></a></td>
-
+                                                        <!--<td id="hov"> <a href="javascript:GrafanafunctionES({{ $d->id }})"class="btn btn2" style="background-image: url('/images/buttons/statistik.png')"></a></td>-->
+                                                      
                                                         <td id="hov"> <a href="javascript:EditfunctionES({{ $d->id }})" class="btn btn2" style="background-image: url('/images/buttons/stift.png')"></a></td>
-
+                                                        <td> </td>
                                                     @else
                                                         <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
                                                         <td> <a href="javascript:AugefunctionES({{ $d->id }})"
@@ -108,9 +108,9 @@
                                 <table class="table table-borderless table-hover" id="tableET" style="width:100%;">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Bezeichnung</th>
-                                            <th scope="col">Typ </th>
-                                            <th scope="col">Ort</th>
+                                            <th scope="col"><b>Bezeichnung</b></th>
+                                            <th scope="col"><b>Typ</b></th>
+                                            <th scope="col"><b>Ort</b></th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
@@ -131,9 +131,9 @@
                                 <table class="table table-borderless table-hover" id="tableES">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Bezeichnung</th>
-                                            <th scope="col">Katastralgemeinde</th>
-                                            <th scope="col">PLZ</th>
+                                            <th scope="col"><b>Bezeichnung</b></th>
+                                            <th scope="col"><b>Katastralgemeinde</b></th>
+                                            <th scope="col"><b>PLZ</b></th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
@@ -156,15 +156,14 @@
                                                                 style="background-image: url('/images/buttons/delete.png')"></a>
                                                         </td>
 
-                                                        <td> <a href="javascript:GrafanafunctionES({{ $d->id }})" class="btn btn2"
-                                                                style="background-image: url('/images/buttons/statistik.png')"></a>
-                                                        </td>
-
+                                                        <!--<td> <a href="javascript:GrafanafunctionES({{ $d->id }})" class="btn btn2"
+                                                                style="background-image: url('/images/buttons/statistik.png')"></a> </td>-->
+                                                       
                                                         <td> <a href="javascript:EditfunctionES({{ $d->id }})"
                                                                 class="btn btn2"
                                                                 style="background-image: url('/images/buttons/stift.png')"></a>
                                                         </td>
-
+                                                        <td> </td>
                                                     @else
                                                         <!-- Wenn man  angemeldet ist aber nicht das ES erstellt hat oder nicht Admin ist -->
                                                         <td> <a href="javascript:AugefunctionES({{ $d->id }})"
@@ -228,7 +227,7 @@
                                 </div>
                                 <!--Input Feld Katastralgemeinde -->
                                 <div class="input-group mb-3" style="margin-top:5%">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; font-size:17px;">
                                         <img src="/images/pop-up/KatastralgemeindeES.png" style="margin-right:10px;">
                                         Katastralgemeinde</span>
                                     <input type="text" class="form-control3" id="KatastralgemeindenES"
@@ -419,7 +418,7 @@
                             </div>
                             <!--Input Feld Katastralgemeinde Änderbar -->
                             <div class="input-group mb-3" style="margin-top:5%">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; font-size:17px;">
                                     <img src="/images/pop-up/KatastralgemeindeES.png" style="margin-right:10px;">
                                     Katastralgemeinde</span>
                                 <input type="text" class="form-control3" id="KatastralgemeindeESEdit"
@@ -457,7 +456,7 @@
                                 <summary>Mehr Details zu diesem Energiesystem</summary>
                                 <!--Input Feld Az-Erzeugungstechnologien Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; font-size:19px;">
                                         <img src="/images/pop-up/AzETES.png" style="margin-right:10px;">
                                         Az-Erzeugungstechnologien</span>
                                     <input type="text" class="form-control3" id="Az-Erzeugungstechnologien"
@@ -503,7 +502,7 @@
                                 </div>
                                 <!--Input Feld Ges-VerbraucherLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; font-size:17px;">
                                         <img src="/images/pop-up/Ges-Verbraucher-LeistungES.png" style="margin-right:10px;">
                                         Ges-VerbraucherLeistung [kW]</span>
                                     <input type="text" class="form-control3" id="Ges-VerbraucherLeistung"
@@ -513,7 +512,7 @@
                                 </div>
                                 <!--Input Feld Ges-VerbraucherEnergie [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;font-size:17px;">
                                         <img src="/images/pop-up/Ges-Verbraucher-EnergieES.png" style="margin-right:5px;">
                                         Ges-VerbraucherEnergie [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-VerbraucherEnergie"
@@ -523,7 +522,7 @@
                                 </div>
                                 <!--Input Feld Ges-ErzeugerLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; font-size:18px;">
                                         <img src="/images/pop-up/Ges-Erzeuger-LeistungES.png" style="margin-right:5px;">
                                         Ges-ErzeugerLeistung [kW]</span>
                                     <input type="text" class="form-control3" id="Ges-ErzeugerLeistung"
@@ -533,7 +532,7 @@
                                 </div>
                                 <!--Input Feld Ges-ErzeugerEnergie [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; font-size:18px;">
                                         <img src="/images/pop-up/Ges-Erzeuger-EnergieES.png" style="margin-right:5px;">
                                         Ges-ErzeugerEnergie [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-ErzeugerEnergie"
@@ -543,7 +542,7 @@
                                 </div>
                                 <!--Input Feld Ges-SpeicherKapazität [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; font-size:17px;">
                                         <img src="/images/pop-up/Ges-SpeicherkapazitätES.png" style="margin-right:10px;">
                                         Ges-SpeicherKapazität [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-SpeicherKapazität"
@@ -656,7 +655,7 @@
                                     <img src="/images/pop-up/BildET.png" style="margin-right:10px;">
                                     Bild einfügen</span>
                                 <input type="file" class="form-control3" id="imageEditET" name="imageEditET" value="">
-                                <p id="PEditET" style="padding-left:45%;"> </p>
+                                <p id="PEditET" style="padding-left:45%; font-size:17px;"> </p>
                             </div>
                             <!--Input Feld Beschreibung -->
                             <div class="input-group mb-3" style="margin-top:-5%">
@@ -738,51 +737,27 @@
                     <div class="modal-body" style=" height:500px;   background-color:white; width: 1200px;" >
                             <!-- Statistiken Anfang-->
 
-                            <script type="text/javascript">
+                        <script type="text/javascript">
 
 
 
                     
                            function GrafanafunctionET(id) {
-
-
-    
                             $('#PopUpETGrafana').modal('show');
                         
-
                             @isset($d)
-var srcc = "https://show.microgrid-lab.eu/d-solo/{{ $d->id }}/{{ $d->designation }}?orgId=4&panelId="+id;
-@endisset
+                            var srcc = "https://show.microgrid-lab.eu/d-solo/{{ $d->id }}/{{ $d->designation }}?orgId=4&panelId="+id;
+                            @endisset
 
 
-document.getElementById("iframe1").src = srcc;
-                           }
-
-
-                          
+                            document.getElementById("iframe1").src = srcc;
+                            }         
 
                       </script>
 
-
-
-
-
-
-
-
-  
-@isset($d)
-<iframe id="iframe1" width='100%' height='100%' frameborder='0'></iframe> 
-@endisset
-
-
-
-
-
-
-
-
-
+                        @isset($d)
+                        <iframe id="iframe1" width='100%' height='100%' frameborder='0'></iframe> 
+                        @endisset
                             <!-- Statistiken Ende-->
                         </div>
                     </div>
@@ -822,7 +797,7 @@ document.getElementById("iframe1").src = srcc;
                             </div>
                             <!--Input Katastralgemeinde  Readonly -->
                             <div class="input-group mb-3" style="margin-top:5%">
-                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
+                                <span class="input-group-text" id="basic-addon1" style="margin-left:3%; font-size:17px;">
                                     <img src="/images/pop-up/KatastralgemeindeES.png" style="margin-right:10px;">
                                     Katastralgemeinde</span>
                                 <input type="text" class="form-control3" id="KatastralgemeindeAuge"
@@ -839,7 +814,7 @@ document.getElementById("iframe1").src = srcc;
                                     style="background-color:#e9ecef;">
                             </div>
                             <!--Input Längengrad  Readonly -->
-                            <div class="input-group mb-3" style="margin-top:5%">
+                            <div class="input-group mb-3" style="margin-top:5%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/LängengradES.png" style="margin-right:10px;">
                                     Längengrad</span>
@@ -848,7 +823,7 @@ document.getElementById("iframe1").src = srcc;
                                     style="background-color:#e9ecef;">
                             </div>
                             <!--Input Breitengrad  Readonly -->
-                            <div class="input-group mb-3" style="margin-top:5%">
+                            <div class="input-group mb-3" style="margin-top:5%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/BreitengradES.png" style="margin-right:10px;">
                                     Breitengrad</span>
@@ -861,7 +836,7 @@ document.getElementById("iframe1").src = srcc;
                                 <summary>Mehr Details zu diesem Energiesystem</summary>
                                 <!--Input Az-Erzeugungstechnologien  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; font-size:19px;">
                                         <img src="/images/pop-up/AzETES.png" style="margin-right:10px;">
                                         Az-Erzeugungstechnologien</span>
                                     <input type="text" class="form-control3" id="Az-ErzeugungstechnologienAuge"
@@ -871,7 +846,7 @@ document.getElementById("iframe1").src = srcc;
                                 </div>
                                 <!--Input Az-Verbraucher  Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; ">
                                         <img src="/images/pop-up/AzVerbraucherES.png" style="margin-right:10px;">
                                         Az-Verbraucher</span>
                                     <input type="text" class="form-control3" id="Az-VerbraucherAuge" name="Az-Verbraucher"
@@ -908,7 +883,7 @@ document.getElementById("iframe1").src = srcc;
                                 </div>
                                 <!--Input Ges-VerbraucherLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; font-size:17px;">
                                         <img src="/images/pop-up/Ges-Verbraucher-LeistungES.png" style="margin-right:10px;">
                                         Ges-VerbraucherLeistung [kW]</span>
                                     <input type="text" class="form-control3" id="Ges-VerbraucherLeistungAuge"
@@ -918,7 +893,7 @@ document.getElementById("iframe1").src = srcc;
                                 </div>
                                 <!--Input Ges-VerbraucherEnergie [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; font-size:17px;">
                                         <img src="/images/pop-up/Ges-Verbraucher-EnergieES.png" style="margin-right:10px;">
                                         Ges-VerbraucherEnergie [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-VerbraucherEnergieAuge"
@@ -928,7 +903,7 @@ document.getElementById("iframe1").src = srcc;
                                 </div>
                                 <!--Input Ges-ErzeugerLeistung [kW] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; font-size:17px;">
                                         <img src="/images/pop-up/Ges-Erzeuger-LeistungES.png" style="margin-right:5px;">
                                         Ges-ErzeugerLeistung [kW]</span>
                                     <input type="text" class="form-control3" id="Ges-ErzeugerLeistungAuge"
@@ -938,7 +913,7 @@ document.getElementById("iframe1").src = srcc;
                                 </div>
                                 <!--Input Ges-ErzeugerEnergie [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; font-size:17px;">
                                         <img src="/images/pop-up/Ges-Erzeuger-EnergieES.png" style="margin-right:5px;">
                                         Ges-ErzeugerEnergie [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-ErzeugerEnergieAuge"
@@ -948,7 +923,7 @@ document.getElementById("iframe1").src = srcc;
                                 </div>
                                 <!--Input Ges-SpeicherKapazität [kW/h] Readonly -->
                                 <div class="input-group mb-3" style="margin-top:5%;">
-                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px;">
+                                    <span class="input-group-text" id="basic-addon1" style="margin-left:3%; width:270px; font-size:17px;">
                                         <img src="/images/pop-up/Ges-SpeicherkapazitätES.png" style="margin-right:10px;">
                                         Ges-SpeicherKapazität [kW/h]</span>
                                     <input type="text" class="form-control3" id="Ges-SpeicherKapazitätAuge"
@@ -1039,7 +1014,7 @@ document.getElementById("iframe1").src = srcc;
                                     readonly style="background-color:#e9ecef;">
                             </div>
                             <!--Input Längengrad Readonly -->
-                            <div class="input-group mb-3" style="margin-top:2%">
+                            <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/LängengradET.png" style="margin-right:10px;">
                                     Längengrad</span>
@@ -1047,7 +1022,7 @@ document.getElementById("iframe1").src = srcc;
                                     value="" readonly style="background-color:#e9ecef;">
                             </div>
                             <!--Input Breitengrad Readonly -->
-                            <div class="input-group mb-3" style="margin-top:2%">
+                            <div class="input-group mb-3" style="margin-top:2%; display:none;">
                                 <span class="input-group-text" id="basic-addon1" style="margin-left:3%">
                                     <img src="/images/pop-up/BreitengradET.png" style="margin-right:10px;">
                                     Breitengrad</span>
@@ -2176,6 +2151,7 @@ document.getElementById("iframe1").src = srcc;
                         text: energietechnologie[0], //Bezeichnung
                         color: 'black', //Farbe
                         fontSize: '15px', //Schriftgröße
+                        fontFamily: "'Hubballi', cursive", //Schirftart
                         className: 'marker-position', //Definiert die Position CSS
                     },
                     animation: google.maps.Animation.DROP //Wenn die Marker geladen werden haben sie die Animation das sie von oben herunter fallen
@@ -2304,6 +2280,7 @@ document.getElementById("iframe1").src = srcc;
                         color: 'red', //Farbe der Schrift
                         fontWeight: "bold", //Schriftart Fett
                         fontSize: '17px', //Schriftgröße
+                        fontFamily: "'Hubballi', cursive", //Schriftart
                         className: 'marker-position', //Damit die Schrift unter dem Icon steht CSS
                     },
                     animation: google.maps.Animation.DROP, //Wenn die Marker geladen werden haben sie die Animation das sie von oben herunter fallen

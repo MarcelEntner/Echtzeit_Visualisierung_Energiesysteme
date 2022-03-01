@@ -11,7 +11,7 @@
 
          <!-- Drop-Down -->
         <div class="dropdowngalerie">
-            <button class="dropbtngalerie"style="font-family: Arial, sans-serif;">Wählen Sie ein Energiesystem aus</button> <!-- Drop-Down Menü der ES -->
+            <button class="dropbtngalerie" style="font-family: 'Hubballi', cursive;  font-size:20px; font-weight:500;">Wählen Sie ein Energiesystem aus</button> <!-- Drop-Down Menü der ES -->
             <div class="dropdowngalerie-content">
                 <!-- Wird der Inhalt gesetzt -->
                 @foreach ($data as $d)
@@ -24,7 +24,7 @@
 
         <!-- Anzeige darunter -->
         <div class="GalerieAnzeige shadow-lg rounded">
-            <h3 style="padding:10px; margin-left: 30%;"> <b style="font-family: Arial, sans-serif;">Bitte wählen Sie ein Energiesystem aus </b></h3>
+            <h3 style="font-family: 'Smooch Sans', sans-serif; text-align:center;">Bitte wählen Sie ein Energiesystem aus</h3>
         </div>
     </body>
 

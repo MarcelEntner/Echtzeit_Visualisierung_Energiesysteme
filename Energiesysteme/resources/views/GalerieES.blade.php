@@ -10,7 +10,7 @@
 <body oncontextmenu="return false">  <!-- Rechtsklick auf der Web-Seite nicht möglich --> 
 
     <div class="dropdowngalerie">
-        <button class="dropbtngalerie">Wählen Sie ein Energiesystem aus</button>  <!-- Drop-Down Menü der ES -->
+        <button class="dropbtngalerie" style="font-family: 'Hubballi', cursive;  font-size:20px; font-weight:500;">Wählen Sie ein Energiesystem aus</button>  <!-- Drop-Down Menü der ES -->
         <div class="dropdowngalerie-content">
             <!-- Wird der Inhalt gesetzt -->
             @foreach ($data as $d)
@@ -25,13 +25,13 @@
     <!-- Anzeige darunter -->
     <div class="GalerieAnzeige shadow-lg rounded">
         <!-- Überschrift mit dem Namen des ES -->
-        <h3 style="padding:10px;margin-left:39%"> <b> {{ $EnSys->designation }} Energietechnologien</b></h3> 
+        <h3 style="font-family: 'Smooch Sans', sans-serif; text-align:center;"> {{ $EnSys->designation }} Energietechnologien</h3> 
 
              <!--Darstellung jeder ET -->
              @foreach($EnTech as $EnTech)
                     <!-- Card-Format Darstellung -->
                     <div id="card" class="d-flex flex-wrap justify-content-center" style="float:left; padding-left:5%; padding-top:1%;">
-                        <div class="card shadow-lg rounded" style="width: 20rem; height:20rem">
+                        <div class="card shadow-lg rounded" style="width: 15rem; height:15rem">
                            
                             <!-- Bild einfügen -->
                             <img class="card-img-top" <?php 

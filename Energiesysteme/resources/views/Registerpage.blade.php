@@ -80,7 +80,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-success" id="usererstellen"> 
+                                    <button type="submit" class="btn btn-success" id="usererstellen" style="width:120%; margin-left:-10%;"> 
                                         {{ __('Neuen Benutzer erstellen') }} 
                                     </button>
 
@@ -96,49 +96,49 @@
     <br>
     <br>
     
-    <div style="width:40%; border: 1px lightgrey solid; margin-left:32%;margin-top:-60px; padding: 5px; border-radius: 10px; ">
-    <table class="table table-borderless table-hover" id="tableUsers" style="height:70px; width:100%;">
-        <thead>
-            <tr>
-                <th scope="col" style="width:20px;"></th>
-                <th scope="col"></th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Role</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach ($users as $u)
+    <div style="width:40%; border: 1px lightgrey solid; margin-left:32.5%;margin-top:-60px; padding: 5px; border-radius: 10px; ">
+        <table class="table table-borderless table-hover" id="tableUsers" style="height:70px; width:100%;">
+            <thead>
                 <tr>
-                    <td style="background-image: url('/images/Users/user.png');background-repeat: no-repeat;"></td>
-                    <td ></td>
-                    <td >{{ $u->name }} </td>
-                    <td>{{ $u->email }}</td>
-                    <td><?php 
-                        if($u->role == 'Mitarbeiter' ){ 
-                                echo $u->role;
-                        } else{ 
-                            echo '<b>'.  $u->role .'</b>';  
-                        } 
-                        ?> 
-                    </td>
-
-                    <?php
-                    $users = DB::table('users')->where('role', '=' , 'Admin')->count();                  
-                    ?>
-
-                    @if($users > 1)
-                        <td> <a href="/deleteuser/{{ $u->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a> </td>
-                    @else 
-                        <td> </td>
-                    @endif
+                    <th scope="col" style="width:20px;"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col"></th>
                 </tr>
+            </thead>
 
-            @endforeach
-        </tbody>
-    </table>
+            <tbody>
+                @foreach ($users as $u)
+                    <tr>
+                        <td style="background-image: url('/images/Users/user.png');background-repeat: no-repeat;"></td>
+                        <td ></td>
+                        <td >{{ $u->name }} </td>
+                        <td>{{ $u->email }}</td>
+                        <td><?php 
+                            if($u->role == 'Mitarbeiter' ){ 
+                                    echo $u->role;
+                            } else{ 
+                                echo '<b>'.  $u->role .'</b>';  
+                            } 
+                            ?> 
+                        </td>
+
+                        <?php
+                        $users = DB::table('users')->where('role', '=' , 'Admin')->count();                  
+                        ?>
+
+                        @if($users > 1)
+                            <td> <a href="/deleteuser/{{ $u->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a> </td>
+                        @else 
+                            <td> </td>
+                        @endif
+                    </tr>
+
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
     <script>
