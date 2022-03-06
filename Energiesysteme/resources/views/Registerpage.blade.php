@@ -96,7 +96,7 @@
     <br>
     <br>
     
-    <div style="width:40%; border: 1px lightgrey solid; margin-left:32.5%;margin-top:-60px; padding: 5px; border-radius: 10px; ">
+    <div style="width:40%; border: 1px lightgrey solid; margin-left:32.5%;margin-top:-60px; padding: 5px; border-radius: 10px; overflow-x: scroll; ">
         <table class="table table-borderless table-hover" id="tableUsers" style="height:70px; width:100%;">
             <thead>
                 <tr>

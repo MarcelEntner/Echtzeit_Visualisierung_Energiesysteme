@@ -21,7 +21,7 @@
                     <!--- BUTTON ZUM SUCHEN -->
 
                     <!--- Gesamte rechte Div der Liste (ohne Addresssuchfeld)  -->
-                    <div class="shadow-lg rounded p-3" style="width:105%">
+                    <div class="shadow-lg rounded p-3" style="width:100%">
                         <div class="d-flex flex-column">
                             <div class="d-flex justify-content-between">
                                 <h3 > <b id="Listuberschrieft">Energiesysteme</b> <img src="/images/icons/esrot.png"
@@ -33,7 +33,7 @@
                         <!-- DataTable  Th und Td gleiche Anzahl, ansonsten funktioniert er nicht-->
 
                         <!-- Gesamte DataTable Div -->
-                        <div style="height: 50vh; width:100%; margin-top:-7%;">
+                        <div style="height: 50vh; width:100%; margin-top:-7%; overflow-x: scroll;">
 
                             <!-- DataTable ES Ausgangspunkt-->
                             <div id="tableDiv" style="padding-top:5%;"> 
@@ -1220,10 +1220,7 @@
                             @endauth
 
                         },
-                        error: function(xhr, ajaxOptions, thrownError) {
-                            alert(xhr.status);
-                            alert(thrownError);
-                        }
+                      
                     });
                 }
             }

@@ -34,7 +34,7 @@
                         <div class="card shadow-lg rounded" style="width: 15rem; height:15rem">
                            
                             <!-- Bild einfügen -->
-                            <img class="card-img-top" <?php 
+                            <img class="card-img-top" style="width: 100%; height:50%" <?php 
                            
                             if(empty($EnTech['imgpath'])){ //Wenn kein Bild beim Erstellen ausgewählt wurde, dann wird ein Standard Bild angezeigt
                                     echo 'src="/images/gallerie.jpg"';
@@ -45,7 +45,7 @@
                                
                                
                             } ?>
-                                alt="Das Foto dieser Energietechnologie kann nicht angezeigt werden"  style="width: 100%; height:50%">  <!-- Alternativtext, falls das Bild nicht angezeigt werden kann -->
+                                alt="Das Foto dieser Energietechnologie kann nicht angezeigt werden" >  <!-- Alternativtext, falls das Bild nicht angezeigt werden kann -->
                             <div class="card-body"> <!-- Inhalt des Cards setzen -->
                                 <h5 class="card-title"> {{$EnTech['designation']}}</h5> <!-- Als Überschrift wird die Bezeichnung angezeigt -->
                                 <p class="card-text">{{$EnTech['description']}}</p>

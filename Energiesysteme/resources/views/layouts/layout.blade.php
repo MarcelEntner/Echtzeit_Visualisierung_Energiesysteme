@@ -384,11 +384,11 @@
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
                     <div class="d-flex align-items-center justify-content-center logoStretch">
                         <a class="mb-2 mb-lg-0 text-black text-decoration-none">
-                            <img class="logo mr-2" src="{{ URL::to('/images/logo2.png') }}" height="60px"
-                                width="160px" alt="Best GmbHLogo" loading="lazy" />
+                            <img class="logo mr-2" src="{{ URL::to('/images/logo2.png') }}" height="60px" width="160px" alt="Best GmbHLogo" loading="lazy" />
                         </a>
-                        <p class="px-2 mt-3 fs-3 lh-lg text-primary" style="margin-left:20%;" >MicroGridLab</p> <!-- public/css/app.css-->
                     </div>
+
+                    <p class="px-2 mt-3 fs-3 lh-lg text-primary" >MicroGridLab</p> <!-- public/css/app.css-->
 
 
                     <ul class="nav col-lg-auto" >
@@ -490,24 +490,24 @@
             <!-- Sponsoren -->
             <div id="FooterBilder"  style="margin-left:1%;">
             <p class="col-md-4 mb-0 text-primary" > Sponsoren und Förderer</p> 
-             <a href="https://www.ffg.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/ffg.png') }}"  alt="FFG"/></a>
-             <a href="https://www.bmdw.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/BM.png') }}"  alt="Bundesministerium"  /></a>
-             <a href="https://www.bmk.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/BM2.png') }}"  alt="Bundesministerium2"  /></a>
-             <a href="https://wirtschaftsagentur.at/"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/WAW.png') }}"  alt="Wirtschaftsagentur Wien"  /></a>
-             <a href="https://www.noe.gv.at/noe/index.html"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/Noe.png') }}"  alt="Land Niederösterreich"  /></a>
-             <a href="https://www.verwaltung.steiermark.at/cms/ziel/74835381/DE"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/Stk.jpg') }}"  alt="Land Steiermark"  /></a>
-             <a href="https://www.sfg.at/"><img style="margin-top: -5%;"   class="logo mr-2" src="{{ URL::to('/images/Sponsoren/SFG.jpg') }}"  alt="SFG"  /></a>
+             <a href="https://www.ffg.at/" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/ffg.png') }}"  alt="FFG"/></a>
+             <a href="https://www.bmdw.gv.at/" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/BM.png') }}"  alt="Bundesministerium"  /></a>
+             <a href="https://www.bmk.gv.at/" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/BM2.png') }}"  alt="Bundesministerium2"  /></a>
+             <a href="https://wirtschaftsagentur.at/" target="_blank"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/WAW.png') }}"  alt="Wirtschaftsagentur Wien"  /></a>
+             <a href="https://www.noe.gv.at/noe/index.html" target="_blank"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/Noe.png') }}"  alt="Land Niederösterreich"  /></a>
+             <a href="https://www.verwaltung.steiermark.at/cms/ziel/74835381/DE" target="_blank"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/Stk.jpg') }}"  alt="Land Steiermark"  /></a>
+             <a href="https://www.sfg.at/" target="_blank"><img style="margin-top: -5%;"   class="logo mr-2" src="{{ URL::to('/images/Sponsoren/SFG.jpg') }}"  alt="SFG"  /></a>
             </div>
             <!-- Forschungspartner -->
             <div id="FooterBilder" style="margin-left:1%;">
             <p class="col-md-4 mb-0 text-primary" >Forschungspartner</p>
-            <a href="https://www.fhwn.ac.at/"><img style="margin-top: -3%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/WN.jpg') }}"  alt="Wiener Neustadt"/></a>
-            <a href="https://www.efre.gv.at/allgemeines/iwbefre_oesterreich"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/EFRE.jpg') }}"  alt="EFRE"/></a>
-            <a href="https://www.wieselburg-land.gv.at/"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/GWBG.jpg') }}"  alt="Gemeinde Wieselburg"/></a>
-            <a href="https://www.wieselburg.gv.at/home"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/SGWBG.jpg') }}"  alt="Stadtgemeinde Wieselburg"/></a>
-            <a href="https://www.noe.gv.at/noe/Wissenschaft-Forschung/Wissenschaft_Forschung.html"><img style="margin-top: -8%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/NOEWK2.png') }}"  alt="NOEK"/></a>
+            <a href="https://www.fhwn.ac.at/" target="_blank"><img style="margin-top: -3%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/WN.jpg') }}"  alt="Wiener Neustadt"/></a>
+            <a href="https://www.efre.gv.at/allgemeines/iwbefre_oesterreich" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/EFRE.jpg') }}"  alt="EFRE"/></a>
+            <a href="https://www.wieselburg-land.gv.at/" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/GWBG.jpg') }}"  alt="Gemeinde Wieselburg"/></a>
+            <a href="https://www.wieselburg.gv.at/home" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/SGWBG.jpg') }}"  alt="Stadtgemeinde Wieselburg"/></a>
+            <a href="https://www.noe.gv.at/noe/Wissenschaft-Forschung/Wissenschaft_Forschung.html" target="_blank"><img style="margin-top: -8%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/NOEWK2.png') }}"  alt="NOEK"/></a>
             </div>
-              
+         
 
               <!-- Unterhalb der Bilder -->
                 <p class="col-md-4 mb-0 text-primary" style="margin-top:1%;">&copy; 2022 Best GmbH
