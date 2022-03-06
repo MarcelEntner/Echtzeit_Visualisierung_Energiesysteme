@@ -24,6 +24,7 @@ class EnTech extends Migration
             $table->double('longitude');
             $table->double('latitude');
             $table->binary('picture')->nullable();
+            $table->string('imgpath')->nullable();
             $table->double('capacity')->nullable();
             $table->bigInteger('enSys_idEnSys')->unsigned(); //ensys_id
             $table->bigInteger('enSys_users_idusers')->unsigned();  //user_id

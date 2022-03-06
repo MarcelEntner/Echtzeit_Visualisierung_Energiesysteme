@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -44,6 +45,8 @@ class EnTechController extends Controller
 
         $enTech = new EnTech();
 
+
+
         $enTech->enSys_idEnSys = $request->IDES;
         $enTech->designation = $request->Bezeichnung;
         $enTech->longitude = $request->Laengengrad;
@@ -54,10 +57,17 @@ class EnTechController extends Controller
         $enTech->enSys_users_idusers = $user->id;
 
         if ($request->file("imageET")) {
-            $image = base64_encode(file_get_contents($request->file('imageET')));
-            $enTech->picture = $image;
+           // $image = base64_encode(file_get_contents($request->file('imageET')));
+           // $enTech->picture = $image;
+
+          
+
+           $path = $request->file('imageET')->store('public');
+           $enTech->imgpath = $path; 
         }
 
+
+      
         $enTech->save();
         $data = DB::table('EnTech')->get();
 
@@ -66,8 +76,6 @@ class EnTechController extends Controller
         
 
 $uid = strval($request->IDES);
-
-$sqlstring = "SELECT datum AS \"time\",temp FROM temps WHERE \$__timeFilter(datum) AND room_id = 1 ORDER BY datum";
 
 $panelId = $enTech->id;
 
@@ -1998,7 +2006,7 @@ $createEnsysDashboard = Http::withHeaders([
 
 
 
-
+return $path; 
 
     }
 
@@ -2035,11 +2043,26 @@ $createEnsysDashboard = Http::withHeaders([
         //Input ID imageEditET
         
         //Code von ET hinzufügen Bild
+
+        $image = "";
+        /*
         $image = "";
         if ($request->file("imageEditET")) {
             $image = base64_encode(file_get_contents($request->file('imageEditET')));
         }
+*/
+
+        if ($request->file("imageEditET")) {
+    
         
+
+         $pathh = $request->file('imageEditET')->store('public');
+   
+      }
+      else{
+         $pathh = null;
+      }
+    
 
         $EnTech = EnTech::where('id', $id)->update([
             'longitude' => $request->input('LaengengradEditET'),
@@ -2048,6 +2071,7 @@ $createEnsysDashboard = Http::withHeaders([
             'location' => $request->input('OrtEditET'),
             'description' => $request->input('BeschreibungEditET'),
             'picture' => $image,
+            'imgpath' => $pathh,
 
         ],
     

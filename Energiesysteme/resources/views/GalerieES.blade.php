@@ -35,18 +35,27 @@
                            
                             <!-- Bild einfügen -->
                             <img class="card-img-top" <?php 
-                            if(empty($EnTech['picture'])){ //Wenn kein Bild beim Erstellen ausgewählt wurde, dann wird ein Standard Bild angezeigt
+                           
+                            if(empty($EnTech['imgpath'])){ //Wenn kein Bild beim Erstellen ausgewählt wurde, dann wird ein Standard Bild angezeigt
                                     echo 'src="/images/gallerie.jpg"';
                             } else{ //Wenn ein Bild ausgewählt wurde, wird dieses angezeigt
-                                echo 'src="data:image/jpg;base64,' . $EnTech["picture"] . '"';  
+                               $url =  Storage::url($EnTech->imgpath);
+
+                               echo 'src="' . $url .'"';
+                               
+                               
                             } ?>
                                 alt="Das Foto dieser Energietechnologie kann nicht angezeigt werden"  style="width: 100%; height:50%">  <!-- Alternativtext, falls das Bild nicht angezeigt werden kann -->
                             <div class="card-body"> <!-- Inhalt des Cards setzen -->
                                 <h5 class="card-title"> {{$EnTech['designation']}}</h5> <!-- Als Überschrift wird die Bezeichnung angezeigt -->
-                                <p class="card-text">{{$EnTech['description']}}</p>  <!-- Als Text darunter wird die Beschreibung angezeigt -->
+                                <p class="card-text">{{$EnTech['description']}}</p>
+                               
+                                
                             </div>
                         </div>
                     </div>   
+
+                           
             @endforeach
     </div>
 
