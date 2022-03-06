@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
 
 
-    <title>@yield('title')</title> <!-- Platzhalter für den Title , Title steht in der Variable title-->
+    <title>MicroGridLab | @yield('title')</title> <!-- Platzhalter für den Title , Title steht in der Variable title-->
     <style>
         
         * {

@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', 'MicroGridLab')
+@section('title', 'Home')
 @section('head')
 @endsection
 @section('content')
