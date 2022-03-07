@@ -1283,7 +1283,7 @@
         //$es_select = DB::table('EnSys')->get(); // ES Select mit Laravel
     
         //$et_select = 'SELECT id, ensys_id, Typ, Bezeichnung, Ort, Breitengrad, Laengengrad, Beschreibung, Bild  FROM EnTech';  Select Statement für ET Daten
-        $et_select = 'SELECT id, enSys_idEnSys, type, designation, location, latitude, longitude, description, picture  FROM EnTech'; // Select Statement für ET Daten
+        $et_select = 'SELECT id, enSys_idEnSys, type, designation, location, latitude, longitude, description, picture, imgpath  FROM EnTech'; // Select Statement für ET Daten
         //$et_select = DB::table('EnTech')->get(); //ET Select mit Laravel
     
 
@@ -1313,7 +1313,7 @@
             if ($et_result->num_rows > 0) {
                 //Jeder Datensatz wird nach der Reihe als Array gespeichert
                 while ($row = $et_result->fetch_assoc()) {
-                    $sqlET = "['{$row['designation']}', {$row['longitude']}, {$row['latitude']}, {$row['enSys_idEnSys']}, '{$row['type']}', '{$row['location']}', '{$row['id']}','{$row['description']}','{$row['picture']}']";
+                    $sqlET = "['{$row['designation']}', {$row['longitude']}, {$row['latitude']}, {$row['enSys_idEnSys']}, '{$row['type']}', '{$row['location']}', '{$row['id']}','{$row['description']}','{$row['picture']}','{$row['imgpath']}']";
                     array_push($DB_Daten_ET, $sqlET);
                 }
                 $conn->close(); //Datenbank Connection wieder schließen
@@ -1711,7 +1711,7 @@
                     $("#LaengengradEditET").val(locEt[1]); //Input Feld bekommt den Inhalt
                     $("#BreitengradEditET").val(locEt[2]); //Input Feld bekommt den Inhalt
                     $("#BeschreibungEditET").val(locEt[7]); //Input Feld bekommt den Inhalt
-                    if(locEt[8] != ""){
+                    if(locEt[9] != ""){
                         $("#PEditET").html("Es ist ein Bild vorhanden"); //Input Feld bekommt den Inhalt
                     }
                     else {

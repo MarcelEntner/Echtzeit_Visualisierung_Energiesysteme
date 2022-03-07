@@ -2038,6 +2038,7 @@ return $path;
     {
 
         $EnTech = EnTech::find($id);
+        $EnTechh = EnTech::find($id);
                 
     
         //Input ID imageEditET
@@ -2060,7 +2061,9 @@ return $path;
    
       }
       else{
-         $pathh = null;
+         
+         $pathh = $EnTechh->imgpath;
+
       }
     
 
