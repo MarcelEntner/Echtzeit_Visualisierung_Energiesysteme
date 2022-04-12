@@ -65,7 +65,7 @@
                                                     <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten || Admin (Rolle Admin) darf alle -->
 
                                                     @if ($userID->id == $d->users_idusers || $userID->role == 'Admin')
-                                                    <!--"/delete/{{ $d->id }}" -->
+                                                    
                                                         <td id="hov"> <a href="javascript:DeleteES({{ $d->id }})"  class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a></td>
 
                                                         <!--<td id="hov"> <a href="javascript:GrafanafunctionES({{ $d->id }})"class="btn btn2" style="background-image: url('/images/buttons/statistik.png')"></a></td>-->
@@ -152,7 +152,7 @@
                                                     <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten || Admin (Rolle Admin) darf alle -->
                                                     @if (Auth::user()->id == $d->users_idusers || Auth::user()->role == 'Admin')
 
-                                                        <td> <a href="/delete/{{ $d->id }}" class="btn btn2"
+                                                        <td> <a href="javascript:DeleteES({{ $d->id }})" class="btn btn2"
                                                                 style="background-image: url('/images/buttons/delete.png')"></a>
                                                         </td>
 
@@ -1073,7 +1073,32 @@
         <!-- ES wirklich Löschen Ende -->
 
 
+    <!-- ET wirklich Löschen -->
+    <div class="modal fade" id="ETwirklichLöschen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Energietechnologie Löschen</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <form id="ETLöschen" method="GET">
 
+                Wollen Sie diese Energietechnologie wirklich Löschen?
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-danger"  id="ETLöschen"
+                value="Löschen">
+             </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- ET wirklich Löschen Ende -->
 
 
         <!-- DataTable Definitionen -->
@@ -2158,13 +2183,13 @@
         function DeleteES(id){
             $('#ESwirklichLöschen').modal('show');  
             $("#ESLöschen").attr("action", "/delete/" + id)
-
-            //ESLöschenButton
-            
-
-            // redirect ("/delete/{{ $d->id }}");
         }
 
+          //Funktion zum Löschen eines ES
+          function DeleteET(id){
+            $('#ETwirklichLöschen').modal('show');  
+            $("#ETLöschen").attr("action", "/deleteET/" + id)
+        }
     
      
 
@@ -2419,7 +2444,7 @@
             document.getElementById("tableESDiv").style.display = "none"; //tableESDiv wird ausgeblendet
 
         
-            
+
             var ETvonES = [];
             let dataForTable = []
 
@@ -2430,7 +2455,7 @@
                     @auth
                         @if (Auth::user()->id == $da->enSys_users_idusers || Auth::user()->role == 'Admin')
                     
-                        dataForTable.push("<a href=\"/deleteET/{{ $da->id }}\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/delete.png')\"></a>");
+                        dataForTable.push("<a href=\"javascript:DeleteET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/delete.png')\"></a>");
                         dataForTable.push("<a href=\"javascript:GrafanafunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/statistik.png')\"></a>");
                         dataForTable.push("<a href=\"javascript:EditfunctionET({{ $da->id }})\" class=\"btn btn2\" style=\"background-image: url('/images/buttons/stift.png')\"></a>");
                 
