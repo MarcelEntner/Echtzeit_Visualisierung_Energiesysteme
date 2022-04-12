@@ -65,8 +65,8 @@
                                                     <!-- Nur der Ersteller eines ES darf dieses auch bearbeiten || Admin (Rolle Admin) darf alle -->
 
                                                     @if ($userID->id == $d->users_idusers || $userID->role == 'Admin')
-
-                                                        <td id="hov"> <a href="/delete/{{ $d->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a></td>
+                                                    <!--"/delete/{{ $d->id }}" -->
+                                                        <td id="hov"> <a href="javascript:DeleteES({{ $d->id }})"  class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a></td>
 
                                                         <!--<td id="hov"> <a href="javascript:GrafanafunctionES({{ $d->id }})"class="btn btn2" style="background-image: url('/images/buttons/statistik.png')"></a></td>-->
                                                       
@@ -1045,6 +1045,36 @@
         <!-- ET Auge Ende -->
 
 
+         <!-- ES wirklich Löschen -->
+         <div class="modal fade" id="ESwirklichLöschen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Energiesystem Löschen</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                <form id="ESLöschen" method="GET">
+
+                    Wollen Sie dieses Energiesystem wirklich Löschen?
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-danger"  id="ESLöschen"
+                    value="Löschen">
+                 </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!-- ES wirklich Löschen Ende -->
+
+
+
+
 
         <!-- DataTable Definitionen -->
         <script>
@@ -1347,7 +1377,7 @@
         //Stift-Funktion zum Editieren von ES
         function EditfunctionES(id) { //Wird die ID des ES mitgegeben
             $('#PopUpESEditieren').modal('show'); //Das PopUpESEditieren zum Editieren öffnen
-
+          
             //Variablen zum Berechnen der Attribute die beim ES mehr Details zu sehen sind
             var AzErzeuger = 0;
             var AzVerbraucher = 0;
@@ -2122,6 +2152,21 @@
             })
         }
 
+
+
+        //Funktion zum Löschen eines ES
+        function DeleteES(id){
+            $('#ESwirklichLöschen').modal('show');  
+            $("#ESLöschen").attr("action", "/delete/" + id)
+
+            //ESLöschenButton
+            
+
+            // redirect ("/delete/{{ $d->id }}");
+        }
+
+    
+     
 
      
         //Funktion zum Platzieren der ET Marker auf die Map

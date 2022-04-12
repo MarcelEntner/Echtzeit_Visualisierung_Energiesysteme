@@ -208,10 +208,13 @@ class EnSysController extends Controller
      * @param  \App\Models\EnSys  $enSys
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy($id)
     {
-
-    //Grafana Dashboard Löschen anfang
+       
+   
+        
+        //Grafana Dashboard Löschen anfang
 
     
 
@@ -252,6 +255,8 @@ class EnSysController extends Controller
             $EnTech = EnTech::where('enSys_idEnSys', $id)->delete();
             return redirect('/energiesysteme');
         }
+
+
 
     }
 }
