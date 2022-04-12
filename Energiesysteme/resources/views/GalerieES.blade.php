@@ -31,10 +31,10 @@
              @foreach($EnTech as $EnTech)
                     <!-- Card-Format Darstellung -->
                     <div id="card" class="d-flex flex-wrap justify-content-center" style="float:left; padding-left:5%; padding-top:1%;">
-                        <div class="card shadow-lg rounded" style="width: 15rem; height:15rem">
+                        <div class="card shadow-lg rounded" style="width: 20rem; height:20rem">
                            
                             <!-- Bild einfügen -->
-                            <img class="card-img-top" style="width: 100%; height:50%" <?php 
+                            <img class="card-img-top" style="width: 20rem; height:12rem; object-fit: contain;" <?php 
                            
                             if(empty($EnTech['imgpath'])){ //Wenn kein Bild beim Erstellen ausgewählt wurde, dann wird ein Standard Bild angezeigt
                                     echo 'src="/images/gallerie.jpg"';
@@ -46,8 +46,8 @@
                                
                             } ?>
                                 alt="Das Foto dieser Energietechnologie kann nicht angezeigt werden" >  <!-- Alternativtext, falls das Bild nicht angezeigt werden kann -->
-                            <div class="card-body"> <!-- Inhalt des Cards setzen -->
-                                <h5 class="card-title"> {{$EnTech['designation']}}</h5> <!-- Als Überschrift wird die Bezeichnung angezeigt -->
+                            <div class="card-body" style="background-color: #f9f9f9"> <!-- Inhalt des Cards setzen -->
+                                <h5 class="card-title" style="font-weight: bold"> {{$EnTech['designation']}}</h5> <!-- Als Überschrift wird die Bezeichnung angezeigt -->
                                 <p class="card-text">{{$EnTech['description']}}</p>
                                
                                 

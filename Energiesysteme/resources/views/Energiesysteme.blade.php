@@ -1342,6 +1342,25 @@
         $et_select = 'SELECT id, enSys_idEnSys, type, designation, location, latitude, longitude, description, picture, imgpath  FROM EnTech'; // Select Statement für ET Daten
         //$et_select = DB::table('EnTech')->get(); //ET Select mit Laravel
     
+        //ETPV
+        $etpv_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtPv FROM ( SELECT idEtPv, enTech_idEnTech, MAX(timestamp) AS First FROM etpv GROUP BY enTech_idEnTech ) foo JOIN etpv M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+        $etpv_result = $conn->query($etpv_select);
+        $etpv = [];
+        while ($row = $etpv_result->fetch_assoc()) { 
+            array_push($etpv, $row);
+        }
+        $etpv = json_decode(json_encode($etpv), FALSE);
+    
+        //ETWE
+        $etwe_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtWe FROM ( SELECT idEtWe, enTech_idEnTech, MAX(timestamp) AS First FROM etwe GROUP BY enTech_idEnTech ) foo JOIN etwe M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+        $etwe_result = $conn->query($etwe_select);
+        $etwe = [];
+        while ($row = $etwe_result->fetch_assoc()) { 
+            array_push($etwe, $row);
+        }
+        $etwe = json_decode(json_encode($etwe), FALSE);
+    
+
 
         $es_result = $conn->query($es_select); //für SQL DB Conn ES
         $et_result = $conn->query($et_select); //für SQL DB Conn ET

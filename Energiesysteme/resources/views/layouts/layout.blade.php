@@ -210,8 +210,6 @@
         .card {
             text-align: center;
             float: left;
-            margin-top: 2%;
-            margin-left: 7%;
         }
 
         /* Überschreibung des Bootstrap CSS */
