@@ -36,7 +36,7 @@
                         <div style="height: 50vh; width:100%; margin-top:-7%; overflow-x: scroll;">
 
                             <!-- DataTable ES Ausgangspunkt-->
-                            <div id="tableDiv" style="padding-top:5%;"> 
+                            <div id="tableDiv" style="padding-top:5%; width:95%;"> 
                                 <table class="table table-borderless table-hover" id="table">
                                     <thead>
                                         <tr>
@@ -103,8 +103,9 @@
                                 </table>
                             </div>
 
+
                             <!-- DataTable ET -->
-                            <div id="tableETDiv" style="display: none; padding-top:5%;">
+                            <div id="tableETDiv" style="display: none; padding-top:5%; width:95%;">
                                 <table class="table table-borderless table-hover" id="tableET" style="width:100%;">
                                     <thead>
                                         <tr>
@@ -127,7 +128,7 @@
 
 
                             <!-- DataTable ES nach Aktualisierung des DataTablesES -->
-                            <div id="tableESDiv" style="display: none; padding-top:5%;">
+                            <div id="tableESDiv" style="display: none; padding-top:5%; width:95%;">
                                 <table class="table table-borderless table-hover" id="tableES">
                                     <thead>
                                         <tr>

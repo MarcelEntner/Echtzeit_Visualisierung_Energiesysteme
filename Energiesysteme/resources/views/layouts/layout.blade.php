@@ -31,13 +31,12 @@
 
     <title>MicroGridLab | @yield('title')</title> <!-- Platzhalter für den Title , Title steht in der Variable title-->
     <style>
-        
         * {
             padding: 0px;
             margin: 0px;
             font-family: Hubballi, cursive;
             font-weight: 500;
-            font-size:20px;
+            font-size: 20px;
         }
 
 
@@ -46,7 +45,7 @@
             flex-direction: column;
             min-height: 100vh;
             font-family: Hubballi, cursive;
-            
+
         }
 
         /* Footer */
@@ -84,13 +83,13 @@
 
         /*  Bilder-Show  */
         #carouselExampleControls {
-            height:50%;
-            width:85%;
-            margin-left:7%;
+            height: 50%;
+            width: 85%;
+            margin-left: 7%;
             border-radius: 40px;
 
         }
-      
+
 
         .carousel-control-prev-icon {
             height: 75px;
@@ -108,11 +107,12 @@
         a:hover {
             text-decoration: underline;
         }
-         /*  Für die Icons in der Liste */
+
+        /*  Für die Icons in der Liste */
         .table:hover a {
             background-color: rgba(33, 165, 0, 0.0001);
         }
-     
+
 
         .Impressum {
             font-size: 15px;
@@ -120,7 +120,7 @@
             margin: auto;
             text-align: center;
             padding-top: 3%;
-            
+
         }
 
         .ImpressumUberschrieft {
@@ -141,10 +141,7 @@
             color: #1b8836;
         }
 
-        /*  Best Logo auf der HomePage  */
-        .logo {
-            padding-top: 5%;
-        }
+    
 
         /*  Google-Map auf der Energiesysteme Seite  */
         #map {
@@ -242,7 +239,7 @@
             /* Selbst eingefügt */
             height: 30px;
             width: 40px;
-            background-color:white;
+            background-color: white;
             border: none;
             background-repeat: no-repeat;
         }
@@ -362,17 +359,12 @@
             transform: scale(1.1, 1.1);
         }
 
-        #tableUsers{
+        #tableUsers {
 
             width: 70%;
             height: 500px;
             margin: auto;
         }
-
-
-
-   
-
 
     </style>
 </head>
@@ -381,82 +373,83 @@
     @section('header')
         <header class="p-3 text-black">
             <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-around">
                     <div class="d-flex align-items-center justify-content-center logoStretch">
                         <a class="mb-2 mb-lg-0 text-black text-decoration-none">
-                            <img class="logo mr-2" src="{{ URL::to('/images/logo2.png') }}" height="60px" width="160px" alt="Best GmbHLogo" loading="lazy" />
+                            <img class="logo mr-2" src="{{ URL::to('/images/logo2.png') }}" height="60px"
+                                width="160px" alt="Best GmbHLogo" loading="lazy" />
                         </a>
+                        <p class="px-2 mt-3 fs-3 lh-lg text-primary">MicroGridLab</p> <!-- public/css/app.css-->
                     </div>
 
-                    <p class="px-2 mt-3 fs-3 lh-lg text-primary" >MicroGridLab</p> <!-- public/css/app.css-->
-
-
-                    <ul class="nav col-lg-auto" >
+                    <ul class="nav col-lg-auto text-center">
                         @if (\Request::is('/'))
                             <li><a href="{{ route('hp') }}" class="nav-linkused px-2 text-primary fs-4 ">Home</a></li>
                         @else
-                            <li ><a  href="{{ route('hp') }}" class="nav-link px-2 text-primary fs-4">Home</a></li>
+                            <li><a href="{{ route('hp') }}" class="nav-link px-2 text-primary fs-4">Home</a></li>
                         @endif
 
                         @if (\Request::is('energiesysteme') or \Request::is('EnSys'))
-                            <li><a href="{{ route('es') }}" class="nav-linkused px-2 text-primary fs-4">Energiesysteme</a></li>
+                            <li><a href="{{ route('es') }}" class="nav-linkused px-2 text-primary fs-4">Energiesysteme</a>
+                            </li>
                         @else
                             <li><a href="{{ route('es') }}" class="nav-link px-2 text-primary fs-4">Energiesysteme</a>
                             </li>
                         @endif
 
                         @if (\Request::is('galerie') or \Request::is('EnSys/*'))
-                            <li><a href="{{ route('gal') }}" class="nav-linkused px-2 text-primary fs-4">Galerie</a></li>
+                            <li class="me-lg-5 me-md-0"><a href="{{ route('gal') }}" class="nav-linkused px-2 text-primary fs-4">Galerie</a></li>
                         @else
-                            <li><a href="{{ route('gal') }}" class="nav-link px-2 text-primary fs-4">Galerie</a></li>
+                            <li class="me-lg-5 me-md-0"><a href="{{ route('gal') }}" class="nav-link px-2 text-primary fs-4">Galerie</a></li>
                         @endif
 
-
-                    </ul>
-
-
-                    <div class="nav-link px-2 text-primary fs-4">
-                        @guest
-                            @if (Route::has('login'))
-                                <button type="button" class="btn text-primary fs-4" data-toggle="modal"
-                                    data-target="#loginModal">{{ __('Login') }}</button>
-                            @endif
-                        @else
-                            <div class="nav-item dropdown text-primary">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-primary fs-4" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                                               document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                        <li class="ms-lg-5 ms-md-0">
+                        
+                            @guest
+                                @if (Route::has('login'))
+                                    <button type="button" class="btn text-primary fs-4" data-toggle="modal"
+                                        data-target="#loginModal">{{ __('Login') }}</button>
+                                @endif
+                            @else
+                                <div class="nav-item dropdown text-primary">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-primary fs-4" href="#"
+                                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
                                     </a>
-                             
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
 
-                                    <?php
-                                    $userID = Auth::user();
-                                    ?>
-                                    @if ($userID->role == 'Admin')
-                                        <a class="dropdown-item" href="{{ route('Registerpage') }}">Register </a>
-                                    @endif
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                                                                                       document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+
+                                        <?php
+                                        $userID = Auth::user();
+                                        ?>
+                                        @if ($userID->role == 'Admin')
+                                            <a class="dropdown-item" href="{{ route('Registerpage') }}">Register </a>
+                                        @endif
+
+
+
+                                    </div>
 
 
 
                                 </div>
+                            @endguest
+                        </li>
+                    </ul>
 
 
 
-                            </div>
-                        @endguest
-                    </div>
                 </div>
 
 
@@ -485,42 +478,66 @@
     @section('footer')
 
 
-        <div class="footer mt-auto" >
+        <div class="footer mt-auto">
             <footer class="mt-5 d-flex flex-wrap justify-content-around align-items-center py-3 border border-success">
-            <!-- Sponsoren -->
-            <div id="FooterBilder"  style="margin-left:1%;">
-            <p class="col-md-4 mb-0 text-primary" > Sponsoren und Förderer</p> 
-             <a href="https://www.ffg.at/" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/ffg.png') }}"  alt="FFG"/></a>
-             <a href="https://www.bmdw.gv.at/" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/BM.png') }}"  alt="Bundesministerium"  /></a>
-             <a href="https://www.bmk.gv.at/" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/BM2.png') }}"  alt="Bundesministerium2"  /></a>
-             <a href="https://wirtschaftsagentur.at/" target="_blank"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/WAW.png') }}"  alt="Wirtschaftsagentur Wien"  /></a>
-             <a href="https://www.noe.gv.at/noe/index.html" target="_blank"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/Noe.png') }}"  alt="Land Niederösterreich"  /></a>
-             <a href="https://www.verwaltung.steiermark.at/cms/ziel/74835381/DE" target="_blank"><img style="margin-top: -5%;"  class="logo mr-2" src="{{ URL::to('/images/Sponsoren/Stk.jpg') }}"  alt="Land Steiermark"  /></a>
-             <a href="https://www.sfg.at/" target="_blank"><img style="margin-top: -5%;"   class="logo mr-2" src="{{ URL::to('/images/Sponsoren/SFG.jpg') }}"  alt="SFG"  /></a>
-            </div>
-            <!-- Forschungspartner -->
-            <div id="FooterBilder" style="margin-left:1%;">
-            <p class="col-md-4 mb-0 text-primary" >Forschungspartner</p>
-            <a href="https://www.fhwn.ac.at/" target="_blank"><img style="margin-top: -3%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/WN.jpg') }}"  alt="Wiener Neustadt"/></a>
-            <a href="https://www.efre.gv.at/allgemeines/iwbefre_oesterreich" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/EFRE.jpg') }}"  alt="EFRE"/></a>
-            <a href="https://www.wieselburg-land.gv.at/" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/GWBG.jpg') }}"  alt="Gemeinde Wieselburg"/></a>
-            <a href="https://www.wieselburg.gv.at/home" target="_blank"><img style="margin-top: -5%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/SGWBG.jpg') }}"  alt="Stadtgemeinde Wieselburg"/></a>
-            <a href="https://www.noe.gv.at/noe/Wissenschaft-Forschung/Wissenschaft_Forschung.html" target="_blank"><img style="margin-top: -8%;" class="logo mr-2" src="{{ URL::to('/images/Sponsoren/NOEWK2.png') }}"  alt="NOEK"/></a>
-            </div>
-         
+                <!-- Sponsoren -->
+                <div id="FooterBilder" style="margin-left:1%;">
+                    <p class="col-md-4 mb-0 text-primary"> Sponsoren und Förderer</p>
+                    <a href="https://www.ffg.at/" target="_blank"><img class=" mr-2"
+                            src="{{ URL::to('/images/Sponsoren/ffg.png') }}" alt="FFG" /></a>
+                    <a href="https://www.bmdw.gv.at/" target="_blank"><img class=" mr-2"
+                            src="{{ URL::to('/images/Sponsoren/BM.png') }}" alt="Bundesministerium" /></a>
+                    <a href="https://www.bmk.gv.at/" target="_blank"><img class=" mr-2"
+                            src="{{ URL::to('/images/Sponsoren/BM2.png') }}" alt="Bundesministerium2" /></a>
+                    <a href="https://wirtschaftsagentur.at/" target="_blank"><img
+                            class=" mr-2" src="{{ URL::to('/images/Sponsoren/WAW.png') }}"
+                            alt="Wirtschaftsagentur Wien" /></a>
+                    <a href="https://www.noe.gv.at/noe/index.html" target="_blank"><img
+                            class=" mr-2" src="{{ URL::to('/images/Sponsoren/Noe.png') }}"
+                            alt="Land Niederösterreich" /></a>
+                    <a href="https://www.verwaltung.steiermark.at/cms/ziel/74835381/DE" target="_blank"><img
+                             class=" mr-2"
+                            src="{{ URL::to('/images/Sponsoren/Stk.jpg') }}" alt="Land Steiermark" /></a>
+                    <a href="https://www.sfg.at/" target="_blank"><img class=" mr-2"
+                            src="{{ URL::to('/images/Sponsoren/SFG.jpg') }}" alt="SFG" /></a>
+                </div>
+                <!-- Forschungspartner -->
+                <div id="FooterBilder" style="margin-left:1%;">
+                    <p class="col-md-4 mb-0 text-primary">Forschungspartner</p>
+                    <a href="https://www.fhwn.ac.at/" target="_blank"><img  class=" mr-2"
+                            src="{{ URL::to('/images/Sponsoren/WN.jpg') }}" alt="Wiener Neustadt" /></a>
+                    <a href="https://www.efre.gv.at/allgemeines/iwbefre_oesterreich" target="_blank"><img
+                             class=" mr-2"
+                            src="{{ URL::to('/images/Sponsoren/EFRE.jpg') }}" alt="EFRE" /></a>
+                    <a href="https://www.wieselburg-land.gv.at/" target="_blank"><img 
+                            class=" mr-2" src="{{ URL::to('/images/Sponsoren/GWBG.jpg') }}"
+                            alt="Gemeinde Wieselburg" /></a>
+                    <a href="https://www.wieselburg.gv.at/home" target="_blank"><img
+                            class=" mr-2" src="{{ URL::to('/images/Sponsoren/SGWBG.jpg') }}"
+                            alt="Stadtgemeinde Wieselburg" /></a>
+                    <a href="https://www.noe.gv.at/noe/Wissenschaft-Forschung/Wissenschaft_Forschung.html"
+                        target="_blank"><img  class=" mr-2"
+                            src="{{ URL::to('/images/Sponsoren/NOEWK2.png') }}" alt="NOEK" /></a>
+                </div>
 
-              <!-- Unterhalb der Bilder -->
-                <p class="col-md-4 mb-0 text-primary" style="margin-top:1%;">&copy; 2022 Best GmbH
-                <a style="color:#1b8836; padding-left:5%; text-decoration: none;" href="//www.best-research.eu/de/kompetenzbereiche/microgrids/allgemeine_informationen"> Area 5.2 </a>
-                </p>
+
+                <!-- Unterhalb der Bilder -->
+                <div
+                    style="width: 100%; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap;">
+                    <p class="text-primary" style="margin-bottom: 0;">&copy; 2022 Best GmbH
+                        <a style="color:#1b8836; text-decoration: none;"
+                            href="//www.best-research.eu/de/kompetenzbereiche/microgrids/allgemeine_informationen"> Area 5.2
+                        </a>
+                    </p>
 
 
-                <ul class="nav col-md-4 justify-content-end" style="margin-top:1%;">
-                    <li class="nav-item"><a href="{{ route('impressum') }}"
-                            class="nav-link px-2 fs-5 text-primary">Impressum</a></li>
-                    <li class="nav-item"><a href="{{ route('dsgvo') }}"
-                            class="nav-link px-2 fs-5 text-primary">Datenschutz</a></li>
-                </ul>
+                    <ul class="nav">
+                        <li class="nav-item"><a href="{{ route('impressum') }}"
+                                class="nav-link px-2 fs-5 text-primary">Impressum</a></li>
+                        <li class="nav-item"><a href="{{ route('dsgvo') }}"
+                                class="nav-link px-2 fs-5 text-primary">Datenschutz</a></li>
+                    </ul>
+                </div>
             </footer>
         </div>
 
