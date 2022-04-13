@@ -116,7 +116,10 @@
                         <td ></td>
                         <td >{{ $u->name }} </td>
                         <td>{{ $u->email }}</td>
-                        <td><?php 
+                        <td><?php
+
+
+
                             if($u->role == 'Mitarbeiter' ){ 
                                     echo $u->role;
                             } else{ 
@@ -126,14 +129,20 @@
                         </td>
 
                         <?php
-                        $users = DB::table('users')->where('role', '=' , 'Admin')->count();                  
+                        $users = DB::table('users')->where('role', '=' , 'Admin')->count();   
+                        
+                       
+                        
+                        $userid= Auth::id()
                         ?>
 
-                        @if($users > 1)
-                            <td> <a href="/deleteuser/{{ $u->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a> </td>
-                        @else 
-                            <td> </td>
-                        @endif
+                    @if($u->id == $userid)
+                    <td> </td>
+                    @else()
+                    <td> <a href="/deleteuser/{{ $u->id }}" class="btn btn2" style="background-image: url('/images/buttons/delete.png')"></a> </td>
+                    @endif
+
+
                     </tr>
 
                 @endforeach
