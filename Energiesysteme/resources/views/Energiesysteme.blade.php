@@ -1059,7 +1059,7 @@
                 <div class="modal-body">
                 <form id="ESLöschen" method="GET">
 
-                    Wollen Sie dieses Energiesystem wirklich Löschen?
+                    Möchten Sie dieses Energiesystem wirklich Löschen?
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
@@ -1087,7 +1087,7 @@
             <div class="modal-body">
             <form id="ETLöschen" method="GET">
 
-                Wollen Sie diese Energietechnologie wirklich Löschen?
+                Möchten Sie diese Energietechnologie wirklich Löschen?
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
@@ -1342,24 +1342,213 @@
         $et_select = 'SELECT id, enSys_idEnSys, type, designation, location, latitude, longitude, description, picture, imgpath  FROM EnTech'; // Select Statement für ET Daten
         //$et_select = DB::table('EnTech')->get(); //ET Select mit Laravel
     
-        //ETPV
-        $etpv_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtPv FROM ( SELECT idEtPv, enTech_idEnTech, MAX(timestamp) AS First FROM etpv GROUP BY enTech_idEnTech ) foo JOIN etpv M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
-        $etpv_result = $conn->query($etpv_select);
-        $etpv = [];
-        while ($row = $etpv_result->fetch_assoc()) { 
-            array_push($etpv, $row);
-        }
-        $etpv = json_decode(json_encode($etpv), FALSE);
+
+        //Start der Selects für die aktuellen Echtzeitdaten der Energietechnologien
+
+            //ETADABKM - Ab oder Asorbtionskältemaschine
+            $etadabkm_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtAdAbKm FROM ( SELECT idEtAdAbKm, enTech_idEnTech, MAX(timestamp) AS First FROM etadabkm GROUP BY enTech_idEnTech ) foo JOIN etadabkm M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etadabkm_result = $conn->query($etadabkm_select);
+            $etadabkm = [];
+            while ($row = $etadabkm_result->fetch_assoc()) { 
+                array_push($etadabkm, $row);
+            }
+            $etadabkm = json_decode(json_encode($etadabkm), FALSE);
+
+            //ETBHKW - Biomasseheizkraftwerk
+            $etbhkw_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtBhKw FROM ( SELECT idEtBhKw, enTech_idEnTech, MAX(timestamp) AS First FROM etbhkw GROUP BY enTech_idEnTech ) foo JOIN etbhkw M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etbhkw_result = $conn->query($etbhkw_select);
+            $etbhkw = [];
+            while ($row = $etbhkw_result->fetch_assoc()) { 
+                array_push($etbhkw, $row);
+            }
+            $etbhkw = json_decode(json_encode($etbhkw), FALSE);
+
+            //ETBMHK - Biomasseheizkessel
+            $etbmhk_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtBmHk FROM ( SELECT idEtBmHk, enTech_idEnTech, MAX(timestamp) AS First FROM etbmhk GROUP BY enTech_idEnTech ) foo JOIN etbmhk M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etbmhk_result = $conn->query($etbmhk_select);
+            $etbmhk = [];
+            while ($row = $etbmhk_result->fetch_assoc()) { 
+                array_push($etbmhk, $row);
+            }
+            $etbmhk = json_decode(json_encode($etbmhk), FALSE);
+
+            //ETBMHW - Biomasseheizwerk
+            $etbmhw_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtBmHw FROM ( SELECT idEtBmHw, enTech_idEnTech, MAX(timestamp) AS First FROM etbmhw GROUP BY enTech_idEnTech ) foo JOIN etbmhw M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etbmhw_result = $conn->query($etbmhw_select);
+            $etbmhw = [];
+            while ($row = $etbmhw_result->fetch_assoc()) { 
+                array_push($etbmhw, $row);
+            }
+            $etbmhw = json_decode(json_encode($etbmhw), FALSE);
+
+
+            //ETBS - Batteriespeicher
+            $etbs_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtBs FROM ( SELECT idEtBs, enTech_idEnTech, MAX(timestamp) AS First FROM etbs GROUP BY enTech_idEnTech ) foo JOIN etbs M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etbs_result = $conn->query($etbs_select);
+            $etbs = [];
+            while ($row = $etbs_result->fetch_assoc()) { 
+                array_push($etbs, $row);
+            }
+            $etbs = json_decode(json_encode($etbs), FALSE);
+
+            //ETBSZ - Wasserstoff Brennstoffzelle
+            $etbsz_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtBsZ FROM ( SELECT idEtBsZ, enTech_idEnTech, MAX(timestamp) AS First FROM etbsz GROUP BY enTech_idEnTech ) foo JOIN etbsz M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etbsz_result = $conn->query($etbsz_select);
+            $etbsz = [];
+            while ($row = $etbsz_result->fetch_assoc()) { 
+                array_push($etbsz, $row);
+            }
+            $etbsz = json_decode(json_encode($etbsz), FALSE);
+
+            //ETEL - E-Ladestation
+            $etel_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtEl FROM ( SELECT idEtEl, enTech_idEnTech, MAX(timestamp) AS First FROM etel GROUP BY enTech_idEnTech ) foo JOIN etel M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etel_result = $conn->query($etel_select);
+            $etel = [];
+            while ($row = $etel_result->fetch_assoc()) { 
+                array_push($etel, $row);
+            }
+            $etel = json_decode(json_encode($etel), FALSE);
+
+            //ETGKBZ - Gebäude Kältebedarfszähler
+            $etgkbz_select = "SELECT M.energy, M.timestamp, M.enTech_idEnTech, M.idEtGKbZ FROM ( SELECT idEtGKbZ, enTech_idEnTech, MAX(timestamp) AS First FROM etgkbz GROUP BY enTech_idEnTech ) foo JOIN etgkbz M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etgkbz_result = $conn->query($etgkbz_select);
+            $etgkbz = [];
+            while ($row = $etgkbz_result->fetch_assoc()) { 
+                array_push($etgkbz, $row);
+            }
+            $etgkbz = json_decode(json_encode($etgkbz), FALSE);
+
+            //ETGWBZ - Gebäude Wärmebedarfszähler
+            $etgwbz_select = "SELECT M.energy, M.timestamp, M.enTech_idEnTech, M.idEtGWbZ FROM ( SELECT idEtGWbZ, enTech_idEnTech, MAX(timestamp) AS First FROM etgwbz GROUP BY enTech_idEnTech ) foo JOIN etgwbz M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etgwbz_result = $conn->query($etgwbz_select);
+            $etgwbz = [];
+            while ($row = $etgwbz_result->fetch_assoc()) { 
+                array_push($etgwbz, $row);
+            }
+            $etgwbz = json_decode(json_encode($etgwbz), FALSE);
+
+
+            //ETHAZ - Hausanschlusszähler
+            $ethaz_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtHaZ FROM ( SELECT idEtHaZ, enTech_idEnTech, MAX(timestamp) AS First FROM ethaz GROUP BY enTech_idEnTech ) foo JOIN ethaz M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $ethaz_result = $conn->query($ethaz_select);
+            $ethaz = [];
+            while ($row = $ethaz_result->fetch_assoc()) { 
+                array_push($ethaz, $row);
+            }
+            $ethaz = json_decode(json_encode($ethaz), FALSE);
+
+            //ETKKM - Kompressionskältemaschine
+            $etkkm_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtKkM FROM ( SELECT idEtKkM, enTech_idEnTech, MAX(timestamp) AS First FROM etkkm GROUP BY enTech_idEnTech ) foo JOIN etkkm M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etkkm_result = $conn->query($etkkm_select);
+            $etkkm = [];
+            while ($row = $etkkm_result->fetch_assoc()) { 
+                array_push($etkkm, $row);
+            }
+            $etkkm = json_decode(json_encode($etkkm), FALSE);
+
+
+            //ETKS - Kältespeicher
+            $etks_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtKs FROM ( SELECT idEtKs, enTech_idEnTech, MAX(timestamp) AS First FROM etks GROUP BY enTech_idEnTech ) foo JOIN etks M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etks_result = $conn->query($etks_select);
+            $etks = [];
+            while ($row = $etks_result->fetch_assoc()) { 
+                array_push($etks, $row);
+            }
+            $etks = json_decode(json_encode($etks), FALSE);
+
+
+            //ETPV - PV Anlage
+            $etpv_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtPv FROM ( SELECT idEtPv, enTech_idEnTech, MAX(timestamp) AS First FROM etpv GROUP BY enTech_idEnTech ) foo JOIN etpv M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etpv_result = $conn->query($etpv_select);
+            $etpv = [];
+            while ($row = $etpv_result->fetch_assoc()) { 
+                array_push($etpv, $row);
+            }
+            $etpv = json_decode(json_encode($etpv), FALSE);
     
-        //ETWE
-        $etwe_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtWe FROM ( SELECT idEtWe, enTech_idEnTech, MAX(timestamp) AS First FROM etwe GROUP BY enTech_idEnTech ) foo JOIN etwe M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
-        $etwe_result = $conn->query($etwe_select);
-        $etwe = [];
-        while ($row = $etwe_result->fetch_assoc()) { 
-            array_push($etwe, $row);
-        }
-        $etwe = json_decode(json_encode($etwe), FALSE);
-    
+
+            //ETSNB - Stromnetzbezug
+            $etsnb_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtSnbB FROM ( SELECT idEtSnbB, enTech_idEnTech, MAX(timestamp) AS First FROM etsnb GROUP BY enTech_idEnTech ) foo JOIN etsnb M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etsnb_result = $conn->query($etsnb_select);
+            $etsnb = [];
+            while ($row = $etsnb_result->fetch_assoc()) { 
+                array_push($etsnb, $row);
+            }
+            $etsnb = json_decode(json_encode($etsnb), FALSE);
+
+
+            //ETSTH - Solarthermieanlage
+            $etsth_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtSth FROM ( SELECT idEtSth, enTech_idEnTech, MAX(timestamp) AS First FROM etsth GROUP BY enTech_idEnTech ) foo JOIN etsth M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etsth_result = $conn->query($etsth_select);
+            $etsth = [];
+            while ($row = $etsth_result->fetch_assoc()) { 
+                array_push($etsth, $row);
+            }
+            $etsth = json_decode(json_encode($etsth), FALSE);
+
+
+            //ETWE - Wasserstoff Elektrolyse
+            $etwe_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtWe FROM ( SELECT idEtWe, enTech_idEnTech, MAX(timestamp) AS First FROM etwe GROUP BY enTech_idEnTech ) foo JOIN etwe M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etwe_result = $conn->query($etwe_select);
+            $etwe = [];
+            while ($row = $etwe_result->fetch_assoc()) { 
+                array_push($etwe, $row);
+            }
+            $etwe = json_decode(json_encode($etwe), FALSE);
+
+
+            //ETWES - Wärmespeicher
+            $etwes_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtWes FROM ( SELECT idEtWes, enTech_idEnTech, MAX(timestamp) AS First FROM etwes GROUP BY enTech_idEnTech ) foo JOIN etwes M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etwes_result = $conn->query($etwes_select);
+            $etwes = [];
+            while ($row = $etwes_result->fetch_assoc()) { 
+                array_push($etwes, $row);
+            }
+            $etwes = json_decode(json_encode($etwes), FALSE);
+
+
+            //ETWKA - Windkraftanlage
+            $etwka_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtWkA FROM ( SELECT idEtWkA, enTech_idEnTech, MAX(timestamp) AS First FROM etwka GROUP BY enTech_idEnTech ) foo JOIN etwka M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etwka_result = $conn->query($etwka_select);
+            $etwka = [];
+            while ($row = $etwka_result->fetch_assoc()) { 
+                array_push($etwka, $row);
+            }
+            $etwka = json_decode(json_encode($etwka), FALSE);
+
+
+            //ETWNB - Wärmenetzbezug
+            $etwnb_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtWnB FROM ( SELECT idEtWnB, enTech_idEnTech, MAX(timestamp) AS First FROM etwnb GROUP BY enTech_idEnTech ) foo JOIN etwnb M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etwnb_result = $conn->query($etwnb_select);
+            $etwnb = [];
+            while ($row = $etwnb_result->fetch_assoc()) { 
+                array_push($etwnb, $row);
+            }
+            $etwnb = json_decode(json_encode($etwnb), FALSE);
+
+
+            //ETWP - Wärmepumpe
+            $etwp_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtWp FROM ( SELECT idEtWp, enTech_idEnTech, MAX(timestamp) AS First FROM etwp GROUP BY enTech_idEnTech ) foo JOIN etwp M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etwp_result = $conn->query($etwp_select);
+            $etwp = [];
+            while ($row = $etwp_result->fetch_assoc()) { 
+                array_push($etwp, $row);
+            }
+            $etwp = json_decode(json_encode($etwp), FALSE);
+
+
+            //ETWS - Wasserstoff Speicher
+            $etws_select = "SELECT M.power, M.energy, M.timestamp, M.enTech_idEnTech, M.idEtWs FROM ( SELECT idEtWs, enTech_idEnTech, MAX(timestamp) AS First FROM etws GROUP BY enTech_idEnTech ) foo JOIN etws M ON foo.enTech_idEnTech = M.enTech_idEnTech AND foo.First = M.timestamp";
+            $etws_result = $conn->query($etws_select);
+            $etws = [];
+            while ($row = $etws_result->fetch_assoc()) { 
+                array_push($etws, $row);
+            }
+            $etws = json_decode(json_encode($etws), FALSE);
+
+
+        //Ende der Selects für die aktuellen Echtzeitdaten der Energietechnologien
+
 
 
         $es_result = $conn->query($es_select); //für SQL DB Conn ES
