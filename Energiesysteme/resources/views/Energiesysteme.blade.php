@@ -747,7 +747,7 @@
                             $('#PopUpETGrafana').modal('show');
                         
                             @isset($d)
-                            var srcc = "https://show.microgrid-lab.eu/d-solo/{{ $d->id }}/{{ $d->designation }}?orgId=4&from=now-24h&to=now&panelId="+id;
+                            var srcc = "https://show.microgrid-lab.eu/d-solo/{{ $d->id }}/{{ $d->designation }}?orgId=4&from=now-168h&to=now&panelId="+id;
                             @endisset
 
 
