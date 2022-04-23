@@ -11,6 +11,23 @@
     <body oncontextmenu="return false"> <!-- Rechtsklick auf der Web-Seite nicht möglich -->
 
 
+
+        @if (session('status'))
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Energiesystem konnte nicht erstellt werden!</strong> Energiesystem mit identer Bezeichnung vorhanden!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+
+
+
+
+  
+@endif
+
         <div class="Energiesysteme container-fluid p-5">
             <div class="row w-100">
                 <div class="col-12 col-lg-7 shadow-lg rounded" id="map"></div>

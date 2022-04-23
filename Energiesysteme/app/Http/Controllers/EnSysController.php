@@ -49,6 +49,23 @@ class EnSysController extends Controller
     public function store(Request $request)
     {
 
+        $checkequal = 1;
+
+        $getAllExistingDashboards = DB::table('EnSys')->get();
+
+            foreach($getAllExistingDashboards as $es)
+            {
+                if($es->designation == $request->BezeichnungES)
+                {
+                    $checkequal = 0;
+                }
+
+              
+            }
+
+        if($checkequal == 1)
+        {
+
         $user = Auth::user();
 
         $enSys = new EnSys();
@@ -141,8 +158,18 @@ class EnSysController extends Controller
         
 //Grafana Dashboard Erstellen Ende
 
-        return redirect("/energiesysteme")->with(['data' => $data]);
+return redirect("/energiesysteme")->with(['data' => $data]);
         /*return view('Energiesysteme', compact('data'));*/
+
+    }
+    else
+    {
+
+        $data = DB::table('EnSys')->get();
+        return redirect("/energiesysteme")->with('status', 'Energiesystem konnte aufgrund vorhandener Bezeichnung nicht erstellt werden!')->with(['data' => $data]);
+    //  return '<script type="text/javascript">alert("hello!");</script>';
+    }
+        
     }
 
     /**
