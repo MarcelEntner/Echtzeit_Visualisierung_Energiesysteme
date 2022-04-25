@@ -407,6 +407,14 @@
                                 @if (Route::has('login'))
                                     <button type="button" class="btn text-primary fs-4" data-toggle="modal"
                                         data-target="#loginModal">{{ __('Login') }}</button>
+                                        <!-- Automatisch öffnen bei fehlgeschlagen -->
+                                        @if (count($errors) > 0)
+                                        <script>
+                                            $( document ).ready(function() {
+                                                $('#loginModal').modal('show');
+                                            });
+                                        </script>
+                                    @endif
                                 @endif
                             @else
                                 <div class="nav-item dropdown text-primary">

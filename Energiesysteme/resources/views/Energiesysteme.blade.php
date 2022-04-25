@@ -14,19 +14,14 @@
 
         @if (session('status'))
 
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align: center;">
             <strong>Energiesystem konnte nicht erstellt werden!</strong> Energiesystem mit identer Bezeichnung vorhanden!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
 
-
-
-
-
-  
-@endif
+        @endif
 
         <div class="Energiesysteme container-fluid p-5">
             <div class="row w-100">
@@ -1079,7 +1074,7 @@
                     Möchten Sie dieses Energiesystem wirklich Löschen?
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Abbrechen</button>
                     <input type="submit" class="btn btn-danger"  id="ESLöschen"
                     value="Löschen">
                  </form>
@@ -1107,7 +1102,7 @@
                 Möchten Sie diese Energietechnologie wirklich Löschen?
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Abbrechen</button>
                 <input type="submit" class="btn btn-danger"  id="ETLöschen"
                 value="Löschen">
              </form>
