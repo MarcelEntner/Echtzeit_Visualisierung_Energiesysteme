@@ -778,29 +778,15 @@
 
                                 var esname = "";
 
-
-                                //todo -> schauen das id immer die des ausgewählten es ist
-
                                 var arrayes = @json($data);
 
                                 var arrayet = @json($dataEnTech);
-
-                                console.log(arrayes);
-
-                                console.log(arrayet);
-                            
-
+  
                             for(var i = 0; i < arrayet.length;i++)
                             {
                             if(arrayet[i].id == id)
                             {
-                               
-
                              ides = arrayet[i].enSys_idEnSys;
-
-
-                              console.log("yes " + ides);
-
                               break;
                             }
                           
@@ -813,7 +799,6 @@
                               if(arrayes[j].id == ides)
                                  {
                                     esname = arrayes[j].designation;
-                                    console.log("yes " + esname);
                                     break;
                                  }
                             
