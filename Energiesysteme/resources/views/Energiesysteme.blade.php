@@ -27,10 +27,11 @@
             <div class="row w-100">
                 <div class="col-12 col-lg-7 shadow-lg rounded" id="map"></div>
                 <div class="Liste col-12 col-lg-5">
-                    <input id="address" type="text">
+                    <input id="address" type="text" style="height: auto; ">
                     <!--- INPUT FELD ZUM SUCHEN -->
-                    <div id="find" class="btn btn-success">Suchen</div>
+                    <div id="find" class="btn btn-success" style="height:auto; "> Suchen</div>
                     <!--- BUTTON ZUM SUCHEN -->
+
 
                     <!--- Gesamte rechte Div der Liste (ohne Addresssuchfeld)  -->
                     <div class="shadow-lg rounded p-3" style="width:100%">
@@ -702,49 +703,7 @@
                 </div>
             </div>
         </div>
-        <!-- Et Editieren Ende-->
-
-
-        <!-- ES Grafana -->
-        <div class="modal modal2 fade" id="PopUpESGrafana" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal2-dialog modal-dialog-centered" role="document">
-
-                <div class="modal-content" style=" left: -60%;  background-color:white;">
-
-                    <div class="modal-header" style=" left: -60%; width: 1200px; background-color:white; ">
-
-                        <h5 class="modal-title modal2-title" id="exampleModalLongTitle" style="padding-left:25%;">
-                            Statistiken - Energiesysteme</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-
-
-                    <div class="modal-body" style=" height:500px;   background-color:white; width: 1200px;">
-
-                        <script type="text/javascript">
-                            function GrafanafunctionES(id) {
-                                $('#PopUpESGrafana').modal('show');
-
-                                console.log(id);
-                            }
-                        </script>
-
-
-                        <!-- Statistiken Ende-->
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-        <!-- ES Grafana Ende -->
-
-
+        <!-- ET Editieren Ende-->
 
 
 
@@ -1265,7 +1224,8 @@
     <script>
         var activeMarker = false; //Boolean Wert zum Überprüfen ob ein ES Marker gerade ausgewählt ist
         var activeClick = false; //Boolean Wert zum Überprüfen ob ein ES Marker gerade abgewählt wird
-        var markersArray = []; //Array zum speichern der Daten
+        var markersArray = []; //Array zum speichern der ET Marker Daten
+        var markersESArray = []; //Array zum speichern der ES Marker Daten
 
         function initAutocomplete() {
             //Hier werden die Map Optionen definiert
@@ -1345,15 +1305,10 @@
                                 map.addListener("click", (
                                     e) => { //Ausgefürht wenn Map-Klick -> Um ein ES hinzufügen zu können
                                     if (!activeMarker) { //Überprüfung ob e kein ES ausgewählt ist
-                                        breit = e.latLng.toString().substring(1,
-                                            16); //Breitengrad-Koordinaten des Klickes speichern
-                                        lang = e.latLng.toString().substring(20,
-                                            35); //Längengrad-Koordinaten des Klickes speichern
-                                        document.getElementById("LaengengradES").setAttribute('value',
-                                            breit); //Koordinaten den Input Feldern hinzufügen(PopUpES)
-                                        document.getElementById("BreitengradES").setAttribute('value',
-                                            lang); //Koordinaten den Input Feldern hinzufügen (PopUpES)
-
+                                        breit = e.latLng.toString().substring(1,16); //Breitengrad-Koordinaten des Klickes speichern
+                                        lang = e.latLng.toString().substring(20,35); //Längengrad-Koordinaten des Klickes speichern
+                                        document.getElementById("LaengengradES").setAttribute('value', breit); //Koordinaten den Input Feldern hinzufügen(PopUpES)
+                                        document.getElementById("BreitengradES").setAttribute('value',lang); //Koordinaten den Input Feldern hinzufügen (PopUpES)
                                         $('#PopUpESHinzufügen').modal('show'); //PopUpESHinzufügen öffnen
                                     }
                                 });
@@ -1370,16 +1325,11 @@
         @auth //Gast darf keine ES erstellen somit ist hier die Überprüfung auf Authentifizierung notwendig
         //Map-Klick Listener
         map.addListener("click", (e) => { //Ausgefürht bei einem Map-Klick
-            if (!
-                activeMarker
-                ) { //Überprüfung ob kein ES ausgewählt ist, denn wenn ein ES ausgewählt ist hat man ja die Option ET hinzuzufügen
+            if (! activeMarker ) { //Überprüfung ob kein ES ausgewählt ist, denn wenn ein ES ausgewählt ist hat man ja die Option ET hinzuzufügen
                 breit = e.latLng.toString().substring(1, 16); //Breitengrad-Koordinaten des Klickes speichern
                 lang = e.latLng.toString().substring(20, 35); //Längengrad-Koordinaten des Klickes speichern
-                document.getElementById("LaengengradES").setAttribute('value',
-                    breit); //Koordinaten den Input Feldern hinzufügen (PopUpES)
-                document.getElementById("BreitengradES").setAttribute('value',
-                    lang); //Koordinaten den Input Feldern hinzufügen (PopUpES)
-
+                document.getElementById("LaengengradES").setAttribute('value',breit); //Koordinaten den Input Feldern hinzufügen (PopUpES)
+                document.getElementById("BreitengradES").setAttribute('value',lang); //Koordinaten den Input Feldern hinzufügen (PopUpES)
                 $('#PopUpESHinzufügen').modal('show'); //PopUpESHinzufügen öffnen
             }
         });
@@ -2686,9 +2636,7 @@
         //Funktion zum Platzieren der ET Marker auf die Map
         function setETMarker(map, id) { //Dafür wird dieser Funktion die map sowie die ID des ET
 
-            for (let i = 0; i < DB_Daten_ET
-                .length; i++
-                ) { //mit .length wird die Anzahl der ET ermittelt und anschließend wird diese Schleife so oft gemacht
+            for (let i = 0; i < DB_Daten_ET.length; i++) { //mit .length wird die Anzahl der ET ermittelt und anschließend wird diese Schleife so oft gemacht
                 const energietechnologie = DB_Daten_ET[i]; //Array mit allen Daten der ET
 
                 let ES_ID = energietechnologie[3]; //Wird die ID des ES vom dieser ET gespeichert
@@ -2815,8 +2763,7 @@
 
                 markerET.addListener("click", () => { //Wenn man auf das Icon einer ET drückd, wird an dieses herangezoomt
                     map.setZoom(19); //Zoom-setzen
-                    map.setCenter(markerET
-                        .getPosition()); //Mitte der Karte mit den Koordinaten des ET Markers setzen
+                    map.setCenter(markerET.getPosition()); //Mitte der Karte mit den Koordinaten des ET Markers setzen
                 });
                 markersArray.push(markerET);
             }
@@ -2826,9 +2773,7 @@
         //Funktion zum Platzieren der ES Marker auf die Map
         function setESMarker(map) { //Die Map wird mitgegeben
 
-            for (let i = 0; i < DB_Daten_ES
-                .length; i++
-                ) { //mit .length wird die Anzahl der ES ermittelt und anschließend wird diese Schleife so oft gemacht
+            for (let i = 0; i < DB_Daten_ES.length; i++) { //mit .length wird die Anzahl der ES ermittelt und anschließend wird diese Schleife so oft gemacht
                 const energiesysteme = DB_Daten_ES[i]; //Array mit allen Daten der ES
 
                 const markerES = new google.maps.Marker({ //Neuen ES Marker erstellen
@@ -2838,8 +2783,7 @@
                     },
                     map, //Die mitgegebene Map auswählen
                     icon: '/images/icons/esrot.png', //Da alle ES das gleiche Icon haben kann diese einfach hier eingebunden werden
-                    title: energiesysteme[
-                        0], //Bezeichnung des ES (Ist ersichtlich wenn man mit der Maus drüber fährt (Hover-Effekt))
+                    title: energiesysteme[0], //Bezeichnung des ES (Ist ersichtlich wenn man mit der Maus drüber fährt (Hover-Effekt))
                     label: { //Text der unter dem Icon Steht
                         text: energiesysteme[0], //Bezeichnung
                         color: 'red', //Farbe der Schrift
@@ -2848,10 +2792,13 @@
                         fontFamily: "'Hubballi', cursive", //Schriftart
                         className: 'marker-position', //Damit die Schrift unter dem Icon steht CSS
                     },
-                    animation: google.maps.Animation
-                        .DROP, //Wenn die Marker geladen werden haben sie die Animation das sie von oben herunter fallen
+                    animation: google.maps.Animation.DROP, //Wenn die Marker geladen werden haben sie die Animation das sie von oben herunter fallen
                     //verschiedene Moduse: DROP, BOUNCE
+
                 });
+
+                markersESArray.push(markerES);
+                
 
                 //Funktion die bei abwählen eines ES die ET wieder von der Map entfernt
                 function unsetETMarker(map) {
@@ -2863,19 +2810,24 @@
                 }
 
 
+                function unsetAnimation() {
+
+                    for (var i = 0; i < markersESArray.length; i++) { //Wird für jede ET gemacht
+                        markersESArray[i].setAnimation(google.maps.Animation.DROP); //Den Marker von der Map nehmen
+                        markersESArray[i].setIcon("/images/icons/esrot.png"); //Den Marker von der Map nehmen
+                    }
+                }
+
+
                 //Doppelklick um ES auszuwählen, was mit einem Doppelklick auf das ES Icon möglich ist
                 markerES.addListener("dblclick", (e) => { //"dbclick" für Doppelklick
 
-                        let latLng = e.latLng
-                            .toString(); //In diese Variable werden die Koordinaten des ausgewählten ES gespeichert (ein langer String)
-                        breit = parseFloat(latLng.substring(1, latLng.indexOf(","))).toFixed(
-                            9); //Aus dem langen String Sub-Strings für den Breitengrad machen
-                        lang = parseFloat(latLng.substring(latLng.indexOf(",") + 1, latLng.length)).toFixed(
-                            9); //Aus dem langen String Sub-Strings für den Längengrad machen
+                        let latLng = e.latLng.toString(); //In diese Variable werden die Koordinaten des ausgewählten ES gespeichert (ein langer String)
+                        breit = parseFloat(latLng.substring(1, latLng.indexOf(","))).toFixed(9); //Aus dem langen String Sub-Strings für den Breitengrad machen
+                        lang = parseFloat(latLng.substring(latLng.indexOf(",") + 1, latLng.length)).toFixed(9); //Aus dem langen String Sub-Strings für den Längengrad machen
                         let id; //Zwischen-Variable 
                         DB_Daten_ES.forEach((dbES) => {
-                            if (dbES[1].toFixed(9) == breit && dbES[2].toFixed(9) ==
-                                lang) { //Wenn die Koordinaten übereinstimmen
+                            if (dbES[1].toFixed(9) == breit && dbES[2].toFixed(9) == lang) { //Wenn die Koordinaten übereinstimmen
                                 id = dbES[3]; //In die Zwischenvariable wird die ID vom ES gespeichert
                             }
                         });
@@ -2883,17 +2835,13 @@
                         map.setZoom(17); //Wird an das ausgewählte ES gezoomt
                         map.setCenter(markerES.getPosition()); //Die Position des ES wird als Mitte festgelegt
                         markerES.setIcon("/images/icons/esrotused.png"); //Das Icon wird geändert
-                        markerES.setAnimation(google.maps.Animation
-                            .BOUNCE
-                            ); //Die Animation des Icons auf BOUNCE ändern, damit man sieht dass es ausgewählt ist
-                        print_List_Energietechnologie(
-                            id); //Bei Auswahl eines ES wird die Liste rechts auf die dazugehörigen ET geändert
+                        markerES.setAnimation(google.maps.Animation.BOUNCE); //Die Animation des Icons auf BOUNCE ändern, damit man sieht dass es ausgewählt ist
+                        print_List_Energietechnologie(id); //Bei Auswahl eines ES wird die Liste rechts auf die dazugehörigen ET geändert
 
                         activeMarker = true; //Wenn ES ausgewählt dann ist der Boolean activeMarker true
                         activeClick = true; //Wenn ES ausgewählt dann ist der Boolean activeClick true
 
-                        setETMarker(map,
-                            id); //Wenn ES ausgewählt dann werden die dazugehörigen ET ebenso auf die Map plaziert
+                        setETMarker(map,id); //Wenn ES ausgewählt dann werden die dazugehörigen ET ebenso auf die Map plaziert
 
                         //Bei entsprechender Berechtigung darf man ET hinzufügen
                         @auth //Mann muss angemeldet sein
@@ -2903,21 +2851,12 @@
 
                         map.addListener("click", (e1) => { //Ausgefürht wenn Map-Klick um eine ET hinzuzufügen
                             if (activeMarker) { //activeMarker muss true sein,also ein ES muss ausgewählt sein 
-                                let latLng = e1.latLng
-                                    .toString(); //Speichern der Koordinaten des Clickes (ein langer String)
-                                langET = parseFloat(latLng.substring(1, latLng.indexOf(","))).toFixed(
-                                    9); //Substring für Breitengrad der ET
-                                breitET = parseFloat(latLng.substring(latLng.indexOf(",") + 1, latLng.length))
-                                    .toFixed(9); //Substring für Längengrad der ET
-                                document.getElementById("LaengengradET").setAttribute('value',
-                                    langET
-                                    ); //Längengrad Koordinaten werden automatisch beim PopUp in das Input Feld geschrieben
-                                document.getElementById("BreitengradET").setAttribute('value',
-                                    breitET
-                                    ); //Breitengrad Koordinaten werden automatisch beim PopUp in das Input Feld geschrieben
-                                document.getElementById("IDES").setAttribute('value',
-                                    id); //ID von ES wird automatisch in das Input Feld geschrieben
-
+                                let latLng = e1.latLng.toString(); //Speichern der Koordinaten des Clickes (ein langer String)
+                                langET = parseFloat(latLng.substring(1, latLng.indexOf(","))).toFixed(9); //Substring für Breitengrad der ET
+                                breitET = parseFloat(latLng.substring(latLng.indexOf(",") + 1, latLng.length)).toFixed(9); //Substring für Längengrad der ET
+                                document.getElementById("LaengengradET").setAttribute('value',langET); //Längengrad Koordinaten werden automatisch beim PopUp in das Input Feld geschrieben
+                                document.getElementById("BreitengradET").setAttribute('value',breitET); //Breitengrad Koordinaten werden automatisch beim PopUp in das Input Feld geschrieben
+                                document.getElementById("IDES").setAttribute('value',id); //ID von ES wird automatisch in das Input Feld geschrieben
                                 $('#PopUpETHinzufügen').modal('show'); //PopUpETHinzufügen öffnen
                             }
                         });
@@ -2925,26 +2864,29 @@
                 });
 
             //Einfacher Klick um ein ES abzuwählen
-            markerES.addListener("click", () => { //Klick auf Icon
-                map.setZoom(15); //Herauszoomen
-                map.setCenter(markerES.getPosition()); //Die Position des ES wird als Mitte festgelegt
-                markerES.setIcon("/images/icons/esrot.png"); //Icon wieder auf das nicht ausgewählte ES ändern
-                markerES.setAnimation(google.maps.Animation.DROP); //Bounce Animation auf DROP ändern
-                print_List_Energiesysteme(); //Rechts in der Liste wieder die ES anzeigen anstatt den ET
-                map.setOptions({
-                    draggableCursor: 'crosshair'
-                }); //Curser von ET wieder auf den normalen ändern
-                $('#PopUpETHinzufügen').modal('hide'); //PopUpETHinzufügen nicht aufrufen!                
+                    markerES.addListener("click", () => { //Klick auf Icon
+                            map.setZoom(15); //Herauszoomen
+                            map.setCenter(markerES.getPosition()); //Die Position des ES wird als Mitte festgelegt
+                            markerES.setIcon("/images/icons/esrot.png"); //Icon wieder auf das nicht ausgewählte ES ändern
+                            markerES.setAnimation(google.maps.Animation.DROP); //Bounce Animation auf DROP ändern
+                            print_List_Energiesysteme(); //Rechts in der Liste wieder die ES anzeigen anstatt den ET
+                            map.setOptions({
+                                draggableCursor: 'crosshair'
+                            }); //Curser von ET wieder auf den normalen ändern
+                            $('#PopUpETHinzufügen').modal('hide'); //PopUpETHinzufügen nicht aufrufen!                
 
-                activeMarker = false; //activeMarker false da das ES abgewählt wird
+                            activeMarker = false; //activeMarker false da das ES abgewählt wird
 
-                if (activeClick == true) { //Überprüfung ob ES ausgewählt ist wenn ja
-                    unsetETMarker(map); //die ET von diesem ES von der Map entfernen
-                }
-            });
+                            if (activeClick == true) { //Überprüfung ob ES ausgewählt ist wenn ja
+                                unsetETMarker(map); //die ET von diesem ES von der Map entfernen
+                                unsetAnimation();
+                            }
+                        
+                    });
+            
+
         }
         }
-
 
 
         //Liste Aktualisieren Funktionen
