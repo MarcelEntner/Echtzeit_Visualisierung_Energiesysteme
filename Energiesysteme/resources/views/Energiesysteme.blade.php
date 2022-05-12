@@ -15,7 +15,7 @@
 
         @if (session('status'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align: center;">
-                <strong>Energiesystem konnte nicht erstellt werden!</strong> Energiesystem mit identer Bezeichnung
+                <strong>Energiesystem konnte nicht erstellt werden!</strong> Energiesystem mit identer Bezeichnung in gleicher Katastralgemeinde bereits
                 vorhanden!
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -731,20 +731,24 @@
 
                         <script type="text/javascript">
                             function GrafanafunctionET(id) {
-                                $('#PopUpETGrafana').modal('show');
+                              
 
                                 var ides = 0;
 
                                 var esname = "";
 
-                                var arrayes = @json($data);
 
+// get all es in js array
+                                var arrayes = @json($data);
+//get all et in js array
                                 var arrayet = @json($dataEnTech);
   
+  //look if et id matches given id
                             for(var i = 0; i < arrayet.length;i++)
                             {
                             if(arrayet[i].id == id)
                             {
+                                // get es id of right et
                              ides = arrayet[i].enSys_idEnSys;
                               break;
                             }
@@ -757,6 +761,7 @@
                             {
                               if(arrayes[j].id == ides)
                                  {
+                                     //get es name from calculated es id
                                     esname = arrayes[j].designation;
                                     break;
                                  }
@@ -767,14 +772,18 @@
 
 
 
-                                @isset($d)
+                            //build source string for iframe
                                     var srcc =
                                         "https://show.microgrid-lab.eu/d-solo/" + ides + "/" + esname + "?orgId=4&from=now-168h&to=now&panelId=" +
                                         id;
-                                @endisset
+                           
 
 
                                 document.getElementById("iframe1").src = srcc;
+
+
+// display modal with grafana iframe
+                                $('#PopUpETGrafana').modal('show');
                             }
                         </script>
 
@@ -785,9 +794,9 @@
 
 
 
-                        @isset($d)
+                    
                             <iframe id="iframe1" width='100%' height='100%' frameborder='0'></iframe>
-                        @endisset
+                   
 
                         <!-- Statistiken Ende-->
                     </div>

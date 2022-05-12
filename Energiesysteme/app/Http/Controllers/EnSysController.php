@@ -55,7 +55,7 @@ class EnSysController extends Controller
 
             foreach($getAllExistingDashboards as $es)
             {
-                if($es->designation == $request->BezeichnungES)
+                if($es->designation == $request->BezeichnungES  && $es->localPart == $request->KatastralgemeindenES)
                 {
                     $checkequal = 0;
                 }
