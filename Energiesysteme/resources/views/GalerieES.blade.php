@@ -15,7 +15,7 @@
             <!-- Wird der Inhalt gesetzt -->
             @foreach ($data as $d)
                 <!-- Jedes ES aus der DB wird einzeln in die Liste gespeichert -->
-                <a href="{{ route('EnSys.show', $d->id) }}">{{ $d->designation }}</a>
+                <a href="{{ route('EnSys.show', $d->id) }}">{{ $d->designation }}_{{ $d->localPart }}</a>
             @endforeach
         </div>
     </div>
@@ -25,7 +25,7 @@
     <!-- Anzeige darunter -->
     <div class="GalerieAnzeige shadow-lg rounded">
         <!-- Überschrift mit dem Namen des ES -->
-        <h3 style="font-family: 'Smooch Sans', sans-serif; text-align:center;"> {{ $EnSys->designation }} Energietechnologien</h3> 
+        <h3 style="font-family: 'Smooch Sans', sans-serif; text-align:center;"> {{ $EnSys->designation }}_{{ $EnSys->localPart }} Energietechnologien</h3> 
 
              <!--Darstellung jeder ET -->
              @foreach($EnTech as $EnTech)

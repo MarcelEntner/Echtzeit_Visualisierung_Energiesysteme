@@ -16,7 +16,7 @@
                 <!-- Wird der Inhalt gesetzt -->
                 @foreach ($data as $d)
                     <!-- Jedes ES aus der DB wird einzeln in die Liste gespeichert -->
-                    <a href="{{ route('EnSys.show', $d->id) }}">{{ $d->designation }}</a>
+                    <a href="{{ route('EnSys.show', $d->id) }}">{{ $d->designation }}_{{ $d->localPart }}</a>
                 @endforeach
             </div>
         </div>
