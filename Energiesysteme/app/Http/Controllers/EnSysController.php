@@ -49,6 +49,7 @@ class EnSysController extends Controller
     public function store(Request $request)
     {
 
+        // Check if es is already existing with the same name in the same localpart of a city
         $checkequal = 1;
 
         $getAllExistingDashboards = DB::table('EnSys')->get();
@@ -82,8 +83,13 @@ class EnSysController extends Controller
 //Grafana Dashboard Erstellen anfang
 
 
+
+
+        
        
         $uid = strval($enSys->id);
+
+        $dashboardtitle = $request->BezeichnungES . "_" . $request->KatastralgemeindenES;
 
         $createEnsysDashboard = Http::withHeaders([
 
@@ -145,7 +151,7 @@ class EnSysController extends Controller
                 ],
                 'timepicker' => [],
                 'timezone' => 'browser',
-                'title' => $request->BezeichnungES,
+                'title' => $dashboardtitle,
                 'uid' => $uid,
                 'version' => 0,
                
