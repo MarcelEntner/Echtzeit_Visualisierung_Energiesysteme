@@ -56,7 +56,7 @@
             <h3 style="font-family: 'Smooch Sans', sans-serif; text-align:center; font-size:40px;" > Intelligente Strom- und Mikronetze</h3> <!-- Überschrift -->
 
             <!-- Text -->
-            <p class="text" style="font-family: 'Hubballi', cursive;  font-size:20px; font-weight:500;" >
+            <p class="text" style="font-family: 'Hubballi'; cursive" >
            
 
         Die 2017 neu gegründete Area „Smart- und Microgrids“ beschäftigt sich mit der konzeptionellen Planung und Steuerung von dezentralen Energieversorgungsprojekten und Microgrids. Dazu werden theoretische, physikalische und wissenschaftliche Zusammenhänge im Bereich der Planung und Steuerung von Smart- und Microgrids erforscht und experimentell entwickelt. Die angewandten Methoden inkludieren Mixed Integer Linear Programming (MILP) oder linearisierte MILP sowie Model-Predictive-Control(MPC)-Methoden. Eine ganzheitliche Betrachtung (Konzeptionierung und Betrieb) von Multi-Energiesystemen (Strom, Wärme, Kälte für Gebäude sowie für kommunale und industrielle Anwendungen) stellt eine komplexe Herausforderung dar, die nur durch den Einsatz der genannten Methoden nachhaltig lösbar ist.

@@ -20,6 +20,7 @@
 
 
     <!-- Schriftart -->
+    <!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@700&display=swap" rel="stylesheet">
@@ -29,13 +30,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
 
+    -->
+
+
+    <style>
+
+
+
+
+    /* hubballi-regular - latin */
+@font-face {
+  font-family: 'Hubballi';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('/fonts/hubballi-v4-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/hubballi-v4-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+
+
+@font-face {
+  font-family: 'Smooch Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('/fonts/smooch-sans-v6-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/fonts/smooch-sans-v6-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+</style>
+
+   
 
     <title>MicroGridLab | @yield('title')</title> <!-- Platzhalter für den Title , Title steht in der Variable title-->
     <style>
         * {
             padding: 0px;
             margin: 0px;
-            font-family: Hubballi, cursive;
+            font-family: Hubballi;
             font-weight: 500;
             font-size: 20px;
         }
@@ -45,7 +78,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            font-family: Hubballi, cursive;
+            font-family: Hubballi;
 
         }
 
